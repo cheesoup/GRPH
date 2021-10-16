@@ -1,0 +1,16 @@
+---
+layout: default
+title: Posts
+---
+
+<h1 class="pageTitle">posts</h1>
+<ul class="posts">
+  {% for post in site.posts %}
+    <li>
+      <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+      {{ post.excerpt }}
+      <p class="readmore"><a href="{{ post.url | relative_url }}">Read more...</a>
+      <div class="footer">{{ post.date | date: "%a, %b %d, %y" }} | Tags: {{ post | tags }}</div>
+    </li>
+  {% endfor %}
+</ul>

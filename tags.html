@@ -1,0 +1,10 @@
+---
+layout: default
+title: Tags
+---
+
+<h1 class="pageTitle">tags</h1>
+{% assign tags = site.tags | sort %}
+<ul class="tags">
+  {% for tag in tags %}<li><a href="{{ 'tags' | relative_url }}/{{ tag | first | slugify }}">{{ tag[0] | replace:'-', ' ' }} ({{ tag | last | size }})</a></li>{% endfor %}
+</ul>

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+    <head>
+      <title>thesis? idk?</title>
+      <link rel="stylesheet" type="text/css" href="{{ "/assets/css/import.css" | relative_url }}">
+      <link rel="stylesheet" type="text/css" href="{{ "/assets/css/landing.css" | relative_url }}">
+    </head>
+    <body>
+      <!-- CONTENT START -->
+      <div class="content">
+        <p>
+          chris'<br/>
+          workshop<br/>
+          blog<br/>
+          2021/22<span class="blink">_</span>
+        </p>
+        <ul>
+           {% for item in site.data.navi.pages %}
+              <li><a href="{{ item.url | relative_url }}">{{ item.title }}</a></li>
+           {% endfor %}
+        </ul>
+      </div>
+      <!-- CONTENT END -->
+    </body>
+</html>

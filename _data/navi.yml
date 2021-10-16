@@ -1,0 +1,13 @@
+pages:
+
+- title: about
+  url: /about
+
+- title: posts
+  url: /posts
+
+- title: tags
+  url: /tags
+
+- title: out
+  url: /out

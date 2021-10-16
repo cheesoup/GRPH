@@ -1,0 +1,25 @@
+I"b<h1 class="pageTitle">about</h1>
+<h2 id="about-chrissy">about chrissy</h2>
+
+<p><img src="/workshop/assets/images/chrissy.gif" alt="self-portrait" style="margin: 0;" /></p>
+
+<p>Hi I’m Chris<br />
+Discord: chrissy惨#0712<br />
+Last.fm: <a href="https://www.last.fm/user/not_Chiisu">not_Chiisu</a><br />
+E-mail A: <a href="mailto:chr.carin[a]gmail.com">chr.carin[a]gmail</a><br />
+E-mail B: <a href="mailto:chris.carin[a]gmail.com">chris.carin[a]ocadu</a></p>
+
+<p>My full name’s Christopher Miguel Carin. I’m a fourth year Graphic Design student at OCADU. This is my blog where I write nonsense about my Graphic Design Workshop. Other than discord, I don’t really use social media so the best way contact me is either that or via e-mail (preferably personal one).</p>
+
+<p>My end goal for this project revolves around building some sort of digital musical instrument on embedded hardware. Currently, I’m trying to do so by working with a <a href="http://bela.io/">Bela</a> development board.</p>
+
+<p>I like computers and synthesizers and stuff I guess.</p>
+
+<h2 id="about-this-website">about this website</h2>
+
+<p>I’m planning to use this blog to keep track of notes/prototypes/ideas/etc. Things I plan on posting include: PureData/MaxMSP patches, random Bela/C++ shit (as I try to figure it out from a Java perspective), badly explained DSP math, and just general nonsense about design, sound, and music. Maybe I’ll post some p5.js/processing stuff if it’s relevant too.</p>
+
+<p>This site was built using <a href="https://jekyllrb.com/">Jekyll</a>. The layout was designed by myself. Typefaces used are <a href="https://fonts.google.com/specimen/DotGothic16?query=dotgothic">DotGothic16</a> and <a href="https://fonts.google.com/specimen/IBM+Plex+Mono?query=ibm">IBM Plex Mono</a>. Both are hosted by Google Fonts.</p>
+
+<div class="footer">Last updated: Oct. 15th, 2021</div>
+:ET

@@ -1,0 +1,29 @@
+---
+layout: default
+---
+
+<h1 class="pageTitle">{{ page.title }}</h1>
+
+{{ content }}
+
+<div class="footer">{{ page.date | date: "%a, %b %d, %y" }} | Tags: {{ page | tags }}</div>
+
+<div class="post_nav">
+  <div class="prev">
+    {% if page.previous.url %}
+      <a href="{{ page.previous.url | relative_url }}">&laquo; {{page.previous.title}}</a>
+      {% else %}
+      <a href="{{ page.url | relative_url }}">&laquo; {{page.title}}</a>
+    {% endif %}
+  </div>
+  <div class="up">
+    <a href="{{ 'posts' | relative_url }}">posts</a>
+  </div>
+  <div class="next">
+    {% if page.next.url %}
+      <a class="next" href="{{ page.next.url | relative_url }}">{{page.next.title}} &raquo;</a>
+      {% else %}
+      <a href="{{ page.url | relative_url }}">{{page.title}} &raquo;</a>
+    {% endif %}
+  </div>
+</div>
