@@ -1,7 +1,7 @@
 ---
 layout: post
 tag: [Updates, Blog Stuff]
-date: Oct. 14, 2021
+date: Oct. 13, 2021
 ---
 
 Check it out!! It's my first post!! How cool is that? Comin' straight from the 647 to the 905 to the 416 etc. I don't really have much to write about right now. So I guess I'll just some small updates about what I've been up to.
