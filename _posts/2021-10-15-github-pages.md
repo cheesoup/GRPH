@@ -1,7 +1,7 @@
 ---
 layout: post
 tag: [Blog Stuff]
-date: Oct. 14, 2021
+date: Oct. 15, 2021
 ---
 
 Debugging this site was a lot more of a pain in the ass than I thought it would be. After an extra day of website work, I finally managed to get my Github Pages to recognize my Jekyll source repository as a website. I feel like this should've been obvious how to do, but I'm actually sad pretty unfamiliar with the git protocol.
