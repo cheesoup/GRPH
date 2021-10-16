@@ -23,7 +23,7 @@ I like computers and synthesizers and stuff I guess.
 
 ## about this website
 
-I'm planning to use this blog to keep track of notes/prototypes/ideas/etc. Things I plan on posting include: PureData/MaxMSP patches, random Bela/C++ shit (as I try to figure it out from a Java perspective), badly explained DSP math, and just general nonsense about design, sound, and music. Maybe I'll post some p5.js/processing stuff if it's relevant too.
+I'm planning to use this blog to keep track of notes, prototypes, ideas, etc. Things I plan on posting include: PureData/MaxMSP patches, random Bela and C++ stuff, badly explained DSP math, and just general nonsense about design, sound, and music. Maybe I'll post some p5.js or processing stuff if it's relevant too.
 
 This site was built using [Jekyll](https://jekyllrb.com/). The layout was designed by myself. Typefaces used are [DotGothic16](https://fonts.google.com/specimen/DotGothic16?query=dotgothic) and [IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono?query=ibm). Both are hosted by Google Fonts.
 
