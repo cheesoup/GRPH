@@ -1,0 +1,15 @@
+---
+layout: post
+tag: [Blog Stuff]
+date: Oct. 14, 2021
+---
+
+Debugging this site was a lot more of a pain in the ass than I thought it would be. After an extra day of website work, I finally managed to get my Github Pages to recognize my Jekyll source repository as a website. I feel like this should've been obvious how to do, but I'm actually sad pretty unfamiliar with the git protocol.
+
+Initially, I thought you were supposed to simply upload the preview site to your repo. However, after inspecting other people's projects, I noticed that they had their whole Jekyll source code within the repository. This kinda baffled me, but when I tried it, low and behold my site showed up automatically. However, uploading my site this resulted in something going wrong with the tagging system.
+
+Apparently Github Pages doesn't support the jekyll-tagging plugins natively. It took me a while to figure this out and I was getting really annoyed about it. Ultimately, I had to look into some liquid code for building a tag clouds. I guess I'll post some of the links I found below I case I need them later.
+
+[Setting up a GitHub Pages site with Jekyll](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll)\
+[CodinFox](https://codinfox.github.io/dev/2015/03/06/use-tags-and-categories-in-your-jekyll-based-github-pages/)\
+[superdevresources.com](https://superdevresources.com/tag-cloud-jekyll/)
