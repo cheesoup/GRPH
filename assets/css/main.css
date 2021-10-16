@@ -81,6 +81,15 @@ h2 {
   transition: all 1s;
 }
 
+#copied {
+  font-size: 12px;
+  display: block;
+  width: 100%;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
 a {
   cursor: crosshair;
 }
@@ -106,7 +115,6 @@ nav ul li {
 nav ul li a:before {
   content: "/";
 }
-
 
 /* POST CSS */
 

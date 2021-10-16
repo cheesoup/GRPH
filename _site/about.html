@@ -4,31 +4,35 @@
       <title>thesis? idk?</title>
       <link rel="stylesheet" type="text/css" href="/GRPH/assets/css/import.css">
       <link rel="stylesheet" type="text/css" href="/GRPH/assets/css/main.css">
+      <link rel="shortcut icon" type="image/png" href="/GRPH/favicon.png">
       <script src="/GRPH/assets/js/sliders.js"></script>
+      <script src="/GRPH/assets/js/copyrss.js"></script>
     </head>
     <body>
-      <div class="wrap">
+    <div class="wrap">
       <div id="menuButton" onclick="button()">&#9655;</div>
       <!-- MENU START -->
-        <div id="nav">
-          <nav>
-            <ul>
-               
-                  <li><a href="/GRPH/about">about</a></li>
-               
-                  <li><a href="/GRPH/posts">posts</a></li>
-               
-                  <li><a href="/GRPH/tags">tags</a></li>
-               
-                  <li><a href="/GRPH/out">out</a></li>
-               
-            </ul>
-          </nav>
-        </div>
-        <!-- MENU END -->
-        <!-- CONTENT START -->
-        <div id="content">
-          <h1 class="pageTitle">about</h1>
+      <div id="nav">
+        <nav>
+          <ul>
+            
+            <li><a href="/GRPH/about">about</a></li>
+            
+            <li><a href="/GRPH/posts">posts</a></li>
+            
+            <li><a href="/GRPH/tags">tags</a></li>
+            
+            <li><a href="/GRPH/out">out</a></li>
+            
+            <li><a data-url="/GRPH/feed.xml" onclick="copyURI(event)">rss</a><br/></li>
+          </ul>
+        </nav>
+        <div id="copied">RSS Copied!</div>
+      </div>
+      <!-- MENU END -->
+      <!-- CONTENT START -->
+      <div id="content">
+        <h1 class="pageTitle">about</h1>
 <h2 id="about-chrissy">about chrissy</h2>
 
 <p><img src="/GRPH/assets/images/chrissy.gif" alt="self-portrait" style="margin: 0;" /></p>
@@ -53,8 +57,8 @@ E-mail B: <a href="mailto:chris.carin[a]gmail.com">chris.carin[a]ocadu</a></p>
 
 <div class="footer">Last updated: Oct. 15th, 2021</div>
 
-        </div>
-        <!-- CONTENT END -->
       </div>
+      <!-- CONTENT END -->
+    </div>
     </body>
 </html>

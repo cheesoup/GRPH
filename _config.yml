@@ -4,4 +4,8 @@ author: Chris
 description: a blog about 4th year GRPH workshop @ OCADU
 url: https://cheesoup.github.io
 baseurl: /GRPH
-plugins: ["emoji_for_jekyll"]
+plugins:
+  - emoji_for_jekyll
+  - jekyll-feed
+emoji:
+  src: "/assets/images/emoji"

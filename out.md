@@ -6,6 +6,9 @@ date: Oct. 15th, 2021
 
 <h1 class="pageTitle">out</h1>
 
+This site's source code can found at:\
+[github.com/cheesoup/GRPH](https://github.com/cheesoup/GRPH)
+
 ## stuff about audio
 - [Bela Resouces](https://learn.bela.io/)
 - [Miller Puckette's Website](http://msp.ucsd.edu/)
@@ -15,4 +18,3 @@ date: Oct. 15th, 2021
 
 ## other links
 - [OCADU](https://ocadu.ca)
-- [GRPH@github](https://github.com/cheesoup/GRPH)
