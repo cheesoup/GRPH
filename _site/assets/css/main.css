@@ -65,6 +65,11 @@ h2 {
   transition: all 1s;
   position: fixed;
   margin: 0 15px;
+  text-align:center;
+}
+
+#menuButton:hover{
+  cursor: crosshair;
 }
 
 #nav {
@@ -76,12 +81,15 @@ h2 {
   transition: all 1s;
 }
 
+a {
+  cursor: crosshair;
+}
+
 nav a {
   font-size: 32px;
   color: #000;
   margin-left: 15px;
   display: block;
-  cursor: crosshair;
   font-family: 'DotGothic16', sans-serif;
   text-decoration: none;
 }

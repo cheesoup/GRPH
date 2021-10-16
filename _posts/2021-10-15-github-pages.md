@@ -4,7 +4,7 @@ tag: [Blog Stuff]
 date: Oct. 15, 2021
 ---
 
-Debugging this site was a lot more of a pain in the ass than I thought it would be. After an extra day of website work, I finally managed to get my Github Pages to recognize my Jekyll source repository as a website. I feel like this should've been obvious how to do, but I'm actually sad pretty unfamiliar with the git protocol.
+Debugging this site was a lot more of a pain in the ass than I thought it would be. After an extra day of website work, I finally managed to get my Github Pages to recognize my Jekyll source repository as a website. I feel like this should've been obvious how to do, but I'm actually pretty unfamiliar with the git protocol.
 
 Initially, I thought you were supposed to simply upload the preview site to your repo. However, after inspecting other people's projects, I noticed that they had their whole Jekyll source code within the repository. This kinda baffled me, but when I tried it, low and behold my site showed up automatically. However, uploading my site this resulted in something going wrong with the tagging system.
 
