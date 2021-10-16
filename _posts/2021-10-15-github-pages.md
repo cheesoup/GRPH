@@ -14,4 +14,6 @@ Apparently Github Pages doesn't support the [Jekyll-Tagging](https://github.com/
 [CodinFox](https://codinfox.github.io/dev/2015/03/06/use-tags-and-categories-in-your-jekyll-based-github-pages/)\
 [superdevresources.com](https://superdevresources.com/tag-cloud-jekyll/)
 
-I still need to get the RSS working. I don't think it's that important though :p
+I still need to get the RSS working. I don't think it's that important though
+
+EDIT: Nevermind, I added an RSS feed.

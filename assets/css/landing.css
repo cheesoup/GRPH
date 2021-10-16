@@ -27,6 +27,13 @@ ul li:before {
   content: "/";
 }
 
+#copied {
+  letter-spacing: 4px;
+  font-size: 12px;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
 .blink {
   animation: blinker 0.5s infinite;
 }

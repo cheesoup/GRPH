@@ -6,6 +6,7 @@
       <link rel="stylesheet" type="text/css" href="/GRPH/assets/css/landing.css">
       <link rel="shortcut icon" type="image/png" href="/GRPH/favicon.png">
       <link rel="alternate" type="application/atom+xml" title="thesis? idk?" href="/GRPH/feed.xml">
+      <script src="/GRPH/assets/js/copyrss.js"></script>
     </head>
     <body>
       <!-- CONTENT START -->
@@ -18,14 +19,15 @@
         </p>
         <ul>
            
-              <li><a href="/GRPH/about">about</a></li>
+           <li><a href="/GRPH/about">about</a></li>
            
-              <li><a href="/GRPH/posts">posts</a></li>
+           <li><a href="/GRPH/posts">posts</a></li>
            
-              <li><a href="/GRPH/tags">tags</a></li>
+           <li><a href="/GRPH/tags">tags</a></li>
            
-              <li><a href="/GRPH/out">out</a></li>
+           <li><a href="/GRPH/out">out</a></li>
            
+           <li><a data-url="http://localhost:4000/GRPH/feed.xml" onclick="copyURI(event)">rss</a><span id="copied">RSS Copied!</span></li>
         </ul>
       </div>
       <!-- CONTENT END -->

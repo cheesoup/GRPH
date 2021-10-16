@@ -19,7 +19,7 @@
             {% for item in site.data.navi.pages %}
             <li><a href="{{ item.url | relative_url }}">{{ item.title }}</a></li>
             {% endfor %}
-            <li><a data-url="{{ 'feed.xml' | absolute_url }}" onclick="copyURI(event)">rss</a><br/></li>
+            <li><a data-url="{{ 'feed.xml' | absolute_url }}" onclick="copyURI(event)">rss</a></li>
           </ul>
         </nav>
         <div id="copied">RSS Copied!</div>
