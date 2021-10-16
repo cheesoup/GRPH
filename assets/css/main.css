@@ -28,6 +28,7 @@ h1 {
   text-align: left;
   font-size: 24px;
   letter-spacing: 12px;
+  text-transform: lowercase;
 }
 
 h2 {
@@ -36,6 +37,7 @@ h2 {
   text-align: left;
   font-size: 16px;
   letter-spacing: 8px;
+  text-transform: lowercase;
 }
 
 #content {

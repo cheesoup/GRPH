@@ -6,7 +6,11 @@ layout: default
 
 {{ content }}
 
-<div class="footer">{{ page.date | date: "%a, %b %d, %y" }} | Tags: {{ page | tags }}</div>
+<div class="footer">{{ page.date | date: "%a, %b %d, %y" }} | Tags:
+  {% for tag in page.tags %}
+    <a href="{{ 'tags' | relative_url }}#{{ tag | slugify }}">{{ tag | replace:'-', ' ' }}</a>
+  {% endfor %}
+</div>
 
 <div class="post_nav">
   <div class="prev">
