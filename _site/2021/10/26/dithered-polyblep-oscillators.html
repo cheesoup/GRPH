@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+    <head>
+      <title>thesis? idk?</title>
+      <link rel="stylesheet" type="text/css" href="/GRPH/assets/css/import.css">
+      <link rel="stylesheet" type="text/css" href="/GRPH/assets/css/main.css">
+      <link rel="shortcut icon" type="image/png" href="/GRPH/favicon.png">
+      <link rel="alternate" type="application/atom+xml" title="thesis? idk?" href="/GRPH/feed.xml">
+      <script src="/GRPH/assets/js/sliders.js"></script>
+      <script src="/GRPH/assets/js/copyrss.js"></script>
+    </head>
+    <body>
+    <div class="wrap">
+      <div id="menuButton" onclick="button()">&#9655;</div>
+      <!-- MENU START -->
+      <div id="nav">
+        <nav>
+          <ul>
+            
+            <li><a href="/GRPH/about">about</a></li>
+            
+            <li><a href="/GRPH/posts">posts</a></li>
+            
+            <li><a href="/GRPH/tags">tags</a></li>
+            
+            <li><a href="/GRPH/out">out</a></li>
+            
+            <li><a data-url="http://localhost:4000/GRPH/feed.xml" onclick="copyURI(event)">rss</a></li>
+          </ul>
+        </nav>
+        <div id="copied">RSS Copied!</div>
+      </div>
+      <!-- MENU END -->
+      <!-- CONTENT START -->
+      <div id="content">
+        <h1 class="pageTitle">Dithered Polyblep Oscillators</h1>
+
+<p>I finally managed to get sometime to do a bit a programming. It’s been alright so far. Most of my times been spent on figuring out how pointers work and just getting used to C++ in general. I managed to programm this dithered polyBLEP sawtooth oscillator. It’s a bit late so I’ll edit this post later with some details on the code, but for now here it is in raw form.</p>
+
+<h2 id="rendercpp">render.cpp</h2>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="cp">#include &lt;Bela.h&gt;
+#include &lt;cmath&gt;
+#include &lt;libraries/Scope/Scope.h&gt;
+#include &lt;libraries/Midi/Midi.h&gt;
+#include "oscillator.h"
+</span>
+<span class="kt">float</span> <span class="n">freq</span><span class="p">;</span>
+<span class="kt">float</span> <span class="n">amp</span><span class="p">;</span>
+<span class="n">oscillator</span> <span class="n">saw</span><span class="p">;</span>
+
+<span class="c1">// Variables for MIDI/Scope</span>
+<span class="n">Midi</span> <span class="n">gMidi</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">gMidiPort0</span> <span class="o">=</span> <span class="s">"hw:1,0,0"</span><span class="p">;</span>
+<span class="n">Scope</span> <span class="n">scope</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">midiEvent</span><span class="p">(</span><span class="n">MidiChannelMessage</span> <span class="n">message</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">arg</span><span class="p">);</span>
+
+<span class="kt">bool</span> <span class="nf">setup</span><span class="p">(</span><span class="n">BelaContext</span> <span class="o">*</span><span class="n">context</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">userData</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="n">freq</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
+	<span class="n">amp</span> <span class="o">=</span> <span class="mf">0.25</span><span class="p">;</span>
+	<span class="n">saw</span><span class="p">.</span><span class="n">setup</span><span class="p">(</span><span class="n">context</span><span class="o">-&gt;</span><span class="n">audioSampleRate</span><span class="p">);</span>
+
+	<span class="c1">// Initialize MIDI/Scope</span>
+	<span class="n">gMidi</span><span class="p">.</span><span class="n">readFrom</span><span class="p">(</span><span class="n">gMidiPort0</span><span class="p">);</span>
+	<span class="n">gMidi</span><span class="p">.</span><span class="n">writeTo</span><span class="p">(</span><span class="n">gMidiPort0</span><span class="p">);</span>
+	<span class="n">gMidi</span><span class="p">.</span><span class="n">enableParser</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+	<span class="n">gMidi</span><span class="p">.</span><span class="n">setParserCallback</span><span class="p">(</span><span class="n">midiEvent</span><span class="p">,</span> <span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">)</span><span class="n">gMidiPort0</span><span class="p">);</span>
+	<span class="n">scope</span><span class="p">.</span><span class="n">setup</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">context</span><span class="o">-&gt;</span><span class="n">audioSampleRate</span><span class="p">);</span>
+
+	<span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">render</span><span class="p">(</span><span class="n">BelaContext</span> <span class="o">*</span><span class="n">context</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">userData</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">for</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="n">context</span><span class="o">-&gt;</span><span class="n">audioFrames</span><span class="p">;</span> <span class="n">n</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+		<span class="c1">// Set frequency and get oscillator output</span>
+		<span class="n">saw</span><span class="p">.</span><span class="n">setFreq</span><span class="p">(</span><span class="n">freq</span><span class="p">);</span>
+		<span class="kt">float</span> <span class="n">out</span> <span class="o">=</span> <span class="n">saw</span><span class="p">.</span><span class="n">process</span><span class="p">();</span>
+
+		<span class="c1">// Write to scope</span>
+		<span class="n">scope</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="n">out</span><span class="p">);</span>
+
+		<span class="c1">// Apply volume adjustment</span>
+		<span class="n">out</span> <span class="o">*=</span> <span class="n">amp</span><span class="p">;</span>
+
+		<span class="c1">// Write to block</span>
+		<span class="k">for</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">channel</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">channel</span> <span class="o">&lt;</span> <span class="n">context</span><span class="o">-&gt;</span><span class="n">audioOutChannels</span><span class="p">;</span> <span class="n">channel</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+			<span class="n">audioWrite</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="n">out</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// MIDI stuff</span>
+<span class="c1">// Sourced from here: https://www.youtube.com/watch?v=no-iO3mAnr8</span>
+<span class="kt">void</span> <span class="nf">midiEvent</span><span class="p">(</span><span class="n">MidiChannelMessage</span> <span class="n">message</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">arg</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="kt">int</span> <span class="n">controller</span> <span class="o">=</span> <span class="n">message</span><span class="p">.</span><span class="n">getDataByte</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+	<span class="kt">int</span> <span class="n">value</span> <span class="o">=</span> <span class="n">message</span><span class="p">.</span><span class="n">getDataByte</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+	<span class="k">switch</span><span class="p">(</span><span class="n">controller</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">case</span> <span class="mi">8</span><span class="p">:</span>
+			<span class="n">freq</span> <span class="o">=</span> <span class="mf">440.0</span> <span class="o">*</span> <span class="n">powf</span><span class="p">(</span><span class="mf">2.0</span><span class="p">,</span> <span class="p">((</span><span class="kt">float</span><span class="p">)</span><span class="n">value</span> <span class="o">-</span> <span class="mf">69.0</span><span class="p">)</span> <span class="o">/</span> <span class="mf">12.0</span><span class="p">);</span>
+			<span class="n">rt_printf</span><span class="p">(</span><span class="s">"freq: %f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">freq</span><span class="p">);</span>
+			<span class="k">break</span><span class="p">;</span>
+		<span class="k">case</span> <span class="mi">9</span><span class="p">:</span>
+			<span class="n">amp</span> <span class="o">=</span> <span class="n">powf</span><span class="p">(((</span><span class="kt">float</span><span class="p">)</span><span class="n">value</span> <span class="o">/</span> <span class="mf">127.0</span><span class="p">),</span> <span class="mi">4</span><span class="p">);</span>
+			<span class="n">rt_printf</span><span class="p">(</span><span class="s">"amp: %f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">amp</span><span class="p">);</span>
+			<span class="k">break</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="k">if</span><span class="p">(</span><span class="n">controller</span> <span class="o">==</span> <span class="mi">8</span><span class="p">)</span> <span class="n">freq</span> <span class="o">=</span> <span class="n">powf</span><span class="p">(((</span><span class="kt">float</span><span class="p">)</span><span class="n">value</span> <span class="o">/</span> <span class="mf">127.0</span><span class="p">),</span> <span class="mi">4</span><span class="p">)</span> <span class="o">*</span> <span class="mf">15000.0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">cleanup</span><span class="p">(</span><span class="n">BelaContext</span> <span class="o">*</span><span class="n">context</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">userData</span><span class="p">)</span>
+<span class="p">{</span>
+
+<span class="p">}</span></code></pre></figure>
+
+<h2 id="oscillatorh">oscillator.h</h2>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="cp">#pragma once
+</span>
+<span class="k">class</span> <span class="nc">oscillator</span> <span class="p">{</span>
+	<span class="nl">public:</span>
+		<span class="n">oscillator</span><span class="p">()</span> <span class="p">{}</span>
+		<span class="n">oscillator</span><span class="p">(</span><span class="kt">float</span> <span class="n">sr</span><span class="p">);</span>
+
+		<span class="kt">void</span> <span class="n">setup</span><span class="p">(</span><span class="kt">float</span> <span class="n">sr</span><span class="p">);</span>
+		<span class="kt">void</span> <span class="n">setFreq</span><span class="p">(</span><span class="kt">float</span> <span class="n">f</span><span class="p">);</span>
+
+		<span class="kt">float</span> <span class="n">process</span><span class="p">();</span>
+		<span class="kt">float</span> <span class="n">dither</span><span class="p">(</span><span class="kt">float</span> <span class="n">frequency</span><span class="p">,</span> <span class="kt">float</span> <span class="n">samplerate</span><span class="p">);</span>
+		<span class="kt">float</span> <span class="n">polyblep</span><span class="p">(</span><span class="kt">float</span> <span class="n">frequency</span><span class="p">,</span> <span class="kt">float</span> <span class="n">samplerate</span><span class="p">);</span>
+
+		<span class="o">~</span><span class="n">oscillator</span><span class="p">()</span> <span class="p">{}</span>
+	<span class="nl">private:</span>
+		<span class="kt">float</span> <span class="n">freq_</span><span class="p">;</span>
+		<span class="kt">float</span> <span class="n">sr_</span><span class="p">;</span>
+		<span class="kt">float</span> <span class="n">i_sr_</span><span class="p">;</span>
+		<span class="kt">float</span> <span class="n">phase_</span><span class="p">;</span>
+<span class="p">};</span></code></pre></figure>
+
+<h2 id="oscillatorcpp">oscillator.cpp</h2>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="cp">#include &lt;cmath&gt;
+#include &lt;stdlib.h&gt;
+#include "oscillator.h"
+</span>
+<span class="n">oscillator</span><span class="o">::</span><span class="n">oscillator</span><span class="p">(</span><span class="kt">float</span> <span class="n">sr</span><span class="p">)</span> <span class="p">{</span>
+	<span class="n">setup</span><span class="p">(</span><span class="n">sr</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">oscillator</span><span class="o">::</span><span class="n">setup</span><span class="p">(</span><span class="kt">float</span> <span class="n">sr</span><span class="p">)</span> <span class="p">{</span>
+	<span class="n">freq_</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
+	<span class="n">sr_</span> <span class="o">=</span> <span class="n">sr</span><span class="p">;</span>
+	<span class="n">i_sr_</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">sr</span><span class="p">;</span>
+	<span class="n">phase_</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">oscillator</span><span class="o">::</span><span class="n">setFreq</span><span class="p">(</span><span class="kt">float</span> <span class="n">f</span><span class="p">)</span> <span class="p">{</span>
+	<span class="n">freq_</span> <span class="o">=</span> <span class="n">f</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Main oscillator function</span>
+<span class="kt">float</span> <span class="n">oscillator</span><span class="o">::</span><span class="n">process</span><span class="p">()</span> <span class="p">{</span>
+	<span class="c1">// Dither the frequency to an integer ratio of the samplerate, then calculate the normalized frequency.</span>
+	<span class="kt">float</span> <span class="n">fdNorm</span> <span class="o">=</span> <span class="n">dither</span><span class="p">(</span><span class="n">freq_</span><span class="p">,</span> <span class="n">sr_</span><span class="p">)</span> <span class="o">*</span> <span class="n">i_sr_</span><span class="p">;</span> <span class="c1">// phase_increment = freq / sampleRate</span>
+	<span class="kt">float</span> <span class="n">out</span> <span class="o">=</span> <span class="n">phase_</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">polyblep</span><span class="p">(</span><span class="n">phase_</span><span class="p">,</span> <span class="n">fdNorm</span><span class="p">);</span>
+	<span class="n">phase_</span> <span class="o">+=</span> <span class="n">fdNorm</span><span class="p">;</span>
+	<span class="k">if</span><span class="p">(</span><span class="n">phase_</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="n">phase_</span> <span class="o">-=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// If phase &gt; 1, phase = phase - 1</span>
+
+	<span class="c1">// Calculate sample</span>
+	<span class="k">return</span> <span class="n">out</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// PolyBLEP anti-aliasing algorithm.</span>
+<span class="c1">// Sourced from here:</span>
+<span class="c1">// https://www.kvraudio.com/forum/viewtopic.php?t=375517</span>
+<span class="c1">// Sharper version from here:</span>
+<span class="c1">// http://lib.tkk.fi/Dipl/2007/urn009585.pdf</span>
+<span class="kt">float</span> <span class="n">oscillator</span><span class="o">::</span><span class="n">polyblep</span><span class="p">(</span><span class="kt">float</span> <span class="n">x</span><span class="p">,</span> <span class="kt">float</span> <span class="n">dx</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="n">dx</span><span class="p">)</span> <span class="c1">// Lower threshold splice</span>
+	<span class="p">{</span>
+		<span class="n">x</span> <span class="o">/=</span> <span class="n">dx</span><span class="p">;</span> <span class="c1">// normalize</span>
+		<span class="c1">// Duller</span>
+		<span class="k">return</span> <span class="n">x</span><span class="o">+</span><span class="n">x</span> <span class="o">-</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="mf">1.</span><span class="p">;</span> <span class="c1">// 2x + x^2 - 1</span>
+		<span class="c1">// Brighter</span>
+		<span class="c1">// return (-3.0/14.0)*x*x*x*x - (4.0/7.0)*x*x*x + (6.0/7.0)*x + 0.5;</span>
+	<span class="p">}</span>
+	<span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mf">1.</span> <span class="o">-</span> <span class="n">dx</span><span class="p">)</span> <span class="c1">// Upper threshold splice</span>
+	<span class="p">{</span>
+		<span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">/</span> <span class="n">dx</span><span class="p">;</span> <span class="c1">// normalize</span>
+		<span class="c1">// Duller</span>
+		<span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">x</span><span class="o">+</span><span class="n">x</span> <span class="o">+</span> <span class="mf">1.</span><span class="p">;</span> <span class="c1">// 2x + x^2 + 1</span>
+		<span class="c1">// Brigher</span>
+		<span class="c1">// return (3.0/14.0)*x*x*x*x - (4.0/7.0)*x*x*x + (6.0/7.0)*x - 0.5;</span>
+	<span class="p">}</span>
+	<span class="k">else</span>
+	<span class="p">{</span>
+		<span class="k">return</span> <span class="mf">0.</span><span class="p">;</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Frequency dithering algorithm</span>
+<span class="c1">// Roughly adapted to C++</span>
+<span class="c1">// Source from here:</span>
+<span class="c1">// https://forum.pdpatchrepo.info/topic/6759/new-anti-aliasing-and-phase-distortion-abstractions</span>
+<span class="kt">float</span> <span class="n">oscillator</span><span class="o">::</span><span class="n">dither</span><span class="p">(</span><span class="kt">float</span> <span class="n">frequency</span><span class="p">,</span> <span class="kt">float</span> <span class="n">samplerate</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">if</span><span class="p">(</span><span class="n">frequency</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">)</span> <span class="p">{</span>
+		<span class="kt">float</span> <span class="n">f_d0</span><span class="p">,</span> <span class="n">f_d1</span><span class="p">;</span>
+		<span class="kt">int</span> <span class="n">ratio</span> <span class="o">=</span> <span class="n">floorf</span><span class="p">(</span><span class="n">samplerate</span> <span class="o">/</span> <span class="n">frequency</span><span class="p">);</span>
+		<span class="n">f_d0</span> <span class="o">=</span> <span class="n">samplerate</span> <span class="o">/</span> <span class="p">(</span><span class="n">ratio</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+		<span class="n">f_d1</span> <span class="o">=</span> <span class="n">samplerate</span> <span class="o">/</span> <span class="n">ratio</span><span class="p">;</span>
+		<span class="k">if</span> <span class="p">((</span><span class="n">frequency</span> <span class="o">-</span> <span class="n">f_d0</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">f_d1</span> <span class="o">-</span> <span class="n">f_d0</span><span class="p">)</span> <span class="o">&lt;</span> <span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="n">rand</span><span class="p">()</span> <span class="o">/</span> <span class="n">RAND_MAX</span><span class="p">)</span> <span class="p">{</span>
+			<span class="k">return</span> <span class="n">f_d0</span><span class="p">;</span>
+		<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+			<span class="k">return</span> <span class="n">f_d1</span><span class="p">;</span>
+		<span class="p">}</span>
+	<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="mf">0.0</span><span class="p">;</span>
+	<span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>On another note, I also need to implement the code tags for posts so they actually highlight things properly.</p>
+
+
+<div class="footer">Tue, Oct 26, 21 | Tags:
+  
+    <a href="/GRPH/tags#bela">Bela</a>
+  
+</div>
+
+<div class="post_nav">
+  <div class="prev">
+    
+      <a href="/GRPH/2021/10/15/github-pages.html">&laquo; Github Pages</a>
+      
+  </div>
+  <div class="up">
+    <a href="/GRPH/posts">posts</a>
+  </div>
+  <div class="next">
+    
+      <a href="/GRPH/2021/10/26/dithered-polyblep-oscillators.html">Dithered Polyblep Oscillators &raquo;</a>
+    
+  </div>
+</div>
+
+      </div>
+      <!-- CONTENT END -->
+    </div>
+    </body>
+</html>
