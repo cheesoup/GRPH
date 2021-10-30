@@ -1,14 +1,14 @@
 ---
 layout: post
 tag: [Bela, DSP, Oscillators, C++]
-date: Oct. 26, 2021
+date: Oct. 30, 2021
 ---
 
-Most of my initial foray into C++ has been spent trying to adapt an oscillator algorithm I had implemented in PureData. It's built on a sort of phase distortion initial implemented by Scott "Acriel" Nordlund for PureData. It's based around the trig identity ``f(x) = arcsin(sin(f(x)))``. Here's a [desmos graph](https://www.desmos.com/calculator/b4ejbqju7m) of said algorithm. I've also included a video of the oscillator viewed through an oscilloscope.
+Most of my initial foray into C++ has been spent trying to adapt an oscillator algorithm I had implemented in PureData. It's based on a sort of phase distortion algorithm by Scott "Acriel" Nordlund for PureData. It uses the trig identity ``f(x) = arcsin(sin(f(x)))`` to morph between a sine wave and an arbitrary waveform of the same periodic length. Here's a [desmos graph](https://www.desmos.com/calculator/b4ejbqju7m) of the algorithm. I've also included a video of the oscillator viewed through an oscilloscope below.
 
 <p style="text-align:center;"><iframe src="https://player.vimeo.com/video/640603019?h=7c31835b32" width="640" height="480" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></p>
 
-My implementation also integrates two anti-aliasing algorithms. I'll probably talk about those in another post.
+The code below also implements the [polyBLEP](http://www.martin-finke.de/blog/articles/audio-plugins-018-polyblep-oscillator/) anti-aliasing technique. There are actually two anti-aliasing algorithms in use within the demo video, but I don't really want to focus on anti-aliasing just yet. I'll probably talk about it in another post.
 
 ## oscillator::shape()
 {% highlight c++ linenos %}
@@ -60,11 +60,9 @@ float oscillator::shape(float p, float px) {
 }
 {% endhighlight %}
 
-Above is the implementation of the morph function. Note that object variables are named with an underscore. I don't fully get how it all works (like why is shape signal normalized to the value of -1rad/s) but I guess I'll try to explain it.
+Above is my implementation of a wavemorphing function. Note that object variables are named with an underscore. I don't fully get how it all works (like why is shape signal normalized to the value of -1rad/s) but I guess I'll try to explain it.
 
-The function takes in the current phase (float p) and the amount the phase is being incremented by (float px). The later is required for polyBLEP anti-aliasing. In general, like to declare all another variables I'm going to use within a function at the start. I find it's just easier to keep track of things that way.
-
-Ignoring all the polyBLEP stuff, from line 8-26 I'm basically generating waveforms by shaping the incoming phase using arithmetic and some signal processing hackery. From there, I'm calculating the approximate arcsin of each signal. The important part starts at line 28. Below is an exert of it
+The function takes in the current phase (float p) and the amount the phase is being incremented by (float px). The latter is required for polyBLEP anti-aliasing. In general, I like to declare all another variables I'm going to use within a function at the start. I find it's just easier to keep track of things that way. Ignoring all the polyBLEP stuff, from line 8-26 I'm basically generating waveforms by shaping the incoming phase using arithmetic and some signal processing hackery. From there, I'm calculating the approximate arcsin of each signal. The important part starts at line 28. Below is an exert of it
 
 ## return cosf(wtf is this shit)
 {% highlight c++ linenos %}
@@ -93,8 +91,8 @@ float oscillator::shape(float p, float px) {
 }
 {% endhighlight %}
 
-This is the main section of morph algorithm. It starts by creating a fifth waveform from the phase signal, a non-bandlimited (basic) triangle wave wrapped by -0.5 and 0.5. The function then linearly interpolates between the approximated arcsin values calculated beforehand. Though there are other methods to interpolate between functions, I think sticking to a simple crossfade is probably the cheapest option in this situation. From there, the resulting signal (labeled as `shape`) is attenuated based on a value controlled by the user. The signal is then applied to the basic triangle wave. After integration the cosine of the resulting signal is calculated.
+This is the main section of the morph algorithm. It starts by creating a fifth waveform from the phase signal. This new waveform is a non-bandlimited (basic) triangle wave wrapped by -0.5 and 0.5. The function then linearly interpolates between the approximated arcsin values calculated beforehand. Though there are other methods to interpolate between functions, I think sticking to a simple crossfade is probably the cheapest option in this situation. From there, the resulting mixed signal (labeled as `shape`) is attenuated based on a value controlled by the user. The signal is then applied to the basic triangle wave. After integration the cosine of the resulting signal is calculated.
 
-When the shape signal is fully attenuated, the function produces a cosine wave. The more of the shape signal is integrated the more the cosine wave will take the form of the arbitrary waveform we plugged in. In the case of the above implementation, the arbitrary waveform is some linear interpolation of a triangle, sawtooth, pulse, and exponential wave.
+When the shape signal is fully attenuated, the function produces a cosine wave. The more of the shape signal is integrated the more the cosine wave will take the form of the arbitrary waveform we plugged in. In the case of the above implementation, the arbitrary waveform is some linear interpolation (i.e. crossfaded signal) of a triangle, sawtooth, pulse, and exponential wave.
 
-That's basically the jist of what's going on here. Again, I don't fully understand it (I wish I did). It's a bit late, so I'll probably end up writing about anti-aliasing another. I'll link it in this post later.
+That's basically the jist of what's going on here. Again, I don't fully understand it (I wish I did). It's a bit late, so I'll probably end up writing about anti-aliasing another time. I'll link it in this post when I get around to it.
