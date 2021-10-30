@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+    <head>
+      <title>thesis? idk?</title>
+      <link rel="stylesheet" type="text/css" href="/GRPH/assets/css/import.css">
+      <link rel="stylesheet" type="text/css" href="/GRPH/assets/css/main.css">
+      <link rel="stylesheet" type="text/css" href="/GRPH/assets/css/code.css">
+      <link rel="shortcut icon" type="image/png" href="/GRPH/favicon.png">
+      <link rel="alternate" type="application/atom+xml" title="thesis? idk?" href="/GRPH/feed.xml">
+      <script src="/GRPH/assets/js/sliders.js"></script>
+      <script src="/GRPH/assets/js/copyrss.js"></script>
+    </head>
+    <body>
+    <div class="wrap">
+      <div id="menuButton" onclick="button()">&#9655;</div>
+      <!-- MENU START -->
+      <div id="nav">
+        <nav>
+          <ul>
+            
+            <li><a href="/GRPH/about">about</a></li>
+            
+            <li><a href="/GRPH/posts">posts</a></li>
+            
+            <li><a href="/GRPH/tags">tags</a></li>
+            
+            <li><a href="/GRPH/out">out</a></li>
+            
+            <li><a data-url="http://localhost:4000/GRPH/feed.xml" onclick="copyURI(event)">rss</a></li>
+          </ul>
+        </nav>
+        <div id="copied">RSS Copied!</div>
+      </div>
+      <!-- MENU END -->
+      <!-- CONTENT START -->
+      <div id="content">
+        <h1 class="pageTitle">Coding On Bela</h1>
+
+<p><del>I finally managed to get sometime to do a bit a programming. It’s been alright so far. Most of my times been spent on figuring out how pointers work and just getting used to C++ in general. I managed to program this dithered polyBLEP sawtooth oscillator. It’s a bit late so I’ll edit this post later with some details on the code, but for now here it is in raw form.</del><br />
+<strong>[Oct.30th edit: OK LETS WRITE SOME STUFF]</strong></p>
+
+<p>Ok so before I write about my code, I guess I should probably write about what Bela is and basic Bela programming. <a href="https://www.bela.io">Bela</a> is a cape for the <a href="https://beagleboard.org/black">Beagle Bone Black</a> single board computer. It specializes in audio processing for the purpose of creating audio effects, instruments, sound installations, whatever. It comes with 16 digital and analog IOs for interfacing with switches and potentiometers and stuff. It’s pretty rad.</p>
+
+<h2 id="rendercpp">render.cpp</h2>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+</pre></td><td class="code"><pre><span class="cp">#include &lt;Bela.h&gt;
+#include &lt;cmath&gt;
+</span>
+<span class="kt">float</span> <span class="n">gFrequency</span> <span class="o">=</span> <span class="mf">440.0</span><span class="p">;</span>
+<span class="kt">float</span> <span class="n">gPhase</span><span class="p">;</span>
+<span class="kt">float</span> <span class="n">gInverseSampleRate</span><span class="p">;</span>
+
+<span class="kt">bool</span> <span class="nf">setup</span><span class="p">(</span><span class="n">BelaContext</span> <span class="o">*</span><span class="n">context</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">userData</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="n">gInverseSampleRate</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">context</span><span class="o">-&gt;</span><span class="n">audioSampleRate</span><span class="p">;</span>
+	<span class="n">gPhase</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
+
+	<span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">render</span><span class="p">(</span><span class="n">BelaContext</span> <span class="o">*</span><span class="n">context</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">userData</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">for</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="n">context</span><span class="o">-&gt;</span><span class="n">audioFrames</span><span class="p">;</span> <span class="n">n</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+		<span class="kt">float</span> <span class="n">out</span> <span class="o">=</span> <span class="mf">0.8</span> <span class="o">*</span> <span class="n">sinf</span><span class="p">(</span><span class="n">gPhase</span><span class="p">);</span>
+		<span class="n">gPhase</span> <span class="o">+=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">M_PI</span> <span class="o">*</span> <span class="n">gFrequency</span> <span class="o">*</span> <span class="n">gInverseSampleRate</span><span class="p">;</span>
+		<span class="k">if</span><span class="p">(</span><span class="n">gPhase</span> <span class="o">&gt;</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">M_PI</span><span class="p">)</span>
+			<span class="n">gPhase</span> <span class="o">-=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">M_PI</span><span class="p">;</span>
+
+		<span class="k">for</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">channel</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">channel</span> <span class="o">&lt;</span> <span class="n">context</span><span class="o">-&gt;</span><span class="n">audioOutChannels</span><span class="p">;</span> <span class="n">channel</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+			<span class="n">audioWrite</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="n">out</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">cleanup</span><span class="p">(</span><span class="n">BelaContext</span> <span class="o">*</span><span class="n">context</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">userData</span><span class="p">)</span>
+<span class="p">{</span>
+
+
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<p>Above is the basic example code shipped with Bela. It produces a sine wave signal at 440hz (middle A). Other than being based in C++ rather than Java, it’s surprisingly similar to Processing in terms of having a setup() function followed by some looping rendering function. The functions are given two arguments: a pointer to a BelaContext object, a pointer to a userData object. From what I assume/read online, these objects declared in the Bela.h header file and contain system data such as hardware and driver information.</p>
+
+<h2 id="setup">setup()</h2>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="code"><pre><span class="kt">bool</span> <span class="nf">setup</span><span class="p">(</span><span class="n">BelaContext</span> <span class="o">*</span><span class="n">context</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">userData</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="n">gInverseSampleRate</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">context</span><span class="o">-&gt;</span><span class="n">audioSampleRate</span><span class="p">;</span>
+	<span class="n">gPhase</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
+
+	<span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<p>Unlike Processing, Bela’s setup function returns a boolean. The render loop won’t start unless setup() returns true. In the example provided, the setup function initializes a few variables. <code class="language-plaintext highlighter-rouge">gInverseSampleRate</code> is set to <code class="language-plaintext highlighter-rouge">1 / samplerate</code> and while <code class="language-plaintext highlighter-rouge">gPhase</code> is initialized to <code class="language-plaintext highlighter-rouge">0</code>.</p>
+
+<p><img src="/GRPH/assets/images/desmos/sine.png" alt="Sine Wave" /></p>
+
+<p>When graphing a periodic (repeating) waveform statically like the image above, phase can be described as the current x-value (between 0-1) of the wave. As the x-value increments, the waveform’s y-value oscillates between -1 and 1. To apply this idea to audio, we have think of x as something that is constantly accumulating between 0-1. This is pretty much what Bela’s example code does.</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="code"><pre><span class="kt">void</span> <span class="nf">render</span><span class="p">(</span><span class="n">BelaContext</span> <span class="o">*</span><span class="n">context</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">userData</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">for</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="n">context</span><span class="o">-&gt;</span><span class="n">audioFrames</span><span class="p">;</span> <span class="n">n</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+		<span class="kt">float</span> <span class="n">out</span> <span class="o">=</span> <span class="mf">0.8</span> <span class="o">*</span> <span class="n">sinf</span><span class="p">(</span><span class="n">gPhase</span><span class="p">);</span>
+		<span class="n">gPhase</span> <span class="o">+=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">M_PI</span> <span class="o">*</span> <span class="n">gFrequency</span> <span class="o">*</span> <span class="n">gInverseSampleRate</span><span class="p">;</span>
+		<span class="k">if</span><span class="p">(</span><span class="n">gPhase</span> <span class="o">&gt;</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">M_PI</span><span class="p">)</span>
+			<span class="n">gPhase</span> <span class="o">-=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">M_PI</span><span class="p">;</span>
+
+		<span class="k">for</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">channel</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">channel</span> <span class="o">&lt;</span> <span class="n">context</span><span class="o">-&gt;</span><span class="n">audioOutChannels</span><span class="p">;</span> <span class="n">channel</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+			<span class="n">audioWrite</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="n">out</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<p>The amount to increment x is calculated by multiplying the given frequency by the inverse sample rate. This is equal to ` dx = freq / samplerate`. By controlling how much we increment the phase, we’re able to control the frequency at which the oscillator oscillates at. Something to keep in mind with this example however is that they normalize the phase to 2PI. This is because the normal phase length of a sine wave is 2PI.</p>
+
+<h2 id="cleanup">cleanup()</h2>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="code"><pre><span class="kt">void</span> <span class="nf">cleanup</span><span class="p">(</span><span class="n">BelaContext</span> <span class="o">*</span><span class="n">context</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">userData</span><span class="p">)</span>
+<span class="p">{</span>
+
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<p>This section doesn’t actually do anything. In C++, one is able to dynamically allocate memory. When doing so, memory needs to be deallocated to free it up again. Dynamic memory allocation isn’t used in this example however, thus nothing needs to be cleaned up. In scenarios where you do dynamically allocate memory, this is where you would deallocate the remainder of what needs to be deallocated.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>And that’s all the example does! Hopefully this post wasn’t too wordy. If you’re interested in learning more about audio programming in C++, I’ve been following this <a href="https://www.youtube.com/watch?v=aVLRUyPBBJk">YouTube tutorial</a>. I think it’s pretty useful even outside of a Bela context. I’m not quite sure how easy it is to follow for non-programmers and people not into signal processing however.</p>
+
+
+<div class="footer">Tue, Oct 26, 21 | Tags:
+  
+    <a href="/GRPH/tags#bela">Bela</a>
+  
+    <a href="/GRPH/tags#dsp">DSP</a>
+  
+    <a href="/GRPH/tags#oscillators">Oscillators</a>
+  
+    <a href="/GRPH/tags#c">C++</a>
+  
+</div>
+
+<div class="post_nav">
+  <div class="prev">
+    
+      <a href="/GRPH/2021/10/15/github-pages.html">&laquo; Github Pages</a>
+      
+  </div>
+  <div class="up">
+    <a href="/GRPH/posts">posts</a>
+  </div>
+  <div class="next">
+    
+      <a class="next" href="/GRPH/2021/10/26/arbitrary-wavemorphing.html">Arbitrary Wavemorphing &raquo;</a>
+      
+  </div>
+</div>
+
+      </div>
+      <!-- CONTENT END -->
+    </div>
+    </body>
+</html>

@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+    <head>
+      <title>thesis? idk?</title>
+      <link rel="stylesheet" type="text/css" href="/GRPH/assets/css/import.css">
+      <link rel="stylesheet" type="text/css" href="/GRPH/assets/css/main.css">
+      <link rel="stylesheet" type="text/css" href="/GRPH/assets/css/code.css">
+      <link rel="shortcut icon" type="image/png" href="/GRPH/favicon.png">
+      <link rel="alternate" type="application/atom+xml" title="thesis? idk?" href="/GRPH/feed.xml">
+      <script src="/GRPH/assets/js/sliders.js"></script>
+      <script src="/GRPH/assets/js/copyrss.js"></script>
+    </head>
+    <body>
+    <div class="wrap">
+      <div id="menuButton" onclick="button()">&#9655;</div>
+      <!-- MENU START -->
+      <div id="nav">
+        <nav>
+          <ul>
+            
+            <li><a href="/GRPH/about">about</a></li>
+            
+            <li><a href="/GRPH/posts">posts</a></li>
+            
+            <li><a href="/GRPH/tags">tags</a></li>
+            
+            <li><a href="/GRPH/out">out</a></li>
+            
+            <li><a data-url="http://localhost:4000/GRPH/feed.xml" onclick="copyURI(event)">rss</a></li>
+          </ul>
+        </nav>
+        <div id="copied">RSS Copied!</div>
+      </div>
+      <!-- MENU END -->
+      <!-- CONTENT START -->
+      <div id="content">
+        <h1 class="pageTitle">Arbitrary Wavemorphing</h1>
+
+<p>Most of my initial foray into C++ has been spent trying to adapt an oscillator algorithm I had implemented in PureData. It’s built on a sort of phase distortion initial implemented by Scott “Acriel” Nordlund for PureData. It’s based around the trig identity <code class="language-plaintext highlighter-rouge">f(x) = arcsin(sin(f(x)))</code>. Here’s a <a href="https://www.desmos.com/calculator/b4ejbqju7m">desmos graph</a> of said algorithm. I’ve also included a video of the oscillator viewed through an oscilloscope.</p>
+
+<p style="text-align:center;"><iframe src="https://player.vimeo.com/video/640603019?h=7c31835b32" width="640" height="480" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen=""></iframe></p>
+
+<p>My implementation also integrates two anti-aliasing algorithms. I’ll probably talk about those in another post.</p>
+
+<h2 id="oscillatorshape">oscillator::shape()</h2>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+</pre></td><td class="code"><pre><span class="c1">// Phase distortion between arbitrary waveforms</span>
+<span class="c1">// Stolen from here:</span>
+<span class="c1">// https://forum.pdpatchrepo.info/topic/6759/new-anti-aliasing-and-phase-distortion-abstractions</span>
+<span class="kt">float</span> <span class="n">oscillator</span><span class="o">::</span><span class="n">shape</span><span class="p">(</span><span class="kt">float</span> <span class="n">p</span><span class="p">,</span> <span class="kt">float</span> <span class="n">px</span><span class="p">)</span> <span class="p">{</span>
+	<span class="kt">float</span> <span class="n">x</span><span class="p">,</span> <span class="n">wrap_phase</span><span class="p">,</span> <span class="n">shape</span><span class="p">;</span>
+	<span class="kt">float</span> <span class="n">waves</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+
+	<span class="c1">// Generate niave sawtooth w/ polyBLEP</span>
+	<span class="n">x</span> <span class="o">=</span> <span class="n">fmodf_neon</span><span class="p">(</span><span class="n">p</span> <span class="o">+</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">*</span> <span class="mf">2.0</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">;</span>
+	<span class="n">x</span> <span class="o">-=</span> <span class="n">polyblep</span><span class="p">(</span><span class="n">fmodf_neon</span><span class="p">(</span><span class="n">p</span> <span class="o">+</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span> <span class="n">px</span><span class="p">);</span>
+	<span class="n">waves</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">asin_fast</span><span class="p">(</span><span class="n">fminf</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">fmaxf</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">)));</span>
+
+	<span class="c1">// Integrate second sawtooth for pulse wave</span>
+	<span class="n">x</span> <span class="o">-=</span> <span class="n">fmodf_neon</span><span class="p">(</span><span class="n">p</span> <span class="o">+</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">*</span> <span class="mf">2.0</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">;</span>
+	<span class="n">x</span> <span class="o">+=</span> <span class="n">polyblep</span><span class="p">(</span><span class="n">fmodf_neon</span><span class="p">(</span><span class="n">p</span> <span class="o">+</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span> <span class="n">px</span><span class="p">);</span>
+	<span class="n">waves</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">asin_fast</span><span class="p">(</span><span class="n">fminf</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">fmaxf</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">)));</span>
+
+	<span class="c1">// Apply a 'leaky integrator' for the triangle wave</span>
+	<span class="n">waves</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">fminf</span><span class="p">(</span><span class="mf">0.995</span><span class="p">,</span> <span class="n">px</span> <span class="o">*</span> <span class="n">M_PI</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">fmaxf</span><span class="p">(</span><span class="mf">0.005</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">px</span> <span class="o">*</span> <span class="n">M_PI</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">last_</span><span class="p">;</span>
+	<span class="n">waves</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">fminf</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">fmaxf</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">waves</span><span class="p">[</span><span class="mi">2</span><span class="p">]));</span>
+	<span class="n">last_</span> <span class="o">=</span> <span class="n">waves</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+	<span class="n">waves</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">asin_fast</span><span class="p">(</span><span class="n">waves</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+
+	<span class="c1">// Idk what this is but the shape looks badass</span>
+	<span class="n">x</span> <span class="o">*=</span> <span class="n">fmodf_neon</span><span class="p">(</span><span class="n">p</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">fmodf_neon</span><span class="p">(</span><span class="n">p</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+	<span class="n">waves</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">asin_fast</span><span class="p">(</span><span class="n">fminf</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">fmaxf</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">)));</span>
+
+	<span class="c1">// Wrap phase as a triangle wave between -0.5 and 0.5</span>
+	<span class="n">wrap_phase</span> <span class="o">=</span> <span class="n">fabsf_neon</span><span class="p">(</span><span class="n">fmodf_neon</span><span class="p">(</span><span class="n">phase_</span> <span class="o">+</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">);</span>
+	<span class="n">shape</span> <span class="o">=</span> <span class="p">(</span> <span class="c1">// Fourway linear interpolation (crossfade) of arcsin(waves)</span>
+		<span class="p">((</span><span class="n">waves</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">shape_</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span> <span class="o">+</span>
+		<span class="p">(</span><span class="n">waves</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">shape_</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span> <span class="o">*</span>
+		<span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">shape_</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">+</span>
+
+		<span class="p">((</span><span class="n">waves</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">shape_</span><span class="p">[</span><span class="mi">3</span><span class="p">]))</span> <span class="o">+</span>
+		<span class="p">(</span><span class="n">waves</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">shape_</span><span class="p">[</span><span class="mi">3</span><span class="p">]))</span> <span class="o">*</span>
+		<span class="n">shape_</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+	<span class="p">);</span>
+
+	<span class="c1">// Normalize asin(shape) to 1rad/period.</span>
+	<span class="c1">// Integrate into wrapped phase and return the cosine.</span>
+	<span class="k">return</span> <span class="n">cosf_neon</span><span class="p">(</span>
+		<span class="p">((</span><span class="n">wrap_phase</span> <span class="o">+</span> <span class="p">((</span><span class="o">-</span><span class="mf">0.159155</span> <span class="o">*</span> <span class="n">shape</span> <span class="o">-</span> <span class="n">wrap_phase</span> <span class="o">+</span> <span class="mf">0.25</span><span class="p">)</span> <span class="o">*</span>
+		<span class="n">shape_</span><span class="p">[</span><span class="mi">0</span><span class="p">])))</span> <span class="o">*</span> <span class="n">M_PI</span> <span class="o">*</span> <span class="mi">2</span>
+	<span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<p>Above is the implementation of the morph function. Note that object variables are named with an underscore. I don’t fully get how it all works (like why is shape signal normalized to the value of -1rad/s) but I guess I’ll try to explain it.</p>
+
+<p>The function takes in the current phase (float p) and the amount the phase is being incremented by (float px). The later is required for polyBLEP anti-aliasing. In general, like to declare all another variables I’m going to use within a function at the start. I find it’s just easier to keep track of things that way.</p>
+
+<p>Ignoring all the polyBLEP stuff, from line 8-26 I’m basically generating waveforms by shaping the incoming phase using arithmetic and some signal processing hackery. From there, I’m calculating the approximate arcsin of each signal. The important part starts at line 28. Below is an exert of it</p>
+
+<h2 id="return-cosfwtf-is-this-shit">return cosf(wtf is this shit)</h2>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+</pre></td><td class="code"><pre><span class="kt">float</span> <span class="n">oscillator</span><span class="o">::</span><span class="n">shape</span><span class="p">(</span><span class="kt">float</span> <span class="n">p</span><span class="p">,</span> <span class="kt">float</span> <span class="n">px</span><span class="p">)</span> <span class="p">{</span>
+
+	<span class="p">...</span>
+
+	<span class="c1">// Wrap phase as a triangle wave between -0.5 and 0.5</span>
+	<span class="n">wrap_phase</span> <span class="o">=</span> <span class="n">fabsf_neon</span><span class="p">(</span><span class="n">fmodf_neon</span><span class="p">(</span><span class="n">phase_</span> <span class="o">+</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">);</span>
+	<span class="n">shape</span> <span class="o">=</span> <span class="p">(</span> <span class="c1">// Fourway linear interpolation (crossfade) of arcsin(waves)</span>
+		<span class="p">((</span><span class="n">waves</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">shape_</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span> <span class="o">+</span>
+		<span class="p">(</span><span class="n">waves</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">shape_</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span> <span class="o">*</span>
+		<span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">shape_</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">+</span>
+
+		<span class="p">((</span><span class="n">waves</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">shape_</span><span class="p">[</span><span class="mi">3</span><span class="p">]))</span> <span class="o">+</span>
+		<span class="p">(</span><span class="n">waves</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">shape_</span><span class="p">[</span><span class="mi">3</span><span class="p">]))</span> <span class="o">*</span>
+		<span class="n">shape_</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+	<span class="p">);</span>
+
+	<span class="c1">// Normalize asin(shape) to 1rad/period.</span>
+	<span class="c1">// Integrate into wrapped phase and return the cosine.</span>
+	<span class="k">return</span> <span class="n">cosf_neon</span><span class="p">(</span>
+		<span class="p">((</span><span class="n">wrap_phase</span> <span class="o">+</span> <span class="p">((</span><span class="o">-</span><span class="mf">0.159155</span> <span class="o">*</span> <span class="n">shape</span> <span class="o">-</span> <span class="n">wrap_phase</span> <span class="o">+</span> <span class="mf">0.25</span><span class="p">)</span> <span class="o">*</span>
+		<span class="n">shape_</span><span class="p">[</span><span class="mi">0</span><span class="p">])))</span> <span class="o">*</span> <span class="n">M_PI</span> <span class="o">*</span> <span class="mi">2</span>
+	<span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<p>This is the main section of morph algorithm. It starts by creating a fifth waveform from the phase signal, a non-bandlimited (basic) triangle wave wrapped by -0.5 and 0.5. The function then linearly interpolates between the approximated arcsin values calculated beforehand. Though there are other methods to interpolate between functions, I think sticking to a simple crossfade is probably the cheapest option in this situation. From there, the resulting signal (labeled as <code class="language-plaintext highlighter-rouge">shape</code>) is attenuated based on a value controlled by the user. The signal is then applied to the basic triangle wave. After integration the cosine of the resulting signal is calculated.</p>
+
+<p>When the shape signal is fully attenuated, the function produces a cosine wave. The more of the shape signal is integrated the more the cosine wave will take the form of the arbitrary waveform we plugged in. In the case of the above implementation, the arbitrary waveform is some linear interpolation of a triangle, sawtooth, pulse, and exponential wave.</p>
+
+<p>That’s basically the jist of what’s going on here. Again, I don’t fully understand it (I wish I did). It’s a bit late, so I’ll probably end up writing about anti-aliasing another. I’ll link it in this post later.</p>
+
+
+<div class="footer">Tue, Oct 26, 21 | Tags:
+  
+    <a href="/GRPH/tags#bela">Bela</a>
+  
+    <a href="/GRPH/tags#dsp">DSP</a>
+  
+    <a href="/GRPH/tags#oscillators">Oscillators</a>
+  
+    <a href="/GRPH/tags#c">C++</a>
+  
+</div>
+
+<div class="post_nav">
+  <div class="prev">
+    
+      <a href="/GRPH/2021/10/26/coding-on-bela.html">&laquo; Coding On Bela</a>
+      
+  </div>
+  <div class="up">
+    <a href="/GRPH/posts">posts</a>
+  </div>
+  <div class="next">
+    
+      <a href="/GRPH/2021/10/26/arbitrary-wavemorphing.html">Arbitrary Wavemorphing &raquo;</a>
+    
+  </div>
+</div>
+
+      </div>
+      <!-- CONTENT END -->
+    </div>
+    </body>
+</html>

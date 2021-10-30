@@ -9,3 +9,4 @@ plugins:
   - jekyll-feed
 emoji:
   src: "/assets/images/emoji"
+exclude: [serve.bat]

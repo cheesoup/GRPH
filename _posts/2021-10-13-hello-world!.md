@@ -1,6 +1,6 @@
 ---
 layout: post
-tag: [Updates, Blog Stuff]
+tag: [Blog Stuff]
 date: Oct. 13, 2021
 ---
 

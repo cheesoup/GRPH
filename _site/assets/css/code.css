@@ -1,0 +1,52 @@
+/* CODE TAGS */
+
+#content .highlight {
+  max-width:100%;
+  max-height: 600px;
+  margin: 10px;
+  overflow: scroll;
+  background-color: #202020;
+  color: #FFFFFF;
+  scrollbar-width: thin;
+}
+
+.highlight pre {
+  margin: 5px 0 0 5px;
+  padding: 0;
+}
+
+.highlight table.rouge-table tbody tr td pre.lineno {
+  margin-left: 0;
+  padding-right: 10px;
+  border-right: 1px dotted #FFF;
+}
+
+/* slash comments */
+#content .highlight .c1, #content .highlight .cm {
+  color: #a0cf5d;
+}
+
+/* data type */
+#content .highlight .kt {
+  color: #9b64fb;
+}
+
+/* boolean */
+#content .highlight .nb {
+  color: #7dc1cf;
+}
+
+/* numeric values & strings */
+#content .highlight .mf, #content .highlight .mi, #content .highlight .s  {
+  color: #4e9fb1;
+}
+
+/* escape characters */
+#content .highlight .se {
+  color: #6d878d;
+}
+
+/* data keyword */
+#content .highlight .k {
+  color: #9b64fb;
+}

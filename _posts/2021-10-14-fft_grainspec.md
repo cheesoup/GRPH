@@ -1,6 +1,6 @@
 ---
 layout: post
-tag: [PureData]
+tag: [PureData, DSP]
 date: Oct. 14, 2021
 ---
 
