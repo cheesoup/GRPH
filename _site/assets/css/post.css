@@ -15,7 +15,7 @@
 #content ul.posts li {
   margin: 0 0 20px 0;
   padding: 0 0 20px 0;
-  border-bottom: 1px #000 dashed;
+  border-bottom: 1px #000 dotted;
 }
 
 #content p {
