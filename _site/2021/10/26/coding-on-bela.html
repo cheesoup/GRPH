@@ -2,46 +2,44 @@
 <html lang="en">
     <head>
       <title>thesis? idk?</title>
-      <link rel="stylesheet" type="text/css" href="/GRPH/assets/css/import.css">
       <link rel="stylesheet" type="text/css" href="/GRPH/assets/css/main.css">
+      <link rel="stylesheet" type="text/css" href="/GRPH/assets/css/post.css">
       <link rel="stylesheet" type="text/css" href="/GRPH/assets/css/code.css">
       <link rel="shortcut icon" type="image/png" href="/GRPH/favicon.png">
       <link rel="alternate" type="application/atom+xml" title="thesis? idk?" href="/GRPH/feed.xml">
-      <script src="/GRPH/assets/js/sliders.js"></script>
+      <!-- <script src="/GRPH/assets/js/sliders.js"></script> -->
       <script src="/GRPH/assets/js/copyrss.js"></script>
     </head>
     <body>
     <div class="wrap">
-      <div id="menuButton" onclick="button()">&#9655;</div>
-      <!-- MENU START -->
-      <div id="nav">
+      <div class="header">
+        <img src="/GRPH/assets/images/jam_crow.gif" alt="jam_crow.gif" class="logo" width="160px" height="90px"/>
+        <img src="/GRPH/assets/images/thesisidk.gif" alt="thesis? idk?" class="logo" width="90px" height="46px"/>
+        <!-- MENU START -->
         <nav>
-          <ul>
             
-            <li><a href="/GRPH/about">about</a></li>
+            <a href="/GRPH/about">about</a>
             
-            <li><a href="/GRPH/posts">posts</a></li>
+            <a href="/GRPH/posts">posts</a>
             
-            <li><a href="/GRPH/tags">tags</a></li>
+            <a href="/GRPH/tags">tags</a>
             
-            <li><a href="/GRPH/out">out</a></li>
+            <a href="/GRPH/out">out</a>
             
-            <li><a data-url="http://localhost:4000/GRPH/feed.xml" onclick="copyURI(event)">rss</a></li>
-          </ul>
+            <a data-url="http://localhost:4000/GRPH/feed.xml" onclick="copyURI(event)">rss</a>
         </nav>
-        <div id="copied">RSS Copied!</div>
       </div>
       <!-- MENU END -->
       <!-- CONTENT START -->
       <div id="content">
-        <h1 class="pageTitle">Coding On Bela</h1>
+        <h1>Coding On Bela</h1>
 
 <p><del>I finally managed to get sometime to do a bit a programming. It’s been alright so far. Most of my times been spent on figuring out how pointers work and just getting used to C++ in general. I managed to program this dithered polyBLEP sawtooth oscillator. It’s a bit late so I’ll edit this post later with some details on the code, but for now here it is in raw form.</del><br />
 <strong>[Oct.30th edit: OK LETS WRITE SOME STUFF]</strong></p>
 
 <p>Ok so before I write about my code, I guess I should probably write about what Bela is and basic Bela programming. <a href="https://www.bela.io">Bela</a> is a cape for the <a href="https://beagleboard.org/black">Beagle Bone Black</a> single board computer. It specializes in audio processing for the purpose of creating audio effects, instruments, sound installations, whatever. It comes with 16 digital and analog IOs for interfacing with switches and potentiometers and stuff. It’s pretty rad.</p>
 
-<h2 id="rendercpp">render.cpp</h2>
+<h1 id="rendercpp">render.cpp</h1>
 
 <figure class="highlight"><pre><code class="language-c--" data-lang="c++"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
@@ -115,7 +113,7 @@
 
 <p>Above is the basic example code shipped with Bela. It produces a sine wave signal at 440hz (middle A). Other than being based in C++ rather than Java, it’s surprisingly similar to Processing in terms of having a setup() function followed by some looping rendering function. The functions are given two arguments: a pointer to a BelaContext object, a pointer to a userData object. From what I assume/read online, these objects declared in the Bela.h header file and contain system data such as hardware and driver information.</p>
 
-<h2 id="setup">setup()</h2>
+<h1 id="setup">setup()</h1>
 
 <figure class="highlight"><pre><code class="language-c--" data-lang="c++"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
@@ -169,7 +167,7 @@
 
 <p>The amount to increment x is calculated by multiplying the given frequency by the inverse sample rate. This is equal to ` dx = freq / samplerate`. By controlling how much we increment the phase, we’re able to control the frequency at which the oscillator oscillates at. Something to keep in mind with this example however is that they normalize the phase to 2PI. This is because the normal phase length of a sine wave is 2PI.</p>
 
-<h2 id="cleanup">cleanup()</h2>
+<h1 id="cleanup">cleanup()</h1>
 
 <figure class="highlight"><pre><code class="language-c--" data-lang="c++"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
@@ -183,7 +181,7 @@
 
 <p>This section doesn’t actually do anything. In C++, one is able to dynamically allocate memory. When doing so, memory needs to be deallocated to free it up again. Dynamic memory allocation isn’t used in this example however, thus nothing needs to be cleaned up. In scenarios where you do dynamically allocate memory, this is where you would deallocate the remainder of what needs to be deallocated.</p>
 
-<h2 id="conclusion">Conclusion</h2>
+<h1 id="conclusion">Conclusion</h1>
 
 <p>And that’s all the example does! Hopefully this post wasn’t too wordy. If you’re interested in learning more about audio programming in C++, I’ve been following this <a href="https://www.youtube.com/watch?v=aVLRUyPBBJk">YouTube tutorial</a>. I think it’s pretty useful even outside of a Bela context. I’m not quite sure how easy it is to follow for non-programmers and people not into signal processing however.</p>
 
@@ -192,7 +190,7 @@
   
     <a href="/GRPH/tags#bela">Bela</a>
   
-    <a href="/GRPH/tags#dsp">DSP</a>
+    <a href="/GRPH/tags#audio-programming">Audio Programming</a>
   
     <a href="/GRPH/tags#oscillators">Oscillators</a>
   

@@ -2,47 +2,51 @@
 <html lang="en">
     <head>
       <title>thesis? idk?</title>
-      <link rel="stylesheet" type="text/css" href="/GRPH/assets/css/import.css">
       <link rel="stylesheet" type="text/css" href="/GRPH/assets/css/main.css">
+      <link rel="stylesheet" type="text/css" href="/GRPH/assets/css/post.css">
       <link rel="stylesheet" type="text/css" href="/GRPH/assets/css/code.css">
       <link rel="shortcut icon" type="image/png" href="/GRPH/favicon.png">
       <link rel="alternate" type="application/atom+xml" title="thesis? idk?" href="/GRPH/feed.xml">
-      <script src="/GRPH/assets/js/sliders.js"></script>
+      <!-- <script src="/GRPH/assets/js/sliders.js"></script> -->
       <script src="/GRPH/assets/js/copyrss.js"></script>
     </head>
     <body>
     <div class="wrap">
-      <div id="menuButton" onclick="button()">&#9655;</div>
-      <!-- MENU START -->
-      <div id="nav">
+      <div class="header">
+        <img src="/GRPH/assets/images/jam_crow.gif" alt="jam_crow.gif" class="logo" width="160px" height="90px"/>
+        <img src="/GRPH/assets/images/thesisidk.gif" alt="thesis? idk?" class="logo" width="90px" height="46px"/>
+        <!-- MENU START -->
         <nav>
-          <ul>
             
-            <li><a href="/GRPH/about">about</a></li>
+            <a href="/GRPH/about">about</a>
             
-            <li><a href="/GRPH/posts">posts</a></li>
+            <a href="/GRPH/posts">posts</a>
             
-            <li><a href="/GRPH/tags">tags</a></li>
+            <a href="/GRPH/tags">tags</a>
             
-            <li><a href="/GRPH/out">out</a></li>
+            <a href="/GRPH/out">out</a>
             
-            <li><a data-url="http://localhost:4000/GRPH/feed.xml" onclick="copyURI(event)">rss</a></li>
-          </ul>
+            <a data-url="http://localhost:4000/GRPH/feed.xml" onclick="copyURI(event)">rss</a>
         </nav>
-        <div id="copied">RSS Copied!</div>
       </div>
       <!-- MENU END -->
       <!-- CONTENT START -->
       <div id="content">
-        <h1 class="pageTitle">Arbitrary Wavemorphing</h1>
+        <h1>Arbitrary Wavemorphing</h1>
 
 <p>Most of my initial foray into C++ has been spent trying to adapt an oscillator algorithm I had implemented in PureData. It’s based on a sort of phase distortion algorithm by Scott “Acriel” Nordlund for PureData. It uses the trig identity <code class="language-plaintext highlighter-rouge">f(x) = arcsin(sin(f(x)))</code> to morph between a sine wave and an arbitrary waveform of the same periodic length. Here’s a <a href="https://www.desmos.com/calculator/b4ejbqju7m">desmos graph</a> of the algorithm. I’ve also included a video of the oscillator viewed through an oscilloscope below.</p>
 
-<p style="text-align:center;"><iframe src="https://player.vimeo.com/video/640603019?h=7c31835b32" width="640" height="480" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen=""></iframe></p>
+<!-- Include Video Embedding -->
+<!-- https://github.com/nathancy/jekyll-embed-video#responsive-videos -->
+
+<div class="embed-container">
+  <iframe src="https://player.vimeo.com/video/640603019" width="500" height="281" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="">
+  </iframe>
+</div>
 
 <p>The code below also implements the <a href="http://www.martin-finke.de/blog/articles/audio-plugins-018-polyblep-oscillator/">polyBLEP</a> anti-aliasing technique. There are actually two anti-aliasing algorithms in use within the demo video, but I don’t really want to focus on anti-aliasing just yet. I’ll probably talk about it in another post.</p>
 
-<h2 id="oscillatorshape">oscillator::shape()</h2>
+<h1 id="oscillatorshape">oscillator::shape()</h1>
 
 <figure class="highlight"><pre><code class="language-c--" data-lang="c++"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
@@ -142,7 +146,7 @@
 
 <p>The function takes in the current phase (float p) and the amount the phase is being incremented by (float px). The latter is required for polyBLEP anti-aliasing. In general, I like to declare all another variables I’m going to use within a function at the start. I find it’s just easier to keep track of things that way. Ignoring all the polyBLEP stuff, from line 8-26 I’m basically generating waveforms by shaping the incoming phase using arithmetic and some signal processing hackery. From there, I’m calculating the approximate arcsin of each signal. The important part starts at line 28. Below is an exert of it</p>
 
-<h2 id="return-cosfwtf-is-this-shit">return cosf(wtf is this shit)</h2>
+<h1 id="return-cosfwtf-is-this-shit">return cosf(wtf is this shit)</h1>
 
 <figure class="highlight"><pre><code class="language-c--" data-lang="c++"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
@@ -203,7 +207,7 @@
   
     <a href="/GRPH/tags#bela">Bela</a>
   
-    <a href="/GRPH/tags#dsp">DSP</a>
+    <a href="/GRPH/tags#audio-programming">Audio Programming</a>
   
     <a href="/GRPH/tags#oscillators">Oscillators</a>
   

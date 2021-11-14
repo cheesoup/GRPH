@@ -1,16 +1,17 @@
 ---
 layout: post
-tag: [Bela, DSP, Oscillators, C++]
+tag: [Bela, Audio Programming, Oscillators, C++]
 date: Oct. 30, 2021
+vimeoID: 640603019
 ---
 
 Most of my initial foray into C++ has been spent trying to adapt an oscillator algorithm I had implemented in PureData. It's based on a sort of phase distortion algorithm by Scott "Acriel" Nordlund for PureData. It uses the trig identity ``f(x) = arcsin(sin(f(x)))`` to morph between a sine wave and an arbitrary waveform of the same periodic length. Here's a [desmos graph](https://www.desmos.com/calculator/b4ejbqju7m) of the algorithm. I've also included a video of the oscillator viewed through an oscilloscope below.
 
-<p style="text-align:center;"><iframe src="https://player.vimeo.com/video/640603019?h=7c31835b32" width="640" height="480" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></p>
+{% include vimeo.html id=page.vimeoID %}
 
 The code below also implements the [polyBLEP](http://www.martin-finke.de/blog/articles/audio-plugins-018-polyblep-oscillator/) anti-aliasing technique. There are actually two anti-aliasing algorithms in use within the demo video, but I don't really want to focus on anti-aliasing just yet. I'll probably talk about it in another post.
 
-## oscillator::shape()
+# oscillator::shape()
 {% highlight c++ linenos %}
 // Phase distortion between arbitrary waveforms
 // Stolen from here:
@@ -64,7 +65,7 @@ Above is my implementation of a wavemorphing function. Note that object variable
 
 The function takes in the current phase (float p) and the amount the phase is being incremented by (float px). The latter is required for polyBLEP anti-aliasing. In general, I like to declare all another variables I'm going to use within a function at the start. I find it's just easier to keep track of things that way. Ignoring all the polyBLEP stuff, from line 8-26 I'm basically generating waveforms by shaping the incoming phase using arithmetic and some signal processing hackery. From there, I'm calculating the approximate arcsin of each signal. The important part starts at line 28. Below is an exert of it
 
-## return cosf(wtf is this shit)
+# return cosf(wtf is this shit)
 {% highlight c++ linenos %}
 float oscillator::shape(float p, float px) {
 

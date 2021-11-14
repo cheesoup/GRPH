@@ -2,79 +2,75 @@
 <html lang="en">
     <head>
       <title>thesis? idk?</title>
-      <link rel="stylesheet" type="text/css" href="/GRPH/assets/css/import.css">
       <link rel="stylesheet" type="text/css" href="/GRPH/assets/css/main.css">
+      <link rel="stylesheet" type="text/css" href="/GRPH/assets/css/post.css">
       <link rel="stylesheet" type="text/css" href="/GRPH/assets/css/code.css">
       <link rel="shortcut icon" type="image/png" href="/GRPH/favicon.png">
       <link rel="alternate" type="application/atom+xml" title="thesis? idk?" href="/GRPH/feed.xml">
-      <script src="/GRPH/assets/js/sliders.js"></script>
+      <!-- <script src="/GRPH/assets/js/sliders.js"></script> -->
       <script src="/GRPH/assets/js/copyrss.js"></script>
     </head>
     <body>
     <div class="wrap">
-      <div id="menuButton" onclick="button()">&#9655;</div>
-      <!-- MENU START -->
-      <div id="nav">
+      <div class="header">
+        <img src="/GRPH/assets/images/jam_crow.gif" alt="jam_crow.gif" class="logo" width="160px" height="90px"/>
+        <img src="/GRPH/assets/images/thesisidk.gif" alt="thesis? idk?" class="logo" width="90px" height="46px"/>
+        <!-- MENU START -->
         <nav>
-          <ul>
             
-            <li><a href="/GRPH/about">about</a></li>
+            <a href="/GRPH/about">about</a>
             
-            <li><a href="/GRPH/posts">posts</a></li>
+            <a href="/GRPH/posts">posts</a>
             
-            <li><a href="/GRPH/tags">tags</a></li>
+            <a href="/GRPH/tags">tags</a>
             
-            <li><a href="/GRPH/out">out</a></li>
+            <a href="/GRPH/out">out</a>
             
-            <li><a data-url="http://localhost:4000/GRPH/feed.xml" onclick="copyURI(event)">rss</a></li>
-          </ul>
+            <a data-url="http://localhost:4000/GRPH/feed.xml" onclick="copyURI(event)">rss</a>
         </nav>
-        <div id="copied">RSS Copied!</div>
       </div>
       <!-- MENU END -->
       <!-- CONTENT START -->
       <div id="content">
-        <h1 class="pageTitle">tags</h1>
-<h2>table of contents</h2>
-
+        <h1>table of contents</h1>
 <!--
 Stolen from here:
 https://superdevresources.com/tag-cloud-jekyll/
 -->
-
-<ul style="margin: 10px; padding: 10px;">
-  
-  
-    <li style="list-style:none">
-      <a href="#bela">Bela (2)</a>
-    </li>
-  
-    <li style="list-style:none">
-      <a href="#blog-stuff">Blog Stuff (3)</a>
-    </li>
-  
-    <li style="list-style:none">
-      <a href="#c">C++ (2)</a>
-    </li>
-  
-    <li style="list-style:none">
-      <a href="#dsp">DSP (3)</a>
-    </li>
-  
-    <li style="list-style:none">
-      <a href="#music">Music (1)</a>
-    </li>
-  
-    <li style="list-style:none">
-      <a href="#oscillators">Oscillators (2)</a>
-    </li>
-  
-    <li style="list-style:none">
-      <a href="#puredata">PureData (1)</a>
-    </li>
-  
-</ul>
-
+<div style="border-bottom: 1px dashed #000;margin-bottom:10px;">
+  <ul style="margin: 10px; padding: 10px;">
+    
+    
+      <li style="list-style:none">
+        <a href="#audio-programming">Audio Programming (3)</a>
+      </li>
+    
+      <li style="list-style:none">
+        <a href="#bela">Bela (2)</a>
+      </li>
+    
+      <li style="list-style:none">
+        <a href="#blog-stuff">Blog Stuff (3)</a>
+      </li>
+    
+      <li style="list-style:none">
+        <a href="#c">C++ (2)</a>
+      </li>
+    
+      <li style="list-style:none">
+        <a href="#music">Music (1)</a>
+      </li>
+    
+      <li style="list-style:none">
+        <a href="#oscillators">Oscillators (2)</a>
+      </li>
+    
+      <li style="list-style:none">
+        <a href="#puredata">PureData (1)</a>
+      </li>
+    
+  </ul>
+</div>
 <!--
 Stolen from here:
 https://codinfox.github.io/dev/2015/03/06/use-tags-and-categories-in-your-jekyll-based-github-pages/
@@ -87,19 +83,20 @@ https://codinfox.github.io/dev/2015/03/06/use-tags-and-categories-in-your-jekyll
 
 
 
+<div>
 
-  <h2 id="bela">Bela</h2>
-  <ul style="margin: 10px; padding: 10px;">
+  <h1 id="audio-programming">Audio Programming</h1>
+  <ul style="margin: 5px; padding: 10px;">
     
       
-      <li style="margin-bottom: 10px;">
+      <li style="margin-bottom: 5px;">
         <a href="/GRPH/2021/10/30/arbitrary-wavemorphing.html">Arbitrary Wavemorphing</a><br/>
         <small>
             30 Oct 2021
             
               <a class="tag" href="#bela">Bela</a>
             
-              <a class="tag" href="#dsp">DSP</a>
+              <a class="tag" href="#audio-programming">Audio Programming</a>
             
               <a class="tag" href="#oscillators">Oscillators</a>
             
@@ -109,14 +106,72 @@ https://codinfox.github.io/dev/2015/03/06/use-tags-and-categories-in-your-jekyll
       
     
       
-      <li style="margin-bottom: 10px;">
+      <li style="margin-bottom: 5px;">
         <a href="/GRPH/2021/10/26/coding-on-bela.html">Coding On Bela</a><br/>
         <small>
             26 Oct 2021
             
               <a class="tag" href="#bela">Bela</a>
             
-              <a class="tag" href="#dsp">DSP</a>
+              <a class="tag" href="#audio-programming">Audio Programming</a>
+            
+              <a class="tag" href="#oscillators">Oscillators</a>
+            
+              <a class="tag" href="#c">C++</a>
+            
+        </small>
+      
+    
+      
+    
+      
+    
+      
+      <li style="margin-bottom: 5px;">
+        <a href="/GRPH/2021/10/14/fft_grainspec.html">Fft_grainspec</a><br/>
+        <small>
+            14 Oct 2021
+            
+              <a class="tag" href="#puredata">PureData</a>
+            
+              <a class="tag" href="#audio-programming">Audio Programming</a>
+            
+        </small>
+      
+    
+      
+    
+  </ul>
+
+  <h1 id="bela">Bela</h1>
+  <ul style="margin: 5px; padding: 10px;">
+    
+      
+      <li style="margin-bottom: 5px;">
+        <a href="/GRPH/2021/10/30/arbitrary-wavemorphing.html">Arbitrary Wavemorphing</a><br/>
+        <small>
+            30 Oct 2021
+            
+              <a class="tag" href="#bela">Bela</a>
+            
+              <a class="tag" href="#audio-programming">Audio Programming</a>
+            
+              <a class="tag" href="#oscillators">Oscillators</a>
+            
+              <a class="tag" href="#c">C++</a>
+            
+        </small>
+      
+    
+      
+      <li style="margin-bottom: 5px;">
+        <a href="/GRPH/2021/10/26/coding-on-bela.html">Coding On Bela</a><br/>
+        <small>
+            26 Oct 2021
+            
+              <a class="tag" href="#bela">Bela</a>
+            
+              <a class="tag" href="#audio-programming">Audio Programming</a>
             
               <a class="tag" href="#oscillators">Oscillators</a>
             
@@ -135,15 +190,15 @@ https://codinfox.github.io/dev/2015/03/06/use-tags-and-categories-in-your-jekyll
     
   </ul>
 
-  <h2 id="blog-stuff">Blog Stuff</h2>
-  <ul style="margin: 10px; padding: 10px;">
+  <h1 id="blog-stuff">Blog Stuff</h1>
+  <ul style="margin: 5px; padding: 10px;">
     
       
     
       
     
       
-      <li style="margin-bottom: 10px;">
+      <li style="margin-bottom: 5px;">
         <a href="/GRPH/2021/10/15/github-pages.html">Github Pages</a><br/>
         <small>
             15 Oct 2021
@@ -154,7 +209,7 @@ https://codinfox.github.io/dev/2015/03/06/use-tags-and-categories-in-your-jekyll
       
     
       
-      <li style="margin-bottom: 10px;">
+      <li style="margin-bottom: 5px;">
         <a href="/GRPH/2021/10/14/vsnarez.html">Vsnarez</a><br/>
         <small>
             14 Oct 2021
@@ -169,7 +224,7 @@ https://codinfox.github.io/dev/2015/03/06/use-tags-and-categories-in-your-jekyll
       
     
       
-      <li style="margin-bottom: 10px;">
+      <li style="margin-bottom: 5px;">
         <a href="/GRPH/2021/10/13/hello-world!.html">Hello World!</a><br/>
         <small>
             13 Oct 2021
@@ -181,18 +236,18 @@ https://codinfox.github.io/dev/2015/03/06/use-tags-and-categories-in-your-jekyll
     
   </ul>
 
-  <h2 id="c">C++</h2>
-  <ul style="margin: 10px; padding: 10px;">
+  <h1 id="c">C++</h1>
+  <ul style="margin: 5px; padding: 10px;">
     
       
-      <li style="margin-bottom: 10px;">
+      <li style="margin-bottom: 5px;">
         <a href="/GRPH/2021/10/30/arbitrary-wavemorphing.html">Arbitrary Wavemorphing</a><br/>
         <small>
             30 Oct 2021
             
               <a class="tag" href="#bela">Bela</a>
             
-              <a class="tag" href="#dsp">DSP</a>
+              <a class="tag" href="#audio-programming">Audio Programming</a>
             
               <a class="tag" href="#oscillators">Oscillators</a>
             
@@ -202,14 +257,14 @@ https://codinfox.github.io/dev/2015/03/06/use-tags-and-categories-in-your-jekyll
       
     
       
-      <li style="margin-bottom: 10px;">
+      <li style="margin-bottom: 5px;">
         <a href="/GRPH/2021/10/26/coding-on-bela.html">Coding On Bela</a><br/>
         <small>
             26 Oct 2021
             
               <a class="tag" href="#bela">Bela</a>
             
-              <a class="tag" href="#dsp">DSP</a>
+              <a class="tag" href="#audio-programming">Audio Programming</a>
             
               <a class="tag" href="#oscillators">Oscillators</a>
             
@@ -228,66 +283,8 @@ https://codinfox.github.io/dev/2015/03/06/use-tags-and-categories-in-your-jekyll
     
   </ul>
 
-  <h2 id="dsp">DSP</h2>
-  <ul style="margin: 10px; padding: 10px;">
-    
-      
-      <li style="margin-bottom: 10px;">
-        <a href="/GRPH/2021/10/30/arbitrary-wavemorphing.html">Arbitrary Wavemorphing</a><br/>
-        <small>
-            30 Oct 2021
-            
-              <a class="tag" href="#bela">Bela</a>
-            
-              <a class="tag" href="#dsp">DSP</a>
-            
-              <a class="tag" href="#oscillators">Oscillators</a>
-            
-              <a class="tag" href="#c">C++</a>
-            
-        </small>
-      
-    
-      
-      <li style="margin-bottom: 10px;">
-        <a href="/GRPH/2021/10/26/coding-on-bela.html">Coding On Bela</a><br/>
-        <small>
-            26 Oct 2021
-            
-              <a class="tag" href="#bela">Bela</a>
-            
-              <a class="tag" href="#dsp">DSP</a>
-            
-              <a class="tag" href="#oscillators">Oscillators</a>
-            
-              <a class="tag" href="#c">C++</a>
-            
-        </small>
-      
-    
-      
-    
-      
-    
-      
-      <li style="margin-bottom: 10px;">
-        <a href="/GRPH/2021/10/14/fft_grainspec.html">Fft_grainspec</a><br/>
-        <small>
-            14 Oct 2021
-            
-              <a class="tag" href="#puredata">PureData</a>
-            
-              <a class="tag" href="#dsp">DSP</a>
-            
-        </small>
-      
-    
-      
-    
-  </ul>
-
-  <h2 id="music">Music</h2>
-  <ul style="margin: 10px; padding: 10px;">
+  <h1 id="music">Music</h1>
+  <ul style="margin: 5px; padding: 10px;">
     
       
     
@@ -296,7 +293,7 @@ https://codinfox.github.io/dev/2015/03/06/use-tags-and-categories-in-your-jekyll
       
     
       
-      <li style="margin-bottom: 10px;">
+      <li style="margin-bottom: 5px;">
         <a href="/GRPH/2021/10/14/vsnarez.html">Vsnarez</a><br/>
         <small>
             14 Oct 2021
@@ -314,18 +311,18 @@ https://codinfox.github.io/dev/2015/03/06/use-tags-and-categories-in-your-jekyll
     
   </ul>
 
-  <h2 id="oscillators">Oscillators</h2>
-  <ul style="margin: 10px; padding: 10px;">
+  <h1 id="oscillators">Oscillators</h1>
+  <ul style="margin: 5px; padding: 10px;">
     
       
-      <li style="margin-bottom: 10px;">
+      <li style="margin-bottom: 5px;">
         <a href="/GRPH/2021/10/30/arbitrary-wavemorphing.html">Arbitrary Wavemorphing</a><br/>
         <small>
             30 Oct 2021
             
               <a class="tag" href="#bela">Bela</a>
             
-              <a class="tag" href="#dsp">DSP</a>
+              <a class="tag" href="#audio-programming">Audio Programming</a>
             
               <a class="tag" href="#oscillators">Oscillators</a>
             
@@ -335,14 +332,14 @@ https://codinfox.github.io/dev/2015/03/06/use-tags-and-categories-in-your-jekyll
       
     
       
-      <li style="margin-bottom: 10px;">
+      <li style="margin-bottom: 5px;">
         <a href="/GRPH/2021/10/26/coding-on-bela.html">Coding On Bela</a><br/>
         <small>
             26 Oct 2021
             
               <a class="tag" href="#bela">Bela</a>
             
-              <a class="tag" href="#dsp">DSP</a>
+              <a class="tag" href="#audio-programming">Audio Programming</a>
             
               <a class="tag" href="#oscillators">Oscillators</a>
             
@@ -361,8 +358,8 @@ https://codinfox.github.io/dev/2015/03/06/use-tags-and-categories-in-your-jekyll
     
   </ul>
 
-  <h2 id="puredata">PureData</h2>
-  <ul style="margin: 10px; padding: 10px;">
+  <h1 id="puredata">PureData</h1>
+  <ul style="margin: 5px; padding: 10px;">
     
       
     
@@ -373,14 +370,14 @@ https://codinfox.github.io/dev/2015/03/06/use-tags-and-categories-in-your-jekyll
       
     
       
-      <li style="margin-bottom: 10px;">
+      <li style="margin-bottom: 5px;">
         <a href="/GRPH/2021/10/14/fft_grainspec.html">Fft_grainspec</a><br/>
         <small>
             14 Oct 2021
             
               <a class="tag" href="#puredata">PureData</a>
             
-              <a class="tag" href="#dsp">DSP</a>
+              <a class="tag" href="#audio-programming">Audio Programming</a>
             
         </small>
       
@@ -389,6 +386,7 @@ https://codinfox.github.io/dev/2015/03/06/use-tags-and-categories-in-your-jekyll
     
   </ul>
 
+</div>
 
       </div>
       <!-- CONTENT END -->

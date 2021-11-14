@@ -1,6 +1,6 @@
 ---
 layout: post
-tag: [Bela, DSP, Oscillators, C++]
+tag: [Bela, Audio Programming, Oscillators, C++]
 date: Oct. 26, 2021
 ---
 
@@ -9,7 +9,7 @@ date: Oct. 26, 2021
 
 Ok so before I write about my code, I guess I should probably write about what Bela is and basic Bela programming. [Bela](https://www.bela.io) is a cape for the [Beagle Bone Black](https://beagleboard.org/black) single board computer. It specializes in audio processing for the purpose of creating audio effects, instruments, sound installations, whatever. It comes with 16 digital and analog IOs for interfacing with switches and potentiometers and stuff. It's pretty rad.
 
-## render.cpp
+# render.cpp
 {% highlight c++ linenos %}#include <Bela.h>
 #include <cmath>
 
@@ -48,7 +48,7 @@ void cleanup(BelaContext *context, void *userData)
 
  Above is the basic example code shipped with Bela. It produces a sine wave signal at 440hz (middle A). Other than being based in C++ rather than Java, it's surprisingly similar to Processing in terms of having a setup() function followed by some looping rendering function. The functions are given two arguments: a pointer to a BelaContext object, a pointer to a userData object. From what I assume/read online, these objects declared in the Bela.h header file and contain system data such as hardware and driver information.
 
-## setup()
+# setup()
 {% highlight c++ linenos %}
 bool setup(BelaContext *context, void *userData)
 {
@@ -83,7 +83,7 @@ void render(BelaContext *context, void *userData)
 
 The amount to increment x is calculated by multiplying the given frequency by the inverse sample rate. This is equal to ` dx = freq / samplerate`. By controlling how much we increment the phase, we're able to control the frequency at which the oscillator oscillates at. Something to keep in mind with this example however is that they normalize the phase to 2PI. This is because the normal phase length of a sine wave is 2PI.
 
-## cleanup()
+# cleanup()
 {% highlight c++ linenos %}
 void cleanup(BelaContext *context, void *userData)
 {
@@ -93,6 +93,6 @@ void cleanup(BelaContext *context, void *userData)
 
 This section doesn't actually do anything. In C++, one is able to dynamically allocate memory. When doing so, memory needs to be deallocated to free it up again. Dynamic memory allocation isn't used in this example however, thus nothing needs to be cleaned up. In scenarios where you do dynamically allocate memory, this is where you would deallocate the remainder of what needs to be deallocated.
 
-## Conclusion
+# Conclusion
 
 And that's all the example does! Hopefully this post wasn't too wordy. If you're interested in learning more about audio programming in C++, I've been following this [YouTube tutorial](https://www.youtube.com/watch?v=aVLRUyPBBJk). I think it's pretty useful even outside of a Bela context. I'm not quite sure how easy it is to follow for non-programmers and people not into signal processing however.

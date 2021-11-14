@@ -2,43 +2,40 @@
 <html lang="en">
     <head>
       <title>thesis? idk?</title>
-      <link rel="stylesheet" type="text/css" href="/GRPH/assets/css/import.css">
       <link rel="stylesheet" type="text/css" href="/GRPH/assets/css/main.css">
+      <link rel="stylesheet" type="text/css" href="/GRPH/assets/css/post.css">
       <link rel="stylesheet" type="text/css" href="/GRPH/assets/css/code.css">
       <link rel="shortcut icon" type="image/png" href="/GRPH/favicon.png">
       <link rel="alternate" type="application/atom+xml" title="thesis? idk?" href="/GRPH/feed.xml">
-      <script src="/GRPH/assets/js/sliders.js"></script>
+      <!-- <script src="/GRPH/assets/js/sliders.js"></script> -->
       <script src="/GRPH/assets/js/copyrss.js"></script>
     </head>
     <body>
     <div class="wrap">
-      <div id="menuButton" onclick="button()">&#9655;</div>
-      <!-- MENU START -->
-      <div id="nav">
+      <div class="header">
+        <img src="/GRPH/assets/images/jam_crow.gif" alt="jam_crow.gif" class="logo" width="160px" height="90px"/>
+        <img src="/GRPH/assets/images/thesisidk.gif" alt="thesis? idk?" class="logo" width="90px" height="46px"/>
+        <!-- MENU START -->
         <nav>
-          <ul>
             
-            <li><a href="/GRPH/about">about</a></li>
+            <a href="/GRPH/about">about</a>
             
-            <li><a href="/GRPH/posts">posts</a></li>
+            <a href="/GRPH/posts">posts</a>
             
-            <li><a href="/GRPH/tags">tags</a></li>
+            <a href="/GRPH/tags">tags</a>
             
-            <li><a href="/GRPH/out">out</a></li>
+            <a href="/GRPH/out">out</a>
             
-            <li><a data-url="http://localhost:4000/GRPH/feed.xml" onclick="copyURI(event)">rss</a></li>
-          </ul>
+            <a data-url="http://localhost:4000/GRPH/feed.xml" onclick="copyURI(event)">rss</a>
         </nav>
-        <div id="copied">RSS Copied!</div>
       </div>
       <!-- MENU END -->
       <!-- CONTENT START -->
       <div id="content">
-        <h1 class="pageTitle">posts</h1>
-<ul class="posts">
+        <ul class="posts">
   
     <li>
-      <h2><a href="/GRPH/2021/10/30/arbitrary-wavemorphing.html">Arbitrary Wavemorphing</a></h2>
+      <h1><a href="/GRPH/2021/10/30/arbitrary-wavemorphing.html">Arbitrary Wavemorphing</a></h1>
       <p>Most of my initial foray into C++ has been spent trying to adapt an oscillator algorithm I had implemented in PureData. It’s based on a sort of phase distortion algorithm by Scott “Acriel” Nordlund for PureData. It uses the trig identity <code class="language-plaintext highlighter-rouge">f(x) = arcsin(sin(f(x)))</code> to morph between a sine wave and an arbitrary waveform of the same periodic length. Here’s a <a href="https://www.desmos.com/calculator/b4ejbqju7m">desmos graph</a> of the algorithm. I’ve also included a video of the oscillator viewed through an oscilloscope below.</p>
 
 
@@ -47,7 +44,7 @@
         
           <a href="/GRPH/tags#bela">Bela</a>
         
-          <a href="/GRPH/tags#dsp">DSP</a>
+          <a href="/GRPH/tags#audio-programming">Audio Programming</a>
         
           <a href="/GRPH/tags#oscillators">Oscillators</a>
         
@@ -57,7 +54,7 @@
     </li>
   
     <li>
-      <h2><a href="/GRPH/2021/10/26/coding-on-bela.html">Coding On Bela</a></h2>
+      <h1><a href="/GRPH/2021/10/26/coding-on-bela.html">Coding On Bela</a></h1>
       <p><del>I finally managed to get sometime to do a bit a programming. It’s been alright so far. Most of my times been spent on figuring out how pointers work and just getting used to C++ in general. I managed to program this dithered polyBLEP sawtooth oscillator. It’s a bit late so I’ll edit this post later with some details on the code, but for now here it is in raw form.</del><br />
 <strong>[Oct.30th edit: OK LETS WRITE SOME STUFF]</strong></p>
 
@@ -67,7 +64,7 @@
         
           <a href="/GRPH/tags#bela">Bela</a>
         
-          <a href="/GRPH/tags#dsp">DSP</a>
+          <a href="/GRPH/tags#audio-programming">Audio Programming</a>
         
           <a href="/GRPH/tags#oscillators">Oscillators</a>
         
@@ -77,7 +74,7 @@
     </li>
   
     <li>
-      <h2><a href="/GRPH/2021/10/15/github-pages.html">Github Pages</a></h2>
+      <h1><a href="/GRPH/2021/10/15/github-pages.html">Github Pages</a></h1>
       <p>Debugging this site was a lot more of a pain in the ass than I thought it would be. After an extra day of website work, I finally managed to get my Github Pages to recognize my Jekyll source repository as a website. I feel like this should’ve been obvious how to do, but I’m actually pretty unfamiliar with the git protocol.</p>
 
 
@@ -90,7 +87,7 @@
     </li>
   
     <li>
-      <h2><a href="/GRPH/2021/10/14/vsnarez.html">Vsnarez</a></h2>
+      <h1><a href="/GRPH/2021/10/14/vsnarez.html">Vsnarez</a></h1>
       <p>I just wanted to test posting YouTube videos. Here’s one featuring Mr. Funk and possibly John Frusciante.</p>
 
 
@@ -105,7 +102,7 @@
     </li>
   
     <li>
-      <h2><a href="/GRPH/2021/10/14/fft_grainspec.html">Fft_grainspec</a></h2>
+      <h1><a href="/GRPH/2021/10/14/fft_grainspec.html">Fft_grainspec</a></h1>
       <p>My main goal with this patch was to experiment with IFFT synthesis in context of a sample based granular synthesizers. It uses Miller Puckette’s <a href="http://msp.ucsd.edu/techniques/latest/book-html/node182.html">phase vocoder example</a> in conjunction with Scott “Acriel” Nordlund’s example of <a href="https://acreil.wordpress.com/2020/01/13/pure-data-frequency-domain-filtering-patch/">frequency domain filtering</a>.</p>
 
 
@@ -114,13 +111,13 @@
         
           <a href="/GRPH/tags#puredata">PureData</a>
         
-          <a href="/GRPH/tags#dsp">DSP</a>
+          <a href="/GRPH/tags#audio-programming">Audio Programming</a>
         
       </div>
     </li>
   
     <li>
-      <h2><a href="/GRPH/2021/10/13/hello-world!.html">Hello World!</a></h2>
+      <h1><a href="/GRPH/2021/10/13/hello-world!.html">Hello World!</a></h1>
       <p>Check it out!! It’s my first post!! How cool is that? Comin’ straight from the 647 to the 905 to the 416 etc. I don’t really have much to write about right now. So I guess I’ll just some small updates about what I’ve been up to.</p>
 
 
