@@ -10,7 +10,8 @@ date: Oct. 26, 2021
 Ok so before I write about my code, I guess I should probably write about what Bela is and basic Bela programming. [Bela](https://www.bela.io) is a cape for the [Beagle Bone Black](https://beagleboard.org/black) single board computer. It specializes in audio processing for the purpose of creating audio effects, instruments, sound installations, whatever. It comes with 16 digital and analog IOs for interfacing with switches and potentiometers and stuff. It's pretty rad.
 
 # render.cpp
-{% highlight c++ %}#include <Bela.h>
+{% highlight c++ %}
+#include <Bela.h>
 #include <cmath>
 
 float gFrequency = 440.0;
