@@ -3,7 +3,7 @@
     <head>
       <meta http-equiv="last-modified" content="{{ page.date | date_to_rfc822 }}" />
       <meta http-equiv="expires" content="{{ page.date | date: '%s' | plus: 86400 | date_to_rfc822 }}" />
-      <meta http-equiv="cache-control" content="Private" />
+      <meta http-equiv="cache-control" content="max-age=31536000, Private" />
 
       <link rel="stylesheet" type="text/css" href="{{ "/assets/css/landing.css" | relative_url }}">
       <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ "feed.xml" | relative_url }}">
