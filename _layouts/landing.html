@@ -1,10 +1,11 @@
 <!doctype html>
 <html lang="en">
     <head>
-      <meta http-equiv="last-modified" content="{{ page.date }}" />
+      {% assign expire = page.date | date: '%s' | plus: 86400 %}
+      <meta http-equiv="last-modified" content="{{ page.date | date_to_rfc822 }}" />
+      <meta http-equiv="expires" content="{{ expire | date_to_rfc822 }}" />
       <meta http-equiv="cache-control" content="Private" />
-      <meta http-equiv="Expires" content="600" />
-      
+
       <link rel="stylesheet" type="text/css" href="{{ "/assets/css/landing.css" | relative_url }}">
       <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ "feed.xml" | relative_url }}">
       <link rel="shortcut icon" type="image/png" href="{{ "icon.ico" | relative_url }}">
