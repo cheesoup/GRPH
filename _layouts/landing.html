@@ -1,9 +1,8 @@
 <!doctype html>
 <html lang="en">
     <head>
-      {% assign expire = page.date | date: '%s' | plus: 86400 %}
       <meta http-equiv="last-modified" content="{{ page.date | date_to_rfc822 }}" />
-      <meta http-equiv="expires" content="{{ expire | date_to_rfc822 }}" />
+      <meta http-equiv="expires" content="{{ page.date | date: '%s' | plus: 86400 | date_to_rfc822 }}" />
       <meta http-equiv="cache-control" content="Private" />
 
       <link rel="stylesheet" type="text/css" href="{{ "/assets/css/landing.css" | relative_url }}">
