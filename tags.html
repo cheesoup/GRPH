@@ -8,16 +8,14 @@ title: Tags
 Stolen from here:
 https://superdevresources.com/tag-cloud-jekyll/
 -->
-<div style="border-bottom: 1px dashed #000;margin-bottom:10px;">
-  <ul style="margin: 10px; padding: 10px;">
-    {% assign ctags = site.tags | sort %}
-    {% for tag in ctags %}
-      <li style="list-style:none">
-        <a href="#{{ tag | first | slugify }}">{{ tag[0] | replace:'-', ' ' }} ({{ tag | last | size }})</a>
-      </li>
-    {% endfor %}
-  </ul>
-</div>
+<ul class="taglist">
+  {% assign ctags = site.tags | sort %}
+  {% for tag in ctags %}
+    <li>
+      <a href="#{{ tag | first | slugify }}">{{ tag[0] | replace:'-', ' ' }} ({{ tag | last | size }})</a>
+    </li>
+  {% endfor %}
+</ul>
 <!--
 Stolen from here:
 https://codinfox.github.io/dev/2015/03/06/use-tags-and-categories-in-your-jekyll-based-github-pages/
@@ -42,13 +40,12 @@ https://codinfox.github.io/dev/2015/03/06/use-tags-and-categories-in-your-jekyll
 	{% endif %}
 {% endfor %}
 
-<div>
 {% for tag in tags %}
   <h1 id="{{ tag | slugify }}">{{ tag }}</h1>
-  <ul style="margin: 5px; padding: 10px;">
+  <ul class="postlist">
     {% for post in site.posts %}
       {% if post.tags contains tag %}
-      <li style="margin-bottom: 5px;">
+      <li>
         <a href="{{ post.url | relative_url }}">{{ post.title }}</a><br/>
         <small>
             {{ post.date | date_to_string }}
@@ -60,4 +57,3 @@ https://codinfox.github.io/dev/2015/03/06/use-tags-and-categories-in-your-jekyll
     {% endfor %}
   </ul>
 {% endfor %}
-</div>

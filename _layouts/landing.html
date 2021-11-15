@@ -1,28 +1,23 @@
 <!doctype html>
 <html lang="en">
     <head>
-      <title>thesis? idk?</title>
-      <link rel="stylesheet" type="text/css" href="{{ "/assets/css/import.css" | relative_url }}">
       <link rel="stylesheet" type="text/css" href="{{ "/assets/css/landing.css" | relative_url }}">
-      <link rel="shortcut icon" type="image/png" href="{{ "favicon.png" | relative_url }}">
       <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ "feed.xml" | relative_url }}">
-      <script src="{{ "/assets/js/copyrss.js" | relative_url }}"></script>
+      <link rel="shortcut icon" type="image/png" href="{{ "icon.ico" | relative_url }}">
+      {% seo %}
     </head>
     <body>
       <!-- CONTENT START -->
       <div class="content">
+        <img src="{{ "/assets/images/splash.gif" | relative_url }}" alt="jam_crow.gif" class="logo"/>
         <p>
-          chris'<br/>
-          workshop<br/>
-          blog<br/>
-          2021/22<span class="blink">_</span>
+          <h1>chris carin's workshop blog</h1>
+          <ul>
+             {% for item in site.data.navi.pages %}
+             <li><a href="{{ item.url | relative_url }}">{{ item.title }}</a></li>
+             {% endfor %}
+          </ul>
         </p>
-        <ul>
-           {% for item in site.data.navi.pages %}
-           <li><a href="{{ item.url | relative_url }}">{{ item.title }}</a></li>
-           {% endfor %}
-           <li><a data-url="{{ 'feed.xml' | absolute_url }}" onclick="copyURI(event)">rss</a><span id="copied">RSS Copied!</span></li>
-        </ul>
       </div>
       <!-- CONTENT END -->
     </body>

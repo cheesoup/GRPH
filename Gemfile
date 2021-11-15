@@ -7,3 +7,4 @@ git_source(:github) { |repo_name| "https://github.com/cheesoup/GRPH" }
 gem "github-pages", group: :jekyll_plugins
 gem "webrick", "~> 1.7"
 gem 'jekyll-feed'
+gem 'jekyll-seo-tag'

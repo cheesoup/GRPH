@@ -4,7 +4,7 @@ layout: default
 
 <h1>{{ page.title }}</h1>
 
-{{ content }}
+<div class="body">{{ content }}</div>
 
 <div class="footer">{{ page.date | date: "%a, %b %d, %y" }} | Tags:
   {% for tag in page.tags %}
@@ -12,7 +12,7 @@ layout: default
   {% endfor %}
 </div>
 
-<div class="post_nav">
+<div class="nav">
   <div class="prev">
     {% if page.previous.url %}
       <a href="{{ page.previous.url | relative_url }}">&laquo; {{page.previous.title}}</a>

@@ -18,6 +18,8 @@ My end goal for this project revolves around building some sort of digital music
 
 I like computers and synthesizers and stuff I guess.
 
+---
+
 # about this website
 
 I'm planning to use this blog to keep track of notes, prototypes, ideas, etc. Things I plan on posting include: PureData/MaxMSP patches, random Bela and C++ stuff, badly explained DSP math, and just general nonsense about design, sound, and music. Maybe I'll post some p5.js or processing stuff if it's relevant too.

@@ -1,14 +1,11 @@
 <!doctype html>
 <html lang="en">
     <head>
-      <title>thesis? idk?</title>
       <link rel="stylesheet" type="text/css" href="{{ "/assets/css/main.css" | relative_url }}">
-      <link rel="stylesheet" type="text/css" href="{{ "/assets/css/post.css" | relative_url }}">
       <link rel="stylesheet" type="text/css" href="{{ "/assets/css/code.css" | relative_url }}">
-      <link rel="shortcut icon" type="image/png" href="{{ "favicon.png" | relative_url }}">
       <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ "feed.xml" | relative_url }}">
-      <!-- <script src="{{ "/assets/js/sliders.js" | relative_url }}"></script> -->
-      <script src="{{ "/assets/js/copyrss.js" | relative_url }}"></script>
+      <link rel="shortcut icon" type="image/png" href="{{ "icon.ico" | relative_url }}">
+      {% seo %}
     </head>
     <body>
     <div class="wrap">
@@ -20,15 +17,18 @@
             {% for item in site.data.navi.pages %}
             <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
             {% endfor %}
-            <a data-url="{{ 'feed.xml' | absolute_url }}" onclick="copyURI(event)">rss</a>
         </nav>
       </div>
       <!-- MENU END -->
       <!-- CONTENT START -->
-      <div id="content">
+      <div class="content">
         {{ content }}
       </div>
       <!-- CONTENT END -->
+      <div class="footer">
+        <a href="https://www.gnu.org/licenses/copyleft.html">&#127279;</a> 2021-2022 Chris Carin</br>
+        <a href="#">Back to top</a>
+      </div>
     </div>
     </body>
 </html>

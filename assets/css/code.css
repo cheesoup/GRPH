@@ -1,13 +1,18 @@
 /* CODE TAGS */
 
-#content .highlight {
+/*
+Based on Twilight Dark Colour Scheme
+from Terminal.sexy
+*/
+
+.content .highlight {
+  font-family: 'IBM Plex Mono', monospace;
   max-width:100%;
-  max-height: 600px;
   margin: 10px;
-  overflow: scroll;
-  background-color: #202020;
-  color: #FFFFFF;
-  scrollbar-width: thin;
+  padding: 10px;
+  overflow-x: scroll;
+  background-color: #000000;
+  color: #ffffff;
 }
 
 .highlight pre {
@@ -22,31 +27,72 @@
 }
 
 /* slash comments */
-#content .highlight .c1, #content .highlight .cm {
-  color: #a0cf5d;
+.content .highlight .c1, .content .highlight .cm {
+  color: #86817e;
 }
 
 /* data type */
-#content .highlight .kt {
-  color: #9b64fb;
+.content .highlight .kt {
+  font-weight: 300;
+  color: #fdb3b2;
 }
 
 /* boolean */
-#content .highlight .nb {
-  color: #7dc1cf;
+.content .highlight .nb {
+  color: #68778c;
 }
 
 /* numeric values & strings */
-#content .highlight .mf, #content .highlight .mi, #content .highlight .s  {
-  color: #4e9fb1;
+.content .highlight .mf, .content .highlight .mi, .content .highlight .s  {
+  color: #a63a3a;
 }
 
 /* escape characters */
-#content .highlight .se {
+.content .highlight .se {
   color: #6d878d;
 }
 
 /* data keyword */
-#content .highlight .k {
-  color: #9b64fb;
+.content .highlight .k {
+  font-weight: bolder;
+  color: #688c7d;
 }
+
+/*
+! special
+*.foreground:   #ababab
+*.background:   #000000
+*.cursorColor:  #ababab
+
+! black
+*.color0:       #000000
+*.color8:       #343434
+
+! red
+*.color1:       #e92f2f
+*.color9:       #e92f2f
+
+! green
+*.color2:       #0ed839
+*.color10:      #0ed839
+
+! yellow
+*.color3:       #dddd13
+*.color11:      #dddd13
+
+! blue
+*.color4:       #3b48e3
+*.color12:      #3b48e3
+
+! magenta
+*.color5:       #f996e2
+*.color13:      #f996e2
+
+! cyan
+*.color6:       #23edda
+*.color14:      #23edda
+
+! white
+*.color7:       #ababab
+*.color15:      #f9f9f9
+*/

@@ -10,7 +10,7 @@ date: Oct. 26, 2021
 Ok so before I write about my code, I guess I should probably write about what Bela is and basic Bela programming. [Bela](https://www.bela.io) is a cape for the [Beagle Bone Black](https://beagleboard.org/black) single board computer. It specializes in audio processing for the purpose of creating audio effects, instruments, sound installations, whatever. It comes with 16 digital and analog IOs for interfacing with switches and potentiometers and stuff. It's pretty rad.
 
 # render.cpp
-{% highlight c++ linenos %}#include <Bela.h>
+{% highlight c++ %}#include <Bela.h>
 #include <cmath>
 
 float gFrequency = 440.0;
@@ -49,7 +49,7 @@ void cleanup(BelaContext *context, void *userData)
  Above is the basic example code shipped with Bela. It produces a sine wave signal at 440hz (middle A). Other than being based in C++ rather than Java, it's surprisingly similar to Processing in terms of having a setup() function followed by some looping rendering function. The functions are given two arguments: a pointer to a BelaContext object, a pointer to a userData object. From what I assume/read online, these objects declared in the Bela.h header file and contain system data such as hardware and driver information.
 
 # setup()
-{% highlight c++ linenos %}
+{% highlight c++ %}
 bool setup(BelaContext *context, void *userData)
 {
 	gInverseSampleRate = 1.0 / context->audioSampleRate;
@@ -61,7 +61,7 @@ bool setup(BelaContext *context, void *userData)
 
 Unlike Processing, Bela's setup function returns a boolean. The render loop won't start unless setup() returns true. In the example provided, the setup function initializes a few variables. `gInverseSampleRate` is set to `1 / samplerate` and while `gPhase` is initialized to `0`.
 
-![Sine Wave]({{ "/assets/images/desmos/sine.png" | relative_url }})
+![Sine Wave]({{ "/assets/images/content/sine.png" | relative_url }})
 
 When graphing a periodic (repeating) waveform statically like the image above, phase can be described as the current x-value (between 0-1) of the wave. As the x-value increments, the waveform's y-value oscillates between -1 and 1. To apply this idea to audio, we have think of x as something that is constantly accumulating between 0-1. This is pretty much what Bela's example code does.
 

@@ -1,12 +1,10 @@
 title: thesis? idk?
 name: thesis? idk?
-author: Chris
-description: a blog about 4th year GRPH workshop @ OCADU
+author: Chris Carin
+description: a blog for 4th year workshop at OCADU
 url: https://cheesoup.github.io
 baseurl: /GRPH
 plugins:
-  - emoji_for_jekyll
   - jekyll-feed
-emoji:
-  src: "/assets/images/emoji"
+  - jekyll-seo-tag
 exclude: [serve.bat]

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsl:transform  version="1.0" xmlns:a="http://www.w3.org/2005/Atom" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+  <xsl:strip-space elements="*"/>
+  <xsl:template match="*">
+    <html>
+      <title>thesis? idk? | RSS Feed</title>
+      <link rel="shortcut icon" type="image/png" href="favicon.png"/>
+      <style>
+        html {
+          background-color: #D0D0D0;
+        }
+        h1 {
+          font-size: 48px;
+          margin: 20px 0 0 0;
+        }
+        div.sub {
+          font-size: 10px;
+          margin: 10px 0;
+        }
+        a {
+          color: #505050;
+        }
+        a:hover {
+          color: #A0A0A0;
+        }
+        body {
+          max-width: 800px;
+          margin: 0 auto 25px auto;
+          font-family: helvetica, arial, sans;
+        }
+        body.entry {
+          background-color: #FFF;
+          font-size: 12px;
+          line-height: 20px;
+          box-shadow: 5px 5px #888888;
+          border: 1px #000 solid;
+          padding: 10px 20px;
+        }
+      </style>
+    </html>
+  </xsl:template>
+
+  <xsl:template match="a:feed">
+    <html>
+      <body>
+        <h1>
+          <a href="{a:id}"><xsl:value-of select="a:title"/></a>
+        </h1>
+        <div class="sub">
+          <xsl:value-of select="a:subtitle"/>
+        </div>
+        <xsl:apply-templates/>
+      </body>
+    </html>
+  </xsl:template>
+
+  <xsl:template match="a:entry">
+    <html>
+      <body class="entry">
+        <h2>
+          <a href="{a:id}"><xsl:value-of select="a:title"/></a>
+        </h2>
+        <p>
+          <xsl:value-of select="a:summary"/>
+        </p>
+        <p>
+          <xsl:variable name="date">
+            <xsl:value-of select="a:published"/>
+          </xsl:variable>
+          <b>Posted: </b>
+          <xsl:value-of select="substring($date, 6, 2)"/>
+          <xsl:text>-</xsl:text>
+          <xsl:value-of select="substring($date, 9, 2)"/>
+          <xsl:text>-</xsl:text>
+          <xsl:value-of select="substring($date, 1, 4)"/>
+          <xsl:apply-templates/>
+        </p>
+      </body>
+    </html>
+  </xsl:template>
+
+</xsl:transform>
