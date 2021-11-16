@@ -2,6 +2,9 @@
 
 :root {
   --wrap_maxWidth: 800px;
+  --body_stack: "Trebuchet MS", Verdana, Arial, sans-serif;
+  --body_size: 14px;
+  --h1_stack: "Monaco", "Andale Mono", "Consolas", "Lucida Console", "Courier New", Courier, monospace;
 }
 
 html {
@@ -9,7 +12,7 @@ html {
 }
 
 body {
-  font-family: Verdana, Arial, sans-serif;
+  font-family: var(--body_stack);
   overflow-x: hidden;
   background-color: #D0D0D0;
   background-attachment: fixed;
@@ -36,13 +39,13 @@ div.wrap {
 }
 
 h1 {
-  font-family: "Monaco", "Andale Mono", "Consolas", "Lucida Console", "Courier New", monospace;
+  font-family: var(--h1_stack);
   font-size: 24px;
+  text-transform: lowercase;
 }
 
 h1 a, h1 a:hover {
   background-color: transparent;
-  letter-spacing: 1px;
   color: #000;
   text-decoration: none;
   border: 0;
@@ -79,9 +82,15 @@ div.footer a:hover {
 }
 
 img.logo {
-  display: inline;
   vertical-align: middle;
   color: transparent;
+}
+
+a.logo, a.logo:hover {
+  display: inline-block;
+  width: auto;
+  border: 0;
+  background: transparent;
 }
 
 nav {
@@ -112,7 +121,7 @@ nav a:before {
 
 div.content {
   line-height: 24px;
-  font-size: 12px;
+  font-size: var(--body_size);
   background-color: #fff;
   box-shadow: 10px 10px #888888;
   padding: 25px 50px 50px;
@@ -121,7 +130,6 @@ div.content {
 
 div.content .body {
   border-bottom: 1px #000 dotted;
-  margin: 10px 0;
 }
 
 div.content .footer {
@@ -160,7 +168,7 @@ div.content ul.posts li {
 }
 
 div.content p {
-  margin-bottom: 15px;
+  margin: 5px 10px 15px;
 }
 
 div.content .nav {

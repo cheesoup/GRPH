@@ -1,3 +1,5 @@
+@import url("global.css");
+
 body {
   background-color: #FFF;
 }
@@ -5,27 +7,38 @@ body {
 .content {
   margin: 20vh auto;
   text-align: center;
-  width: 300px;
+  width: 480px;
 }
 
 h1 {
-    font-family: 'VT323', monospace;
+    font-family: var(--h1_stack);
     font-size: 48px;
-    line-height: 36px;
-    margin: 10px 0;
+    line-height: 40px;
+    margin: 20px 0;
 }
 
 a {
-  color: #000;
   text-decoration: none;
-  cursor: crosshair;
+  color: #000;
+  padding: 5px;
+  margin: 0 5px;
+  border: 1px #000 solid;
+  position: relative;
+  box-shadow: 5px 5px #888888;
+}
+
+a:hover {
+  top: 2px;
+  left: 2px;
+  background-color: #808080;
+  color: #FFF;
 }
 
 ul {
-  font-family: Verdana, Arial, sans-serif;
+  font-family: var(--body_stack);
   font-weight: 300;
-  font-size: 16px;
-  margin: 0;
+  font-size: 20px;
+  margin: 40px 0;
   padding: 0;
 }
 
