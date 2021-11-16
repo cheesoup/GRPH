@@ -1,11 +1,7 @@
-/* PRIMARY CSS FILE */
+@import url("global.css");
+@import url("code.css");
 
-:root {
-  --wrap_maxWidth: 800px;
-  --body_stack: "Trebuchet MS", Verdana, Arial, sans-serif;
-  --body_size: 14px;
-  --h1_stack: "Monaco", "Andale Mono", "Consolas", "Lucida Console", "Courier New", Courier, monospace;
-}
+/* PRIMARY CSS FILE */
 
 html {
   overflow-y: scroll;
@@ -111,6 +107,7 @@ nav a {
 nav a:hover, nav a:active{
   left: 2px;
   top: 2px;
+  box-shadow: 3px 3px #888888;
 }
 
 nav a:before {
