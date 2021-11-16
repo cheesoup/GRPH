@@ -9,6 +9,20 @@
       <link rel="stylesheet" type="text/css" href="{{ "/assets/css/code.css" | relative_url }}">
       <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ "feed.xml" | relative_url }}">
       <link rel="shortcut icon" type="image/png" href="{{ "icon.ico" | relative_url }}">
+
+      <!-- Insert custom css -->
+      <!-- defined by custom_css tags -->
+      {% if page.custom_css %}
+        {% for stylesheet in page.custom_css %}
+        <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/{{ stylesheet }}.css">
+        {% endfor %}
+      {% endif %}
+      {% if layout.custom_css %}
+        {% for stylesheet in layout.custom_css %}
+        <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/{{ stylesheet }}.css">
+        {% endfor %}
+      {% endif %}
+
       {% seo %}
     </head>
     <body>

@@ -9,14 +9,24 @@
       <link rel="stylesheet" type="text/css" href="/GRPH/assets/css/code.css">
       <link rel="alternate" type="application/atom+xml" title="thesis? idk?" href="/GRPH/feed.xml">
       <link rel="shortcut icon" type="image/png" href="/GRPH/icon.ico">
+
+      <!-- Insert custom css -->
+      <!-- defined by custom_css tags -->
+      
+      
+        
+        <link rel="stylesheet" href="/GRPH/assets/css/post.css">
+        
+      
+
       <!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>New Layout! | thesis? idk?</title>
 <meta name="generator" content="Jekyll v3.9.0" />
 <meta property="og:title" content="New Layout!" />
 <meta name="author" content="Chris Carin" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Over the past three or so days, I’ve been kind of taking a break from programming the Bela in order to focus my attention on this blog. Despite aiming for a lightweight website, I made a few compromises by deciding to use javascript for a couple things within my previous iteration. After testing the website on an old netbook however, I noticed that even having a minimal amount of scripting was a bit too much. Thus I decided to try and re-design what I had to work without the javascript elements. One thing led to another and somehow I ended up with a whole new layout." />
-<meta property="og:description" content="Over the past three or so days, I’ve been kind of taking a break from programming the Bela in order to focus my attention on this blog. Despite aiming for a lightweight website, I made a few compromises by deciding to use javascript for a couple things within my previous iteration. After testing the website on an old netbook however, I noticed that even having a minimal amount of scripting was a bit too much. Thus I decided to try and re-design what I had to work without the javascript elements. One thing led to another and somehow I ended up with a whole new layout." />
+<meta name="description" content="Over the last couple days I’ve been kind of taking a break from programming the Bela in order to focus my attention on this blog. Despite aiming for a lightweight website, I made a few compromises by deciding to use javascript and webfonts for the sake of style. After testing the website on an old netbook however, I noticed that even having a minimal amount of scripting was a bit too much. On top of that, further testing showed that the typefaces imported by Google fonts accounted for the a majority of my sites digital weight." />
+<meta property="og:description" content="Over the last couple days I’ve been kind of taking a break from programming the Bela in order to focus my attention on this blog. Despite aiming for a lightweight website, I made a few compromises by deciding to use javascript and webfonts for the sake of style. After testing the website on an old netbook however, I noticed that even having a minimal amount of scripting was a bit too much. On top of that, further testing showed that the typefaces imported by Google fonts accounted for the a majority of my sites digital weight." />
 <link rel="canonical" href="http://0.0.0.0:4000/GRPH/2021/11/14/new-layout!.html" />
 <meta property="og:url" content="http://0.0.0.0:4000/GRPH/2021/11/14/new-layout!.html" />
 <meta property="og:site_name" content="thesis? idk?" />
@@ -25,7 +35,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="New Layout!" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Chris Carin"},"@type":"BlogPosting","headline":"New Layout!","dateModified":"2021-11-14T00:00:00-05:00","datePublished":"2021-11-14T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/GRPH/2021/11/14/new-layout!.html"},"description":"Over the past three or so days, I’ve been kind of taking a break from programming the Bela in order to focus my attention on this blog. Despite aiming for a lightweight website, I made a few compromises by deciding to use javascript for a couple things within my previous iteration. After testing the website on an old netbook however, I noticed that even having a minimal amount of scripting was a bit too much. Thus I decided to try and re-design what I had to work without the javascript elements. One thing led to another and somehow I ended up with a whole new layout.","url":"http://0.0.0.0:4000/GRPH/2021/11/14/new-layout!.html","@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"Chris Carin"},"@type":"BlogPosting","headline":"New Layout!","dateModified":"2021-11-14T00:00:00-05:00","datePublished":"2021-11-14T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/GRPH/2021/11/14/new-layout!.html"},"description":"Over the last couple days I’ve been kind of taking a break from programming the Bela in order to focus my attention on this blog. Despite aiming for a lightweight website, I made a few compromises by deciding to use javascript and webfonts for the sake of style. After testing the website on an old netbook however, I noticed that even having a minimal amount of scripting was a bit too much. On top of that, further testing showed that the typefaces imported by Google fonts accounted for the a majority of my sites digital weight.","url":"http://0.0.0.0:4000/GRPH/2021/11/14/new-layout!.html","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     </head>
@@ -56,45 +66,36 @@
       <div class="content">
         <h1>New Layout!</h1>
 
-<div class="body"><p>Over the past three or so days, I’ve been kind of taking a break from programming the Bela in order to focus my attention on this blog. Despite aiming for a lightweight website, I made a few compromises by deciding to use javascript for a couple things within my previous iteration. After testing the website on an <a href="https://www.cnet.com/products/acer-aspire-one-d250/specs/">old netbook</a> however, I noticed that even having a minimal amount of scripting was a bit too much. Thus I decided to try and re-design what I had to work without the javascript elements. One thing led to another and somehow I ended up with a whole new layout.</p>
+<div class="body"><p>Over the last couple days I’ve been kind of taking a break from programming the Bela in order to focus my attention on this blog. Despite aiming for a lightweight website, I made a few compromises by deciding to use javascript and webfonts for the sake of style. After testing the website on an <a href="https://www.cnet.com/products/acer-aspire-one-d250/specs/">old netbook</a> however, I noticed that even having a minimal amount of scripting was a bit too much. On top of that, further testing showed that the typefaces imported by Google fonts accounted for the a majority of my sites digital weight.</p>
 
 <p><img src="/GRPH/assets/images/content/3screens.jpg" alt="3 screens lol" /></p>
 
 <h1 id="issues-with-the-old-layout">Issues with the Old Layout</h1>
 
-<p>Prior to the re-design, one of the things I was using javascript for was to show and hide my menu items. If you’re interested in how that works, the source code for the previous version of the site can be found <a href="https://github.com/cheesoup/GRPH/tree/bf5ac20a3080064854d65529b38d4fbd6abc8bad">here</a> (thank God for git). I’ve highlighted a portion of the sliding menu script below.</p>
+<p>Prior to the re-design, the main thing I was using JS for was to show and hide my menu items. If you’re interested in how that works, the source code for the previous version of the site can be found <a href="https://github.com/cheesoup/GRPH/tree/bf5ac20a3080064854d65529b38d4fbd6abc8bad">here</a> (thank God for git). The unfortunate thing with CSS and JS animations however is that they’re pretty CPU intensive. Whenever I would open the menu on the netbook, the fans would whirl and the CPU usage would shoot up to 97%.</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">toggle</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-<span class="kd">var</span> <span class="nx">size</span><span class="p">;</span>
+<p>Other than the menu, I also implemented some JS for placing arbitrary text into someone’s copy and paste clipboard. I was mainly using to create hyperlinks which would give the user the URL to the RSS feed. Though the script does work pretty well, if JS is disabled for whatever reason it is impossible to access the RSS. Also I feel like using JS in this way was sort of lazy.</p>
 
-<span class="kd">function</span> <span class="nx">opened</span><span class="p">()</span> <span class="p">{</span>
-  <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">nav</span><span class="dl">"</span><span class="p">).</span><span class="nx">style</span><span class="p">.</span><span class="nx">opacity</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">100</span><span class="dl">"</span><span class="p">;</span>
-  <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">nav</span><span class="dl">"</span><span class="p">).</span><span class="nx">style</span><span class="p">.</span><span class="nx">margin</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">var(--side_navOpen)</span><span class="dl">"</span><span class="p">;</span>
-  <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">content</span><span class="dl">"</span><span class="p">).</span><span class="nx">style</span><span class="p">.</span><span class="nx">margin</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">var(--content_navOpen)</span><span class="dl">"</span><span class="p">;</span>
-  <span class="nx">toggle</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-<span class="p">}</span>
+<p><img src="/GRPH/assets/images/content/blog_size_0.png" alt="webfonts suk" /></p>
 
-<span class="kd">function</span> <span class="nx">closed</span><span class="p">()</span> <span class="p">{</span>
-  <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">nav</span><span class="dl">"</span><span class="p">).</span><span class="nx">style</span><span class="p">.</span><span class="nx">opacity</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">;</span>
-  <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">nav</span><span class="dl">"</span><span class="p">).</span><span class="nx">style</span><span class="p">.</span><span class="nx">margin</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">var(--side_navClose)</span><span class="dl">"</span><span class="p">;</span>
-  <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">content</span><span class="dl">"</span><span class="p">).</span><span class="nx">style</span><span class="p">.</span><span class="nx">margin</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">var(--content_navClose)</span><span class="dl">"</span><span class="p">;</span>
-  <span class="nx">toggle</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-<span class="p">}</span></code></pre></figure>
-
-<p>I wanted to highlight the above because its pretty much the core of my implementation. The only thing this scripts doing is toggling between two CSS states. I think the issue here was that for some reason, I kind of failed to realize how heavy CSS transitions are. I kind of figured, they were safe to use due to how long they’ve been around. By clicking the menu button however, my old netbook would instantly shoot up to 97% CPU usage.</p>
-
-<p>Another thing I was using javascript for was to create hyperlinks which would place URLs in your clipboard. This was used for the RSS option in the navigation bar in order to have users avoid seeing a huge glob on unformatted XML when they clicked it. Unforunately, the idea was wonky idea at best. Firstly, not every browser supports letting javascript edit a user’s clipboard. Secondly, it was unintuitive.</p>
+<p>After getting rid of all the javascript, I found this <a href="https://tools.pingdom.com/">online tool</a> for measuring how much data a webpage requests whenever it is loaded. As the results above show, webfonts had previously accounted for over 50% of the site’s bandwidth per visit which for me is obviously not cool. To remedy this, I stuck to <a href="https://www.cssfontstack.com/">web safe fonts</a>.</p>
 
 <h1 id="on-to-the-new">On to the New</h1>
 
-<p>Other than getting rid of javascript, I had a couple goals in mind when working on the redesign. I’ll continue writing this later though because it’s late ):</p>
+<p><img src="/GRPH/assets/images/content/blog_size_1.png" alt="my sites p cool" /></p>
+
+<p>I’m pretty happy about is how small this website is. I’ve managed to get the about me page below 20kbs! I think that’s pretty impressive. There are actually still a few things I would like to implement (the main thing being a pure CSS lightbox for photos), but I think that’s a project for another day.</p>
+
+<p>Other than optimization, I had a couple goals in mind when working on the re-design. I have a process book coming up for Workshop and I figured starting here would be a good place for coming up with design ideas for the final printed version. I guess visually, I’m really trying to pull ideas from WEB 1.0. Part of me is nostalgic for the hours I would spend listening to the midi re-interpretations of Koji Kondo’s Dire Dire Docks or Alice Deejay’s Better Off Alone on Geocities.</p>
+
+<p><img src="/GRPH/assets/images/splash.gif" alt="jam crow" /></p>
+
+<p>If you haven’t noticed, I’ve come up with a little mascot for this project. You can see them up in the top corner! They don’t quite have a name yet, but they’re my buddy and we’re gonna make synths together. They’re based off a friend of mine from Calgary who makes some pretty rad tunes and actually isn’t a crow (their last name just sounds like it).</p>
 </div>
 
 <div class="footer">Sun, Nov 14, 21 | Tags:
   
     <a href="/GRPH/tags#blog-stuff">Blog Stuff</a>
-  
-    <a href="/GRPH/tags#javascript">JavaScript</a>
   
 </div>
 

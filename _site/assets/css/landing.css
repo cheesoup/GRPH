@@ -58,9 +58,9 @@ div.content ul li {
 }
 
 div.footer {
-  text-align: center;
   font-family: var(--body_stack);
   max-width: var(--wrap_maxWidth);
+  text-align: center;
   margin: 15px auto;
   font-size: 12px;
 }

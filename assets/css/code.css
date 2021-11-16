@@ -1,15 +1,20 @@
 /* CODE TAGS */
 
 /*
-Based on Twilight Dark Colour Scheme
+Based on Muse Scheme
 from Terminal.sexy
 */
 
-.content .highlight, .content .highlighter-rouge {
-    font-family: courier, monospace;
-    background-color: #000000;
+.content .highlight pre code, .content .highlighter-rouge {
+    font-family: "Consolas", "Lucida Console", "Monaco", "Andale Mono", "Courier New", courier, monospace;
     color: #ffffff;
+    font-size: 14px;
     padding: 1px 2px;
+}
+
+
+.content .highlight, .content .highlighter-rouge {
+  background-color: #000000;
 }
 
 .content .highlight {
@@ -20,8 +25,7 @@ from Terminal.sexy
 }
 
 .highlight pre {
-  margin: 5px 0 0 5px;
-  padding: 0;
+  line-height: 18px;
 }
 
 .highlight table.rouge-table tbody tr td pre.lineno {
@@ -32,71 +36,76 @@ from Terminal.sexy
 
 /* slash comments */
 .content .highlight .c1, .content .highlight .cm {
-  color: #86817e;
+  color: #969896;
 }
 
 /* data type */
-.content .highlight .kt {
-  font-weight: bold;
-  color: #fdb3b2;
+.content .highlight .kt, .content .highlight .kd {
+  font-weight: bolder;
+  color: #b294bb;
 }
 
 /* boolean */
-.content .highlight .nb {
-  color: #68778c;
+.content .highlight .nb, .content .highlight .kc {
+  color: #81a2be;
 }
 
 /* numeric values & strings */
 .content .highlight .mf, .content .highlight .mi, .content .highlight .s  {
-  color: #a63a3a;
+  color: #f0c674;
 }
 
 /* escape characters */
 .content .highlight .se {
-  color: #6d878d;
+  color: #cc6666;
 }
 
 /* data keyword */
 .content .highlight .k {
-  font-weight: bolder;
-  color: #688c7d;
+font-weight: bolder;
+  color: #8abeb7;
 }
 
-/*
-! special
-*.foreground:   #ababab
+/* Wrapped in quotes */
+.content .highlight .d1, .content .highlight .s2 {
+  font-weight: bolder;
+  color: #b5bd68;
+}
+
+/*! special
+*.foreground:   #ffffff
 *.background:   #000000
-*.cursorColor:  #ababab
+*.cursorColor:  #ffffff
 
 ! black
-*.color0:       #000000
-*.color8:       #343434
+*.color0:       #2e3436
+*.color8:       #555753
 
 ! red
-*.color1:       #e92f2f
-*.color9:       #e92f2f
+*.color1:       #a31604
+*.color9:       #c60001
 
 ! green
-*.color2:       #0ed839
-*.color10:      #0ed839
+*.color2:       #447241
+*.color10:      #27a343
 
 ! yellow
-*.color3:       #dddd13
-*.color11:      #dddd13
+*.color3:       #c1951a
+*.color11:      #d5a30e
 
 ! blue
-*.color4:       #3b48e3
-*.color12:      #3b48e3
+*.color4:       #425387
+*.color12:      #4a5a8d
 
 ! magenta
-*.color5:       #f996e2
-*.color13:      #f996e2
+*.color5:       #965d98
+*.color13:      #893c8c
 
 ! cyan
-*.color6:       #23edda
-*.color14:      #23edda
+*.color6:       #06989a
+*.color14:      #12bccb
 
 ! white
-*.color7:       #ababab
-*.color15:      #f9f9f9
+*.color7:       #d3d7cf
+*.color15:      #eeeeec
 */

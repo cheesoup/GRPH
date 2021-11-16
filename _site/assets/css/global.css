@@ -1,5 +1,5 @@
 :root {
-  --wrap_maxWidth: 960px;
+  --wrap_maxWidth: 800px;
   --body_stack: "Trebuchet MS", Verdana, Arial, sans-serif;
   --h1_stack: "Monaco", "Andale Mono", "Consolas", "Lucida Console", "Courier New", Courier, monospace;
 }

@@ -27,7 +27,7 @@
     color: #FFF;
   }
 
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 860px) {
   div.wrap {
     padding: 25px;
     margin: 0 auto;
@@ -54,8 +54,9 @@ h1 a:hover {
 }
 
 hr {
-  border-top: none;
-  border-bottom: 1px dotted #000;
+  border: 1px 0 0 0;
+  border-color: 1px #000;
+  border-style: dotted;
 }
 
 div.header {
@@ -63,10 +64,9 @@ div.header {
 }
 
 div.footer {
-  margin-top: 15px;
+  margin: 15px auto;
   text-align: center;
   font-size: 12px;
-  width: var(--wrap_maxWidth);
 }
 
 div.footer a {
@@ -87,6 +87,7 @@ a.logo, a.logo:hover {
   width: auto;
   border: 0;
   background: transparent;
+  color: transparent;
 }
 
 /* NAVIGATION CSS */
@@ -96,27 +97,24 @@ nav {
 }
 
 nav a {
-  font-size: 12px;
+  font-size: 16px;
   text-decoration: none;
   color: #000;
   background-color: #FFF;
   box-shadow: 5px 5px #888888;
   border: 1px #000 solid;
   padding: 5px;
+  margin: 0 2px;
   position: relative;
 }
 
 nav a:hover, nav a:active{
-  left: 2px;
-  top: 2px;
+  left: 3px;
+  top: 3px;
   box-shadow: 3px 3px #888888;
 }
 
-nav a:before {
-  content: "/";
-}
-
-/* POST CSS */
+/* Body CSS */
 div.content {
   line-height: 24px;
   background-color: #fff;
@@ -126,7 +124,7 @@ div.content {
   border: 1px #000 solid;
 }
 
-@media only screen and (max-width: 1023px) {
+@media only screen and (max-width: 860px) {
   div.content {
     border-left: 0;
     border-right: 0;
@@ -160,77 +158,4 @@ div.content img {
 
 div.content ul {
   list-style-type: square;
-}
-
-div.content ul.posts, div.content ul.tags {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-div.content ul.posts li {
-  margin-bottom: 10px;
-  border-bottom: 1px #000 dotted;
-}
-
-div.content p {
-  margin: 5px 10px 15px;
-}
-
-div.content .nav {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-}
-
-div.content .nav .next {
-  text-align: right;
-}
-
-div.content .nav .up {
-  text-align: center;
-}
-
-/*
-YOUTUBE INCLUDE css
-https://github.com/nathancy/jekyll-embed-video#responsive-videos
-*/
-
-div.content .embed-container {
-  position: relative;
-  padding-bottom: 56.25%;
-  height: 0;
-  overflow: hidden;
-  max-width: 100%;
-  margin-bottom: 15px;
-}
-
-div.content .embed-container iframe, .embed-container object, .embed-container embed {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-/*
-Tags Page CSS
-*/
-
-div.content .taglist {
-  border-bottom: 1px #000 dotted;
-  padding-bottom: 20px;
-}
-
-div.content .postlist {
-  margin-top: 20px;
-}
-
-div.content .postlist ul li {
-  line-height: 20px;
-  margin-top: 15px;
-}
-
-div.content small.meta {
-  display: block;
-  margin-top: -5px;
 }

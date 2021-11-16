@@ -8,6 +8,15 @@
       <link rel="stylesheet" type="text/css" href="{{ "/assets/css/landing.css" | relative_url }}">
       <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ "feed.xml" | relative_url }}">
       <link rel="shortcut icon" type="image/png" href="{{ "icon.ico" | relative_url }}">
+      {% if page.custom_css %}
+        <!-- Include custom CSS per page -->
+        <!-- Use element custom_css -->
+        <!-- https://jreel.github.io/per-page-custom-css-in-jekyll/ -->
+        {% for stylesheet in page.custom_css %}
+        <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/{{ stylesheet }}.css">
+        {% endfor %}
+      {% endif %}
+
       {% seo %}
     </head>
     <body>
@@ -25,7 +34,6 @@
       </div>
       <div class="footer">
         <a href="http://www.wtfpl.net/txt/copying/">WTFPL</a> 2021-2022 Chris Carin</br>
-        <a href="#">Back to top</a>
       </div>
       <!-- CONTENT END -->
     </body>

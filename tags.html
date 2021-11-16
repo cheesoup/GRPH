@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Tags
+custom_css: tags
 ---
 
 <h1>Index</h1>
@@ -20,7 +21,7 @@ https://superdevresources.com/tag-cloud-jekyll/
 Stolen from here:
 https://codinfox.github.io/dev/2015/03/06/use-tags-and-categories-in-your-jekyll-based-github-pages/
 -->
-
+<hr/>
 {% assign rawtags = "" %}
 {% for post in site.posts %}
 	{% assign ttags = post.tags | join:'|' | append:'|' %}
@@ -46,16 +47,12 @@ https://codinfox.github.io/dev/2015/03/06/use-tags-and-categories-in-your-jekyll
     {% for post in site.posts %}
       {% if post.tags contains tag %}
       <li>
-        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-        <small class="meta">
-            Posted: {{ post.date | date_to_string }} |
-            Tags:
-            {% for tag in post.tags %}
-              <a class="tag" href="#{{ tag | slugify }}">{{ tag }}</a>
-            {% endfor %}
-        </small>
+        <span class="meta"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></span>
+        <span class="meta">Tags: {% for tag in post.tags %}<a class="tag" href="#{{ tag | slugify }}">{{ tag }}</a> {% endfor %}</span>
+        <span class="meta">Posted: {{ post.date | date_to_string }}</span>
       </li>
       {% endif %}
     {% endfor %}
+    <small class="meta"><a href="#">Back to top</a></small>
   </ul>
 {% endfor %}
