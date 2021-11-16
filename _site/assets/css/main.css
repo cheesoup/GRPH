@@ -17,13 +17,12 @@ body {
 
 a {
   cursor: pointer;
-  color: #3F3F3F;
-  text-decoration: none;
-  border-bottom: 1px #000 solid;
+  color: #404040;
 }
 
 a:hover {
-  background-color: #808080;
+  text-decoration: none;
+  background-color: #404040;
   color: #FFF;
 }
 
@@ -219,4 +218,9 @@ div.content .postlist {
 div.content .postlist ul li {
   line-height: 20px;
   margin-top: 15px;
+}
+
+div.content small.meta {
+  display: block;
+  margin-top: -2px;
 }

@@ -46,13 +46,15 @@ https://codinfox.github.io/dev/2015/03/06/use-tags-and-categories-in-your-jekyll
     {% for post in site.posts %}
       {% if post.tags contains tag %}
       <li>
-        <a href="{{ post.url | relative_url }}">{{ post.title }}</a><br/>
-        <small>
-            {{ post.date | date_to_string }}
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        <small class="meta">
+            Posted: {{ post.date | date_to_string }} |
+            Tags:
             {% for tag in post.tags %}
               <a class="tag" href="#{{ tag | slugify }}">{{ tag }}</a>
             {% endfor %}
         </small>
+      </li>
       {% endif %}
     {% endfor %}
   </ul>

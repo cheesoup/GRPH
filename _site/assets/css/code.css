@@ -5,19 +5,18 @@ Based on Twilight Dark Colour Scheme
 from Terminal.sexy
 */
 
-.content .highlighter-rouge {
-  padding: 4px;
+.content .highlight, .content .highlighter-rouge {
+    font-family: courier, monospace;
+    background-color: #000000;
+    color: #ffffff;
+    padding: 1px 2px;
 }
 
 .content .highlight {
-  max-width: 100%;
+  max-width:100%;
   margin: 10px;
   padding: 10px;
   overflow-x: scroll;
-}
-
-.content .highlight, .content .highlighter-rouge {
-  background-color: #202020;
 }
 
 .highlight pre {
@@ -25,9 +24,10 @@ from Terminal.sexy
   padding: 0;
 }
 
-.content .highlight pre code, .content .highlighter-rouge {
-    font-family: "Monaco", "Andale Mono", "Consolas", "Lucida Console", "Courier New", monospace;
-    color: #ffffff;
+.highlight table.rouge-table tbody tr td pre.lineno {
+  margin-left: 0;
+  padding-right: 10px;
+  border-right: 1px dotted #FFF;
 }
 
 /* slash comments */
@@ -37,7 +37,7 @@ from Terminal.sexy
 
 /* data type */
 .content .highlight .kt {
-  font-weight: 300;
+  font-weight: bold;
   color: #fdb3b2;
 }
 

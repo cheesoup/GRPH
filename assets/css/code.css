@@ -9,7 +9,7 @@ from Terminal.sexy
     font-family: courier, monospace;
     background-color: #000000;
     color: #ffffff;
-    padding: 2px;
+    padding: 1px 2px;
 }
 
 .content .highlight {
@@ -37,7 +37,7 @@ from Terminal.sexy
 
 /* data type */
 .content .highlight .kt {
-  font-weight: 300;
+  font-weight: bold;
   color: #fdb3b2;
 }
 
