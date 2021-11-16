@@ -8,7 +8,7 @@ Over the past three or so days, I've been kind of taking a break from programmin
 
 ![3 screens lol]({{ "/assets/images/content/3screens.jpg" | relative_url }})
 
-# issues with the old site
+# Issues with the Old Layout
 
 Prior to the re-design, one of the things I was using javascript for was to show and hide my menu items. If you're interested in how that works, the source code for the previous version of the site can be found [here](https://github.com/cheesoup/GRPH/tree/bf5ac20a3080064854d65529b38d4fbd6abc8bad) (thank God for git). I've highlighted a portion of the sliding menu script below.
 
@@ -36,6 +36,6 @@ I wanted to highlight the above because its pretty much the core of my implement
 
 Another thing I was using javascript for was to create hyperlinks which would place URLs in your clipboard. This was used for the RSS option in the navigation bar in order to have users avoid seeing a huge glob on unformatted XML when they clicked it. Unforunately, the idea was wonky idea at best. Firstly, not every browser supports letting javascript edit a user's clipboard. Secondly, it was unintuitive.
 
-# on to the new
+# On to the New
 
 Other than getting rid of javascript, I had a couple goals in mind when working on the redesign. I'll continue writing this later though because it's late ):

@@ -5,14 +5,26 @@ Based on Twilight Dark Colour Scheme
 from Terminal.sexy
 */
 
+.content .highlight, .content .highlighter-rouge {
+    font-family: "Monaco", "Andale Mono", "Consolas", "Lucida Console", "Courier New", monospace;
+    background-color: #202020;
+    color: #ffffff;
+}
+
+
 .content .highlight {
-  font-family: 'IBM Plex Mono', monospace;
+  padding: 2px;
+}
+
+.content .highlighter-rouge {
+  padding: 4px;
+}
+
+.content .highlight {
   max-width:100%;
   margin: 10px;
   padding: 10px;
   overflow-x: scroll;
-  background-color: #000000;
-  color: #ffffff;
 }
 
 .highlight pre {

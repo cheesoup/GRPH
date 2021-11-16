@@ -1,4 +1,5 @@
 ---
+title: FFT_grainspec.pd
 layout: post
 tag: [PureData, Audio Programming]
 date: Oct. 14, 2021

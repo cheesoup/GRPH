@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;500&family=Source+Code+Pro:wght@400;700&family=VT323&display=swap');
-
 /* PRIMARY CSS FILE */
 
 :root {
@@ -11,8 +9,7 @@ html {
 }
 
 body {
-  font-family: 'IBM Plex Mono', monospace;
-  font-weight: 300;
+  font-family: Verdana, Arial, sans-serif;
   overflow-x: hidden;
   background-color: #D0D0D0;
   background-attachment: fixed;
@@ -21,13 +18,14 @@ body {
 
 a {
   cursor: pointer;
-  color: #505050
+  color: #3F3F3F;
+  text-decoration: none;
+  border-bottom: 1px #000 solid;
 }
 
 a:hover {
   background-color: #808080;
   color: #FFF;
-  text-decoration: none;
 }
 
 div.wrap {
@@ -38,17 +36,16 @@ div.wrap {
 }
 
 h1 {
-  display: block;
-  font-family: 'VT323', monospace;
-  font-size: 36px;
-  margin: 0 0 10px;
-  text-transform: lowercase;
+  font-family: "Monaco", "Andale Mono", "Consolas", "Lucida Console", "Courier New", monospace;
+  font-size: 24px;
 }
 
 h1 a, h1 a:hover {
   background-color: transparent;
+  letter-spacing: 1px;
   color: #000;
   text-decoration: none;
+  border: 0;
 }
 
 h1 a:hover {
@@ -114,15 +111,30 @@ nav a:before {
 /* POST CSS */
 
 div.content {
-  font-size: 13px;
+  line-height: 24px;
+  font-size: 12px;
   background-color: #fff;
   box-shadow: 10px 10px #888888;
   padding: 25px 50px 50px;
   border: 1px #000 solid;
 }
 
+div.content .body {
+  border-bottom: 1px #000 dotted;
+  margin: 10px 0;
+}
+
+div.content .footer {
+  font-size: 10px;
+  text-align: left;
+  margin: 10px 0;
+}
+
 div.content h1 {
+  letter-spacing: 1.5px;
   line-height: 36px;
+  padding: 0;
+  margin: 0;
 }
 
 div.content img {
@@ -134,44 +146,21 @@ div.content img {
 
 div.content ul {
   list-style-type: square;
-  line-height: 24px;
 }
 
-div.content ol {
-  line-height: 24px;
-}
-
-div.content ul.posts {
+div.content ul.posts, div.content ul.tags {
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
 
-div.content ul.tags {
-  list-style-type: none;
-  padding: 0;
-  margin-left: 5px;
-}
 div.content ul.posts li {
-  padding-bottom: 20px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   border-bottom: 1px #000 dotted;
 }
 
 div.content p {
-  line-height: 20px;
-  margin-bottom: 20px;
-}
-
-div.content .body {
-  border-bottom: 1px #000 dotted;
-  margin-bottom: 10px;
-}
-
-div.content .footer {
-  text-align: left;
-  font-size: 12px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 div.content .nav {
