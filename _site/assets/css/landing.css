@@ -1,49 +1,75 @@
 @import url("global.css");
 
+html {
+    overflow-y: scroll;
+}
+
 body {
+  background-color: #D0D0D0;
+}
+
+div.content {
   background-color: #FFF;
-}
-
-.content {
-  margin: 20vh auto;
+  margin: 20vh auto 0;
   text-align: center;
-  width: 480px;
+  padding: 50px;
+  max-width: 480px;
+  box-shadow: 10px 10px #888888;
+  border: 1px #000 solid;
 }
 
-h1 {
-    font-family: var(--h1_stack);
-    font-size: 48px;
-    line-height: 36px;
-    margin: 10px 0 30px;
+div.content h1 {
+  font-family: var(--h1_stack);
+  font-size: 48px;
+  line-height: 36px;
+  margin: 10px 0 30px;
 }
 
-a {
+div.content a {
   position: relative;
+  text-decoration: none;
+  color: #000;
+  background-color: #FFF;
+  box-shadow: 5px 5px #888888;
+  border: 1px #000 solid;
   padding: 5px;
   margin: 5px;
-  color: #000;
-  text-decoration: none;
-  border: 1px #000 solid;
-  box-shadow: 5px 5px #888888;
 }
 
-a:hover {
-  top: 5px;
-  left: 5px;
+div.content a:hover {
+  top: 3px;
+  left: 3px;
   color: #FFF;
-  background-color: #808080;
-  box-shadow: 0 0 #888888;
+  box-shadow: 2px 2px #888888;
+  background-color: #404040;
 }
 
-ul {
+div.content ul {
   list-style: none;
   font-family: var(--body_stack);
   font-size: 16px;
-  margin: 10px;
+  margin: 0;
   padding: 0;
 }
 
-ul li {
+div.content ul li {
   display: inline;
   margin: 0;
+}
+
+div.footer {
+  text-align: center;
+  font-family: var(--body_stack);
+  max-width: var(--wrap_maxWidth);
+  margin: 15px auto;
+  font-size: 12px;
+}
+
+div.footer a {
+  color: #000;
+}
+
+div.footer a:hover {
+  color: #FFF;
+  background-color: #404040;
 }
