@@ -1,7 +1,7 @@
 ---
 title: About
 layout: default
-date: Nov. 15th, 2021
+date: Nov. 16th, 2021
 ---
 
 # About Chrissy
@@ -22,10 +22,8 @@ I like computers and synthesizers and stuff I guess.
 
 # About this Website
 
+This website was built using the [Jekyll](https://jekyllrb.com/) engine. It was designed with the intention of being [minimal in file size](https://tools.pingdom.com/#5f49ba1d42400000) while visually trying to borrow from WEB1.0 aesthetics. The little dude at the top was illustrated using [Aseprite](https://www.aseprite.org/). I don't really have a name for them yet. They're based off a friend of mine from Calgary who makes some pretty rad music. Their last name sounds like crow, so I drew a crow.
+
 I'm planning to use this blog to keep track of notes, prototypes, ideas, etc. Things I plan on posting include: PureData/MaxMSP patches, random Bela and C++ stuff, badly explained DSP math, and just general nonsense about design, sound, and music. Maybe I'll post some p5.js or processing stuff if it's relevant too.
-
-This site was built using [Jekyll](https://jekyllrb.com/). The layout was designed by myself. It primarily focuses on
-
-The little dude at the top was created in [Aseprite](https://www.aseprite.org/). I don't really have a name for him yet. They're based off a friend of mine from Calgary who makes some pretty rad music.
 
 <div class="footer">Last updated: {{ page.date }}</div>

@@ -3,34 +3,37 @@
 
 /* PRIMARY CSS FILE */
 
-html {
-  overflow-y: scroll;
-}
+/* Screen > 600px CSS */
+  html {
+    overflow-y: scroll;
+  }
 
-body {
-  font-family: var(--body_stack);
-  overflow-x: hidden;
-  background-color: #D0D0D0;
-  background-attachment: fixed;
-  margin: 0;
-}
+  body {
+    font-family: var(--body_stack);
+    overflow-x: hidden;
+    background-color: #D0D0D0;
+    background-attachment: fixed;
+    margin: 0;
+  }
 
-a {
-  cursor: pointer;
-  color: #404040;
-}
+  a {
+    cursor: pointer;
+    color: #404040;
+  }
 
-a:hover {
-  text-decoration: none;
-  background-color: #404040;
-  color: #FFF;
-}
+  a:hover {
+    text-decoration: none;
+    background-color: #404040;
+    color: #FFF;
+  }
 
-div.wrap {
-  padding: 25px;
-  margin: 0 auto;
-  width: 100vw;
-  max-width: var(--wrap_maxWidth);
+@media only screen and (min-width: 1024px) {
+  div.wrap {
+    padding: 25px;
+    margin: 0 auto;
+    width: 100vw;
+    max-width: var(--wrap_maxWidth);
+  }
 }
 
 h1 {
@@ -114,22 +117,29 @@ nav a:before {
 }
 
 /* POST CSS */
-
 div.content {
   line-height: 24px;
-  font-size: var(--body_size);
   background-color: #fff;
-  box-shadow: 10px 10px #888888;
   padding: 25px 50px 50px;
+  font-size: var(--body_sizePC);
+  box-shadow: 10px 10px #888888;
   border: 1px #000 solid;
 }
 
-div.content .body {
+@media only screen and (max-width: 1023px) {
+  div.content {
+    border-left: 0;
+    border-right: 0;
+    box-shadow: 0px 10px #888888;
+  }
+}
+
+div.content div.body {
   border-bottom: 1px #000 dotted;
 }
 
-div.content .footer {
-  font-size: 10px;
+div.content div.footer {
+  font-size: 12px;
   text-align: left;
   margin: 10px 0;
 }
@@ -222,5 +232,5 @@ div.content .postlist ul li {
 
 div.content small.meta {
   display: block;
-  margin-top: -2px;
+  margin-top: -5px;
 }
