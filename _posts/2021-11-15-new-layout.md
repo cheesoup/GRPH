@@ -1,4 +1,5 @@
 ---
+title: New Layout!
 layout: post
 tag: [Blog Stuff]
 date: Nov. 14, 2021
@@ -20,9 +21,9 @@ After getting rid of all the javascript, I found this [online tool](https://tool
 
 # On to the New
 
-![my sites p cool]({{ "/assets/images/content/blog_size_1.png" | relative_url }})
-
 I'm pretty happy about is how small this website is. I've managed to get the about me page below 20kbs! I think that's pretty impressive. There are actually still a few things I would like to implement (the main thing being a pure CSS lightbox for photos), but I think that's a project for another day.
+
+![my sites p cool]({{ "/assets/images/content/blog_size_1.png" | relative_url }})
 
 Other than optimization, I had a couple goals in mind when working on the re-design. I have a process book coming up for Workshop and I figured starting here would be a good place for coming up with design ideas for the final printed version. I guess visually, I'm really trying to pull ideas from WEB 1.0. Part of me is nostalgic for the hours I would spend listening to the midi re-interpretations of Koji Kondo's Dire Dire Docks or Alice Deejay's Better Off Alone on Geocities.
 
