@@ -1,11 +1,10 @@
 ---
 layout: default
-custom_css: post
 ---
 
 <h1>{{ page.title }}</h1>
 
-<div class="body">{{ content }}</div>
+{{ content }}
 
 <div class="footer">{{ page.date | date: "%a, %b %d, %y" }} | Tags:
   {% for tag in page.tags %}
@@ -13,22 +12,16 @@ custom_css: post
   {% endfor %}
 </div>
 
-<div class="nav">
-  <div class="prev">
-    {% if page.previous.url %}
-      <a href="{{ page.previous.url | relative_url }}">&laquo; {{page.previous.title}}</a>
-      {% else %}
-      <a href="{{ page.url | relative_url }}">&laquo; {{page.title}}</a>
-    {% endif %}
-  </div>
-  <div class="up">
-    <a href="{{ 'posts' | relative_url }}">posts</a>
-  </div>
-  <div class="next">
-    {% if page.next.url %}
-      <a class="next" href="{{ page.next.url | relative_url }}">{{page.next.title}} &raquo;</a>
-      {% else %}
-      <a href="{{ page.url | relative_url }}">{{page.title}} &raquo;</a>
-    {% endif %}
-  </div>
-</div>
+<nav>
+  {% if page.previous.url %}
+    <a class="prev" href="{{ page.previous.url | relative_url }}">&laquo; {{page.previous.title}}</a>
+  {% else %}
+    <a class="prev" href="{{ page.url | relative_url }}">&laquo; {{page.title}}</a>
+  {% endif %}
+  <a class="up" href="{{ 'posts' | relative_url }}">Back to posts</a>
+  {% if page.next.url %}
+    <a class="next" href="{{ page.next.url | relative_url }}">{{page.next.title}} &raquo;</a>
+  {% else %}
+    <a class="next" href="{{ page.url | relative_url }}">{{page.title}} &raquo;</a>
+  {% endif %}
+</nav>

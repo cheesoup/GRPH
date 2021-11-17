@@ -1,26 +1,39 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://0.0.0.0:4000/GRPH/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://0.0.0.0:4000/GRPH/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/GRPH/" rel="alternate" type="text/html" /><updated>2021-11-16T06:33:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/feed.xml</id><title type="html">thesis? idk?</title><subtitle>a blog for 4th year workshop at OCADU</subtitle><author><name>Chris Carin</name></author><entry><title type="html">Random Thoughts on Why I’m Even Making a Synth</title><link href="http://0.0.0.0:4000/GRPH/2021/11/16/why-im-making-a-synth.html" rel="alternate" type="text/html" title="Random Thoughts on Why I’m Even Making a Synth" /><published>2021-11-16T00:00:00-05:00</published><updated>2021-11-16T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/2021/11/16/why-im-making-a-synth</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/2021/11/16/why-im-making-a-synth.html">&lt;p&gt;When it comes to actually writing music, I actually think I’m pretty awful. I spend so much time obsessing over tiny details and always have a hard time seeing the big picture of what I’m trying to do. Honestly, the reason why I’ve been so upset with my process of creation is due to this indecisiveness to move on from minute details. On top of that, I’m not the most mechanically gifted person in the world. Much like how I struggle with brushes and inks, I can barely play inversions on the piano.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://0.0.0.0:4000/GRPH/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://0.0.0.0:4000/GRPH/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/GRPH/" rel="alternate" type="text/html" /><updated>2021-11-17T05:05:56-05:00</updated><id>http://0.0.0.0:4000/GRPH/feed.xml</id><title type="html">thesis? idk?</title><subtitle>a blog for 4th year workshop at OCADU</subtitle><author><name>Chris Carin</name></author><entry><title type="html">Why I’m Even Making a Synth</title><link href="http://0.0.0.0:4000/GRPH/2021/11/16/why-im-making-a-synth.html" rel="alternate" type="text/html" title="Why I’m Even Making a Synth" /><published>2021-11-16T00:00:00-05:00</published><updated>2021-11-16T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/2021/11/16/why-im-making-a-synth</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/2021/11/16/why-im-making-a-synth.html">&lt;p&gt;When it comes to actually writing music, I actually think I’m pretty awful. I spend so much time obsessing over tiny details and always have a hard time seeing the big picture of what I’m trying to do. Honestly, the reason why I’ve been so upset with my process of creation is due to this indecisiveness to move on from minute details. On top of that, I’m not the most mechanically gifted person in the world. Much like how I struggle with brushes and inks, I can barely play inversions on the piano.&lt;/p&gt;
 
 &lt;p&gt;When it came to design however, I always thought what gave me an edge is my ability to pull magic out of computers. While there was a lot I needed to learn at OCAD to feel even remotely competent with what I was doing, I always felt like I had this talent as a crux. I call it magic because I really think computers are magical. Here is this box. You can put whatever data in it you can think of and with just a little bit of a math you can shape that data into (&lt;a href=&quot;https://www.youtube.com/watch?v=macM_MtS_w4&quot;&gt;almost&lt;/a&gt;) any virtual form you want. If that’s not magic, I don’t know what is. I think that’s what attracted me to electronic music in the first place. I always wanted to make music. I just never had the patience to figure out how to physically play something.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/GRPH/assets/images/content/sonic-pi.png&quot; alt=&quot;SonicPi&quot; /&gt;&lt;/p&gt;
+&lt;!-- Include for captioned images --&gt;
+
+&lt;figure class=&quot;embed&quot;&gt;
+  &lt;img src=&quot;/GRPH/assets/images//content/sonic-pi.png&quot; alt=&quot;Screenshot of Sonic Pi from Wikipedia&quot; /&gt;
+  &lt;figcaption&gt;Screenshot of Sonic Pi from Wikipedia&lt;/figcaption&gt;
+&lt;/figure&gt;
 
 &lt;p&gt;I remember when I first started playing with sound, I was using this program called &lt;a href=&quot;https://sonic-pi.net/&quot;&gt;Sonic Pi&lt;/a&gt; to make beats while on commutes. In retrospect, Sonic Pi is amazing and I really oughta pick it up again. It’s basically a music sequencing environment based around live coding. At the time however, I wasn’t really interested in the idea of live performance. While sequncing in Sonic Pi was awesome, it felt a bit limiting to be stuck with same set off instruments. While the option existed to load up custom instruments made in &lt;a href=&quot;https://supercollider.github.io/&quot;&gt;SuperCollider&lt;/a&gt;, at the time I found SuperCollider was a little beyond me. After a couple weeks I moved on to PureData hoping for something simple to learn that gave me better control of timbre.&lt;/p&gt;
 
 &lt;p&gt;If anyone is to ever ask me what my favourite programming language is, my answer would probably be &lt;a href=&quot;https://puredata.info/&quot;&gt;PureData&lt;/a&gt;. Never in my life have I tried so hard to learn everything I could about a piece of software. When I first picked it up, I would spend weeks building simple samplers and shitty noise generators. I didn’t make any music out of it, but I felt like I was learning so much out of just playing around as awful as those sounds were. What amazed me was how sounds could be generated with such modularity. How everything and anything could be defined as a value and how that value can be generated in anyway you want.&lt;/p&gt;
 
-&lt;!-- Include Video Embedding --&gt;
+&lt;!-- Include for Video Embedding --&gt;
 &lt;!-- https://github.com/nathancy/jekyll-embed-video#responsive-videos --&gt;
 
-&lt;div class=&quot;embed-container&quot;&gt;
-  &lt;iframe src=&quot;https://player.vimeo.com/video/646396827&quot; width=&quot;500&quot; height=&quot;281&quot; frameborder=&quot;0&quot; webkitallowfullscreen=&quot;&quot; mozallowfullscreen=&quot;&quot; allowfullscreen=&quot;&quot;&gt;
-  &lt;/iframe&gt;
-&lt;/div&gt;
+&lt;figure class=&quot;embed&quot;&gt;
+  &lt;div class=&quot;vid&quot;&gt;
+    &lt;iframe src=&quot;https://player.vimeo.com/video/646396827&quot; width=&quot;500&quot; height=&quot;281&quot; frameborder=&quot;0&quot; webkitallowfullscreen=&quot;&quot; mozallowfullscreen=&quot;&quot; allowfullscreen=&quot;&quot;&gt;
+    &lt;/iframe&gt;
+  &lt;/div&gt;
+  &lt;figcaption&gt;A Pd track I made a couple months ago&lt;/figcaption&gt;
+&lt;/figure&gt;
 
 &lt;p&gt;Eventually I began dissecting other user patches to better understand how to build things like fancy oscillators and simple audio effects. This led me to start reading up and researching audio processing techniques. One particular resource I always mention that I found really useful is Miller Puckette’s &lt;a href=&quot;http://msp.ucsd.edu/techniques/v0.11/book-html/&quot;&gt;Theory and Techniques of Electronic Music&lt;/a&gt;. It features plenty of examples of various audio processing algorithms and is written by the guy who created Pd. I think part of me believed that by understanding these sound processes on a deeper level, I would unlock some sort of understanding of the kind of music I wanted to make. Obviously, this didn’t come true and I still have no idea what I’m doing. At multiple points however, I believed it enough to coax myself into attempting to build my own &lt;a href=&quot;https://en.wikipedia.org/wiki/Eurorack&quot;&gt;eurorack&lt;/a&gt;-style system for algorithmic music. Every time I tried though, my system would end up being overly complexed and too much of a hassle to play. On top of that, I often found Pd’s small selection of basic UI options to be quite limiting when trying to make something substantial.&lt;/p&gt;
 
 &lt;p&gt;Ultimately, my experience with Pd is kind of what drives me to make this electronic instrument for my workshop project. Though I still I don’t really know much of anything about music (I don’t even know much about computers tbh), I do know how to make sounds using software. I haven’t decided on how I want the this instrument to play or look like just yet, but I’m hoping by shifting my focus a bit to a single tangible thing I can at least come up with something interesting and fun to play.&lt;/p&gt;</content><author><name>Chris Carin</name></author><category term="Music" /><category term="PureData" /><summary type="html">When it comes to actually writing music, I actually think I’m pretty awful. I spend so much time obsessing over tiny details and always have a hard time seeing the big picture of what I’m trying to do. Honestly, the reason why I’ve been so upset with my process of creation is due to this indecisiveness to move on from minute details. On top of that, I’m not the most mechanically gifted person in the world. Much like how I struggle with brushes and inks, I can barely play inversions on the piano.</summary></entry><entry><title type="html">New Layout!</title><link href="http://0.0.0.0:4000/GRPH/2021/11/14/new-layout.html" rel="alternate" type="text/html" title="New Layout!" /><published>2021-11-14T00:00:00-05:00</published><updated>2021-11-14T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/2021/11/14/new-layout</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/2021/11/14/new-layout.html">&lt;p&gt;Over the last couple days I’ve been kind of taking a break from programming the Bela in order to focus my attention on this blog. Despite aiming for a lightweight website, I made a few compromises by deciding to use javascript and webfonts for the sake of style. After testing the website on an &lt;a href=&quot;https://www.cnet.com/products/acer-aspire-one-d250/specs/&quot;&gt;old netbook&lt;/a&gt; however, I noticed that even having a minimal amount of scripting was a bit too much. On top of that, further testing showed that the typefaces imported by Google fonts accounted for the a majority of my sites digital weight.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/GRPH/assets/images/content/3screens.jpg&quot; alt=&quot;3 screens lol&quot; /&gt;&lt;/p&gt;
+&lt;!-- Include for captioned images --&gt;
+
+&lt;figure class=&quot;embed&quot;&gt;
+  &lt;img src=&quot;/GRPH/assets/images//content/3screens.jpg&quot; alt=&quot;The gangs all here&quot; /&gt;
+  &lt;figcaption&gt;The gangs all here&lt;/figcaption&gt;
+&lt;/figure&gt;
 
 &lt;h1 id=&quot;issues-with-the-old-layout&quot;&gt;Issues with the Old Layout&lt;/h1&gt;
 
@@ -28,7 +41,12 @@
 
 &lt;p&gt;Other than the menu, I also implemented some JS for placing arbitrary text into someone’s copy and paste clipboard. I was mainly using to create hyperlinks which would give the user the URL to the RSS feed. Though the script does work pretty well, if JS is disabled for whatever reason it is impossible to access the RSS. Also I feel like using JS in this way was sort of lazy.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/GRPH/assets/images/content/blog_size_0.png&quot; alt=&quot;webfonts suk&quot; /&gt;&lt;/p&gt;
+&lt;!-- Include for captioned images --&gt;
+
+&lt;figure class=&quot;embed&quot;&gt;
+  &lt;img src=&quot;/GRPH/assets/images//content/blog_size_0.png&quot; alt=&quot;34.1kbs for webfonts&quot; /&gt;
+  &lt;figcaption&gt;34.1kbs for webfonts&lt;/figcaption&gt;
+&lt;/figure&gt;
 
 &lt;p&gt;After getting rid of all the javascript, I found this &lt;a href=&quot;https://tools.pingdom.com/&quot;&gt;online tool&lt;/a&gt; for measuring how much data a webpage requests whenever it is loaded. As the results above show, webfonts had previously accounted for over 50% of the site’s bandwidth per visit which for me is obviously not cool. To remedy this, I stuck to &lt;a href=&quot;https://www.cssfontstack.com/&quot;&gt;web safe fonts&lt;/a&gt;.&lt;/p&gt;
 
@@ -36,21 +54,29 @@
 
 &lt;p&gt;I’m pretty happy about is how small this website is. I’ve managed to get the about me page below 20kbs! I think that’s pretty impressive. There are actually still a few things I would like to implement (the main thing being a pure CSS lightbox for photos), but I think that’s a project for another day.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/GRPH/assets/images/content/blog_size_1.png&quot; alt=&quot;my sites p cool&quot; /&gt;&lt;/p&gt;
+&lt;!-- Include for captioned images --&gt;
+
+&lt;figure class=&quot;embed&quot;&gt;
+  &lt;img src=&quot;/GRPH/assets/images//content/blog_size_1.png&quot; alt=&quot;My sites pretty small now&quot; /&gt;
+  &lt;figcaption&gt;My sites pretty small now&lt;/figcaption&gt;
+&lt;/figure&gt;
 
 &lt;p&gt;Other than optimization, I had a couple goals in mind when working on the re-design. I have a process book coming up for Workshop and I figured starting here would be a good place for coming up with design ideas for the final printed version. I guess visually, I’m really trying to pull ideas from WEB 1.0. Part of me is nostalgic for the hours I would spend listening to the midi re-interpretations of Koji Kondo’s Dire Dire Docks or Alice Deejay’s Better Off Alone on Geocities.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/GRPH/assets/images/splash.gif&quot; alt=&quot;jam crow&quot; /&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/GRPH/assets/images/splash.gif&quot; alt=&quot;My buddy!&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;If you haven’t noticed, I’ve come up with a little mascot for this project. You can see them up in the top corner! They don’t quite have a name yet, but they’re my buddy and we’re gonna make synths together. They’re based off a friend of mine from Calgary who makes some pretty rad tunes and actually isn’t a crow (their last name just sounds like it).&lt;/p&gt;</content><author><name>Chris Carin</name></author><category term="Blog Stuff" /><summary type="html">Over the last couple days I’ve been kind of taking a break from programming the Bela in order to focus my attention on this blog. Despite aiming for a lightweight website, I made a few compromises by deciding to use javascript and webfonts for the sake of style. After testing the website on an old netbook however, I noticed that even having a minimal amount of scripting was a bit too much. On top of that, further testing showed that the typefaces imported by Google fonts accounted for the a majority of my sites digital weight.</summary></entry><entry><title type="html">Arbitrary Wavemorphing</title><link href="http://0.0.0.0:4000/GRPH/2021/10/30/arbitrary-wavemorphing.html" rel="alternate" type="text/html" title="Arbitrary Wavemorphing" /><published>2021-10-30T00:00:00-04:00</published><updated>2021-10-30T00:00:00-04:00</updated><id>http://0.0.0.0:4000/GRPH/2021/10/30/arbitrary-wavemorphing</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/2021/10/30/arbitrary-wavemorphing.html">&lt;p&gt;Most of my initial foray into C++ has been spent trying to adapt an oscillator I had implemented in PureData. It’s based on a sort of phase distortion algorithm by Scott “Acriel” Nordlund for PureData. It uses the trig identity &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;f(x) = arcsin(sin(f(x)))&lt;/code&gt; to morph between a sine wave and an arbitrary waveform of the same periodic length. Here’s a &lt;a href=&quot;https://www.desmos.com/calculator/b4ejbqju7m&quot;&gt;desmos graph&lt;/a&gt; of the algorithm. I’ve also included a video of the oscillator viewed through an oscilloscope below.&lt;/p&gt;
 
-&lt;!-- Include Video Embedding --&gt;
+&lt;!-- Include for Video Embedding --&gt;
 &lt;!-- https://github.com/nathancy/jekyll-embed-video#responsive-videos --&gt;
 
-&lt;div class=&quot;embed-container&quot;&gt;
-  &lt;iframe src=&quot;https://player.vimeo.com/video/640603019&quot; width=&quot;500&quot; height=&quot;281&quot; frameborder=&quot;0&quot; webkitallowfullscreen=&quot;&quot; mozallowfullscreen=&quot;&quot; allowfullscreen=&quot;&quot;&gt;
-  &lt;/iframe&gt;
-&lt;/div&gt;
+&lt;figure class=&quot;embed&quot;&gt;
+  &lt;div class=&quot;vid&quot;&gt;
+    &lt;iframe src=&quot;https://player.vimeo.com/video/640603019&quot; width=&quot;500&quot; height=&quot;281&quot; frameborder=&quot;0&quot; webkitallowfullscreen=&quot;&quot; mozallowfullscreen=&quot;&quot; allowfullscreen=&quot;&quot;&gt;
+    &lt;/iframe&gt;
+  &lt;/div&gt;
+  &lt;figcaption&gt;Demo of arbitrary wavemorphing (I apologize for the 4:3 aspect ratio)&lt;/figcaption&gt;
+&lt;/figure&gt;
 
 &lt;p&gt;The code below also implements the &lt;a href=&quot;http://www.martin-finke.de/blog/articles/audio-plugins-018-polyblep-oscillator/&quot;&gt;polyBLEP&lt;/a&gt; anti-aliasing technique. There are actually two anti-aliasing algorithms in use within the demo video, but I don’t really want to focus on anti-aliasing just yet. I’ll probably talk about it in another post.&lt;/p&gt;
 
@@ -193,24 +219,16 @@
 
 &lt;p&gt;Unlike Processing, Bela’s setup function returns a boolean. The render loop won’t start unless setup() returns true. In the example provided, the setup function initializes a few variables. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gInverseSampleRate&lt;/code&gt; is set to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1 / samplerate&lt;/code&gt; and while &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gPhase&lt;/code&gt; is initialized to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/GRPH/assets/images/content/sine.png&quot; alt=&quot;Sine Wave&quot; /&gt;&lt;/p&gt;
+&lt;!-- Include for captioned images --&gt;
+
+&lt;figure class=&quot;embed&quot;&gt;
+  &lt;img src=&quot;/GRPH/assets/images//content/sine.png&quot; alt=&quot;A plot of a sine function with its phase normalized to 2π&quot; /&gt;
+  &lt;figcaption&gt;A plot of a sine function with its phase normalized to 2π&lt;/figcaption&gt;
+&lt;/figure&gt;
 
 &lt;p&gt;When graphing a periodic (repeating) waveform statically like the image above, phase can be described as the current x-value (between 0-1) of the wave. As the x-value increments, the waveform’s y-value oscillates between -1 and 1. To apply this idea to audio, we have think of x as something that is constantly accumulating between 0-1. This is pretty much what Bela’s example code does.&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BelaContext&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;userData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BelaContext&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;userData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
 	&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;unsigned&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;audioFrames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
 		&lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;out&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.8&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sinf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;gPhase&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
@@ -222,22 +240,16 @@
 			&lt;span class=&quot;n&quot;&gt;audioWrite&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;channel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 		&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;The amount to increment x is calculated by multiplying the given frequency by the inverse sample rate. This is equal to ` dx = freq / samplerate`. By controlling how much we increment the phase, we’re able to control the frequency at which the oscillator oscillates at. Something to keep in mind with this example however is that they normalize the phase to 2PI. This is because the normal phase length of a sine wave is 2PI.&lt;/p&gt;
 
 &lt;h1 id=&quot;cleanup&quot;&gt;cleanup()&lt;/h1&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;cleanup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BelaContext&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;userData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;cleanup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BelaContext&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;userData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
 
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;This section doesn’t actually do anything. In C++, one is able to dynamically allocate memory. When doing so, memory needs to be deallocated to free it up again. Dynamic memory allocation isn’t used in this example however, thus nothing needs to be cleaned up. In scenarios where you do dynamically allocate memory, this is where you would deallocate the remainder of what needs to be deallocated.&lt;/p&gt;
 
@@ -257,25 +269,36 @@
 
 &lt;p&gt;EDIT: Nevermind, I added an RSS feed.&lt;/p&gt;</content><author><name>Chris Carin</name></author><category term="Blog Stuff" /><summary type="html">Debugging this site was a lot more of a pain in the ass than I thought it would be. After an extra day of website work, I finally managed to get my Github Pages to recognize my Jekyll source repository as a website. I feel like this should’ve been obvious how to do, but I’m actually pretty unfamiliar with the git protocol.</summary></entry><entry><title type="html">FFT_grainspec.pd</title><link href="http://0.0.0.0:4000/GRPH/2021/10/14/fft_grainspec.html" rel="alternate" type="text/html" title="FFT_grainspec.pd" /><published>2021-10-14T00:00:00-04:00</published><updated>2021-10-14T00:00:00-04:00</updated><id>http://0.0.0.0:4000/GRPH/2021/10/14/fft_grainspec</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/2021/10/14/fft_grainspec.html">&lt;p&gt;My main goal with this patch was to experiment with IFFT synthesis in context of a sample based granular synthesizers. It uses Miller Puckette’s &lt;a href=&quot;http://msp.ucsd.edu/techniques/latest/book-html/node182.html&quot;&gt;phase vocoder example&lt;/a&gt; in conjunction with Scott “Acriel” Nordlund’s example of &lt;a href=&quot;https://acreil.wordpress.com/2020/01/13/pure-data-frequency-domain-filtering-patch/&quot;&gt;frequency domain filtering&lt;/a&gt;.&lt;/p&gt;
 
-&lt;!-- Include Video Embedding --&gt;
+&lt;!-- Include for Video Embedding --&gt;
 &lt;!-- https://github.com/nathancy/jekyll-embed-video#responsive-videos --&gt;
 
-&lt;div class=&quot;embed-container&quot;&gt;
-  &lt;iframe src=&quot;https://player.vimeo.com/video/645841010&quot; width=&quot;500&quot; height=&quot;281&quot; frameborder=&quot;0&quot; webkitallowfullscreen=&quot;&quot; mozallowfullscreen=&quot;&quot; allowfullscreen=&quot;&quot;&gt;
-  &lt;/iframe&gt;
-&lt;/div&gt;
+&lt;figure class=&quot;embed&quot;&gt;
+  &lt;div class=&quot;vid&quot;&gt;
+    &lt;iframe src=&quot;https://player.vimeo.com/video/645841010&quot; width=&quot;500&quot; height=&quot;281&quot; frameborder=&quot;0&quot; webkitallowfullscreen=&quot;&quot; mozallowfullscreen=&quot;&quot; allowfullscreen=&quot;&quot;&gt;
+    &lt;/iframe&gt;
+  &lt;/div&gt;
+  &lt;figcaption&gt;Demo video of the Pd patch&lt;/figcaption&gt;
+&lt;/figure&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://drive.google.com/file/d/1Eh7-vdZ8O2aogQ6mitHBcSlV4N7GJCWh/view?usp=sharing&quot;&gt;Click here to Download&lt;/a&gt;&lt;/p&gt;</content><author><name>Chris Carin</name></author><category term="PureData" /><category term="Audio Programming" /><summary type="html">My main goal with this patch was to experiment with IFFT synthesis in context of a sample based granular synthesizers. It uses Miller Puckette’s phase vocoder example in conjunction with Scott “Acriel” Nordlund’s example of frequency domain filtering.</summary></entry><entry><title type="html">Vsnarez</title><link href="http://0.0.0.0:4000/GRPH/2021/10/14/vsnarez.html" rel="alternate" type="text/html" title="Vsnarez" /><published>2021-10-14T00:00:00-04:00</published><updated>2021-10-14T00:00:00-04:00</updated><id>http://0.0.0.0:4000/GRPH/2021/10/14/vsnarez</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/2021/10/14/vsnarez.html">&lt;p&gt;I just wanted to test posting YouTube videos. Here’s one featuring Mr. Funk and possibly John Frusciante.&lt;/p&gt;
 
 &lt;!-- Include Video Embedding --&gt;
 &lt;!-- https://github.com/nathancy/jekyll-embed-video#responsive-videos --&gt;
 
-&lt;div class=&quot;embed-container&quot;&gt;
-  &lt;iframe src=&quot;https://www.youtube.com/embed/3dEH7uhZ-ME&quot; width=&quot;700&quot; height=&quot;480&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;
-  &lt;/iframe&gt;
-&lt;/div&gt;</content><author><name>Chris Carin</name></author><category term="Music" /><category term="Blog Stuff" /><summary type="html">I just wanted to test posting YouTube videos. Here’s one featuring Mr. Funk and possibly John Frusciante.</summary></entry><entry><title type="html">Hello World!</title><link href="http://0.0.0.0:4000/GRPH/2021/10/13/hello-world!.html" rel="alternate" type="text/html" title="Hello World!" /><published>2021-10-13T00:00:00-04:00</published><updated>2021-10-13T00:00:00-04:00</updated><id>http://0.0.0.0:4000/GRPH/2021/10/13/hello-world!</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/2021/10/13/hello-world!.html">&lt;p&gt;Check it out!! It’s my first post!! How cool is that? Comin’ straight from the 647 to the 905 to the 416 etc. I don’t really have much to write about right now. So I guess I’ll just some small updates about what I’ve been up to.&lt;/p&gt;
+&lt;figure class=&quot;embed&quot;&gt;
+  &lt;div class=&quot;vid&quot;&gt;
+    &lt;iframe src=&quot;https://www.youtube.com/embed/3dEH7uhZ-ME&quot; width=&quot;700&quot; height=&quot;480&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;
+    &lt;/iframe&gt;
+  &lt;/div&gt;
+  &lt;figcaption class=&quot;caption&quot;&gt;:)&lt;/figcaption&gt;
+&lt;/figure&gt;</content><author><name>Chris Carin</name></author><category term="Music" /><category term="Blog Stuff" /><summary type="html">I just wanted to test posting YouTube videos. Here’s one featuring Mr. Funk and possibly John Frusciante.</summary></entry><entry><title type="html">Hello World!</title><link href="http://0.0.0.0:4000/GRPH/2021/10/13/hello-world!.html" rel="alternate" type="text/html" title="Hello World!" /><published>2021-10-13T00:00:00-04:00</published><updated>2021-10-13T00:00:00-04:00</updated><id>http://0.0.0.0:4000/GRPH/2021/10/13/hello-world!</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/2021/10/13/hello-world!.html">&lt;p&gt;Check it out!! It’s my first post!! How cool is that? Comin’ straight from the 647 to the 905 to the 416 etc. I don’t really have much to write about right now. So I guess I’ll just some small updates about what I’ve been up to.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/GRPH/assets/images/content/bela0.jpg&quot; alt=&quot;Bela&quot; /&gt;&lt;/p&gt;
+&lt;!-- Include for captioned images --&gt;
+
+&lt;figure class=&quot;embed&quot;&gt;
+  &lt;img src=&quot;/GRPH/assets/images//content/bela0.jpg&quot; alt=&quot;The bela board!&quot; /&gt;
+  &lt;figcaption&gt;The bela board!&lt;/figcaption&gt;
+&lt;/figure&gt;
 
 &lt;p&gt;The &lt;a href=&quot;https://bela.io/&quot;&gt;Bela&lt;/a&gt; development board for my project finally came in. Above is a picture of it. The developers of the board describe it as “an open-source embedded computing platform for creating responsive, real-time interactive systems with audio and sensors”. In laymen terms, essentially it’s single-board computer (think Raspberry Pi) with a programmable cape which specializes in processing signals.&lt;/p&gt;
 

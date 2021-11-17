@@ -62,11 +62,11 @@ bool setup(BelaContext *context, void *userData)
 
 Unlike Processing, Bela's setup function returns a boolean. The render loop won't start unless setup() returns true. In the example provided, the setup function initializes a few variables. `gInverseSampleRate` is set to `1 / samplerate` and while `gPhase` is initialized to `0`.
 
-![Sine Wave]({{ "/assets/images/content/sine.png" | relative_url }})
+{% include image.html url='/content/sine.png' caption='A plot of a sine function with its phase normalized to 2π' %}
 
 When graphing a periodic (repeating) waveform statically like the image above, phase can be described as the current x-value (between 0-1) of the wave. As the x-value increments, the waveform's y-value oscillates between -1 and 1. To apply this idea to audio, we have think of x as something that is constantly accumulating between 0-1. This is pretty much what Bela's example code does.
 
-{% highlight c++ linenos %}
+{% highlight c++ %}
 void render(BelaContext *context, void *userData)
 {
 	for(unsigned int n = 0; n < context->audioFrames; n++) {
@@ -85,7 +85,7 @@ void render(BelaContext *context, void *userData)
 The amount to increment x is calculated by multiplying the given frequency by the inverse sample rate. This is equal to ` dx = freq / samplerate`. By controlling how much we increment the phase, we're able to control the frequency at which the oscillator oscillates at. Something to keep in mind with this example however is that they normalize the phase to 2PI. This is because the normal phase length of a sine wave is 2PI.
 
 # cleanup()
-{% highlight c++ linenos %}
+{% highlight c++ %}
 void cleanup(BelaContext *context, void *userData)
 {
 

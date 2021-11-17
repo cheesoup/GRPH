@@ -6,7 +6,6 @@ date: Nov. 16th, 2021
 
 # About Chrissy
 
-Hi I'm Chris\
 Discord: chrissy惨#0712\
 Last.fm: [not_Chiisu](https://www.last.fm/user/not_Chiisu)\
 E-mail A: [chr.carin[a]gmail](mailto:chr.carin[a]gmail.com)\

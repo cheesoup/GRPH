@@ -7,7 +7,7 @@ vimeoID: 640603019
 
 Most of my initial foray into C++ has been spent trying to adapt an oscillator I had implemented in PureData. It's based on a sort of phase distortion algorithm by Scott "Acriel" Nordlund for PureData. It uses the trig identity ``f(x) = arcsin(sin(f(x)))`` to morph between a sine wave and an arbitrary waveform of the same periodic length. Here's a [desmos graph](https://www.desmos.com/calculator/b4ejbqju7m) of the algorithm. I've also included a video of the oscillator viewed through an oscilloscope below.
 
-{% include vimeo.html id=page.vimeoID %}
+{% include vimeo.html id=page.vimeoID caption='Demo of arbitrary wavemorphing (I apologize for the 4:3 aspect ratio)'%}
 
 The code below also implements the [polyBLEP](http://www.martin-finke.de/blog/articles/audio-plugins-018-polyblep-oscillator/) anti-aliasing technique. There are actually two anti-aliasing algorithms in use within the demo video, but I don't really want to focus on anti-aliasing just yet. I'll probably talk about it in another post.
 
