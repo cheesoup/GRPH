@@ -2,9 +2,9 @@
 /* Imports */
 /*~~~~~~~~~*/
 
-@media (min-width: 880px) {
+@media (min-width: 800px) {
   :root {
-      --maxWidth: 800px;
+      --maxWidth: 720px;
   }
 }
 
@@ -38,17 +38,13 @@
 /* Structure CSS */
 /*~~~~~~~~~~~~~~~*/
 
-html {
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  overflow-y: scroll;
-}
-
 body {
   font-family: var(--body_stack);
   background-color: var(--color1);
   background-attachment: fixed;
-  overflow-x: hidden;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  overflow-y: scroll;
   margin: 0;
 }
 
@@ -82,6 +78,7 @@ footer {
 
 footer a {
   color: var(--color4);
+  text-decoration: none;
 }
 
 footer a:hover {
@@ -89,7 +86,7 @@ footer a:hover {
 }
 
 /* Screen > 1080px CSS */
-@media (min-width: 880px) {
+@media (min-width: 800px) {
   div.wrap {
     padding: 25px;
     margin: 0 auto;

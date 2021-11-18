@@ -1,18 +1,18 @@
-<!doctype html>
-<html lang="en">
-    <head>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" type="text/css" href="/GRPH/assets/css/main.css">
-      <link rel="alternate" type="application/atom+xml" title="thesis? idk?" href="/GRPH/feed.xml">
-      <link rel="shortcut icon" type="image/png" href="/GRPH/icon.ico">
-      <!-- Begin Jekyll SEO tag v2.7.1 -->
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="/GRPH/assets/css/main.css"/>
+    <link rel="alternate" type="application/atom+xml" title="thesis? idk?" href="/GRPH/feed.xml"/>
+    <link rel="shortcut icon" type="image/png" href="/GRPH/icon.ico"/>
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>Arbitrary Wavemorphing | thesis? idk?</title>
 <meta name="generator" content="Jekyll v3.9.0" />
 <meta property="og:title" content="Arbitrary Wavemorphing" />
 <meta name="author" content="Chris Carin" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Most of my initial foray into C++ has been spent trying to adapt an oscillator I had implemented in PureData. It’s based on a sort of phase distortion algorithm by Scott “Acriel” Nordlund for PureData. It uses the trig identity f(x) = arcsin(sin(f(x))) to morph between a sine wave and an arbitrary waveform of the same periodic length. Here’s a desmos graph of the algorithm. I’ve also included a video of the oscillator viewed through an oscilloscope below." />
-<meta property="og:description" content="Most of my initial foray into C++ has been spent trying to adapt an oscillator I had implemented in PureData. It’s based on a sort of phase distortion algorithm by Scott “Acriel” Nordlund for PureData. It uses the trig identity f(x) = arcsin(sin(f(x))) to morph between a sine wave and an arbitrary waveform of the same periodic length. Here’s a desmos graph of the algorithm. I’ve also included a video of the oscillator viewed through an oscilloscope below." />
+<meta name="description" content="Most of my initial foray into C++ has been spent trying to adapt an oscillator I had implemented in PureData. It’s based on a sort of phase distortion algorithm by Scott “Acriel” Nordlund for PureData which allows a signal to morph between a sine wave and an arbitrary waveform of the same periodic length. Here’s a desmos graph of the algorithm. I’ve also included a video of the oscillator viewed through an oscilloscope below. It’s based around the equation x = inverse_sine(sine(x))." />
+<meta property="og:description" content="Most of my initial foray into C++ has been spent trying to adapt an oscillator I had implemented in PureData. It’s based on a sort of phase distortion algorithm by Scott “Acriel” Nordlund for PureData which allows a signal to morph between a sine wave and an arbitrary waveform of the same periodic length. Here’s a desmos graph of the algorithm. I’ve also included a video of the oscillator viewed through an oscilloscope below. It’s based around the equation x = inverse_sine(sine(x))." />
 <link rel="canonical" href="http://0.0.0.0:4000/GRPH/2021/10/30/arbitrary-wavemorphing.html" />
 <meta property="og:url" content="http://0.0.0.0:4000/GRPH/2021/10/30/arbitrary-wavemorphing.html" />
 <meta property="og:site_name" content="thesis? idk?" />
@@ -21,38 +21,38 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Arbitrary Wavemorphing" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Chris Carin"},"@type":"BlogPosting","headline":"Arbitrary Wavemorphing","dateModified":"2021-10-30T00:00:00-04:00","datePublished":"2021-10-30T00:00:00-04:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/GRPH/2021/10/30/arbitrary-wavemorphing.html"},"description":"Most of my initial foray into C++ has been spent trying to adapt an oscillator I had implemented in PureData. It’s based on a sort of phase distortion algorithm by Scott “Acriel” Nordlund for PureData. It uses the trig identity f(x) = arcsin(sin(f(x))) to morph between a sine wave and an arbitrary waveform of the same periodic length. Here’s a desmos graph of the algorithm. I’ve also included a video of the oscillator viewed through an oscilloscope below.","url":"http://0.0.0.0:4000/GRPH/2021/10/30/arbitrary-wavemorphing.html","@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"Chris Carin"},"@type":"BlogPosting","headline":"Arbitrary Wavemorphing","dateModified":"2021-10-30T00:00:00-04:00","datePublished":"2021-10-30T00:00:00-04:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/GRPH/2021/10/30/arbitrary-wavemorphing.html"},"description":"Most of my initial foray into C++ has been spent trying to adapt an oscillator I had implemented in PureData. It’s based on a sort of phase distortion algorithm by Scott “Acriel” Nordlund for PureData which allows a signal to morph between a sine wave and an arbitrary waveform of the same periodic length. Here’s a desmos graph of the algorithm. I’ve also included a video of the oscillator viewed through an oscilloscope below. It’s based around the equation x = inverse_sine(sine(x)).","url":"http://0.0.0.0:4000/GRPH/2021/10/30/arbitrary-wavemorphing.html","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-    </head>
-    <body>
-      <div class="wrap">
-        <header>
-          <a class="logo" href="/GRPH/">
-            <img src="/GRPH/assets/images/jam_crow.gif" alt="jam_crow.gif" class="logo" width="160" height="90"/>
-            <img src="/GRPH/assets/images/thesisidk.gif" alt="thesis? idk?" class="logo" width="90" height="46"/>
-          </a>
-        </header>
-        <!-- MENU START -->
-        <nav>
-          
-          <a href="/GRPH/about">about</a>
-          
-          <a href="/GRPH/posts">posts</a>
-          
-          <a href="/GRPH/tags">tags</a>
-          
-          <a href="/GRPH/out">out</a>
-          
-          <a href="/GRPH/feed.xml">rss</a>
-          
-        </nav>
-        <!-- MENU END -->
-        <!-- CONTENT START -->
-        <main>
-          <h1>Arbitrary Wavemorphing</h1>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <a class="logo" href="/GRPH/">
+          <img src="/GRPH/assets/images/jam_crow.gif" alt="jam_crow.gif" class="logo" width="160" height="90"/>
+          <img src="/GRPH/assets/images/thesisidk.gif" alt="thesis? idk?" class="logo" width="90" height="46"/>
+        </a>
+      </header>
+      <!-- MENU START -->
+      <nav>
+        
+        <a href="/GRPH/about">about</a>
+        
+        <a href="/GRPH/posts">posts</a>
+        
+        <a href="/GRPH/tags">tags</a>
+        
+        <a href="/GRPH/out">out</a>
+        
+        <a href="/GRPH/feed.xml">rss</a>
+        
+      </nav>
+      <!-- MENU END -->
+      <!-- CONTENT START -->
+      <main>
+        <h1>Arbitrary Wavemorphing</h1>
 
-<p>Most of my initial foray into C++ has been spent trying to adapt an oscillator I had implemented in PureData. It’s based on a sort of phase distortion algorithm by Scott “Acriel” Nordlund for PureData. It uses the trig identity <code class="language-plaintext highlighter-rouge">f(x) = arcsin(sin(f(x)))</code> to morph between a sine wave and an arbitrary waveform of the same periodic length. Here’s a <a href="https://www.desmos.com/calculator/b4ejbqju7m">desmos graph</a> of the algorithm. I’ve also included a video of the oscillator viewed through an oscilloscope below.</p>
+<p>Most of my initial foray into C++ has been spent trying to adapt an oscillator I had implemented in PureData. It’s based on a sort of phase distortion algorithm by Scott “Acriel” Nordlund for PureData which allows a signal to morph between a sine wave and an arbitrary waveform of the same periodic length. Here’s a <a href="https://www.desmos.com/calculator/b4ejbqju7m">desmos graph</a> of the algorithm. I’ve also included a video of the oscillator viewed through an oscilloscope below. It’s based around the equation <code class="language-plaintext highlighter-rouge">x = inverse_sine(sine(x))</code>.</p>
 
 <!-- Include for Video Embedding -->
 <!-- https://github.com/nathancy/jekyll-embed-video#responsive-videos -->
@@ -78,8 +78,6 @@
   </div>
   <figcaption>Demo of arbitrary wavemorphing (I apologize for the 4:3 aspect ratio)</figcaption>
 </figure>
-
-<p>The code below also implements the <a href="http://www.martin-finke.de/blog/articles/audio-plugins-018-polyblep-oscillator/">polyBLEP</a> anti-aliasing technique. There are actually two anti-aliasing algorithms in use within the demo video, but I don’t really want to focus on anti-aliasing just yet. I’ll probably talk about it in another post.</p>
 
 <h2 id="oscillatorshape">oscillator::shape()</h2>
 
@@ -132,7 +130,7 @@
 
 <p>Above is my implementation of a wavemorphing function. Note that object variables are named with an underscore. I don’t fully get how it all works (like why is shape signal normalized to the value of -1rad/s) but I guess I’ll try to explain it.</p>
 
-<p>The function takes in the current phase (float p) and the amount the phase is being incremented by (float px). The latter is required for polyBLEP anti-aliasing. In general, I like to declare all another variables I’m going to use within a function at the start. I find it’s just easier to keep track of things that way. Ignoring all the polyBLEP stuff, from line 8-26 I’m basically generating waveforms by shaping the incoming phase using arithmetic and some signal processing hackery. From there, I’m calculating the approximate arcsin of each signal. The important part starts at line 28. Below is an exert of it</p>
+<p>The function takes in the current phase (float p) and the amount the phase is being incremented by (float px). The latter is required for polyBLEP anti-aliasing. Ignoring all the polyBLEP stuff, from line 8-26 I’m basically generating waveforms by shaping the incoming phase using arithmetic and some signal processing hackery. From there, I’m calculating the approximate arcsin of each signal. The important part starts at line 28. Below is an exert of it</p>
 
 <h2 id="return-cosfwtf-is-this-shit">return cosf(wtf is this shit)</h2>
 
@@ -195,12 +193,12 @@
   
 </nav>
 
-        </main>
-        <!-- CONTENT END -->
-        <footer>
-          <a href="http://www.wtfpl.net/txt/copying/">WTFPL</a> 2021-2022 Chris Carin<br/>
-          <a href="#">Back to top</a>
-        </footer>
-      </div>
-    </body>
+      </main>
+      <!-- CONTENT END -->
+      <footer>
+        <a href="https://www.gnu.org/licenses/copyleft.en.html">(C)</a> 2021-2022 <a href="mailto:chr.carin(a)gmail.com">Chris Carin</a> |
+        <a href="https://html5.validator.nu/?doc=http://0.0.0.0:4000/GRPH/2021/10/30/arbitrary-wavemorphing.html">This document is valid HTML5</a>
+      </footer>
+    </div>
+  </body>
 </html>
