@@ -3,6 +3,7 @@
 
 <figure class="embed">
   <div class="vid">
+    <!--
     <iframe
         src="https://player.vimeo.com/video/{{ include.id }}"
         width="500"
@@ -12,6 +13,14 @@
         mozallowfullscreen
         allowfullscreen>
     </iframe>
+    -->
+    <object
+        data="https://player.vimeo.com/video/{{ include.id }}"
+        type="application/x-shockwave-flash">
+      <param name="allowfullscreen" value="true" />
+      <param name="allowscriptaccess" value="always" />
+      <param name="movie" value="https://player.vimeo.com/video/{{ include.id }}" />
+    </object>
   </div>
   <figcaption>{{ include.caption }}</figcaption>
 </figure>

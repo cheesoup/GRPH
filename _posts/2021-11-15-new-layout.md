@@ -9,7 +9,7 @@ Over the last couple days I've been kind of taking a break from programming the 
 
 {% include image.html url='/content/3screens.jpg' caption='The gangs all here' %}
 
-# Issues with the Old Layout
+## Issues with the Old Layout
 
 Prior to the re-design, the main thing I was using JS for was to show and hide my menu items. If you're interested in how that works, the source code for the previous version of the site can be found [here](https://github.com/cheesoup/GRPH/tree/bf5ac20a3080064854d65529b38d4fbd6abc8bad) (thank God for git). The unfortunate thing with CSS and JS animations however is that they're pretty CPU intensive. Whenever I would open the menu on the netbook, the fans would whirl and the CPU usage would shoot up to 97%.
 
@@ -19,7 +19,7 @@ Other than the menu, I also implemented some JS for placing arbitrary text into 
 
 After getting rid of all the javascript, I found this [online tool](https://tools.pingdom.com/) for measuring how much data a webpage requests whenever it is loaded. As the results above show, webfonts had previously accounted for over 50% of the site's bandwidth per visit which for me is obviously not cool. To remedy this, I stuck to [web safe fonts](https://www.cssfontstack.com/).
 
-# On to the New
+## On to the New
 
 I'm pretty happy about is how small this website is. I've managed to get the about me page below 20kbs! I think that's pretty impressive. There are actually still a few things I would like to implement (the main thing being a pure CSS lightbox for photos), but I think that's a project for another day.
 

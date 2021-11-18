@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Posts
-custom_css: post
 ---
 
 <ul class="posts">
@@ -10,11 +9,11 @@ custom_css: post
       <h1><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h1>
       {{ post.excerpt }}
       <p class="readmore"><a href="{{ post.url | relative_url }}">Read more...</a>
-      <div class="footer">{{ post.date | date: "%a, %b %d, %y" }} | Tags:
+      <footer>{{ post.date | date: "%a, %b %d, %y" }} | Tags:
         {% for tag in post.tags %}
           <a href="{{ 'tags' | relative_url }}#{{ tag | slugify }}">{{ tag | replace:'-', ' ' }}</a>
         {% endfor %}
-      </div>
+      </footer>
     </li>
   {% endfor %}
 </ul>

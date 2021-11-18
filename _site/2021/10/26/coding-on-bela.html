@@ -5,12 +5,6 @@
       <link rel="stylesheet" type="text/css" href="/GRPH/assets/css/main.css">
       <link rel="alternate" type="application/atom+xml" title="thesis? idk?" href="/GRPH/feed.xml">
       <link rel="shortcut icon" type="image/png" href="/GRPH/icon.ico">
-
-      <!-- Insert custom css -->
-      <!-- defined by custom_css tags -->
-      
-      
-
       <!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>Coding On Bela | thesis? idk?</title>
 <meta name="generator" content="Jekyll v3.9.0" />
@@ -32,38 +26,38 @@
 
     </head>
     <body>
-    <div class="wrap">
-      <div class="header">
-        <a class="logo" href="/GRPH/">
-          <img src="/GRPH/assets/images/jam_crow.gif" alt="jam_crow.gif" class="logo" width="160px" height="90px"/>
-          <img src="/GRPH/assets/images/thesisidk.gif" alt="thesis? idk?" class="logo" width="90px" height="46px"/>
-        </a>
+      <div class="wrap">
+        <header>
+          <a class="logo" href="/GRPH/">
+            <img src="/GRPH/assets/images/jam_crow.gif" alt="jam_crow.gif" class="logo" width="160" height="90"/>
+            <img src="/GRPH/assets/images/thesisidk.gif" alt="thesis? idk?" class="logo" width="90" height="46"/>
+          </a>
+        </header>
         <!-- MENU START -->
         <nav>
-            
-            <a href="/GRPH/about">about</a>
-            
-            <a href="/GRPH/posts">posts</a>
-            
-            <a href="/GRPH/tags">tags</a>
-            
-            <a href="/GRPH/out">out</a>
-            
-            <a href="/GRPH/feed.xml">rss</a>
-            
+          
+          <a href="/GRPH/about">about</a>
+          
+          <a href="/GRPH/posts">posts</a>
+          
+          <a href="/GRPH/tags">tags</a>
+          
+          <a href="/GRPH/out">out</a>
+          
+          <a href="/GRPH/feed.xml">rss</a>
+          
         </nav>
-      </div>
-      <!-- MENU END -->
-      <!-- CONTENT START -->
-      <div class="content">
-        <h1>Coding On Bela</h1>
+        <!-- MENU END -->
+        <!-- CONTENT START -->
+        <main>
+          <h1>Coding On Bela</h1>
 
 <p><del>I finally managed to get sometime to do a bit a programming. It’s been alright so far. Most of my times been spent on figuring out how pointers work and just getting used to C++ in general. I managed to program this dithered polyBLEP sawtooth oscillator. It’s a bit late so I’ll edit this post later with some details on the code, but for now here it is in raw form.</del><br />
 <strong>[Oct.30th edit: OK LETS WRITE SOME STUFF]</strong></p>
 
 <p>Ok so before I write about my code, I guess I should probably write about what Bela is and basic Bela programming. <a href="https://www.bela.io">Bela</a> is a cape for the <a href="https://beagleboard.org/black">Beagle Bone Black</a> single board computer. It specializes in audio processing for the purpose of creating audio effects, instruments, sound installations, whatever. It comes with 16 digital and analog IOs for interfacing with switches and potentiometers and stuff. It’s pretty rad.</p>
 
-<h1 id="rendercpp">render.cpp</h1>
+<h2 id="rendercpp">render.cpp</h2>
 
 <figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="cp">#include &lt;Bela.h&gt;
 #include &lt;cmath&gt;
@@ -102,7 +96,7 @@
 
 <p>Above is the basic example code shipped with Bela. It produces a sine wave signal at 440hz (middle A). Other than being based in C++ rather than Java, it’s surprisingly similar to Processing in terms of having a setup() function followed by some looping rendering function. The functions are given two arguments: a pointer to a BelaContext object, a pointer to a userData object. From what I assume/read online, these objects declared in the Bela.h header file and contain system data such as hardware and driver information.</p>
 
-<h1 id="setup">setup()</h1>
+<h2 id="setup">setup()</h2>
 
 <figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="kt">bool</span> <span class="nf">setup</span><span class="p">(</span><span class="n">BelaContext</span> <span class="o">*</span><span class="n">context</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">userData</span><span class="p">)</span>
 <span class="p">{</span>
@@ -153,7 +147,7 @@
 <p>And that’s all the example does! Hopefully this post wasn’t too wordy. If you’re interested in learning more about audio programming in C++, I’ve been following this <a href="https://www.youtube.com/watch?v=aVLRUyPBBJk">YouTube tutorial</a>. I think it’s pretty useful even outside of a Bela context. I’m not quite sure how easy it is to follow for non-programmers and people not into signal processing however.</p>
 
 
-<div class="footer">Tue, Oct 26, 21 | Tags:
+<footer>Tue, Oct 26, 21 | Tags:
   
     <a href="/GRPH/tags#bela">Bela</a>
   
@@ -163,24 +157,30 @@
   
     <a href="/GRPH/tags#c">C++</a>
   
-</div>
+</footer>
 
 <nav>
+
+  <a class="prev" href="/GRPH/2021/10/15/github-pages.html">
+    &laquo; Prev: Github Pages
+  </a>
   
-    <a class="prev" href="/GRPH/2021/10/15/github-pages.html">&laquo; Github Pages</a>
+  <a class="up" href="/GRPH/posts">
+    Back to posts
+  </a>
   
-  <a class="up" href="/GRPH/posts">Back to posts</a>
-  
-    <a class="next" href="/GRPH/2021/10/30/arbitrary-wavemorphing.html">Arbitrary Wavemorphing &raquo;</a>
+  <a class="next" href="/GRPH/2021/10/30/arbitrary-wavemorphing.html">
+    Next: Arbitrary Wavemorphing &raquo;
+  </a>
   
 </nav>
 
+        </main>
+        <!-- CONTENT END -->
+        <footer>
+          <a href="http://www.wtfpl.net/txt/copying/">WTFPL</a> 2021-2022 Chris Carin<br/>
+          <a href="#">Back to top</a>
+        </footer>
       </div>
-      <!-- CONTENT END -->
-      <div class="footer">
-        <a href="http://www.wtfpl.net/txt/copying/">WTFPL</a> 2021-2022 Chris Carin</br>
-        <a href="#">Back to top</a>
-      </div>
-    </div>
     </body>
 </html>

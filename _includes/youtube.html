@@ -2,7 +2,7 @@
 <!-- https://github.com/nathancy/jekyll-embed-video#responsive-videos -->
 
 <figure class="embed">
-  <div class="vid">
+  <!--
     <iframe
         src="https://www.youtube.com/embed/{{ include.id }}"
         width="700"
@@ -10,6 +10,16 @@
         frameborder="0"
         allowfullscreen="">
     </iframe>
+  -->
+  <div class="vid">
+    <object
+      type="application/x-shockwave-flash"
+      style="width:100%; height:100%;"
+      data="//www.youtube.com/v/3dEH7uhZ-ME?color2=FBE9EC&amp;version=3">
+      <param name="movie" value="//www.youtube.com/v/{{ include.id }}?color2=FBE9EC&amp;version=3" />
+      <param name="allowFullScreen" value="true" />
+      <param name="allowscriptaccess" value="always" />
+    </object>
   </div>
   <figcaption class="caption">{{ include.caption }}</figcaption>
 </figure>

@@ -5,46 +5,32 @@
       <link rel="stylesheet" type="text/css" href="{{ "/assets/css/main.css" | relative_url }}">
       <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ "feed.xml" | relative_url }}">
       <link rel="shortcut icon" type="image/png" href="{{ "icon.ico" | relative_url }}">
-
-      <!-- Insert custom css -->
-      <!-- defined by custom_css tags -->
-      {% if page.custom_css %}
-        {% for stylesheet in page.custom_css %}
-        <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/{{ stylesheet }}.css">
-        {% endfor %}
-      {% endif %}
-      {% if layout.custom_css %}
-        {% for stylesheet in layout.custom_css %}
-        <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/{{ stylesheet }}.css">
-        {% endfor %}
-      {% endif %}
-
       {% seo %}
     </head>
     <body>
-    <div class="wrap">
-      <div class="header">
-        <a class="logo" href="{{ "/" | relative_url }}">
-          <img src="{{ "/assets/images/jam_crow.gif" | relative_url }}" alt="jam_crow.gif" class="logo" width="160px" height="90px"/>
-          <img src="{{ "/assets/images/thesisidk.gif" | relative_url }}" alt="thesis? idk?" class="logo" width="90px" height="46px"/>
-        </a>
+      <div class="wrap">
+        <header>
+          <a class="logo" href="{{ "/" | relative_url }}">
+            <img src="{{ "/assets/images/jam_crow.gif" | relative_url }}" alt="jam_crow.gif" class="logo" width="160" height="90"/>
+            <img src="{{ "/assets/images/thesisidk.gif" | relative_url }}" alt="thesis? idk?" class="logo" width="90" height="46"/>
+          </a>
+        </header>
         <!-- MENU START -->
         <nav>
-            {% for item in site.data.navi.pages %}
-            <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
-            {% endfor %}
+          {% for item in site.data.navi.pages %}
+          <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+          {% endfor %}
         </nav>
+        <!-- MENU END -->
+        <!-- CONTENT START -->
+        <main>
+          {{ content }}
+        </main>
+        <!-- CONTENT END -->
+        <footer>
+          <a href="http://www.wtfpl.net/txt/copying/">WTFPL</a> 2021-2022 Chris Carin<br/>
+          <a href="#">Back to top</a>
+        </footer>
       </div>
-      <!-- MENU END -->
-      <!-- CONTENT START -->
-      <div class="content">
-        {{ content }}
-      </div>
-      <!-- CONTENT END -->
-      <div class="footer">
-        <a href="http://www.wtfpl.net/txt/copying/">WTFPL</a> 2021-2022 Chris Carin</br>
-        <a href="#">Back to top</a>
-      </div>
-    </div>
     </body>
 </html>

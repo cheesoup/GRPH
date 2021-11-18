@@ -5,12 +5,6 @@
       <link rel="stylesheet" type="text/css" href="/GRPH/assets/css/main.css">
       <link rel="alternate" type="application/atom+xml" title="thesis? idk?" href="/GRPH/feed.xml">
       <link rel="shortcut icon" type="image/png" href="/GRPH/icon.ico">
-
-      <!-- Insert custom css -->
-      <!-- defined by custom_css tags -->
-      
-      
-
       <!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>New Layout! | thesis? idk?</title>
 <meta name="generator" content="Jekyll v3.9.0" />
@@ -32,31 +26,31 @@
 
     </head>
     <body>
-    <div class="wrap">
-      <div class="header">
-        <a class="logo" href="/GRPH/">
-          <img src="/GRPH/assets/images/jam_crow.gif" alt="jam_crow.gif" class="logo" width="160px" height="90px"/>
-          <img src="/GRPH/assets/images/thesisidk.gif" alt="thesis? idk?" class="logo" width="90px" height="46px"/>
-        </a>
+      <div class="wrap">
+        <header>
+          <a class="logo" href="/GRPH/">
+            <img src="/GRPH/assets/images/jam_crow.gif" alt="jam_crow.gif" class="logo" width="160" height="90"/>
+            <img src="/GRPH/assets/images/thesisidk.gif" alt="thesis? idk?" class="logo" width="90" height="46"/>
+          </a>
+        </header>
         <!-- MENU START -->
         <nav>
-            
-            <a href="/GRPH/about">about</a>
-            
-            <a href="/GRPH/posts">posts</a>
-            
-            <a href="/GRPH/tags">tags</a>
-            
-            <a href="/GRPH/out">out</a>
-            
-            <a href="/GRPH/feed.xml">rss</a>
-            
+          
+          <a href="/GRPH/about">about</a>
+          
+          <a href="/GRPH/posts">posts</a>
+          
+          <a href="/GRPH/tags">tags</a>
+          
+          <a href="/GRPH/out">out</a>
+          
+          <a href="/GRPH/feed.xml">rss</a>
+          
         </nav>
-      </div>
-      <!-- MENU END -->
-      <!-- CONTENT START -->
-      <div class="content">
-        <h1>New Layout!</h1>
+        <!-- MENU END -->
+        <!-- CONTENT START -->
+        <main>
+          <h1>New Layout!</h1>
 
 <p>Over the last couple days I’ve been kind of taking a break from programming the Bela in order to focus my attention on this blog. Despite aiming for a lightweight website, I made a few compromises by deciding to use javascript and webfonts for the sake of style. After testing the website on an <a href="https://www.cnet.com/products/acer-aspire-one-d250/specs/">old netbook</a> however, I noticed that even having a minimal amount of scripting was a bit too much. On top of that, further testing showed that the typefaces imported by Google fonts accounted for the a majority of my sites digital weight.</p>
 
@@ -67,7 +61,7 @@
   <figcaption>The gangs all here</figcaption>
 </figure>
 
-<h1 id="issues-with-the-old-layout">Issues with the Old Layout</h1>
+<h2 id="issues-with-the-old-layout">Issues with the Old Layout</h2>
 
 <p>Prior to the re-design, the main thing I was using JS for was to show and hide my menu items. If you’re interested in how that works, the source code for the previous version of the site can be found <a href="https://github.com/cheesoup/GRPH/tree/bf5ac20a3080064854d65529b38d4fbd6abc8bad">here</a> (thank God for git). The unfortunate thing with CSS and JS animations however is that they’re pretty CPU intensive. Whenever I would open the menu on the netbook, the fans would whirl and the CPU usage would shoot up to 97%.</p>
 
@@ -82,7 +76,7 @@
 
 <p>After getting rid of all the javascript, I found this <a href="https://tools.pingdom.com/">online tool</a> for measuring how much data a webpage requests whenever it is loaded. As the results above show, webfonts had previously accounted for over 50% of the site’s bandwidth per visit which for me is obviously not cool. To remedy this, I stuck to <a href="https://www.cssfontstack.com/">web safe fonts</a>.</p>
 
-<h1 id="on-to-the-new">On to the New</h1>
+<h2 id="on-to-the-new">On to the New</h2>
 
 <p>I’m pretty happy about is how small this website is. I’ve managed to get the about me page below 20kbs! I think that’s pretty impressive. There are actually still a few things I would like to implement (the main thing being a pure CSS lightbox for photos), but I think that’s a project for another day.</p>
 
@@ -100,28 +94,34 @@
 <p>If you haven’t noticed, I’ve come up with a little mascot for this project. You can see them up in the top corner! They don’t quite have a name yet, but they’re my buddy and we’re gonna make synths together. They’re based off a friend of mine from Calgary who makes some pretty rad tunes and actually isn’t a crow (their last name just sounds like it).</p>
 
 
-<div class="footer">Sun, Nov 14, 21 | Tags:
+<footer>Sun, Nov 14, 21 | Tags:
   
     <a href="/GRPH/tags#blog-stuff">Blog Stuff</a>
   
-</div>
+</footer>
 
 <nav>
+
+  <a class="prev" href="/GRPH/2021/10/30/arbitrary-wavemorphing.html">
+    &laquo; Prev: Arbitrary Wavemorphing
+  </a>
   
-    <a class="prev" href="/GRPH/2021/10/30/arbitrary-wavemorphing.html">&laquo; Arbitrary Wavemorphing</a>
+  <a class="up" href="/GRPH/posts">
+    Back to posts
+  </a>
   
-  <a class="up" href="/GRPH/posts">Back to posts</a>
-  
-    <a class="next" href="/GRPH/2021/11/16/why-im-making-a-synth.html">Why I'm Even Making a Synth &raquo;</a>
+  <a class="next" href="/GRPH/2021/11/16/why-im-making-a-synth.html">
+    Next: Why I'm Even Making a Synth &raquo;
+  </a>
   
 </nav>
 
+        </main>
+        <!-- CONTENT END -->
+        <footer>
+          <a href="http://www.wtfpl.net/txt/copying/">WTFPL</a> 2021-2022 Chris Carin<br/>
+          <a href="#">Back to top</a>
+        </footer>
       </div>
-      <!-- CONTENT END -->
-      <div class="footer">
-        <a href="http://www.wtfpl.net/txt/copying/">WTFPL</a> 2021-2022 Chris Carin</br>
-        <a href="#">Back to top</a>
-      </div>
-    </div>
     </body>
 </html>

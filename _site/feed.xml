@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://0.0.0.0:4000/GRPH/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://0.0.0.0:4000/GRPH/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/GRPH/" rel="alternate" type="text/html" /><updated>2021-11-17T05:05:56-05:00</updated><id>http://0.0.0.0:4000/GRPH/feed.xml</id><title type="html">thesis? idk?</title><subtitle>a blog for 4th year workshop at OCADU</subtitle><author><name>Chris Carin</name></author><entry><title type="html">Why I’m Even Making a Synth</title><link href="http://0.0.0.0:4000/GRPH/2021/11/16/why-im-making-a-synth.html" rel="alternate" type="text/html" title="Why I’m Even Making a Synth" /><published>2021-11-16T00:00:00-05:00</published><updated>2021-11-16T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/2021/11/16/why-im-making-a-synth</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/2021/11/16/why-im-making-a-synth.html">&lt;p&gt;When it comes to actually writing music, I actually think I’m pretty awful. I spend so much time obsessing over tiny details and always have a hard time seeing the big picture of what I’m trying to do. Honestly, the reason why I’ve been so upset with my process of creation is due to this indecisiveness to move on from minute details. On top of that, I’m not the most mechanically gifted person in the world. Much like how I struggle with brushes and inks, I can barely play inversions on the piano.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://0.0.0.0:4000/GRPH/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://0.0.0.0:4000/GRPH/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/GRPH/" rel="alternate" type="text/html" /><updated>2021-11-17T22:34:50-05:00</updated><id>http://0.0.0.0:4000/GRPH/feed.xml</id><title type="html">thesis? idk?</title><subtitle>a blog for 4th year workshop at OCADU</subtitle><author><name>Chris Carin</name></author><entry><title type="html">Why I’m Even Making a Synth</title><link href="http://0.0.0.0:4000/GRPH/2021/11/16/why-im-making-a-synth.html" rel="alternate" type="text/html" title="Why I’m Even Making a Synth" /><published>2021-11-16T00:00:00-05:00</published><updated>2021-11-16T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/2021/11/16/why-im-making-a-synth</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/2021/11/16/why-im-making-a-synth.html">&lt;p&gt;When it comes to actually writing music, I actually think I’m pretty awful. I spend so much time obsessing over tiny details and always have a hard time seeing the big picture of what I’m trying to do. Honestly, the reason why I’ve been so upset with my process of creation is due to this indecisiveness to move on from minute details. On top of that, I’m not the most mechanically gifted person in the world. Much like how I struggle with brushes and inks, I can barely play inversions on the piano.&lt;/p&gt;
 
 &lt;p&gt;When it came to design however, I always thought what gave me an edge is my ability to pull magic out of computers. While there was a lot I needed to learn at OCAD to feel even remotely competent with what I was doing, I always felt like I had this talent as a crux. I call it magic because I really think computers are magical. Here is this box. You can put whatever data in it you can think of and with just a little bit of a math you can shape that data into (&lt;a href=&quot;https://www.youtube.com/watch?v=macM_MtS_w4&quot;&gt;almost&lt;/a&gt;) any virtual form you want. If that’s not magic, I don’t know what is. I think that’s what attracted me to electronic music in the first place. I always wanted to make music. I just never had the patience to figure out how to physically play something.&lt;/p&gt;
 
@@ -18,8 +18,22 @@
 
 &lt;figure class=&quot;embed&quot;&gt;
   &lt;div class=&quot;vid&quot;&gt;
-    &lt;iframe src=&quot;https://player.vimeo.com/video/646396827&quot; width=&quot;500&quot; height=&quot;281&quot; frameborder=&quot;0&quot; webkitallowfullscreen=&quot;&quot; mozallowfullscreen=&quot;&quot; allowfullscreen=&quot;&quot;&gt;
+    &lt;!--
+    &lt;iframe
+        src=&quot;https://player.vimeo.com/video/646396827&quot;
+        width=&quot;500&quot;
+        height=&quot;281&quot;
+        frameborder=&quot;0&quot;
+        webkitallowfullscreen
+        mozallowfullscreen
+        allowfullscreen&gt;
     &lt;/iframe&gt;
+    --&gt;
+    &lt;object data=&quot;https://player.vimeo.com/video/646396827&quot; type=&quot;application/x-shockwave-flash&quot;&gt;
+      &lt;param name=&quot;allowfullscreen&quot; value=&quot;true&quot; /&gt;
+      &lt;param name=&quot;allowscriptaccess&quot; value=&quot;always&quot; /&gt;
+      &lt;param name=&quot;movie&quot; value=&quot;https://player.vimeo.com/video/646396827&quot; /&gt;
+    &lt;/object&gt;
   &lt;/div&gt;
   &lt;figcaption&gt;A Pd track I made a couple months ago&lt;/figcaption&gt;
 &lt;/figure&gt;
@@ -35,7 +49,7 @@
   &lt;figcaption&gt;The gangs all here&lt;/figcaption&gt;
 &lt;/figure&gt;
 
-&lt;h1 id=&quot;issues-with-the-old-layout&quot;&gt;Issues with the Old Layout&lt;/h1&gt;
+&lt;h2 id=&quot;issues-with-the-old-layout&quot;&gt;Issues with the Old Layout&lt;/h2&gt;
 
 &lt;p&gt;Prior to the re-design, the main thing I was using JS for was to show and hide my menu items. If you’re interested in how that works, the source code for the previous version of the site can be found &lt;a href=&quot;https://github.com/cheesoup/GRPH/tree/bf5ac20a3080064854d65529b38d4fbd6abc8bad&quot;&gt;here&lt;/a&gt; (thank God for git). The unfortunate thing with CSS and JS animations however is that they’re pretty CPU intensive. Whenever I would open the menu on the netbook, the fans would whirl and the CPU usage would shoot up to 97%.&lt;/p&gt;
 
@@ -50,7 +64,7 @@
 
 &lt;p&gt;After getting rid of all the javascript, I found this &lt;a href=&quot;https://tools.pingdom.com/&quot;&gt;online tool&lt;/a&gt; for measuring how much data a webpage requests whenever it is loaded. As the results above show, webfonts had previously accounted for over 50% of the site’s bandwidth per visit which for me is obviously not cool. To remedy this, I stuck to &lt;a href=&quot;https://www.cssfontstack.com/&quot;&gt;web safe fonts&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h1 id=&quot;on-to-the-new&quot;&gt;On to the New&lt;/h1&gt;
+&lt;h2 id=&quot;on-to-the-new&quot;&gt;On to the New&lt;/h2&gt;
 
 &lt;p&gt;I’m pretty happy about is how small this website is. I’ve managed to get the about me page below 20kbs! I think that’s pretty impressive. There are actually still a few things I would like to implement (the main thing being a pure CSS lightbox for photos), but I think that’s a project for another day.&lt;/p&gt;
 
@@ -72,15 +86,29 @@
 
 &lt;figure class=&quot;embed&quot;&gt;
   &lt;div class=&quot;vid&quot;&gt;
-    &lt;iframe src=&quot;https://player.vimeo.com/video/640603019&quot; width=&quot;500&quot; height=&quot;281&quot; frameborder=&quot;0&quot; webkitallowfullscreen=&quot;&quot; mozallowfullscreen=&quot;&quot; allowfullscreen=&quot;&quot;&gt;
+    &lt;!--
+    &lt;iframe
+        src=&quot;https://player.vimeo.com/video/640603019&quot;
+        width=&quot;500&quot;
+        height=&quot;281&quot;
+        frameborder=&quot;0&quot;
+        webkitallowfullscreen
+        mozallowfullscreen
+        allowfullscreen&gt;
     &lt;/iframe&gt;
+    --&gt;
+    &lt;object data=&quot;https://player.vimeo.com/video/640603019&quot; type=&quot;application/x-shockwave-flash&quot;&gt;
+      &lt;param name=&quot;allowfullscreen&quot; value=&quot;true&quot; /&gt;
+      &lt;param name=&quot;allowscriptaccess&quot; value=&quot;always&quot; /&gt;
+      &lt;param name=&quot;movie&quot; value=&quot;https://player.vimeo.com/video/640603019&quot; /&gt;
+    &lt;/object&gt;
   &lt;/div&gt;
   &lt;figcaption&gt;Demo of arbitrary wavemorphing (I apologize for the 4:3 aspect ratio)&lt;/figcaption&gt;
 &lt;/figure&gt;
 
 &lt;p&gt;The code below also implements the &lt;a href=&quot;http://www.martin-finke.de/blog/articles/audio-plugins-018-polyblep-oscillator/&quot;&gt;polyBLEP&lt;/a&gt; anti-aliasing technique. There are actually two anti-aliasing algorithms in use within the demo video, but I don’t really want to focus on anti-aliasing just yet. I’ll probably talk about it in another post.&lt;/p&gt;
 
-&lt;h1 id=&quot;oscillatorshape&quot;&gt;oscillator::shape()&lt;/h1&gt;
+&lt;h2 id=&quot;oscillatorshape&quot;&gt;oscillator::shape()&lt;/h2&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// Phase distortion between arbitrary waveforms&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;// Stolen from here:&lt;/span&gt;
@@ -133,7 +161,7 @@
 
 &lt;p&gt;The function takes in the current phase (float p) and the amount the phase is being incremented by (float px). The latter is required for polyBLEP anti-aliasing. In general, I like to declare all another variables I’m going to use within a function at the start. I find it’s just easier to keep track of things that way. Ignoring all the polyBLEP stuff, from line 8-26 I’m basically generating waveforms by shaping the incoming phase using arithmetic and some signal processing hackery. From there, I’m calculating the approximate arcsin of each signal. The important part starts at line 28. Below is an exert of it&lt;/p&gt;
 
-&lt;h1 id=&quot;return-cosfwtf-is-this-shit&quot;&gt;return cosf(wtf is this shit)&lt;/h1&gt;
+&lt;h2 id=&quot;return-cosfwtf-is-this-shit&quot;&gt;return cosf(wtf is this shit)&lt;/h2&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;oscillator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
 
@@ -168,7 +196,7 @@
 
 &lt;p&gt;Ok so before I write about my code, I guess I should probably write about what Bela is and basic Bela programming. &lt;a href=&quot;https://www.bela.io&quot;&gt;Bela&lt;/a&gt; is a cape for the &lt;a href=&quot;https://beagleboard.org/black&quot;&gt;Beagle Bone Black&lt;/a&gt; single board computer. It specializes in audio processing for the purpose of creating audio effects, instruments, sound installations, whatever. It comes with 16 digital and analog IOs for interfacing with switches and potentiometers and stuff. It’s pretty rad.&lt;/p&gt;
 
-&lt;h1 id=&quot;rendercpp&quot;&gt;render.cpp&lt;/h1&gt;
+&lt;h2 id=&quot;rendercpp&quot;&gt;render.cpp&lt;/h2&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;span class=&quot;cp&quot;&gt;#include &amp;lt;Bela.h&amp;gt;
 #include &amp;lt;cmath&amp;gt;
@@ -207,7 +235,7 @@
 
 &lt;p&gt;Above is the basic example code shipped with Bela. It produces a sine wave signal at 440hz (middle A). Other than being based in C++ rather than Java, it’s surprisingly similar to Processing in terms of having a setup() function followed by some looping rendering function. The functions are given two arguments: a pointer to a BelaContext object, a pointer to a userData object. From what I assume/read online, these objects declared in the Bela.h header file and contain system data such as hardware and driver information.&lt;/p&gt;
 
-&lt;h1 id=&quot;setup&quot;&gt;setup()&lt;/h1&gt;
+&lt;h2 id=&quot;setup&quot;&gt;setup()&lt;/h2&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;span class=&quot;kt&quot;&gt;bool&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BelaContext&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;userData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
@@ -274,8 +302,22 @@
 
 &lt;figure class=&quot;embed&quot;&gt;
   &lt;div class=&quot;vid&quot;&gt;
-    &lt;iframe src=&quot;https://player.vimeo.com/video/645841010&quot; width=&quot;500&quot; height=&quot;281&quot; frameborder=&quot;0&quot; webkitallowfullscreen=&quot;&quot; mozallowfullscreen=&quot;&quot; allowfullscreen=&quot;&quot;&gt;
+    &lt;!--
+    &lt;iframe
+        src=&quot;https://player.vimeo.com/video/645841010&quot;
+        width=&quot;500&quot;
+        height=&quot;281&quot;
+        frameborder=&quot;0&quot;
+        webkitallowfullscreen
+        mozallowfullscreen
+        allowfullscreen&gt;
     &lt;/iframe&gt;
+    --&gt;
+    &lt;object data=&quot;https://player.vimeo.com/video/645841010&quot; type=&quot;application/x-shockwave-flash&quot;&gt;
+      &lt;param name=&quot;allowfullscreen&quot; value=&quot;true&quot; /&gt;
+      &lt;param name=&quot;allowscriptaccess&quot; value=&quot;always&quot; /&gt;
+      &lt;param name=&quot;movie&quot; value=&quot;https://player.vimeo.com/video/645841010&quot; /&gt;
+    &lt;/object&gt;
   &lt;/div&gt;
   &lt;figcaption&gt;Demo video of the Pd patch&lt;/figcaption&gt;
 &lt;/figure&gt;
@@ -286,9 +328,21 @@
 &lt;!-- https://github.com/nathancy/jekyll-embed-video#responsive-videos --&gt;
 
 &lt;figure class=&quot;embed&quot;&gt;
-  &lt;div class=&quot;vid&quot;&gt;
-    &lt;iframe src=&quot;https://www.youtube.com/embed/3dEH7uhZ-ME&quot; width=&quot;700&quot; height=&quot;480&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;
+  &lt;!--
+    &lt;iframe
+        src=&quot;https://www.youtube.com/embed/3dEH7uhZ-ME&quot;
+        width=&quot;700&quot;
+        height=&quot;480&quot;
+        frameborder=&quot;0&quot;
+        allowfullscreen=&quot;&quot;&gt;
     &lt;/iframe&gt;
+  --&gt;
+  &lt;div class=&quot;vid&quot;&gt;
+    &lt;object type=&quot;application/x-shockwave-flash&quot; style=&quot;width:100%; height:100%;&quot; data=&quot;//www.youtube.com/v/3dEH7uhZ-ME?color2=FBE9EC&amp;amp;version=3&quot;&gt;
+      &lt;param name=&quot;movie&quot; value=&quot;//www.youtube.com/v/3dEH7uhZ-ME?color2=FBE9EC&amp;amp;version=3&quot; /&gt;
+      &lt;param name=&quot;allowFullScreen&quot; value=&quot;true&quot; /&gt;
+      &lt;param name=&quot;allowscriptaccess&quot; value=&quot;always&quot; /&gt;
+    &lt;/object&gt;
   &lt;/div&gt;
   &lt;figcaption class=&quot;caption&quot;&gt;:)&lt;/figcaption&gt;
 &lt;/figure&gt;</content><author><name>Chris Carin</name></author><category term="Music" /><category term="Blog Stuff" /><summary type="html">I just wanted to test posting YouTube videos. Here’s one featuring Mr. Funk and possibly John Frusciante.</summary></entry><entry><title type="html">Hello World!</title><link href="http://0.0.0.0:4000/GRPH/2021/10/13/hello-world!.html" rel="alternate" type="text/html" title="Hello World!" /><published>2021-10-13T00:00:00-04:00</published><updated>2021-10-13T00:00:00-04:00</updated><id>http://0.0.0.0:4000/GRPH/2021/10/13/hello-world!</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/2021/10/13/hello-world!.html">&lt;p&gt;Check it out!! It’s my first post!! How cool is that? Comin’ straight from the 647 to the 905 to the 416 etc. I don’t really have much to write about right now. So I guess I’ll just some small updates about what I’ve been up to.&lt;/p&gt;

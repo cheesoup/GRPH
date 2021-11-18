@@ -1,37 +1,26 @@
 <!doctype html>
 <html lang="en">
-    <head>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" type="text/css" href="{{ "/assets/css/landing.css" | relative_url }}">
-      <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ "feed.xml" | relative_url }}">
-      <link rel="shortcut icon" type="image/png" href="{{ "icon.ico" | relative_url }}">
-      {% if page.custom_css %}
-        <!-- Include custom CSS per page -->
-        <!-- Use element custom_css -->
-        <!-- https://jreel.github.io/per-page-custom-css-in-jekyll/ -->
-        {% for stylesheet in page.custom_css %}
-        <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/{{ stylesheet }}.css">
-        {% endfor %}
-      {% endif %}
-
-      {% seo %}
-    </head>
-    <body>
-      <!-- CONTENT START -->
-      <div class="content">
-        <img src="{{ "/assets/images/splash.gif" | relative_url }}" alt="hello" class="logo"/>
-        <p>
-          <h1>chris carin's workshop blog</h1>
-          <ul>
-             {% for item in site.data.navi.pages %}
-             <li><a href="{{ item.url | relative_url }}">{{ item.title }}</a></li>
-             {% endfor %}
-          </ul>
-        </p>
-      </div>
-      <div class="footer">
-        <a href="http://www.wtfpl.net/txt/copying/">WTFPL</a> 2021-2022 Chris Carin</br>
-      </div>
-      <!-- CONTENT END -->
-    </body>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ "/assets/css/landing.css" | relative_url }}">
+    <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ "feed.xml" | relative_url }}">
+    <link rel="shortcut icon" type="image/png" href="{{ "icon.ico" | relative_url }}">
+    {% seo %}
+  </head>
+  <body>
+    <!-- HEADER START -->
+    <main>
+      <img src="{{ "/assets/images/splash.gif" | relative_url }}" alt="hello" class="logo"/>
+      <h1>chris carin's workshop blog</h1>
+    </main>
+    <!-- HEADER END -->
+    <nav>
+      {% for item in site.data.navi.pages %}
+      <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+      {% endfor %}
+    </nav>
+    <footer>
+      <a href="http://www.wtfpl.net/txt/copying/">WTFPL</a> 2021-2022 Chris Carin</br>
+    </footer>
+  </body>
 </html>

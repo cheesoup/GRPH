@@ -8,8 +8,8 @@ date: Nov. 16th, 2021
 
 Discord: chrissy惨#0712\
 Last.fm: [not_Chiisu](https://www.last.fm/user/not_Chiisu)\
-E-mail A: [chr.carin[a]gmail](mailto:chr.carin[a]gmail.com)\
-E-mail B: [chris.carin[a]ocadu](mailto:chris.carin[a]gmail.com)
+E-mail A: [chr.carin(a)gmail](mailto:chr.carin(a)gmail.com)\
+E-mail B: [chris.carin(a)ocadu](mailto:chris.carin(a)gmail.com)
 
 My full name's Christopher Miguel Carin. I'm a fourth year Graphic Design student at OCADU. This is my blog where I write nonsense about my Graphic Design Workshop. Other than discord, I don't really use social media so the best way contact me is either that or via e-mail (preferably personal one).
 
@@ -25,4 +25,4 @@ This website was built using the [Jekyll](https://jekyllrb.com/) engine. It was 
 
 I'm planning to use this blog to keep track of notes, prototypes, ideas, etc. Things I plan on posting include: PureData/MaxMSP patches, random Bela and C++ stuff, badly explained DSP math, and just general nonsense about design, sound, and music. Maybe I'll post some p5.js or processing stuff if it's relevant too.
 
-<div class="footer">Last updated: {{ page.date }}</div>
+<footer>Last updated: {{ page.date }}</footer>
