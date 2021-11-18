@@ -30,8 +30,8 @@
   --color3: #444;
   --color4: #000;
 
-  --p_margin: 20px;
-  --side_pad: 40px;
+  --paragraph_spacing: 20px;
+  --margins: 40px;
 }
 
 /*~~~~~~~~~~~~~~~*/
@@ -56,6 +56,10 @@ div.wrap {
   width: 100vw;
 }
 
+header {
+  width: var(--maxWidth);
+}
+
 main {
   padding: 30px 0 15px;
   background-color: var(--color0);
@@ -65,11 +69,12 @@ main {
   border-bottom: 1px var(--color4) solid;
 }
 
-header {
-  width: var(--maxWidth);
+main ul {
+  margin: 0 var(--margins) var(--paragraph_spacing);
 }
 
 footer {
+  margin-bottom: 25px;
   padding: 25px 0 0;
   text-align: center;
   font-size: 12px;
@@ -97,6 +102,10 @@ footer a:hover {
     box-shadow: 10px 10px var(--color2);
     border: 1px var(--color4) solid;
   }
+}
+
+.margined {
+  margin: 0 var(--margins);
 }
 
 /*~~~~~~~~~~~~~~~~~*/
@@ -133,7 +142,7 @@ h2 {
 }
 
 hr {
-  margin: 0 var(--side_pad) var(--p_margin);
+  margin: 0 var(--margins) var(--paragraph_spacing);
   border-top: 2px var(--color4) solid;
   border-left: 0;
   border-right: 0;
@@ -190,8 +199,12 @@ nav a:hover, nav a:active{
 /* Tags Page CSS */
 /*~~~~~~~~~~~~~~~*/
 
+main ul.tagged {
+  margin-bottom: 0;
+}
+
 main ul.tagged li {
-  margin-bottom: var(--p_margin);
+  margin: 0 0 var(--paragraph_spacing);
 }
 
 main ul.tagged li small,
@@ -203,9 +216,9 @@ main ul.tagged li span {
 
 main small.gototop {
   display: block;
-  margin: 0 var(--side_pad) var(--p_margin);
+  padding: 0 0 10px;
+  margin: 0 var(--margins) var(--paragraph_spacing);
   border-bottom: 2px var(--color4) dotted;
-  text-align: right;
 }
 
 main small.gototop a {
@@ -217,7 +230,7 @@ main small.gototop a {
 /*~~~~~~~~~~*/
 
 main p, main h1, main h2 {
-  margin: 0 var(--side_pad) var(--p_margin);
+  margin: 0 var(--margins) var(--paragraph_spacing);
 }
 
 main h1 a {
@@ -236,25 +249,25 @@ main h1 a:hover {
 main ul.posts, main ul.tags {
   list-style-type: none;
   padding: 0 ;
-  margin: 0;
+  margin: 0 var(--margins);
 }
 
 main ul.posts li {
-  margin: 0 var(--side_pad) var(--p_margin);
+  margin-bottom: var(--paragraph_spacing);
   border-bottom: 2px var(--color4) dotted;
 }
 
 main ul.posts li h1,
 main ul.posts li p,
 main ul.posts li footer {
-  margin: 0 0 var(--p_margin);
+  margin: 0 0 var(--paragraph_spacing);
 }
 
 main footer {
   text-align: left;
   font-size: 12px;
   padding: 0;
-  margin: 0 var(--side_pad) var(--p_margin);
+  margin: 0 var(--margins) var(--paragraph_spacing);
 }
 
 @media (min-width: 1024px) {
@@ -265,8 +278,8 @@ main footer {
 }
 
 main nav {
-  margin: 0 var(--side_pad);
-  padding-top: var(--p_margin);
+  margin: 0 var(--margins);
+  padding-top: var(--paragraph_spacing);
   border-top: 2px var(--color4) dotted;
 }
 
@@ -293,7 +306,7 @@ main figure.embed {
   box-shadow: 5px 5px var(--color2);
   border: 1px var(--color4) solid;
   padding: 10px;
-  margin: 0 var(--side_pad) var(--p_margin);
+  margin-bottom: var(--paragraph_spacing);
   font-style: italic;
   text-align: center;
 }
@@ -346,7 +359,7 @@ main .highlighter-rouge {
 
 main figure.highlight {
   margin: 0 0 15px;
-  padding: 5px var(--side_pad);
+  padding: 5px var(--margins);
   border: 10px var(--color3) solid;
   overflow-x: scroll;
 }
