@@ -27,6 +27,6 @@ I'm pretty happy about is how small this website is. I've managed to get the abo
 
 Other than optimization, I had a couple goals in mind when working on the re-design. I have a process book coming up for Workshop and I figured starting here would be a good place for coming up with design ideas for the final printed version. I guess visually, I'm really trying to pull ideas from WEB 1.0. Part of me is nostalgic for the hours I would spend listening to the midi re-interpretations of Koji Kondo's Dire Dire Docks or Alice Deejay's Better Off Alone on Geocities.
 
-<p align="center"><img src="{{ "/assets/images/splash.gif" | relative_url }}" alt="My buddy!"/></p>
+<p style="text-align:center"><img src="{{ "/assets/images/splash.gif" | relative_url }}" alt="My buddy!"/></p>
 
 If you haven't noticed, I've come up with a little mascot for this project. You can see them up in the top corner! They don't quite have a name yet, but they're my buddy and we're gonna make synths together. They're based off a friend of mine from Calgary who makes some pretty rad tunes and actually isn't a crow (their last name just sounds like it).
