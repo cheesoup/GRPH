@@ -133,7 +133,7 @@
 <div class="float ">
   <figure class="embed picture">
     <a href="#content-sine-png">
-      <img src="/GRPH/assets/images//content/sine.png" alt="A plot of a sine function with its phase normalized to 2π" style="width: 480px" />
+      <img src="/GRPH/assets/images//content/sine.png" alt="A plot of a sine function with its phase normalized to 2π" style="width: 800px" />
     </a>
     <figcaption>A plot of a sine function with its phase normalized to 2π</figcaption>
   </figure>
@@ -161,7 +161,7 @@
 
 <p>The amount to increment x is calculated by multiplying the given frequency by the inverse sample rate. This is equal to ` dx = freq / samplerate`. By controlling how much we increment the phase, we’re able to control the frequency at which the oscillator oscillates at. Something to keep in mind with this example however is that they normalize the phase to 2PI. This is because the normal phase length of a sine wave is 2PI.</p>
 
-<h1 id="cleanup">cleanup()</h1>
+<h2 id="cleanup">cleanup()</h2>
 
 <figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="kt">void</span> <span class="nf">cleanup</span><span class="p">(</span><span class="n">BelaContext</span> <span class="o">*</span><span class="n">context</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">userData</span><span class="p">)</span>
 <span class="p">{</span>
@@ -170,7 +170,7 @@
 
 <p>This section doesn’t actually do anything. In C++, one is able to dynamically allocate memory. When doing so, memory needs to be deallocated to free it up again. Dynamic memory allocation isn’t used in this example however, thus nothing needs to be cleaned up. In scenarios where you do dynamically allocate memory, this is where you would deallocate the remainder of what needs to be deallocated.</p>
 
-<h1 id="conclusion">Conclusion</h1>
+<h2 id="conclusion">Conclusion</h2>
 
 <p>And that’s all the example does! Hopefully this post wasn’t too wordy. If you’re interested in learning more about audio programming in C++, I’ve been following this <a href="https://www.youtube.com/watch?v=aVLRUyPBBJk">YouTube tutorial</a>. I think it’s pretty useful even outside of a Bela context. I’m not quite sure how easy it is to follow for non-programmers and people not into signal processing however.</p>
 

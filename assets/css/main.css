@@ -411,12 +411,12 @@ div.float {
 @media (min-width: 1024px) {
   div.right {
     float: right;
-    margin: 5px var(--margins) 5px 20px;
+    margin: 5px var(--margins) 5px 10px;
   }
 
   div.left {
     float: left;
-    margin: 5px 20px 5px var(--margins);
+    margin: 5px 15px 5px var(--margins);
   }
 }
 

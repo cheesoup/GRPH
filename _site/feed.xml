@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://0.0.0.0:4000/GRPH/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://0.0.0.0:4000/GRPH/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/GRPH/" rel="alternate" type="text/html" /><updated>2021-11-19T06:50:36-05:00</updated><id>http://0.0.0.0:4000/GRPH/feed.xml</id><title type="html">thesis? idk?</title><subtitle>a blog for 4th year workshop at OCADU</subtitle><author><name>Chris Carin</name></author><entry><title type="html">Why I’m Even Making a Synth</title><link href="http://0.0.0.0:4000/GRPH/2021/11/16/why-im-making-a-synth.html" rel="alternate" type="text/html" title="Why I’m Even Making a Synth" /><published>2021-11-16T00:00:00-05:00</published><updated>2021-11-16T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/2021/11/16/why-im-making-a-synth</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/2021/11/16/why-im-making-a-synth.html">&lt;p&gt;When it comes to actually writing music, I actually think I’m pretty awful. I spend so much time obsessing over tiny details and always have a hard time seeing the big picture of what I’m trying to do. Honestly, the reason why I’ve been so upset with my process of creation is due to this indecisiveness to move on from minute details. On top of that, I’m not the most mechanically gifted person in the world. Much like how I struggle with brushes and inks, I can barely play inversions on the piano.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://0.0.0.0:4000/GRPH/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://0.0.0.0:4000/GRPH/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/GRPH/" rel="alternate" type="text/html" /><updated>2021-11-19T07:07:22-05:00</updated><id>http://0.0.0.0:4000/GRPH/feed.xml</id><title type="html">thesis? idk?</title><subtitle>a blog for 4th year workshop at OCADU</subtitle><author><name>Chris Carin</name></author><entry><title type="html">Why I’m Even Making a Synth</title><link href="http://0.0.0.0:4000/GRPH/2021/11/16/why-im-making-a-synth.html" rel="alternate" type="text/html" title="Why I’m Even Making a Synth" /><published>2021-11-16T00:00:00-05:00</published><updated>2021-11-16T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/2021/11/16/why-im-making-a-synth</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/2021/11/16/why-im-making-a-synth.html">&lt;p&gt;When it comes to actually writing music, I actually think I’m pretty awful. I spend so much time obsessing over tiny details and always have a hard time seeing the big picture of what I’m trying to do. Honestly, the reason why I’ve been so upset with my process of creation is due to this indecisiveness to move on from minute details. On top of that, I’m not the most mechanically gifted person in the world. Much like how I struggle with brushes and inks, I can barely play inversions on the piano.&lt;/p&gt;
 
 &lt;!-- Include for captioned images --&gt;
 
-&lt;div class=&quot;float right&quot;&gt;
+&lt;div class=&quot;float &quot;&gt;
   &lt;figure class=&quot;embed picture&quot;&gt;
     &lt;a href=&quot;#content-sonic-pi-png&quot;&gt;
-      &lt;img src=&quot;/GRPH/assets/images//content/sonic-pi.png&quot; alt=&quot;Screenshot of Sonic Pi from Wikipedia&quot; style=&quot;width: 360px&quot; /&gt;
+      &lt;img src=&quot;/GRPH/assets/images//content/sonic-pi.png&quot; alt=&quot;Screenshot of Sonic Pi from Wikipedia&quot; style=&quot;width: 800px&quot; /&gt;
     &lt;/a&gt;
     &lt;figcaption&gt;Screenshot of Sonic Pi from Wikipedia&lt;/figcaption&gt;
   &lt;/figure&gt;
@@ -146,7 +146,7 @@
 &lt;div class=&quot;float &quot;&gt;
   &lt;figure class=&quot;embed picture&quot;&gt;
     &lt;a href=&quot;#content-sine-png&quot;&gt;
-      &lt;img src=&quot;/GRPH/assets/images//content/sine.png&quot; alt=&quot;A plot of a sine function with its phase normalized to 2π&quot; style=&quot;width: 480px&quot; /&gt;
+      &lt;img src=&quot;/GRPH/assets/images//content/sine.png&quot; alt=&quot;A plot of a sine function with its phase normalized to 2π&quot; style=&quot;width: 800px&quot; /&gt;
     &lt;/a&gt;
     &lt;figcaption&gt;A plot of a sine function with its phase normalized to 2π&lt;/figcaption&gt;
   &lt;/figure&gt;
@@ -174,7 +174,7 @@
 
 &lt;p&gt;The amount to increment x is calculated by multiplying the given frequency by the inverse sample rate. This is equal to ` dx = freq / samplerate`. By controlling how much we increment the phase, we’re able to control the frequency at which the oscillator oscillates at. Something to keep in mind with this example however is that they normalize the phase to 2PI. This is because the normal phase length of a sine wave is 2PI.&lt;/p&gt;
 
-&lt;h1 id=&quot;cleanup&quot;&gt;cleanup()&lt;/h1&gt;
+&lt;h2 id=&quot;cleanup&quot;&gt;cleanup()&lt;/h2&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;cleanup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BelaContext&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;userData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
@@ -183,7 +183,7 @@
 
 &lt;p&gt;This section doesn’t actually do anything. In C++, one is able to dynamically allocate memory. When doing so, memory needs to be deallocated to free it up again. Dynamic memory allocation isn’t used in this example however, thus nothing needs to be cleaned up. In scenarios where you do dynamically allocate memory, this is where you would deallocate the remainder of what needs to be deallocated.&lt;/p&gt;
 
-&lt;h1 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h1&gt;
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
 
 &lt;p&gt;And that’s all the example does! Hopefully this post wasn’t too wordy. If you’re interested in learning more about audio programming in C++, I’ve been following this &lt;a href=&quot;https://www.youtube.com/watch?v=aVLRUyPBBJk&quot;&gt;YouTube tutorial&lt;/a&gt;. I think it’s pretty useful even outside of a Bela context. I’m not quite sure how easy it is to follow for non-programmers and people not into signal processing however.&lt;/p&gt;</content><author><name>Chris Carin</name></author><category term="Bela" /><category term="Audio Programming" /><category term="Oscillators" /><category term="C++" /><summary type="html">I finally managed to get sometime to do a bit a programming. It’s been alright so far. Most of my times been spent on figuring out how pointers work and just getting used to C++ in general. I managed to program this dithered polyBLEP sawtooth oscillator. It’s a bit late so I’ll edit this post later with some details on the code, but for now here it is in raw form. [Oct.30th edit: OK LETS WRITE SOME STUFF]</summary></entry><entry><title type="html">Github Pages</title><link href="http://0.0.0.0:4000/GRPH/2021/10/15/github-pages.html" rel="alternate" type="text/html" title="Github Pages" /><published>2021-10-15T00:00:00-04:00</published><updated>2021-10-15T00:00:00-04:00</updated><id>http://0.0.0.0:4000/GRPH/2021/10/15/github-pages</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/2021/10/15/github-pages.html">&lt;p&gt;Debugging this site was a lot more of a pain in the ass than I thought it would be. After an extra day of website work, I finally managed to get my Github Pages to recognize my Jekyll source repository as a website. I feel like this should’ve been obvious how to do, but I’m actually pretty unfamiliar with the git protocol.&lt;/p&gt;
 

@@ -8,7 +8,7 @@ vimeoID: 646396827
 
 When it comes to actually writing music, I actually think I'm pretty awful. I spend so much time obsessing over tiny details and always have a hard time seeing the big picture of what I'm trying to do. Honestly, the reason why I've been so upset with my process of creation is due to this indecisiveness to move on from minute details. On top of that, I'm not the most mechanically gifted person in the world. Much like how I struggle with brushes and inks, I can barely play inversions on the piano.
 
-{% include image.html url='/content/sonic-pi.png' width='360px' float='right' lightbox='true' caption='Screenshot of Sonic Pi from Wikipedia' %}
+{% include image.html url='/content/sonic-pi.png' width='800px' caption='Screenshot of Sonic Pi from Wikipedia' %}
 
 When it came to design however, I always thought what gave me an edge is my ability to pull magic out of computers. While there was a lot I needed to learn at OCAD to feel even remotely competent with what I was doing, I always felt like I had this talent as a crux. I call it magic because I really think computers are magical. Here is this box. You can put whatever data in it you can think of and with just a little bit of a math you can shape that data into ([almost](https://www.youtube.com/watch?v=macM_MtS_w4)) any virtual form you want. If that's not magic, I don't know what is. I think that's what attracted me to electronic music in the first place. I always wanted to make music. I just never had the patience to figure out how to physically play something.
 
