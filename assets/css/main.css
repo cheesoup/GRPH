@@ -14,12 +14,6 @@
   }
 }
 
-@media (min-width: 1280px) {
-  :root {
-      --maxWidth: 1200px;
-  }
-}
-
 :root {
   --body_stack: "Trebuchet MS", Verdana, Arial, sans-serif;
   --h1_stack: "Monaco", "Andale Mono", "Consolas", "Lucida Console", "Courier New", Courier, monospace;
