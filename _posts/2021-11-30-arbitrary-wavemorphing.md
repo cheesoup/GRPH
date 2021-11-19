@@ -1,13 +1,11 @@
 ---
 layout: post
 tag: [Bela, Audio Programming, Oscillators, C++]
-date: Oct. 30, 2021
+date: Nov. 30, 2021
 vimeoID: 640603019
 ---
 
-Most of my initial foray into C++ has been spent trying to adapt an oscillator I had implemented in PureData. It's based on a sort of phase distortion algorithm by Scott "Acriel" Nordlund for PureData which allows a signal to morph between a sine wave and an arbitrary waveform of the same periodic length. Here's a [desmos graph](https://www.desmos.com/calculator/b4ejbqju7m) of the algorithm. I've also included a video of the oscillator viewed through an oscilloscope below. It's based around the equation ``x = inverse_sine(sine(x))``.
-
-{% include vimeo.html id=page.vimeoID caption='Demo of arbitrary wavemorphing (I apologize for the 4:3 aspect ratio)'%}
+Most of my initial foray into C++ has been spent trying to adapt an oscillator I had implemented in PureData. It's based on a sort of phase distortion algorithm by Scott "Acriel" Nordlund for PureData which allows a signal to morph between a sine wave and an arbitrary waveform of the same periodic length. Here's a [desmos graph](https://www.desmos.com/calculator/b4ejbqju7m) of the algorithm. I've also included a video of the oscillator viewed through an oscilloscope at the end.
 
 ## oscillator::shape()
 {% highlight c++ %}
@@ -18,7 +16,7 @@ float oscillator::shape(float p, float px) {
 	float x, wrap_phase, shape;
 	float waves[4];
 
-	// Generate niave sawtooth w/ polyBLEP
+	// Generate naive sawtooth w/ polyBLEP
 	x = fmodf_neon(p + 0.75, 1.0) * 2.0 - 1.0;
 	x -= polyblep(fmodf_neon(p + 0.75, 1.0), px);
 	waves[0] = asin_fast(fminf(1, fmaxf(-1, x)));
@@ -61,7 +59,7 @@ float oscillator::shape(float p, float px) {
 
 Above is my implementation of a wavemorphing function. Note that object variables are named with an underscore. I don't fully get how it all works (like why is shape signal normalized to the value of -1rad/s) but I guess I'll try to explain it.
 
-The function takes in the current phase (float p) and the amount the phase is being incremented by (float px). The latter is required for polyBLEP anti-aliasing. Ignoring all the polyBLEP stuff, from line 8-26 I'm basically generating waveforms by shaping the incoming phase using arithmetic and some signal processing hackery. From there, I'm calculating the approximate arcsin of each signal. The important part starts at line 28. Below is an exert of it
+The function takes in the current phase (float p) and the amount the phase is being incremented by (float px). The latter is required for polyBLEP anti-aliasing. Ignoring all the polyBLEP stuff, from line 8-26 I'm basically generating waveforms by shaping the incoming phase using arithmetic and some signal processing hackery. From there, I'm calculating the approximate arcsin of each signal. The important part starts at line 28. Below is an exert of it.
 
 ## return cosf(wtf is this shit)
 {% highlight c++ %}
@@ -95,3 +93,5 @@ This is the main section of the morph algorithm. It starts by creating a fifth w
 When the shape signal is fully attenuated, the function produces a cosine wave. The more of the shape signal is integrated the more the cosine wave will take the form of the arbitrary waveform we plugged in. In the case of the above implementation, the arbitrary waveform is some linear interpolation (i.e. crossfaded signal) of a triangle, sawtooth, pulse, and exponential wave.
 
 That's basically the jist of what's going on here. Again, I don't fully understand it (I wish I did). It's a bit late, so I'll probably end up writing about anti-aliasing another time. I'll link it in this post when I get around to it.
+
+{% include vimeo.html id=page.vimeoID caption='Demo of arbitrary wavemorphing (I apologize for the 4:3 aspect ratio)'%}

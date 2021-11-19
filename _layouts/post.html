@@ -2,15 +2,26 @@
 layout: default
 ---
 
-<h1>{{ page.title }}</h1>
+
+{% assign words = content | number_of_words %}
+<header>
+  <h1>{{ page.title }}</h1>
+  <small>
+    {{ page.date | date: "%a, %b %d, %y" }}
+    / Read Time:
+    {% if words < 360 %}
+      1 min
+    {% else %}
+      {{ words | divided_by:180 }} mins
+    {% endif %}
+    / Tagged:
+    {% for tag in page.tags %}
+      <a href="{{ 'tags' | relative_url }}#{{ tag | slugify }}">{{ tag | replace:'-', ' ' }}</a>
+    {% endfor %}
+  </small>
+</header>
 
 {{ content }}
-
-<footer>{{ page.date | date: "%a, %b %d, %y" }} | Tags:
-  {% for tag in page.tags %}
-    <a href="{{ 'tags' | relative_url }}#{{ tag | slugify }}">{{ tag | replace:'-', ' ' }}</a>
-  {% endfor %}
-</footer>
 
 <nav>
 {% if page.previous.url %}
@@ -33,5 +44,5 @@ layout: default
   <a class="next" href="{{ page.url | relative_url }}">
     Next: {{page.title}} &raquo;
   </a>
-  {% endif %}
+{% endif %}
 </nav>

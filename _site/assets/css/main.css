@@ -30,7 +30,7 @@
   --color3: #444;
   --color4: #000;
 
-  --paragraph_spacing: 20px;
+  --paragraph_spacing: 10px;
   --margins: 40px;
 }
 
@@ -42,21 +42,16 @@ body {
   font-family: var(--body_stack);
   background-color: var(--color1);
   background-attachment: fixed;
-  word-wrap: break-word;
   overflow-wrap: break-word;
   overflow-y: scroll;
   margin: 0;
 }
 
-div.wrap {
-  width: 100vw;
-}
-
-header {
+div.wrap > header {
   width: var(--maxWidth);
 }
 
-main {
+div.wrap > main {
   padding: 30px 0 15px;
   background-color: var(--color0);
   line-height: 24px;
@@ -65,24 +60,31 @@ main {
   border-bottom: 1px var(--color4) solid;
 }
 
-main ul {
-  margin: 0 var(--margins) var(--paragraph_spacing);
-}
-
-footer {
+div.wrap > footer {
   margin-bottom: 25px;
   padding: 25px 0 0;
   text-align: center;
   font-size: 12px;
 }
 
-footer a {
+div.wrap > footer a {
   color: var(--color4);
   text-decoration: none;
 }
 
-footer a:hover {
+div.wrap > footer a:hover {
   color: var(--color0);
+}
+
+small.gototop {
+  display: block;
+  padding: 0 0 10px;
+  border-bottom: 2px var(--color4) dotted;
+  margin-bottom: var(--paragraph_spacing);
+}
+
+small.gototop a {
+  text-decoration: none;
 }
 
 /* Screen > 1080px CSS */
@@ -93,7 +95,7 @@ footer a:hover {
     max-width: var(--maxWidth);
   }
 
-  main {
+  div.wrap > main {
     padding: 35px 0 50px;
     font-size: var(--body_sizePC);
     box-shadow: 10px 10px var(--color2);
@@ -101,7 +103,7 @@ footer a:hover {
   }
 }
 
-.margined {
+main > * {
   margin: 0 var(--margins);
 }
 
@@ -123,28 +125,21 @@ a:hover {
 h1 {
   font-family: var(--h1_stack);
   font-size: 28px;
+  line-height: 32px;
   letter-spacing: 1.5px;
-  text-transform: lowercase;
-  padding: 0;
-  margin: 0;
 }
 
 h2 {
   font-family: var(--h2_stack);
   font-size: 20px;
+  line-height: 28px;
   letter-spacing: 1.5px;
-  text-transform: lowercase;
-  padding: 0;
-  margin: 0;
 }
 
 hr {
-  margin: 0 var(--margins) var(--paragraph_spacing);
-  border-top: 2px var(--color4) solid;
-  border-left: 0;
-  border-right: 0;
-  border-bottom: 0;
-  border-style: dotted;
+  margin-bottom: var(--paragraph_spacing);
+  border: 0;
+  border-top: 2px var(--color4) dotted;
 }
 
 ul {
@@ -168,11 +163,11 @@ a.logo, a.logo:hover {
   color: transparent;
 }
 
-nav {
+div.wrap > nav {
   margin-left: 20px;
 }
 
-nav a {
+nav > a {
   position: relative;
   padding: 5px;
   margin: 0 2px;
@@ -192,295 +187,353 @@ nav a:hover, nav a:active{
   box-shadow: 2px 2px var(--color2);
 }
 
-/*~~~~~~~~~~~~~~~*/
-/* Tags Page CSS */
-/*~~~~~~~~~~~~~~~*/
-
-main ul.tagged {
-  margin-bottom: 0;
-}
-
-main ul.tagged li {
-  margin: 0 0 var(--paragraph_spacing);
-}
-
-main ul.tagged li small,
-main ul.tagged li span {
-  display: block;
-  margin: 0;
-  line-height: 20px;
-}
-
-main small.gototop {
-  display: block;
-  padding: 0 0 10px;
-  margin: 0 var(--margins) var(--paragraph_spacing);
-  border-bottom: 2px var(--color4) dotted;
-}
-
-main small.gototop a {
-  text-decoration: none;
-}
-
 /*~~~~~~~~~~*/
 /* Post CSS */
 /*~~~~~~~~~~*/
 
-main p, main h1, main h2 {
-  margin: 0 var(--margins) var(--paragraph_spacing);
+main p, main h1, main h2, main header, main footer {
+  margin-bottom: var(--paragraph_spacing);
 }
 
-main h1 a {
-  background-color: transparent;
+main header, main footer {
+  font-size: 14px;
+  color: var(--color3);
+}
+
+main header > *, main footer > * {
+  margin: 0;
+}
+
+main header > small {
+  display: block;
+}
+
+main header > h1 {
   color: var(--color4);
+  line-height: 32px;
+}
+
+main footer {
+  padding-top: var(--paragraph_spacing);
+}
+
+main h1 a, main h1 a:hover {
+  color: var(--color4);
+  background-color: transparent;
   border: 0;
   text-decoration: none;
 }
 
 main h1 a:hover {
-  background-color: transparent;
   color: var(--color2);
-  text-decoration: none;
 }
 
-main ul.posts, main ul.tags {
-  list-style-type: none;
-  padding: 0 ;
-  margin: 0 var(--margins);
-}
+/* Prev/Next Post */
 
-main ul.posts li {
-  margin-bottom: var(--paragraph_spacing);
-  border-bottom: 2px var(--color4) dotted;
-}
-
-main ul.posts li h1,
-main ul.posts li p,
-main ul.posts li footer {
-  margin: 0 0 var(--paragraph_spacing);
-}
-
-main footer {
-  text-align: left;
-  font-size: 12px;
-  padding: 0;
-  margin: 0 var(--margins) var(--paragraph_spacing);
+main > nav {
+  margin-top: 30px;
+  padding-top: var(--paragraph_spacing);
+  border-top: 2px var(--color4) dotted;
 }
 
 @media (min-width: 1024px) {
-  main nav {
+  main > nav {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-main nav {
-  margin: 0 var(--margins);
-  padding-top: var(--paragraph_spacing);
-  border-top: 2px var(--color4) dotted;
-}
-
-main nav a {
+main > nav > a {
   text-align: center;
   display: block;
-  padding: 5px;
   margin: 10px;
   background-color: var(--color0);
   border: 1px var(--color4) solid;
 }
 
-main nav a:hover {
+main > nav > a:hover {
   background-color: var(--color3);
   color: var(--color0);
+}
+
+/* Post List CSS */
+
+ul.posts, ul.tags {
+  list-style-type: none;
+  padding: 0 ;
+}
+
+ul.posts > li {
+  margin-bottom: var(--paragraph_spacing);
+  padding-bottom: var(--paragraph_spacing);
+  border-bottom: 2px var(--color4) dotted;
+}
+
+ul.posts > li > * {
+  margin: 0 0 var(--paragraph_spacing);
+}
+
+/*~~~~~~~~~~~~~~~*/
+/* Tags Page CSS */
+/*~~~~~~~~~~~~~~~*/
+
+ul.tags {
+  padding-bottom: var(--paragraph_spacing);
+  margin-bottom: var(--paragraph_spacing);
+}
+
+ul.tagged {
+  margin-bottom: 0;
+}
+
+ul.tagged li {
+  margin: 0 0 var(--paragraph_spacing);
+}
+
+ul.tagged > li > small,
+ul.tagged > li > span {
+  display: block;
+  margin: 0;
+  line-height: 20px;
 }
 
 /*~~~~~~~~~~~*/
 /* Embed CSS */
 /*~~~~~~~~~~~*/
 
-main figure.embed {
-  background-color: var(--color1);
-  box-shadow: 5px 5px var(--color2);
-  border: 1px var(--color4) solid;
-  padding: 10px;
-  margin-bottom: var(--paragraph_spacing);
-  font-style: italic;
+figure > figcaption {
   text-align: center;
+  font-style: italic;
+  font-size: 12px;
 }
 
-main figure.embed figcaption {
-  color: var(--color4);
-  font-size: 14px;
+figure.embed {
+  margin-top: var(--margins);
+  margin-bottom: var(--margins);
 }
 
-main figure.embed img,
-main figure.embed div.vid {
-  margin-bottom: 5px;
+figure.picture,
+figure.video {
+  margin: 0 auto;
+  padding: 10px;
+  font-style: italic;
+  color: var(--color3);
+  background-color: var(--color1);
+  border: 1px var(--color4) solid;
+  box-shadow: 5px 5px var(--color2);
+  width: auto;
+}
+
+/* Picture Embeds */
+
+figure.picture {
+  display: inline-block
+}
+
+figure.picture > a:hover {
+  background-color: transparent;
+}
+
+figure.picture img {
   border: 1px var(--color4) solid;
   max-width: 100%;
 }
 
-main figure.embed div.vid {
+/* lightbox */
+
+a.expand {
+  z-index: 0;
   display: block;
+  position: fixed;
+  visibility: hidden;
+  margin: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: auto;
+  background-color: rgba(0,0,0,0.5);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+a.expand:target {
+  visibility: visible;
+  z-index: 2;
+}
+
+a.expand > img {
+  border: 1px var(--color4) solid;
+  position: absolute;
+  max-width: 80%;
+  max-height: 80%;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+/* Video Embeds */
+
+figure.video {
+  max-width: 800px;
+  display: block;
+}
+
+figure.video > div.video {
+  border: 1px var(--color4) solid;
   position: relative;
   padding-bottom: 56.25%;
   height: 0;
   overflow: hidden;
 }
 
-main figure.embed div.vid iframe,
-main figure.embed div.vid object,
-main figure.embed div.vid embed
+div.video > iframe,
+div.video > object,
+div.video > embed
 {
   position: absolute;
   top: 0;
-  left: 0%;
+  left: 0;
   width: 100%;
   height: 100%;
 }
+
+/* Embed Container */
+
+div.float {
+  margin: var(--margins);
+  display: block;
+  text-align: center;
+  vertical-align: top;
+}
+
+@media (min-width: 1024px) {
+  div.right {
+    float: right;
+    margin: 5px var(--margins) 5px 20px;
+  }
+
+  div.left {
+    float: left;
+    margin: 5px 20px 5px var(--margins);
+  }
+}
+
 /*~~~~~~~~~~~*/
 /* CODE TAGS */
 /*~~~~~~~~~~~*/
 
-main figure.highlight pre code, main .highlighter-rouge {
+figure.highlight > pre > code,
+.highlighter-rouge {
   font-family: "Consolas", "Lucida Console", "Monaco", "Andale Mono", "Courier New", courier, monospace;
   color: var(--color0);
   font-size: 13px;
 }
 
-main figure.highlight,
-main .highlighter-rouge {
+figure.highlight,
+.highlighter-rouge {
   background-color: var(--color3);
   padding: 3px;
 }
 
-main figure.highlight {
+figure.highlight {
   margin: 0 0 15px;
   padding: 5px var(--margins);
   border: 10px var(--color3) solid;
   overflow-x: scroll;
 }
 
-figure.highlight pre {
+figure.highlight > pre {
   line-height: 16px;
 }
 
-figure.highlight pre code {
+figure.highlight > pre > code {
   white-space: pre-wrap;
 }
 
 /* Scrollbar for Firefox */
 
-main figure.highlight {
+figure.highlight {
   scrollbar-color: var(--color0) var(--color3);
   scrollbar-width: thin;
 }
 
 /* Scrollbars for everything else apparently */
 
-main figure.highlight::-webkit-scrollbar {
+figure.highlight::-webkit-scrollbar {
   height: 10px;
   width: 10px;
 }
 
-main figure.highlight::-webkit-scrollbar-track {
+figure.highlight::-webkit-scrollbar-track {
  background: var(--color4);
 }
 
-main figure.highlight::-webkit-scrollbar-thumb {
+figure.highlight::-webkit-scrollbar-thumb {
  background: var(--color0);
 }
 
-main figure.highlight::-webkit-scrollbar-thumb:hover {
+figure.highlight::-webkit-scrollbar-thumb:hover {
  background: var(--color3);
 }
 
 /* Code Block colours */
 
+/*
+Based on Muse Scheme
+from Terminal.sexy
+
+black         #2e3436       #555753
+red           #a31604       #c60001
+green         #447241       #27a343
+yellow        #c1951a       #d5a30e
+blue          #425387       #4a5a8d
+magenta       #965d98       #893c8c
+cyan          #06989a       #12bccb
+white         #d3d7cf       #eeeeec
+*/
+
 /* slash comments */
-main figure.highlight .c1,
-main figure.highlight .cm {
+figure.highlight .c1,
+figure.highlight .cm {
   color: #969896;
 }
 
 /* data type */
-main figure.highlight .kt,
-main figure.highlight .kd {
+figure.highlight .kt,
+figure.highlight .kd {
   font-weight: bolder;
   color: #b294bb;
 }
 
 /* boolean */
-main figure.highlight .nb,
-main figure.highlight .kc {
+figure.highlight .nb,
+figure.highlight .kc {
   color: #81a2be;
 }
 
 /* numeric values & strings */
-main figure.highlight .mf,
-main figure.highlight .mi,
-main figure.highlight .s  {
+figure.highlight .mf,
+figure.highlight .mi,
+figure.highlight .s  {
   color: #f0c674;
 }
 
 /* escape characters */
-main figure.highlight .se {
+figure.highlight .se {
   color: #cc6666;
 }
 
 /* data keyword */
-main figure.highlight .k {
+figure.highlight .k {
 font-weight: bolder;
   color: #8abeb7;
 }
 
 /* Wrapped in quotes */
-main figure.highlight .d1,
-main figure.highlight .s2 {
+figure.highlight .d1,
+figure.highlight .s2 {
   font-weight: bolder;
   color: #b5bd68;
 }
-
-/*
-Based on Muse Scheme
-from Terminal.sexy
-*/
-
-/*
-! special
-*.foreground:   var(--color0) [#FFF]
-*.background:   var(--color4) [#000]
-*.cursorColor:  var(--color0) [#FFF]
-
-! black
-*.color0:       #2e3436
-*.color8:       #555753
-
-! red
-*.color1:       #a31604
-*.color9:       #c60001
-
-! green
-*.color2:       #447241
-*.color10:      #27a343
-
-! yellow
-*.color3:       #c1951a
-*.color11:      #d5a30e
-
-! blue
-*.color4:       #425387
-*.color12:      #4a5a8d
-
-! magenta
-*.color5:       #965d98
-*.color13:      #893c8c
-
-! cyan
-*.color6:       #06989a
-*.color14:      #12bccb
-
-! white
-*.color7:       #d3d7cf
-*.color15:      #eeeeec
-*/

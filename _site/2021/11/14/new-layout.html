@@ -50,16 +50,23 @@
       <!-- MENU END -->
       <!-- CONTENT START -->
       <main>
-        <h1>New Layout!</h1>
+        
+<header>
+  <h1>New Layout!</h1>
+  <small>
+    Sun, Nov 14, 21
+    / Read Time:
+    
+      3 mins
+    
+    / Tagged:
+    
+      <a href="/GRPH/tags#blog-stuff">Blog Stuff</a>
+    
+  </small>
+</header>
 
 <p>Over the last couple days I’ve been kind of taking a break from programming the Bela in order to focus my attention on this blog. Despite aiming for a lightweight website, I made a few compromises by deciding to use javascript and webfonts for the sake of style. After testing the website on an <a href="https://www.cnet.com/products/acer-aspire-one-d250/specs/">old netbook</a> however, I noticed that even having a minimal amount of scripting was a bit too much. On top of that, further testing showed that the typefaces imported by Google fonts accounted for the a majority of my sites digital weight.</p>
-
-<!-- Include for captioned images -->
-
-<figure class="embed">
-  <img src="/GRPH/assets/images//content/3screens.jpg" alt="The gangs all here" />
-  <figcaption>The gangs all here</figcaption>
-</figure>
 
 <h2 id="issues-with-the-old-layout">Issues with the Old Layout</h2>
 
@@ -69,41 +76,49 @@
 
 <!-- Include for captioned images -->
 
-<figure class="embed">
-  <img src="/GRPH/assets/images//content/blog_size_0.png" alt="34.1kbs for webfonts" />
-  <figcaption>34.1kbs for webfonts</figcaption>
-</figure>
+<div class="float ">
+  <figure class="embed picture">
+    <a href="#content-blog-size-0-png">
+      <img src="/GRPH/assets/images//content/blog_size_0.png" alt="34.1kbs for webfonts" style="width: " />
+    </a>
+    <figcaption>34.1kbs for webfonts</figcaption>
+  </figure>
+</div>
 
-<p>After getting rid of all the javascript, I found this <a href="https://tools.pingdom.com/">online tool</a> for measuring how much data a webpage requests whenever it is loaded. As the results above show, webfonts had previously accounted for over 50% of the site’s bandwidth per visit which for me is obviously not cool. To remedy this, I stuck to <a href="https://www.cssfontstack.com/">web safe fonts</a>.</p>
+<p><a href="#/" class="expand" id="content-blog-size-0-png">
+  <img src="/GRPH/assets/images//content/blog_size_0.png" alt="34.1kbs for webfonts" style="background-image: url('/GRPH/assets/images/transparent.gif')" />
+</a></p>
+
+<p>After getting rid of all the javascript, I found a few <a href="https://pagespeed.web.dev/">online</a> <a href="https://tools.pingdom.com/">tools</a> for measuring how much data a webpage requests whenever it is loaded. As the results above show, webfonts had previously accounted for over 50% of the site’s bandwidth per visit which for me is obviously not cool. To remedy this, I stuck to <a href="https://www.cssfontstack.com/">web safe fonts</a>.</p>
 
 <h2 id="on-to-the-new">On to the New</h2>
 
-<p>I’m pretty happy about is how small this website is. I’ve managed to get the about me page below 20kbs! I think that’s pretty impressive. There are actually still a few things I would like to implement (the main thing being a pure CSS lightbox for photos), but I think that’s a project for another day.</p>
-
 <!-- Include for captioned images -->
 
-<figure class="embed">
-  <img src="/GRPH/assets/images//content/blog_size_1.png" alt="My sites pretty small now" />
-  <figcaption>My sites pretty small now</figcaption>
-</figure>
+<div class="float right">
+  <figure class="embed picture">
+    <a href="#splash-gif">
+      <img src="/GRPH/assets/images/splash.gif" alt="Say hi!" style="width: " />
+    </a>
+    <figcaption>Say hi!</figcaption>
+  </figure>
+</div>
+
+<p><a href="#/" class="expand" id="splash-gif">
+  <img src="/GRPH/assets/images/splash.gif" alt="Say hi!" style="background-image: url('/GRPH/assets/images/transparent.gif')" />
+</a></p>
+
+<p>I’m pretty happy about is how small this website is. I’ve managed to get the about my main pages below <a href="https://pagespeed.web.dev/report?url=https%3A%2F%2Fcheesoup.github.io%2FGRPH%2Fabout">20kbs</a>! I think that’s pretty impressive. There are actually still a few things I would like to implement (the main thing being a pure CSS lightbox for photos), but I think that’s a project for another day.</p>
 
 <p>Other than optimization, I had a couple goals in mind when working on the re-design. I have a process book coming up for Workshop and I figured starting here would be a good place for coming up with design ideas for the final printed version. I guess visually, I’m really trying to pull ideas from WEB 1.0. Part of me is nostalgic for the hours I would spend listening to the midi re-interpretations of Koji Kondo’s Dire Dire Docks or Alice Deejay’s Better Off Alone on Geocities.</p>
-
-<p style="text-align:center"><img src="/GRPH/assets/images/splash.gif" alt="My buddy!" /></p>
 
 <p>If you haven’t noticed, I’ve come up with a little mascot for this project. You can see them up in the top corner! They don’t quite have a name yet, but they’re my buddy and we’re gonna make synths together. They’re based off a friend of mine from Calgary who makes some pretty rad tunes and actually isn’t a crow (their last name just sounds like it).</p>
 
 
-<footer>Sun, Nov 14, 21 | Tags:
-  
-    <a href="/GRPH/tags#blog-stuff">Blog Stuff</a>
-  
-</footer>
-
 <nav>
 
-  <a class="prev" href="/GRPH/2021/10/30/arbitrary-wavemorphing.html">
-    &laquo; Prev: Arbitrary Wavemorphing
+  <a class="prev" href="/GRPH/2021/10/26/coding-on-bela.html">
+    &laquo; Prev: Coding On Bela
   </a>
   
   <a class="up" href="/GRPH/posts">

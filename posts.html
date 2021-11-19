@@ -6,14 +6,25 @@ title: Posts
 <ul class="posts">
   {% for post in site.posts %}
     <li>
-      <h1><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h1>
+      <header>
+        <h1><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h1>
+        <small>
+          {{ post.date | date: "%a, %b %d, %y" }}
+          / Read Time:
+          {% assign words = post.content | number_of_words %}
+          {% if words < 360 %}
+            1 min
+          {% else %}
+            {{ words | divided_by:180 }} mins
+          {% endif %}
+          / Tagged:
+          {% for tag in post.tags %}
+            <a href="{{ 'tags' | relative_url }}#{{ tag | slugify }}">{{ tag | replace:'-', ' ' }}</a>
+          {% endfor %}
+        </small>
+      </header>
       {{ post.excerpt }}
       <p class="readmore"><a href="{{ post.url | relative_url }}">Read more...</a>
-      <footer>{{ post.date | date: "%a, %b %d, %y" }} | Tags:
-        {% for tag in post.tags %}
-          <a href="{{ 'tags' | relative_url }}#{{ tag | slugify }}">{{ tag | replace:'-', ' ' }}</a>
-        {% endfor %}
-      </footer>
     </li>
   {% endfor %}
 </ul>

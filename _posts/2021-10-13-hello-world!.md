@@ -6,7 +6,7 @@ date: Oct. 13, 2021
 
 Check it out!! It's my first post!! How cool is that? Comin' straight from the 647 to the 905 to the 416 etc. I don't really have much to write about right now. So I guess I'll just some small updates about what I've been up to.
 
-{% include image.html url='/content/bela0.jpg' caption='The bela board!' %}
+{% include image.html width='240px' float='right' url='/content/bela0.jpg' lightbox='true' caption='The bela board!' %}
 
 The [Bela](https://bela.io/) development board for my project finally came in. Above is a picture of it. The developers of the board describe it as "an open-source embedded computing platform for creating responsive, real-time interactive systems with audio and sensors". In laymen terms, essentially it's single-board computer (think Raspberry Pi) with a programmable cape which specializes in processing signals.
 

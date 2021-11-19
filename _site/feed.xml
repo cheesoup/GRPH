@@ -1,53 +1,45 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://0.0.0.0:4000/GRPH/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://0.0.0.0:4000/GRPH/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/GRPH/" rel="alternate" type="text/html" /><updated>2021-11-18T05:56:01-05:00</updated><id>http://0.0.0.0:4000/GRPH/feed.xml</id><title type="html">thesis? idk?</title><subtitle>a blog for 4th year workshop at OCADU</subtitle><author><name>Chris Carin</name></author><entry><title type="html">Why I’m Even Making a Synth</title><link href="http://0.0.0.0:4000/GRPH/2021/11/16/why-im-making-a-synth.html" rel="alternate" type="text/html" title="Why I’m Even Making a Synth" /><published>2021-11-16T00:00:00-05:00</published><updated>2021-11-16T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/2021/11/16/why-im-making-a-synth</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/2021/11/16/why-im-making-a-synth.html">&lt;p&gt;When it comes to actually writing music, I actually think I’m pretty awful. I spend so much time obsessing over tiny details and always have a hard time seeing the big picture of what I’m trying to do. Honestly, the reason why I’ve been so upset with my process of creation is due to this indecisiveness to move on from minute details. On top of that, I’m not the most mechanically gifted person in the world. Much like how I struggle with brushes and inks, I can barely play inversions on the piano.&lt;/p&gt;
-
-&lt;p&gt;When it came to design however, I always thought what gave me an edge is my ability to pull magic out of computers. While there was a lot I needed to learn at OCAD to feel even remotely competent with what I was doing, I always felt like I had this talent as a crux. I call it magic because I really think computers are magical. Here is this box. You can put whatever data in it you can think of and with just a little bit of a math you can shape that data into (&lt;a href=&quot;https://www.youtube.com/watch?v=macM_MtS_w4&quot;&gt;almost&lt;/a&gt;) any virtual form you want. If that’s not magic, I don’t know what is. I think that’s what attracted me to electronic music in the first place. I always wanted to make music. I just never had the patience to figure out how to physically play something.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://0.0.0.0:4000/GRPH/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://0.0.0.0:4000/GRPH/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/GRPH/" rel="alternate" type="text/html" /><updated>2021-11-19T06:50:36-05:00</updated><id>http://0.0.0.0:4000/GRPH/feed.xml</id><title type="html">thesis? idk?</title><subtitle>a blog for 4th year workshop at OCADU</subtitle><author><name>Chris Carin</name></author><entry><title type="html">Why I’m Even Making a Synth</title><link href="http://0.0.0.0:4000/GRPH/2021/11/16/why-im-making-a-synth.html" rel="alternate" type="text/html" title="Why I’m Even Making a Synth" /><published>2021-11-16T00:00:00-05:00</published><updated>2021-11-16T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/2021/11/16/why-im-making-a-synth</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/2021/11/16/why-im-making-a-synth.html">&lt;p&gt;When it comes to actually writing music, I actually think I’m pretty awful. I spend so much time obsessing over tiny details and always have a hard time seeing the big picture of what I’m trying to do. Honestly, the reason why I’ve been so upset with my process of creation is due to this indecisiveness to move on from minute details. On top of that, I’m not the most mechanically gifted person in the world. Much like how I struggle with brushes and inks, I can barely play inversions on the piano.&lt;/p&gt;
 
 &lt;!-- Include for captioned images --&gt;
 
-&lt;figure class=&quot;embed&quot;&gt;
-  &lt;img src=&quot;/GRPH/assets/images//content/sonic-pi.png&quot; alt=&quot;Screenshot of Sonic Pi from Wikipedia&quot; /&gt;
-  &lt;figcaption&gt;Screenshot of Sonic Pi from Wikipedia&lt;/figcaption&gt;
-&lt;/figure&gt;
+&lt;div class=&quot;float right&quot;&gt;
+  &lt;figure class=&quot;embed picture&quot;&gt;
+    &lt;a href=&quot;#content-sonic-pi-png&quot;&gt;
+      &lt;img src=&quot;/GRPH/assets/images//content/sonic-pi.png&quot; alt=&quot;Screenshot of Sonic Pi from Wikipedia&quot; style=&quot;width: 360px&quot; /&gt;
+    &lt;/a&gt;
+    &lt;figcaption&gt;Screenshot of Sonic Pi from Wikipedia&lt;/figcaption&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;
 
-&lt;p&gt;I remember when I first started playing with sound, I was using this program called &lt;a href=&quot;https://sonic-pi.net/&quot;&gt;Sonic Pi&lt;/a&gt; to make beats while on commutes. In retrospect, Sonic Pi is amazing and I really oughta pick it up again. It’s basically a music sequencing environment based around live coding. At the time however, I wasn’t really interested in the idea of live performance. While sequncing in Sonic Pi was awesome, it felt a bit limiting to be stuck with same set off instruments. While the option existed to load up custom instruments made in &lt;a href=&quot;https://supercollider.github.io/&quot;&gt;SuperCollider&lt;/a&gt;, at the time I found SuperCollider was a little beyond me. After a couple weeks I moved on to PureData hoping for something simple to learn that gave me better control of timbre.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;content-sonic-pi-png&quot;&gt;
+  &lt;img src=&quot;/GRPH/assets/images//content/sonic-pi.png&quot; alt=&quot;Screenshot of Sonic Pi from Wikipedia&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;When it came to design however, I always thought what gave me an edge is my ability to pull magic out of computers. While there was a lot I needed to learn at OCAD to feel even remotely competent with what I was doing, I always felt like I had this talent as a crux. I call it magic because I really think computers are magical. Here is this box. You can put whatever data in it you can think of and with just a little bit of a math you can shape that data into (&lt;a href=&quot;https://www.youtube.com/watch?v=macM_MtS_w4&quot;&gt;almost&lt;/a&gt;) any virtual form you want. If that’s not magic, I don’t know what is. I think that’s what attracted me to electronic music in the first place. I always wanted to make music. I just never had the patience to figure out how to physically play something.&lt;/p&gt;
+
+&lt;p&gt;I remember when I first started playing with sound, I was using this program called &lt;a href=&quot;https://sonic-pi.net/&quot;&gt;Sonic Pi&lt;/a&gt; to make beats while on commutes. In retrospect, Sonic Pi is amazing and I really oughta pick it up again. It’s basically a music sequencing environment based around live coding. At the time however, I wasn’t really interested in the idea of live performance. While sequencing in Sonic Pi was awesome, it felt a bit limiting to be stuck with same set off instruments. While the option existed to load up custom instruments made in &lt;a href=&quot;https://supercollider.github.io/&quot;&gt;SuperCollider&lt;/a&gt;, at the time I found SuperCollider was a little beyond me. After a couple weeks I moved on to PureData hoping for something simple to learn that gave me better control of timbre.&lt;/p&gt;
 
 &lt;p&gt;If anyone is to ever ask me what my favourite programming language is, my answer would probably be &lt;a href=&quot;https://puredata.info/&quot;&gt;PureData&lt;/a&gt;. Never in my life have I tried so hard to learn everything I could about a piece of software. When I first picked it up, I would spend weeks building simple samplers and shitty noise generators. I didn’t make any music out of it, but I felt like I was learning so much out of just playing around as awful as those sounds were. What amazed me was how sounds could be generated with such modularity. How everything and anything could be defined as a value and how that value can be generated in anyway you want.&lt;/p&gt;
 
 &lt;!-- Include for Video Embedding --&gt;
 &lt;!-- https://github.com/nathancy/jekyll-embed-video#responsive-videos --&gt;
 
-&lt;figure class=&quot;embed&quot;&gt;
-  &lt;div class=&quot;vid&quot;&gt;
-    &lt;!--
-    &lt;iframe
-        src=&quot;https://player.vimeo.com/video/646396827&quot;
-        width=&quot;500&quot;
-        height=&quot;281&quot;
-        frameborder=&quot;0&quot;
-        webkitallowfullscreen
-        mozallowfullscreen
-        allowfullscreen&gt;
-    &lt;/iframe&gt;
-    --&gt;
-    &lt;object data=&quot;https://player.vimeo.com/video/646396827&quot; type=&quot;application/x-shockwave-flash&quot;&gt;
-      &lt;param name=&quot;allowfullscreen&quot; value=&quot;true&quot; /&gt;
-      &lt;param name=&quot;allowscriptaccess&quot; value=&quot;always&quot; /&gt;
-      &lt;param name=&quot;movie&quot; value=&quot;https://player.vimeo.com/video/646396827&quot; /&gt;
-    &lt;/object&gt;
-  &lt;/div&gt;
-  &lt;figcaption&gt;A Pd track I made a couple months ago&lt;/figcaption&gt;
-&lt;/figure&gt;
+&lt;div class=&quot;float&quot;&gt;
+  &lt;figure class=&quot;embed video&quot;&gt;
+    &lt;div class=&quot;video&quot;&gt;
+      &lt;object data=&quot;https://player.vimeo.com/video/646396827&quot; type=&quot;application/x-shockwave-flash&quot;&gt;
+        &lt;param name=&quot;allowfullscreen&quot; value=&quot;true&quot; /&gt;
+        &lt;param name=&quot;allowscriptaccess&quot; value=&quot;always&quot; /&gt;
+        &lt;param name=&quot;movie&quot; value=&quot;https://player.vimeo.com/video/646396827&quot; /&gt;
+      &lt;/object&gt;
+    &lt;/div&gt;
+    &lt;figcaption class=&quot;caption&quot;&gt;A Pd track I made a couple months ago&lt;/figcaption&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;
 
 &lt;p&gt;Eventually I began dissecting other user patches to better understand how to build things like fancy oscillators and simple audio effects. This led me to start reading up and researching audio processing techniques. One particular resource I always mention that I found really useful is Miller Puckette’s &lt;a href=&quot;http://msp.ucsd.edu/techniques/v0.11/book-html/&quot;&gt;Theory and Techniques of Electronic Music&lt;/a&gt;. It features plenty of examples of various audio processing algorithms and is written by the guy who created Pd. I think part of me believed that by understanding these sound processes on a deeper level, I would unlock some sort of understanding of the kind of music I wanted to make. Obviously, this didn’t come true and I still have no idea what I’m doing. At multiple points however, I believed it enough to coax myself into attempting to build my own &lt;a href=&quot;https://en.wikipedia.org/wiki/Eurorack&quot;&gt;eurorack&lt;/a&gt;-style system for algorithmic music. Every time I tried though, my system would end up being overly complexed and too much of a hassle to play. On top of that, I often found Pd’s small selection of basic UI options to be quite limiting when trying to make something substantial.&lt;/p&gt;
 
 &lt;p&gt;Ultimately, my experience with Pd is kind of what drives me to make this electronic instrument for my workshop project. Though I still I don’t really know much of anything about music (I don’t even know much about computers tbh), I do know how to make sounds using software. I haven’t decided on how I want the this instrument to play or look like just yet, but I’m hoping by shifting my focus a bit to a single tangible thing I can at least come up with something interesting and fun to play.&lt;/p&gt;</content><author><name>Chris Carin</name></author><category term="Music" /><category term="PureData" /><summary type="html">When it comes to actually writing music, I actually think I’m pretty awful. I spend so much time obsessing over tiny details and always have a hard time seeing the big picture of what I’m trying to do. Honestly, the reason why I’ve been so upset with my process of creation is due to this indecisiveness to move on from minute details. On top of that, I’m not the most mechanically gifted person in the world. Much like how I struggle with brushes and inks, I can barely play inversions on the piano.</summary></entry><entry><title type="html">New Layout!</title><link href="http://0.0.0.0:4000/GRPH/2021/11/14/new-layout.html" rel="alternate" type="text/html" title="New Layout!" /><published>2021-11-14T00:00:00-05:00</published><updated>2021-11-14T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/2021/11/14/new-layout</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/2021/11/14/new-layout.html">&lt;p&gt;Over the last couple days I’ve been kind of taking a break from programming the Bela in order to focus my attention on this blog. Despite aiming for a lightweight website, I made a few compromises by deciding to use javascript and webfonts for the sake of style. After testing the website on an &lt;a href=&quot;https://www.cnet.com/products/acer-aspire-one-d250/specs/&quot;&gt;old netbook&lt;/a&gt; however, I noticed that even having a minimal amount of scripting was a bit too much. On top of that, further testing showed that the typefaces imported by Google fonts accounted for the a majority of my sites digital weight.&lt;/p&gt;
-
-&lt;!-- Include for captioned images --&gt;
-
-&lt;figure class=&quot;embed&quot;&gt;
-  &lt;img src=&quot;/GRPH/assets/images//content/3screens.jpg&quot; alt=&quot;The gangs all here&quot; /&gt;
-  &lt;figcaption&gt;The gangs all here&lt;/figcaption&gt;
-&lt;/figure&gt;
 
 &lt;h2 id=&quot;issues-with-the-old-layout&quot;&gt;Issues with the Old Layout&lt;/h2&gt;
 
@@ -57,139 +49,43 @@
 
 &lt;!-- Include for captioned images --&gt;
 
-&lt;figure class=&quot;embed&quot;&gt;
-  &lt;img src=&quot;/GRPH/assets/images//content/blog_size_0.png&quot; alt=&quot;34.1kbs for webfonts&quot; /&gt;
-  &lt;figcaption&gt;34.1kbs for webfonts&lt;/figcaption&gt;
-&lt;/figure&gt;
+&lt;div class=&quot;float &quot;&gt;
+  &lt;figure class=&quot;embed picture&quot;&gt;
+    &lt;a href=&quot;#content-blog-size-0-png&quot;&gt;
+      &lt;img src=&quot;/GRPH/assets/images//content/blog_size_0.png&quot; alt=&quot;34.1kbs for webfonts&quot; style=&quot;width: &quot; /&gt;
+    &lt;/a&gt;
+    &lt;figcaption&gt;34.1kbs for webfonts&lt;/figcaption&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;
 
-&lt;p&gt;After getting rid of all the javascript, I found this &lt;a href=&quot;https://tools.pingdom.com/&quot;&gt;online tool&lt;/a&gt; for measuring how much data a webpage requests whenever it is loaded. As the results above show, webfonts had previously accounted for over 50% of the site’s bandwidth per visit which for me is obviously not cool. To remedy this, I stuck to &lt;a href=&quot;https://www.cssfontstack.com/&quot;&gt;web safe fonts&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;content-blog-size-0-png&quot;&gt;
+  &lt;img src=&quot;/GRPH/assets/images//content/blog_size_0.png&quot; alt=&quot;34.1kbs for webfonts&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;After getting rid of all the javascript, I found a few &lt;a href=&quot;https://pagespeed.web.dev/&quot;&gt;online&lt;/a&gt; &lt;a href=&quot;https://tools.pingdom.com/&quot;&gt;tools&lt;/a&gt; for measuring how much data a webpage requests whenever it is loaded. As the results above show, webfonts had previously accounted for over 50% of the site’s bandwidth per visit which for me is obviously not cool. To remedy this, I stuck to &lt;a href=&quot;https://www.cssfontstack.com/&quot;&gt;web safe fonts&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;on-to-the-new&quot;&gt;On to the New&lt;/h2&gt;
 
-&lt;p&gt;I’m pretty happy about is how small this website is. I’ve managed to get the about me page below 20kbs! I think that’s pretty impressive. There are actually still a few things I would like to implement (the main thing being a pure CSS lightbox for photos), but I think that’s a project for another day.&lt;/p&gt;
-
 &lt;!-- Include for captioned images --&gt;
 
-&lt;figure class=&quot;embed&quot;&gt;
-  &lt;img src=&quot;/GRPH/assets/images//content/blog_size_1.png&quot; alt=&quot;My sites pretty small now&quot; /&gt;
-  &lt;figcaption&gt;My sites pretty small now&lt;/figcaption&gt;
-&lt;/figure&gt;
+&lt;div class=&quot;float right&quot;&gt;
+  &lt;figure class=&quot;embed picture&quot;&gt;
+    &lt;a href=&quot;#splash-gif&quot;&gt;
+      &lt;img src=&quot;/GRPH/assets/images/splash.gif&quot; alt=&quot;Say hi!&quot; style=&quot;width: &quot; /&gt;
+    &lt;/a&gt;
+    &lt;figcaption&gt;Say hi!&lt;/figcaption&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;splash-gif&quot;&gt;
+  &lt;img src=&quot;/GRPH/assets/images/splash.gif&quot; alt=&quot;Say hi!&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;I’m pretty happy about is how small this website is. I’ve managed to get the about my main pages below &lt;a href=&quot;https://pagespeed.web.dev/report?url=https%3A%2F%2Fcheesoup.github.io%2FGRPH%2Fabout&quot;&gt;20kbs&lt;/a&gt;! I think that’s pretty impressive. There are actually still a few things I would like to implement (the main thing being a pure CSS lightbox for photos), but I think that’s a project for another day.&lt;/p&gt;
 
 &lt;p&gt;Other than optimization, I had a couple goals in mind when working on the re-design. I have a process book coming up for Workshop and I figured starting here would be a good place for coming up with design ideas for the final printed version. I guess visually, I’m really trying to pull ideas from WEB 1.0. Part of me is nostalgic for the hours I would spend listening to the midi re-interpretations of Koji Kondo’s Dire Dire Docks or Alice Deejay’s Better Off Alone on Geocities.&lt;/p&gt;
 
-&lt;p style=&quot;text-align:center&quot;&gt;&lt;img src=&quot;/GRPH/assets/images/splash.gif&quot; alt=&quot;My buddy!&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;If you haven’t noticed, I’ve come up with a little mascot for this project. You can see them up in the top corner! They don’t quite have a name yet, but they’re my buddy and we’re gonna make synths together. They’re based off a friend of mine from Calgary who makes some pretty rad tunes and actually isn’t a crow (their last name just sounds like it).&lt;/p&gt;</content><author><name>Chris Carin</name></author><category term="Blog Stuff" /><summary type="html">Over the last couple days I’ve been kind of taking a break from programming the Bela in order to focus my attention on this blog. Despite aiming for a lightweight website, I made a few compromises by deciding to use javascript and webfonts for the sake of style. After testing the website on an old netbook however, I noticed that even having a minimal amount of scripting was a bit too much. On top of that, further testing showed that the typefaces imported by Google fonts accounted for the a majority of my sites digital weight.</summary></entry><entry><title type="html">Arbitrary Wavemorphing</title><link href="http://0.0.0.0:4000/GRPH/2021/10/30/arbitrary-wavemorphing.html" rel="alternate" type="text/html" title="Arbitrary Wavemorphing" /><published>2021-10-30T00:00:00-04:00</published><updated>2021-10-30T00:00:00-04:00</updated><id>http://0.0.0.0:4000/GRPH/2021/10/30/arbitrary-wavemorphing</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/2021/10/30/arbitrary-wavemorphing.html">&lt;p&gt;Most of my initial foray into C++ has been spent trying to adapt an oscillator I had implemented in PureData. It’s based on a sort of phase distortion algorithm by Scott “Acriel” Nordlund for PureData which allows a signal to morph between a sine wave and an arbitrary waveform of the same periodic length. Here’s a &lt;a href=&quot;https://www.desmos.com/calculator/b4ejbqju7m&quot;&gt;desmos graph&lt;/a&gt; of the algorithm. I’ve also included a video of the oscillator viewed through an oscilloscope below. It’s based around the equation &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;x = inverse_sine(sine(x))&lt;/code&gt;.&lt;/p&gt;
-
-&lt;!-- Include for Video Embedding --&gt;
-&lt;!-- https://github.com/nathancy/jekyll-embed-video#responsive-videos --&gt;
-
-&lt;figure class=&quot;embed&quot;&gt;
-  &lt;div class=&quot;vid&quot;&gt;
-    &lt;!--
-    &lt;iframe
-        src=&quot;https://player.vimeo.com/video/640603019&quot;
-        width=&quot;500&quot;
-        height=&quot;281&quot;
-        frameborder=&quot;0&quot;
-        webkitallowfullscreen
-        mozallowfullscreen
-        allowfullscreen&gt;
-    &lt;/iframe&gt;
-    --&gt;
-    &lt;object data=&quot;https://player.vimeo.com/video/640603019&quot; type=&quot;application/x-shockwave-flash&quot;&gt;
-      &lt;param name=&quot;allowfullscreen&quot; value=&quot;true&quot; /&gt;
-      &lt;param name=&quot;allowscriptaccess&quot; value=&quot;always&quot; /&gt;
-      &lt;param name=&quot;movie&quot; value=&quot;https://player.vimeo.com/video/640603019&quot; /&gt;
-    &lt;/object&gt;
-  &lt;/div&gt;
-  &lt;figcaption&gt;Demo of arbitrary wavemorphing (I apologize for the 4:3 aspect ratio)&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;h2 id=&quot;oscillatorshape&quot;&gt;oscillator::shape()&lt;/h2&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// Phase distortion between arbitrary waveforms&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// Stolen from here:&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// https://forum.pdpatchrepo.info/topic/6759/new-anti-aliasing-and-phase-distortion-abstractions&lt;/span&gt;
-&lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;oscillator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-	&lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wrap_phase&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-	&lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;waves&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-
-	&lt;span class=&quot;c1&quot;&gt;// Generate niave sawtooth w/ polyBLEP&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fmodf_neon&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.75&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;2.0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;polyblep&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fmodf_neon&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.75&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;waves&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;asin_fast&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fminf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fmaxf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)));&lt;/span&gt;
-
-	&lt;span class=&quot;c1&quot;&gt;// Integrate second sawtooth for pulse wave&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fmodf_neon&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.25&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;2.0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;polyblep&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fmodf_neon&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.25&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;waves&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;asin_fast&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fminf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fmaxf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)));&lt;/span&gt;
-
-	&lt;span class=&quot;c1&quot;&gt;// Apply a &apos;leaky integrator&apos; for the triangle wave&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;waves&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fminf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.995&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;px&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;M_PI&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fmaxf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.005&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;px&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;M_PI&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;last_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;waves&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fminf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fmaxf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;waves&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]));&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;last_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;waves&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;waves&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;asin_fast&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;waves&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
-
-	&lt;span class=&quot;c1&quot;&gt;// Idk what this is but the shape looks badass&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fmodf_neon&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fmodf_neon&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;waves&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;asin_fast&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fminf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fmaxf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)));&lt;/span&gt;
-
-	&lt;span class=&quot;c1&quot;&gt;// Wrap phase as a triangle wave between -0.5 and 0.5&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;wrap_phase&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fabsf_neon&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fmodf_neon&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;phase_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.25&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Fourway linear interpolation (crossfade) of arcsin(waves)&lt;/span&gt;
-		&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;waves&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shape_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
-		&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;waves&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shape_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;
-		&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shape_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
-
-		&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;waves&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shape_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
-		&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;waves&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shape_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;shape_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-	&lt;span class=&quot;c1&quot;&gt;// Normalize asin(shape) to 1rad/period.&lt;/span&gt;
-	&lt;span class=&quot;c1&quot;&gt;// Integrate into wrapped phase and return the cosine.&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cosf_neon&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-		&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;wrap_phase&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.159155&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wrap_phase&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.25&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;shape_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;M_PI&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Above is my implementation of a wavemorphing function. Note that object variables are named with an underscore. I don’t fully get how it all works (like why is shape signal normalized to the value of -1rad/s) but I guess I’ll try to explain it.&lt;/p&gt;
-
-&lt;p&gt;The function takes in the current phase (float p) and the amount the phase is being incremented by (float px). The latter is required for polyBLEP anti-aliasing. Ignoring all the polyBLEP stuff, from line 8-26 I’m basically generating waveforms by shaping the incoming phase using arithmetic and some signal processing hackery. From there, I’m calculating the approximate arcsin of each signal. The important part starts at line 28. Below is an exert of it&lt;/p&gt;
-
-&lt;h2 id=&quot;return-cosfwtf-is-this-shit&quot;&gt;return cosf(wtf is this shit)&lt;/h2&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;oscillator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-
-	&lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
-
-	&lt;span class=&quot;c1&quot;&gt;// Wrap phase as a triangle wave between -0.5 and 0.5&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;wrap_phase&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fabsf_neon&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fmodf_neon&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;phase_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.25&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Fourway linear interpolation (crossfade) of arcsin(waves)&lt;/span&gt;
-		&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;waves&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shape_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
-		&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;waves&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shape_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;
-		&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shape_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
-
-		&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;waves&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shape_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
-		&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;waves&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shape_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;shape_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-	&lt;span class=&quot;c1&quot;&gt;// Normalize asin(shape) to 1rad/period.&lt;/span&gt;
-	&lt;span class=&quot;c1&quot;&gt;// Integrate into wrapped phase and return the cosine.&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cosf_neon&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-		&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;wrap_phase&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.159155&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wrap_phase&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.25&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;shape_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;M_PI&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;This is the main section of the morph algorithm. It starts by creating a fifth waveform from the phase signal. This new waveform is a non-bandlimited (basic) triangle wave wrapped by -0.5 and 0.5. The function then linearly interpolates between the approximated arcsin values calculated beforehand. Though there are other methods to interpolate between functions, I think sticking to a simple crossfade is probably the cheapest option in this situation. From there, the resulting mixed signal (labeled as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;shape&lt;/code&gt;) is attenuated based on a value controlled by the user. The signal is then applied to the basic triangle wave. After integration the cosine of the resulting signal is calculated.&lt;/p&gt;
-
-&lt;p&gt;When the shape signal is fully attenuated, the function produces a cosine wave. The more of the shape signal is integrated the more the cosine wave will take the form of the arbitrary waveform we plugged in. In the case of the above implementation, the arbitrary waveform is some linear interpolation (i.e. crossfaded signal) of a triangle, sawtooth, pulse, and exponential wave.&lt;/p&gt;
-
-&lt;p&gt;That’s basically the jist of what’s going on here. Again, I don’t fully understand it (I wish I did). It’s a bit late, so I’ll probably end up writing about anti-aliasing another time. I’ll link it in this post when I get around to it.&lt;/p&gt;</content><author><name>Chris Carin</name></author><category term="Bela" /><category term="Audio Programming" /><category term="Oscillators" /><category term="C++" /><summary type="html">Most of my initial foray into C++ has been spent trying to adapt an oscillator I had implemented in PureData. It’s based on a sort of phase distortion algorithm by Scott “Acriel” Nordlund for PureData which allows a signal to morph between a sine wave and an arbitrary waveform of the same periodic length. Here’s a desmos graph of the algorithm. I’ve also included a video of the oscillator viewed through an oscilloscope below. It’s based around the equation x = inverse_sine(sine(x)).</summary></entry><entry><title type="html">Coding On Bela</title><link href="http://0.0.0.0:4000/GRPH/2021/10/26/coding-on-bela.html" rel="alternate" type="text/html" title="Coding On Bela" /><published>2021-10-26T00:00:00-04:00</published><updated>2021-10-26T00:00:00-04:00</updated><id>http://0.0.0.0:4000/GRPH/2021/10/26/coding-on-bela</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/2021/10/26/coding-on-bela.html">&lt;p&gt;&lt;del&gt;I finally managed to get sometime to do a bit a programming. It’s been alright so far. Most of my times been spent on figuring out how pointers work and just getting used to C++ in general. I managed to program this dithered polyBLEP sawtooth oscillator. It’s a bit late so I’ll edit this post later with some details on the code, but for now here it is in raw form.&lt;/del&gt;&lt;br /&gt;
+&lt;p&gt;If you haven’t noticed, I’ve come up with a little mascot for this project. You can see them up in the top corner! They don’t quite have a name yet, but they’re my buddy and we’re gonna make synths together. They’re based off a friend of mine from Calgary who makes some pretty rad tunes and actually isn’t a crow (their last name just sounds like it).&lt;/p&gt;</content><author><name>Chris Carin</name></author><category term="Blog Stuff" /><summary type="html">Over the last couple days I’ve been kind of taking a break from programming the Bela in order to focus my attention on this blog. Despite aiming for a lightweight website, I made a few compromises by deciding to use javascript and webfonts for the sake of style. After testing the website on an old netbook however, I noticed that even having a minimal amount of scripting was a bit too much. On top of that, further testing showed that the typefaces imported by Google fonts accounted for the a majority of my sites digital weight.</summary></entry><entry><title type="html">Coding On Bela</title><link href="http://0.0.0.0:4000/GRPH/2021/10/26/coding-on-bela.html" rel="alternate" type="text/html" title="Coding On Bela" /><published>2021-10-26T00:00:00-04:00</published><updated>2021-10-26T00:00:00-04:00</updated><id>http://0.0.0.0:4000/GRPH/2021/10/26/coding-on-bela</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/2021/10/26/coding-on-bela.html">&lt;p&gt;&lt;del&gt;I finally managed to get sometime to do a bit a programming. It’s been alright so far. Most of my times been spent on figuring out how pointers work and just getting used to C++ in general. I managed to program this dithered polyBLEP sawtooth oscillator. It’s a bit late so I’ll edit this post later with some details on the code, but for now here it is in raw form.&lt;/del&gt;&lt;br /&gt;
 &lt;strong&gt;[Oct.30th edit: OK LETS WRITE SOME STUFF]&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;Ok so before I write about my code, I guess I should probably write about what Bela is and basic Bela programming. &lt;a href=&quot;https://www.bela.io&quot;&gt;Bela&lt;/a&gt; is a cape for the &lt;a href=&quot;https://beagleboard.org/black&quot;&gt;Beagle Bone Black&lt;/a&gt; single board computer. It specializes in audio processing for the purpose of creating audio effects, instruments, sound installations, whatever. It comes with 16 digital and analog IOs for interfacing with switches and potentiometers and stuff. It’s pretty rad.&lt;/p&gt;
@@ -247,10 +143,18 @@
 
 &lt;!-- Include for captioned images --&gt;
 
-&lt;figure class=&quot;embed&quot;&gt;
-  &lt;img src=&quot;/GRPH/assets/images//content/sine.png&quot; alt=&quot;A plot of a sine function with its phase normalized to 2π&quot; /&gt;
-  &lt;figcaption&gt;A plot of a sine function with its phase normalized to 2π&lt;/figcaption&gt;
-&lt;/figure&gt;
+&lt;div class=&quot;float &quot;&gt;
+  &lt;figure class=&quot;embed picture&quot;&gt;
+    &lt;a href=&quot;#content-sine-png&quot;&gt;
+      &lt;img src=&quot;/GRPH/assets/images//content/sine.png&quot; alt=&quot;A plot of a sine function with its phase normalized to 2π&quot; style=&quot;width: 480px&quot; /&gt;
+    &lt;/a&gt;
+    &lt;figcaption&gt;A plot of a sine function with its phase normalized to 2π&lt;/figcaption&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;content-sine-png&quot;&gt;
+  &lt;img src=&quot;/GRPH/assets/images//content/sine.png&quot; alt=&quot;A plot of a sine function with its phase normalized to 2π&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;When graphing a periodic (repeating) waveform statically like the image above, phase can be described as the current x-value (between 0-1) of the wave. As the x-value increments, the waveform’s y-value oscillates between -1 and 1. To apply this idea to audio, we have think of x as something that is constantly accumulating between 0-1. This is pretty much what Bela’s example code does.&lt;/p&gt;
 
@@ -298,59 +202,51 @@
 &lt;!-- Include for Video Embedding --&gt;
 &lt;!-- https://github.com/nathancy/jekyll-embed-video#responsive-videos --&gt;
 
-&lt;figure class=&quot;embed&quot;&gt;
-  &lt;div class=&quot;vid&quot;&gt;
-    &lt;!--
-    &lt;iframe
-        src=&quot;https://player.vimeo.com/video/645841010&quot;
-        width=&quot;500&quot;
-        height=&quot;281&quot;
-        frameborder=&quot;0&quot;
-        webkitallowfullscreen
-        mozallowfullscreen
-        allowfullscreen&gt;
-    &lt;/iframe&gt;
-    --&gt;
-    &lt;object data=&quot;https://player.vimeo.com/video/645841010&quot; type=&quot;application/x-shockwave-flash&quot;&gt;
-      &lt;param name=&quot;allowfullscreen&quot; value=&quot;true&quot; /&gt;
-      &lt;param name=&quot;allowscriptaccess&quot; value=&quot;always&quot; /&gt;
-      &lt;param name=&quot;movie&quot; value=&quot;https://player.vimeo.com/video/645841010&quot; /&gt;
-    &lt;/object&gt;
-  &lt;/div&gt;
-  &lt;figcaption&gt;Demo video of the Pd patch&lt;/figcaption&gt;
-&lt;/figure&gt;
+&lt;div class=&quot;float&quot;&gt;
+  &lt;figure class=&quot;embed video&quot;&gt;
+    &lt;div class=&quot;video&quot;&gt;
+      &lt;object data=&quot;https://player.vimeo.com/video/645841010&quot; type=&quot;application/x-shockwave-flash&quot;&gt;
+        &lt;param name=&quot;allowfullscreen&quot; value=&quot;true&quot; /&gt;
+        &lt;param name=&quot;allowscriptaccess&quot; value=&quot;always&quot; /&gt;
+        &lt;param name=&quot;movie&quot; value=&quot;https://player.vimeo.com/video/645841010&quot; /&gt;
+      &lt;/object&gt;
+    &lt;/div&gt;
+    &lt;figcaption class=&quot;caption&quot;&gt;Demo video of the Pd patch&lt;/figcaption&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://drive.google.com/file/d/1Eh7-vdZ8O2aogQ6mitHBcSlV4N7GJCWh/view?usp=sharing&quot;&gt;Click here to Download&lt;/a&gt;&lt;/p&gt;</content><author><name>Chris Carin</name></author><category term="PureData" /><category term="Audio Programming" /><summary type="html">My main goal with this patch was to experiment with IFFT synthesis in context of a sample based granular synthesizers. It uses Miller Puckette’s phase vocoder example in conjunction with Scott “Acriel” Nordlund’s example of frequency domain filtering.</summary></entry><entry><title type="html">Vsnarez</title><link href="http://0.0.0.0:4000/GRPH/2021/10/14/vsnarez.html" rel="alternate" type="text/html" title="Vsnarez" /><published>2021-10-14T00:00:00-04:00</published><updated>2021-10-14T00:00:00-04:00</updated><id>http://0.0.0.0:4000/GRPH/2021/10/14/vsnarez</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/2021/10/14/vsnarez.html">&lt;p&gt;I just wanted to test posting YouTube videos. Here’s one featuring Mr. Funk and possibly John Frusciante.&lt;/p&gt;
 
 &lt;!-- Include Video Embedding --&gt;
 &lt;!-- https://github.com/nathancy/jekyll-embed-video#responsive-videos --&gt;
 
-&lt;figure class=&quot;embed&quot;&gt;
-  &lt;!--
-    &lt;iframe
-        src=&quot;https://www.youtube.com/embed/3dEH7uhZ-ME&quot;
-        width=&quot;700&quot;
-        height=&quot;480&quot;
-        frameborder=&quot;0&quot;
-        allowfullscreen=&quot;&quot;&gt;
-    &lt;/iframe&gt;
-  --&gt;
-  &lt;div class=&quot;vid&quot;&gt;
-    &lt;object type=&quot;application/x-shockwave-flash&quot; style=&quot;width:100%; height:100%;&quot; data=&quot;//www.youtube.com/v/3dEH7uhZ-ME?color2=FBE9EC&amp;amp;version=3&quot;&gt;
-      &lt;param name=&quot;movie&quot; value=&quot;//www.youtube.com/v/3dEH7uhZ-ME?color2=FBE9EC&amp;amp;version=3&quot; /&gt;
-      &lt;param name=&quot;allowFullScreen&quot; value=&quot;true&quot; /&gt;
-      &lt;param name=&quot;allowscriptaccess&quot; value=&quot;always&quot; /&gt;
-    &lt;/object&gt;
-  &lt;/div&gt;
-  &lt;figcaption class=&quot;caption&quot;&gt;:)&lt;/figcaption&gt;
-&lt;/figure&gt;</content><author><name>Chris Carin</name></author><category term="Music" /><category term="Blog Stuff" /><summary type="html">I just wanted to test posting YouTube videos. Here’s one featuring Mr. Funk and possibly John Frusciante.</summary></entry><entry><title type="html">Hello World!</title><link href="http://0.0.0.0:4000/GRPH/2021/10/13/hello-world!.html" rel="alternate" type="text/html" title="Hello World!" /><published>2021-10-13T00:00:00-04:00</published><updated>2021-10-13T00:00:00-04:00</updated><id>http://0.0.0.0:4000/GRPH/2021/10/13/hello-world!</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/2021/10/13/hello-world!.html">&lt;p&gt;Check it out!! It’s my first post!! How cool is that? Comin’ straight from the 647 to the 905 to the 416 etc. I don’t really have much to write about right now. So I guess I’ll just some small updates about what I’ve been up to.&lt;/p&gt;
+&lt;div class=&quot;float&quot;&gt;
+  &lt;figure class=&quot;embed video&quot;&gt;
+    &lt;div class=&quot;video&quot;&gt;
+      &lt;object type=&quot;application/x-shockwave-flash&quot; style=&quot;width:100%; height:100%;&quot; data=&quot;//www.youtube.com/v/3dEH7uhZ-ME?color2=FBE9EC&amp;amp;version=3&quot;&gt;
+        &lt;param name=&quot;movie&quot; value=&quot;//www.youtube.com/v/3dEH7uhZ-ME?color2=FBE9EC&amp;amp;version=3&quot; /&gt;
+        &lt;param name=&quot;allowFullScreen&quot; value=&quot;true&quot; /&gt;
+        &lt;param name=&quot;allowscriptaccess&quot; value=&quot;always&quot; /&gt;
+      &lt;/object&gt;
+    &lt;/div&gt;
+    &lt;figcaption class=&quot;caption&quot;&gt;:)&lt;/figcaption&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;</content><author><name>Chris Carin</name></author><category term="Music" /><category term="Blog Stuff" /><summary type="html">I just wanted to test posting YouTube videos. Here’s one featuring Mr. Funk and possibly John Frusciante.</summary></entry><entry><title type="html">Hello World!</title><link href="http://0.0.0.0:4000/GRPH/2021/10/13/hello-world!.html" rel="alternate" type="text/html" title="Hello World!" /><published>2021-10-13T00:00:00-04:00</published><updated>2021-10-13T00:00:00-04:00</updated><id>http://0.0.0.0:4000/GRPH/2021/10/13/hello-world!</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/2021/10/13/hello-world!.html">&lt;p&gt;Check it out!! It’s my first post!! How cool is that? Comin’ straight from the 647 to the 905 to the 416 etc. I don’t really have much to write about right now. So I guess I’ll just some small updates about what I’ve been up to.&lt;/p&gt;
 
 &lt;!-- Include for captioned images --&gt;
 
-&lt;figure class=&quot;embed&quot;&gt;
-  &lt;img src=&quot;/GRPH/assets/images//content/bela0.jpg&quot; alt=&quot;The bela board!&quot; /&gt;
-  &lt;figcaption&gt;The bela board!&lt;/figcaption&gt;
-&lt;/figure&gt;
+&lt;div class=&quot;float right&quot;&gt;
+  &lt;figure class=&quot;embed picture&quot;&gt;
+    &lt;a href=&quot;#content-bela0-jpg&quot;&gt;
+      &lt;img src=&quot;/GRPH/assets/images//content/bela0.jpg&quot; alt=&quot;The bela board!&quot; style=&quot;width: 240px&quot; /&gt;
+    &lt;/a&gt;
+    &lt;figcaption&gt;The bela board!&lt;/figcaption&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;content-bela0-jpg&quot;&gt;
+  &lt;img src=&quot;/GRPH/assets/images//content/bela0.jpg&quot; alt=&quot;The bela board!&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;The &lt;a href=&quot;https://bela.io/&quot;&gt;Bela&lt;/a&gt; development board for my project finally came in. Above is a picture of it. The developers of the board describe it as “an open-source embedded computing platform for creating responsive, real-time interactive systems with audio and sensors”. In laymen terms, essentially it’s single-board computer (think Raspberry Pi) with a programmable cape which specializes in processing signals.&lt;/p&gt;
 
