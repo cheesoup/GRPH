@@ -2,19 +2,8 @@
 /* Imports */
 /*~~~~~~~~~*/
 
-@media (min-width: 800px) {
-  :root {
-      --maxWidth: 720px;
-  }
-}
-
-@media (min-width: 1024px) {
-  :root {
-      --maxWidth: 960px;
-  }
-}
-
 :root {
+  --maxWidth: 720px;
   --body_stack: "Trebuchet MS", Verdana, Arial, sans-serif;
   --h1_stack: "Monaco", "Andale Mono", "Consolas", "Lucida Console", "Courier New", Courier, monospace;
 
@@ -193,7 +182,7 @@ body > footer > ul > li {
   display: block;
 }
 
-@media (min-width: 700px) {
+@media (min-width: 720px) {
   body > footer > ul > li {
     display: inline;
   }
@@ -246,7 +235,7 @@ h1.title a:hover {
   color: var(--color2);
 }
 
-@media (min-width: 525px) {
+@media (min-width: 720px) {
   header.heading{
     display: grid;
     grid-template-columns: 1fr 120px;
@@ -259,6 +248,7 @@ h1.title a:hover {
   }
 
   div.date {
+    text-align: right;
     grid-row: 1;
     grid-column: 2;
   }
@@ -281,7 +271,6 @@ footer.postend > * {
   margin: 30px 5px 0;
   padding-top: var(--paragraph_spacing);
   border-top: 2px var(--color4) dotted;
-  max-width: 310px;
 }
 
 footer.postend > nav ul > li {
@@ -309,10 +298,14 @@ a.prev:before {
   content: "Next: ";
 }
 
-@media (min-width: 700px) {
+@media (min-width: 720px) {
   footer.postend {
     display: grid;
     grid-template-columns: 1fr 1fr;
+  }
+
+  footer.postend > * {
+    max-width: 310px;
   }
 }
 
@@ -417,7 +410,7 @@ div.float {
   vertical-align: top;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 720px) {
   div.right {
     float: right;
     margin: 5px var(--margins) 5px 10px;
@@ -592,11 +585,12 @@ div.tagged:target {
   display: block;
 }
 
-div.tagged > header {
+header.tagged {
+  text-align: right;
   margin-bottom: var(--half_margins);
 }
 
-div.tagged > header > span {
+header.tagged > span {
   font-weight: bold;
 }
 

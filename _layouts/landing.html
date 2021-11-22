@@ -20,9 +20,10 @@
           </h1>
           <nav>
             <ul>
-              {% for item in site.data.navi.pages %}
-              <li><a href="{{ item.url | relative_url }}">{{ item.title }}</a></li>
-              {% endfor %}
+              <li><a href="{{ "audio" | relative_url }}">audio</a></li>
+              <li><a href="{{ "website" | relative_url }}">web</a></li>
+              <li><a href="{{ "misc" | relative_url }}">misc</a></li>
+              <li><a href="{{ "tags" | relative_url }}">tags</a></li>
             </ul>
           </nav>
           <footer>

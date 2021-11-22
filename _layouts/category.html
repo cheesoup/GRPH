@@ -2,9 +2,10 @@
 layout: default
 ---
 
-{% capture category_name %}{{ page.category | first }}{% endcapture %}
+{% capture category_name %}{{ page.category }}{% endcapture %}
+<header class="tagged">Posts under: <span>{{ category_name }}</span></header>
 <ul class="posts">
-  {% for post in site.posts %}
+  {% for post in site.categories[category_name] %}
     <li class="posts">
       <header class="heading">
         <h1 class="title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h1>

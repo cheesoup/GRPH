@@ -3,11 +3,14 @@ pages:
 - title: about
   url: /about
 
-- title: posts
-  url: /posts
+- title: audio
+  url: /audio
+
+- title: web
+  url: /website
+
+- title: misc
+  url: /misc
 
 - title: tags
   url: /tags
-
-- title: out
-  url: /out
