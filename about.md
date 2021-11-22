@@ -12,7 +12,7 @@ date: Nov. 16th, 2021
 
 My full name's Christopher Miguel Carin. I'm a fourth year Graphic Design student at OCADU. This is my blog where I write nonsense about my Graphic Design Workshop. Other than discord, I don't really use social media so the best way contact me is probably there.
 
-My end goal for this project revolves around building some sort of digital musical instrument on embedded hardware. Currently, I'm trying to do so by working with a [Bela](http://bela.io/) development board.
+My end goal for this project revolves around building some sort of digital musical instrument on embedded hardware. Currently, I'm trying to do so by working with a [Bela](http://bela.io/) development board. I have a to do list for this project **[here](todo)**.
 
 I like computers and synthesizers and stuff I guess.
 
@@ -20,7 +20,9 @@ I like computers and synthesizers and stuff I guess.
 
 # About this Website
 
-This website was built using the [Jekyll](https://jekyllrb.com/) engine. The layout was hand-coded by myself with the intention of being [minimal](https://tools.pingdom.com/#5f51c41051400000) while visually trying to borrow from WEB 1.0 and retro computing. The little dude at the top was illustrated using [Aseprite](https://www.aseprite.org/). I don't really have a name for them yet. They're based off a friend of mine from Calgary who makes some pretty rad music. Their last name sounds like crow, so I drew a crow.
+This website was created using the [Jekyll](https://jekyllrb.com/) and is built entirely in HTML5 and CSS3. The layout was hand-coded by myself with the goal of borrowing from WEB 1.0 and retro computing aesthetics while trying to remain both visually and digitally [minimal](https://tools.pingdom.com/#5f51c41051400000). To remain to lightweight, this website avoids the use of javascript, web fonts, and CSS animations while remaining conservative with the amount of images being loaded on a page.
+
+The little bird at the top was illustrated using [Aseprite](https://www.aseprite.org/). I don't really have a name for them yet. They're based off a friend of mine from Calgary who makes some pretty rad music. Their last name sounds like crow, so I drew a crow.
 
 I'm planning to use this blog to keep track of notes, prototypes, ideas, etc. Things I plan on posting include: PureData/MaxMSP patches, random Bela and C++ stuff, badly explained DSP math, and just general nonsense about design, sound, and music. Maybe I'll post some p5.js or processing stuff if it's relevant too.
 
