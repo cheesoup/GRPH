@@ -12,6 +12,7 @@ Below is a list of things I still need to do for this project. They're listed in
 - Reverb if there's still enough processing power for it (maybe an external unit using the Axoloti instead?)
 
 **Implement MIDI**
+- Set up voice stealing
 - Fix the CC messages to follow the standard
 - NRPN controls
 - Maybe implement OSC? (Could be useful for laptop/phone connectivity)
