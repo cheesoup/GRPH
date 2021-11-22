@@ -95,6 +95,7 @@ hr {
 
 ul {
   list-style-type: square;
+  padding-left: var(--half_margins);
 }
 
 li {
