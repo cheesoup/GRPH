@@ -1,8 +1,9 @@
 ---
 title: New Layout!
 layout: post
-tag: [Blog Stuff]
+tag: [Blog]
 date: Nov. 14, 2021
+categories: [Website]
 ---
 
 Over the last couple days I've been kind of taking a break from programming the Bela in order to focus my attention on this blog. Despite aiming for a lightweight website, I made a few compromises by deciding to use javascript and webfonts for the sake of style. After testing the website on an [old netbook](https://www.cnet.com/products/acer-aspire-one-d250/specs/) however, I noticed that even having a minimal amount of scripting was a bit too much. On top of that, further testing showed that the typefaces imported by Google fonts accounted for the a majority of my sites digital weight.

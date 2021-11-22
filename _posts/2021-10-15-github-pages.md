@@ -1,7 +1,9 @@
 ---
+title: Some Stuff about Github Pages
 layout: post
-tag: [Blog Stuff]
+tag: [Blog]
 date: Oct. 15, 2021
+categories: [Website]
 ---
 
 Debugging this site was a lot more of a pain in the ass than I thought it would be. After an extra day of website work, I finally managed to get my Github Pages to recognize my Jekyll source repository as a website. I feel like this should've been obvious how to do, but I'm actually pretty unfamiliar with the git protocol.

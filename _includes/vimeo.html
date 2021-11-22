@@ -1,17 +1,13 @@
 <!-- Include for Video Embedding -->
 <!-- https://github.com/nathancy/jekyll-embed-video#responsive-videos -->
 
-<div class="float">
+<div class="float {{ include.float }}">
   <figure class="embed video">
-    <div class="video">
-      <object
-          data="https://player.vimeo.com/video/{{ include.id }}"
-          type="application/x-shockwave-flash">
-        <param name="allowfullscreen" value="true" />
-        <param name="allowscriptaccess" value="always" />
-        <param name="movie" value="https://player.vimeo.com/video/{{ include.id }}" />
-      </object>
-    </div>
+    <span class="video">
+      <iframe
+        src="https://player.vimeo.com/video/{{ include.id }}?h=b0a124d5cc&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479">
+      </iframe>
+    </span>
     <figcaption class="caption">{{ include.caption }}</figcaption>
   </figure>
 </div>

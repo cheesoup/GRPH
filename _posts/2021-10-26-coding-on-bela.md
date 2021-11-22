@@ -1,7 +1,9 @@
 ---
+title: Coding on bela
 layout: post
-tag: [Bela, Audio Programming, Oscillators, C++]
+tag: [Bela, Oscillators]
 date: Oct. 26, 2021
+categories: [Audio]
 ---
 
 ~~I finally managed to get sometime to do a bit a programming. It's been alright so far. Most of my times been spent on figuring out how pointers work and just getting used to C++ in general. I managed to program this dithered polyBLEP sawtooth oscillator. It's a bit late so I'll edit this post later with some details on the code, but for now here it is in raw form.~~\\

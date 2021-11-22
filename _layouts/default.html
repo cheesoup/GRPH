@@ -8,29 +8,31 @@
     {% seo %}
   </head>
   <body>
-    <div class="wrap">
-      <header>
-        <a class="logo" href="{{ "/" | relative_url }}">
-          <img src="{{ "/assets/images/jam_crow.gif" | relative_url }}" alt="jam_crow.gif" class="logo" width="160" height="90"/>
-          <img src="{{ "/assets/images/thesisidk.gif" | relative_url }}" alt="thesis? idk?" class="logo" width="90" height="46"/>
-        </a>
-      </header>
+    <header>
       <!-- MENU START -->
-      <nav>
-        {% for item in site.data.navi.pages %}
-        <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
-        {% endfor %}
-      </nav>
+        <a href="index.html"><img src="{{ "/assets/images/jam_crow.gif" | relative_url }}" alt="jam_crow.gif" width="128" height="68"/></a>
+        <nav>
+          <ul>
+            {% for item in site.data.navi.pages %}
+            <li><a href="{{ item.url | relative_url }}">{{ item.title }}</a></li>
+            {% endfor %}
+          </ul>
+        </nav>
       <!-- MENU END -->
-      <!-- CONTENT START -->
-      <main>
-        {{ content }}
-      </main>
-      <!-- CONTENT END -->
-      <footer>
-        <a href="https://www.gnu.org/licenses/copyleft.en.html">(C)</a> 2021-2022 <a href="mailto:chr.carin(a)gmail.com">Chris Carin</a> |
-        <a href="https://html5.validator.nu/?doc={{ page.url | absolute_url }}">This document is valid HTML5</a>
-      </footer>
-    </div>
+    </header>
+    <main>
+      {{ content }}
+    </main>
+    <footer>
+      <ul>
+        <li>
+          <a href="https://www.gnu.org/licenses/copyleft.en.html">(C)</a>
+           2021-2022 
+          <a href="mailto:chr.carin(a)gmail.com">Chris Carin</a>
+        </li>
+        <li><a href="https://html5.validator.nu/?doc={{ page.url | absolute_url }}">This document is valid HTML5</a></li>
+        <li><a href="#">Back to Top</a></li>
+      </ul>
+    </footer>
   </body>
 </html>

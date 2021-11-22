@@ -1,0 +1,42 @@
+---
+layout: default
+---
+
+{% capture category_name %}{{ page.category | first }}{% endcapture %}
+<ul class="posts">
+  {% for post in site.posts %}
+    <li class="posts">
+      <header class="heading">
+        <h1 class="title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h1>
+        <div class="heading meta">
+          <small>
+            Category:
+            {% for category in post.categories %}
+              <a href="{{ category.url }}">{{ category | replace:'-', ' ' }}</a>
+            {% endfor %}
+          </small>
+          <small>
+            Tags:
+            {% for tag in post.tags %}
+              <a href="{{ 'tags' | relative_url }}#{{ tag | slugify }}">{{ tag | replace:'-', ' ' }}</a>
+            {% endfor %}
+          </small>
+        </div>
+        <div class="heading date">
+          <small>
+          {{ post.date | date: "%a, %b %d, %y" }}
+          </small>
+          <small>
+            {% assign words = post.content | number_of_words %}
+            Length:
+            {% if words < 360 %}
+              1 min
+            {% else %}
+              {{ words | divided_by:180 }} mins
+            {% endif %}
+          </small>
+        </div>
+      </header>
+    </li>
+  {% endfor %}
+</ul>

@@ -7,8 +7,7 @@
     </a>
     <figcaption>{{ include.caption }}</figcaption>
   </figure>
+  <a href="#/" class="expand" id="{{ include.url | slugify }}">
+    <img src="{{ '/assets/images/' | relative_url }}{{ include.url }}" alt="{{ include.caption }}" style="background-image: url('{{ '/assets/images/' | relative_url }}transparent.gif')"/>
+  </a>
 </div>
-
-<a href="#/" class="expand" id="{{ include.url | slugify }}">
-  <img src="{{ '/assets/images/' | relative_url }}{{ include.url }}" alt="{{ include.caption }}" style="background-image: url('{{ '/assets/images/' | relative_url }}transparent.gif')"/>
-</a>

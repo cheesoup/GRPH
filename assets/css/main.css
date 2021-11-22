@@ -25,7 +25,10 @@
   --color4: #000;
 
   --paragraph_spacing: 10px;
+  --dbl_margins: 80px;
   --margins: 40px;
+  --half_margins: 20px;
+  --qtr_margins: 10px;
 }
 
 /*~~~~~~~~~~~~~~~*/
@@ -34,71 +37,25 @@
 
 body {
   font-family: var(--body_stack);
-  background-color: var(--color1);
-  background-attachment: fixed;
+  background-color: var(--color0);
+  line-height: 26px;
   overflow-wrap: break-word;
   overflow-y: scroll;
   margin: 0;
 }
 
-div.wrap > header {
-  width: var(--maxWidth);
+body > * {
+  margin: 0 auto;
 }
 
-div.wrap > main {
-  padding: 30px 0 15px;
-  background-color: var(--color0);
-  line-height: 24px;
-  box-shadow: 0px 10px var(--color2);
-  border-top: 1px var(--color4) solid;
-  border-bottom: 1px var(--color4) solid;
+body > main {
+  padding: var(--margins) var(--margins);
+  margin-bottom: var(--margins);
+  max-width: 640px;
 }
 
-div.wrap > footer {
-  margin-bottom: 25px;
-  padding: 25px 0 0;
-  text-align: center;
-  font-size: 12px;
-}
-
-div.wrap > footer a {
-  color: var(--color4);
-  text-decoration: none;
-}
-
-div.wrap > footer a:hover {
-  color: var(--color0);
-}
-
-small.gototop {
-  display: block;
-  padding: 0 0 10px;
-  border-bottom: 2px var(--color4) dotted;
-  margin-bottom: var(--paragraph_spacing);
-}
-
-small.gototop a {
-  text-decoration: none;
-}
-
-/* Screen > 1080px CSS */
-@media (min-width: 800px) {
-  div.wrap {
-    padding: 25px;
-    margin: 0 auto;
-    max-width: var(--maxWidth);
-  }
-
-  div.wrap > main {
-    padding: 35px 0 50px;
-    font-size: var(--body_sizePC);
-    box-shadow: 10px 10px var(--color2);
-    border: 1px var(--color4) solid;
-  }
-}
-
-main > * {
-  margin: 0 var(--margins);
+body > main p {
+  line-height: 26px;
 }
 
 /*~~~~~~~~~~~~~~~~~*/
@@ -117,10 +74,10 @@ a:hover {
 }
 
 h1 {
+  margin: 0 0 var(--half_margins);
   font-family: var(--h1_stack);
-  font-size: 28px;
-  line-height: 32px;
-  letter-spacing: 1.5px;
+  font-size: 36px;
+  line-height: 44px;
 }
 
 h2 {
@@ -140,155 +97,204 @@ ul {
   list-style-type: square;
 }
 
-/*~~~~~~~~~~~~~~~~*/
-/* Navigation CSS */
-/*~~~~~~~~~~~~~~~~*/
-
-img.logo {
-  vertical-align: middle;
-  color: transparent;
+li {
+  margin-bottom: var(--paragraph_spacing);
+  padding-left: var(--qtr_margins);
 }
 
-a.logo, a.logo:hover {
+/**********************/
+/* Navigation Styling */
+/**********************/
+
+nav > ul,
+nav > ul li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav > ul li {
+  display: inline;
+}
+
+nav a {
   display: inline-block;
-  width: auto;
-  border: 0;
-  background: var(--color1);
-  color: transparent;
-}
-
-div.wrap > nav {
-  margin-left: 20px;
-}
-
-nav > a {
   position: relative;
+  margin: 5px 5px 5px 0;
   padding: 5px;
-  margin: 0 2px;
-  text-decoration: none;
   font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+  text-decoration: none;
   color: var(--color4);
   border: 1px var(--color4) solid;
   box-shadow: 5px 5px var(--color2);
   background-color: var(--color0);
-  -webkit-text-size-adjust: none;
-  text-size-adjust: none;
 }
 
-nav a:hover, nav a:active{
+nav a:hover, nav a:active {
   left: 3px;
   top: 3px;
+  color: var(--color4);
+  background-color: var(--color0);
   box-shadow: 2px 2px var(--color2);
 }
 
-/*~~~~~~~~~~*/
-/* Post CSS */
-/*~~~~~~~~~~*/
+/*~~~~~~~~~~~~~~~~~~~~~*/
+/* Header & Footer CSS */
+/*~~~~~~~~~~~~~~~~~~~~~*/
 
-main p, main h1, main h2, main header, main footer {
-  margin-bottom: var(--paragraph_spacing);
+body > header {
+  padding-top: var(--qtr_margins);
+  height: 90px;
+  width: 100%;
+  left: 0;
+  top: 0;
+  background-color: var(--color0);
+  border-bottom: 1px var(--color4) solid;
+  text-align: center;
 }
 
-main header, main footer {
-  font-size: 14px;
-  color: var(--color3);
+body > header > a:hover {
+  background-color: transparent;
 }
 
-main header > *, main footer > * {
+body > header > nav a {
+  width: 40px;
+}
+
+body > footer {
+  font-size: 12px;
+  text-align: center;
+  width: 100%;
+  padding: var(--half_margins) 0 var(--margins);
+  border-top: 1px var(--color4) solid;
+}
+
+body > footer > ul {
+  list-style-type: none;
   margin: 0;
+  padding: 0;
 }
 
-main header > small {
+body > footer > ul > li {
   display: block;
 }
 
-main header > h1 {
-  color: var(--color4);
-  line-height: 32px;
+@media (min-width: 700px) {
+  body > footer > ul > li {
+    display: inline;
+  }
 }
 
-main footer {
-  padding-top: var(--paragraph_spacing);
+/*~~~~~~~~~~*/
+/* Headline */
+/*~~~~~~~~~~*/
+
+header.heading {
+  display: block;
+  padding-bottom: var(--half_margins);
+  border-bottom: 2px var(--color4) dotted;
 }
 
-main h1 a, main h1 a:hover {
-  color: var(--color4);
-  background-color: transparent;
-  border: 0;
+div.heading {
+  line-height: 16px;
+}
+
+div.heading > small:first-child::after {
+  content: " / ";
+}
+
+div.meta {
+  grid-row: 2;
+  grid-column: 1;
+}
+
+h1.title {
+  text-align: left;
+  grid-row: 1;
+  grid-column: 1;
+  grid-column-end: span 2;
+  margin: 0;
+}
+
+h1.title a {
   text-decoration: none;
+  color: var(--color4);
 }
 
-main h1 a:hover {
+h1.title a:hover {
+  background-color: transparent;
   color: var(--color2);
 }
 
-/* Prev/Next Post */
+@media (min-width: 525px) {
+  header.heading{
+    display: grid;
+    grid-template-columns: 1fr 120px;
+    grid-column-gap: 20px;
+    align-items: flex-start;
+  }
 
-main > nav {
-  margin-top: 30px;
+  header.heading > div {
+    padding-top: 5px;
+  }
+
+  div.date {
+    grid-row: 1;
+    grid-column: 2;
+  }
+
+  div.date > small:first-child::after {
+    content: none;
+  }
+
+  h1.title {
+    grid-row: 1;
+    grid-column: 1;
+  }
+}
+
+/*~~~~~~~~~~~~~*/
+/* Post Footer */
+/*~~~~~~~~~~~~~*/
+
+footer.postend > * {
+  margin: 30px 5px 0;
   padding-top: var(--paragraph_spacing);
   border-top: 2px var(--color4) dotted;
 }
 
-@media (min-width: 1024px) {
-  main > nav {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-main > nav > a {
-  text-align: center;
+footer.postend > nav ul > li {
   display: block;
-  margin: 10px;
-  background-color: var(--color0);
-  border: 1px var(--color4) solid;
+  margin: 10px 5px;
 }
 
-main > nav > a:hover {
+footer.postend > nav ul > li > a {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+footer.postend > nav > a:hover {
   background-color: var(--color3);
   color: var(--color0);
 }
 
-/* Post List CSS */
-
-ul.posts, ul.tags {
-  list-style-type: none;
-  padding: 0 ;
+a.next:before {
+  content: "Prev: ";
 }
 
-ul.posts > li {
-  margin-bottom: var(--paragraph_spacing);
-  padding-bottom: var(--paragraph_spacing);
-  border-bottom: 2px var(--color4) dotted;
+a.prev:before {
+  content: "Next: ";
 }
 
-ul.posts > li > * {
-  margin: 0 0 var(--paragraph_spacing);
-}
-
-/*~~~~~~~~~~~~~~~*/
-/* Tags Page CSS */
-/*~~~~~~~~~~~~~~~*/
-
-ul.tags {
-  padding-bottom: var(--paragraph_spacing);
-  margin-bottom: var(--paragraph_spacing);
-}
-
-ul.tagged {
-  margin-bottom: 0;
-}
-
-ul.tagged li {
-  margin: 0 0 var(--paragraph_spacing);
-}
-
-ul.tagged > li > small,
-ul.tagged > li > span {
-  display: block;
-  margin: 0;
-  line-height: 20px;
+@media (min-width: 700px) {
+  footer.postend {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 /*~~~~~~~~~~~*/
@@ -302,12 +308,6 @@ figure > figcaption {
 }
 
 figure.embed {
-  margin-top: var(--margins);
-  margin-bottom: var(--margins);
-}
-
-figure.picture,
-figure.video {
   margin: 0 auto;
   padding: 10px;
   font-style: italic;
@@ -315,11 +315,9 @@ figure.video {
   background-color: var(--color1);
   border: 1px var(--color4) solid;
   box-shadow: 5px 5px var(--color2);
-  width: auto;
 }
 
 /* Picture Embeds */
-
 figure.picture {
   display: inline-block
 }
@@ -334,7 +332,6 @@ figure.picture img {
 }
 
 /* lightbox */
-
 a.expand {
   z-index: 0;
   display: block;
@@ -368,35 +365,34 @@ a.expand > img {
 }
 
 /* Video Embeds */
-
 figure.video {
   max-width: 800px;
-  display: block;
 }
 
-figure.video > div.video {
+span.video {
+  display: block;
+  position:relative;
   border: 1px var(--color4) solid;
-  position: relative;
   padding-bottom: 56.25%;
   height: 0;
   overflow: hidden;
 }
 
-div.video > iframe,
-div.video > object,
-div.video > embed
+span.video > iframe,
+span.video > object,
+span.video > embed
 {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  border: 0;
 }
 
 /* Embed Container */
-
 div.float {
-  margin: var(--margins);
+  margin: var(--margins) ;
   display: block;
   text-align: center;
   vertical-align: top;
@@ -447,14 +443,12 @@ figure.highlight > pre > code {
 }
 
 /* Scrollbar for Firefox */
-
 figure.highlight {
   scrollbar-color: var(--color0) var(--color3);
   scrollbar-width: thin;
 }
 
 /* Scrollbars for everything else apparently */
-
 figure.highlight::-webkit-scrollbar {
   height: 10px;
   width: 10px;
@@ -477,7 +471,6 @@ figure.highlight::-webkit-scrollbar-thumb:hover {
 /*
 Based on Muse Scheme
 from Terminal.sexy
-
 black         #2e3436       #555753
 red           #a31604       #c60001
 green         #447241       #27a343
@@ -530,4 +523,77 @@ figure.highlight .d1,
 figure.highlight .s2 {
   font-weight: bolder;
   color: #b5bd68;
+}
+
+/*~~~~~~~~~~~~~~~*/
+/* Post List CSS */
+/*~~~~~~~~~~~~~~~*/
+
+ul.posts {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+li.posts {
+  margin-top: 10px;
+  padding: 0;
+}
+
+li.posts:first-child,
+li.posts:first-child > header {
+  margin-top: 0;
+}
+
+li.posts:last-child > header {
+  margin-bottom: 0;
+  border-bottom: 0;
+}
+
+/*~~~~~~~~~~~~~~~*/
+/* Tags Page CSS */
+/*~~~~~~~~~~~~~~~*/
+
+ul.tags {
+  padding-bottom: var(--paragraph_spacing);
+  margin-bottom: var(--paragraph_spacing);
+}
+
+ul.tags li {
+  margin: var(--paragraph_spacing) 0;
+}
+
+div.tagged {
+  display: none;
+  padding-top: var(--half_margins);
+  border-top: 2px var(--color4) dotted;
+}
+
+div.tagged:target {
+  display: block;
+}
+
+div.tagged > header {
+  margin-bottom: var(--half_margins);
+}
+
+div.tagged > header > span {
+  font-weight: bold;
+}
+
+div.tagged > ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+ul.tagged li {
+  margin: 0 0 var(--paragraph_spacing);
+}
+
+ul.tagged > li > small,
+ul.tagged > li > span {
+  display: block;
+  margin: 0;
+  line-height: 20px;
 }

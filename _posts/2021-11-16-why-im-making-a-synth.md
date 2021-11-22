@@ -1,9 +1,9 @@
 ---
-title: Why I'm Even Making a Synth
+title: Thoughts on why I'm making a synthesizer
 layout: post
 tag: [Music, PureData]
 date: Nov. 16, 2021
-vimeoID: 646396827
+categories: [Misc]
 ---
 
 When it comes to actually writing music, I actually think I'm pretty awful. I spend so much time obsessing over tiny details and always have a hard time seeing the big picture of what I'm trying to do. Honestly, the reason why I've been so upset with my process of creation is due to this indecisiveness to move on from minute details. On top of that, I'm not the most mechanically gifted person in the world. Much like how I struggle with brushes and inks, I can barely play inversions on the piano.
@@ -16,7 +16,7 @@ I remember when I first started playing with sound, I was using this program cal
 
 If anyone is to ever ask me what my favourite programming language is, my answer would probably be [PureData](https://puredata.info/). Never in my life have I tried so hard to learn everything I could about a piece of software. When I first picked it up, I would spend weeks building simple samplers and shitty noise generators. I didn't make any music out of it, but I felt like I was learning so much out of just playing around as awful as those sounds were. What amazed me was how sounds could be generated with such modularity. How everything and anything could be defined as a value and how that value can be generated in anyway you want.
 
-{% include vimeo.html id=page.vimeoID caption='A Pd track I made a couple months ago' %}
+{% include vimeo.html id='646396827' caption='A Pd track I made a couple months ago' %}
 
 Eventually I began dissecting other user patches to better understand how to build things like fancy oscillators and simple audio effects. This led me to start reading up and researching audio processing techniques. One particular resource I always mention that I found really useful is Miller Puckette's [Theory and Techniques of Electronic Music](http://msp.ucsd.edu/techniques/v0.11/book-html/). It features plenty of examples of various audio processing algorithms and is written by the guy who created Pd. I think part of me believed that by understanding these sound processes on a deeper level, I would unlock some sort of understanding of the kind of music I wanted to make. Obviously, this didn't come true and I still have no idea what I'm doing. At multiple points however, I believed it enough to coax myself into attempting to build my own [eurorack](https://en.wikipedia.org/wiki/Eurorack)-style system for algorithmic music. Every time I tried though, my system would end up being overly complexed and too much of a hassle to play. On top of that, I often found Pd's small selection of basic UI options to be quite limiting when trying to make something substantial.
 

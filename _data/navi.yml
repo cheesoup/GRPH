@@ -11,6 +11,3 @@ pages:
 
 - title: out
   url: /out
-
-- title: rss
-  url: /feed.xml
