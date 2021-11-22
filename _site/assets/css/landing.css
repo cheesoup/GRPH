@@ -38,11 +38,17 @@ div.centered {
   padding: var(--half_margins);
 }
 
+div.centered > picture {
+  display: block;
+  text-align: center;
+}
+
 div.centered > h1 {
   margin: 0;
   font-family: var(--h1_stack);
   font-size: 48px;
   line-height: 60px;
+  text-align: center;
 }
 
 div.centered > nav {
@@ -87,6 +93,7 @@ div.centered > nav > ul > li {
 
 div.centered > footer > ul {
   font-size: 12px;
+  line-height: 18px;
   text-align: center;
   list-style-type: none;
   margin-top: var(--margins);
@@ -99,6 +106,7 @@ div.centered > footer > ul > li {
 
 div.centered > footer a {
   color: var(--color4);
+  text-decoration: none;
 }
 
 div.centered > footer a:hover {
@@ -117,5 +125,11 @@ div.centered > div {
 @media (min-width: 600px) {
   div.centered > footer > ul > li {
     display: inline;
+  }
+  div.centered  > footer > ul > li::after {
+    content: " | ";
+  }
+  div.centered  > footer > ul > li:last-child::after {
+    content: none;
   }
 }

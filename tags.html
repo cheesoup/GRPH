@@ -44,7 +44,7 @@ https://codinfox.github.io/dev/2015/03/06/use-tags-and-categories-in-your-jekyll
 
 {% for tag in tags %}
 <div class="tagged" id="{{ tag | slugify }}">
-  <header>Posts Tagged: <span>{{ tag }}</span></header>
+  <header>Posts tagged with: <span>{{ tag }}</span></header>
   <ul class="posts">
     {% for post in site.posts %}
       {% if post.tags contains tag %}
