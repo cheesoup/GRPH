@@ -2,6 +2,8 @@
 layout: default
 ---
 
+{% assign cat = page.categories[0] %}
+{% assign cat_list = site.categories[cat] %}
 {% assign words = content | number_of_words %}
 <header class="heading">
   <h1 class="heading title">{{ page.title }}</h1>
@@ -21,10 +23,7 @@ layout: default
   </div>
   <div class="heading meta">
     <small>
-      Category:
-      {% for category in page.categories %}
-        <a href="{{ category.url }}">{{ category | replace:'-', ' ' }}</a>
-      {% endfor %}
+      Category: <a href="{{ cat.url }}">{{ cat | replace:'-', ' ' }}</a>
     </small>
     <small>
       Tags:
@@ -37,46 +36,56 @@ layout: default
 
 {{ content }}
 
+<!-- Grab previous and next post from category -->
+<!-- https://talk.jekyllrb.com/t/how-to-link-to-next-and-previous-posts-for-same-blog-category/629 -->
+
+{% for post in cat_list %}
+  {% if post.url == page.url %}
+    {% assign p = forloop.index0 | minus: 1 %}
+    {% assign n = p | plus: 2 %}
+    {% if forloop.first == false %}
+  	  {% assign prev = cat_list[p] %}
+    {% else %}
+      {% assign prev = page %}
+  	{% endif %}
+  	{% if forloop.last == false %}
+  	  {% assign next = cat_list[n] %}
+    {% else %}
+      {% assign next = page %}
+  	{% endif %}
+  {% endif %}
+{% endfor %}
+
+
+{{ previous_post.title }}
+
 <footer class="postend">
   <nav>
     <h3>Pagination</h3>
     <ul>
+      <!-- Page Up -->
       <li>
-        <a class="up" href="{{ 'posts' | relative_url }}">
-          Back to Posts
+        <a class="up" href="{{ page.categories | first | relative_url }}">
+          Back to {{ page.categories | first }}
         </a>
       </li>
-      {% if page.next.url %}
+      <!-- Prev post -->
       <li>
-        <a class="next" href="{{ page.next.url | relative_url }}">
-          {{page.next.title}}
+        <a class="next" href="{{ next.url | relative_url }}">
+          {{ next.title }}
         </a>
       </li>
-      {% else %}
+      <!-- Next post -->
       <li>
-        <a class="next" href="{{ page.url | relative_url }}">
-          {{page.title}}
+        <a class="prev" href="{{ prev.url | relative_url }}">
+          {{ prev.title }}
         </a>
       </li>
-      {% endif %}
-      {% if page.previous.url %}
-      <li>
-        <a class="prev" href="{{ page.previous.url | relative_url }}">
-          {{page.previous.title}}
-        </a>
-      </li>
-      {% else %}
-      <li>
-        <a class="prev" href="{{ page.url | relative_url }}">
-          {{page.title}}
-        </a>
-      </li>
-      {% endif %}
     </ul>
   </nav>
   <nav>
     <h3>Related Posts</h3>
-    {% assign posts = site.posts | where_exp:"post", "post.url != page.url" | sample:3 %}
+    {% assign posts = cat_list | where_exp:"post", "post.url != page.url" | sample:3 %}
     {% for post in posts %}
     <ul>
       <li>

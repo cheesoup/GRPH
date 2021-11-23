@@ -291,11 +291,11 @@ footer.postend > nav > a:hover {
 }
 
 a.next:before {
-  content: "Prev: ";
+  content: "Next: ";
 }
 
 a.prev:before {
-  content: "Next: ";
+  content: "Prev: ";
 }
 
 @media (min-width: 720px) {
