@@ -18,7 +18,7 @@ body {
   font-family: var(--body_stack);
 }
 
-main {
+body > div {
   top: 0;
   display: table;
   position: absolute;
@@ -27,17 +27,12 @@ main {
   left: 0;
 }
 
-main > div {
+body > div > div {
   display: table-cell;
   vertical-align: middle;
 }
 
-ul, ul li {
-  padding: 0;
-  margin: 0;
-}
-
-div.centered {
+main {
   display: grid;
   align-items: flex-start;
   grid-template-columns: 1fr 120px;
@@ -50,96 +45,76 @@ div.centered {
 h1 {
   margin: 0 5px var(--half_margins);
   font-family: var(--h1_stack);
-  font-size: 48px;
-  line-height: 60px;
+  font-size: 33px;
+  line-height: 40px;
 
   grid-column: 1;
   grid-row: 1;
   grid-column-end: span 2;
 }
 
-a.logo {
+h1 a {
+  color: var(--color3);
+}
+
+h1 a:hover {
+  color: var(--color1);
+  background-color: var(--color3);
+}
+
+main > a {
   display: inline-block;
 }
 
-ul.nav {
-  grid-column: 1;
-  grid-row: 3;
-  grid-column-end: span 2;
-  margin: 0;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-}
-
-ul.nav > li {
-  display: block;
-}
-
-ul.nav a {
-  display: block;
-  position: relative;
-  text-align: center;
-  max-width: 100%;
-  margin: 5px;
-  padding: 5px;
-  text-decoration: none;
-  color: var(--color4);
-  background-color: var(--color0);
-  border: 1px var(--color4) solid;
-  box-shadow: 5px 5px var(--color2);
-}
-
-ul.nav a:hover {
-  top: 3px;
-  left: 3px;
-  box-shadow: 2px 2px var(--color2);
-}
-
-ul.footer {
+ul {
   grid-column: 1;
   grid-row: 4;
   grid-column-end: span 2;
   font-size: 12px;
   line-height: 18px;
-  text-align: center;
+  text-align: right;
   list-style-type: none;
   margin-top: var(--margins);
   padding: 0;
+  margin: 0;
 }
 
-ul.footer > li {
+ul > li {
   display: block;
+  padding: 0;
+  margin: 0;
 }
 
-ul.footer a {
+ul a {
   color: var(--color4);
   text-decoration: none;
 }
 
-ul.footer a:hover {
+ul a:hover {
   color: var(--color0);
   background-color: var(--color3);
 }
 
 @media (min-width: 768px) {
-  ul.footer > li {
+  ul > li {
     display: inline;
   }
-  ul.footer > li::after {
+
+  ul > li::after {
     content: " | ";
   }
-  ul.footer > li:last-child::after {
+
+  ul > li:last-child::after {
     content: none;
   }
-  ul.nav {
-    grid-column-end: span 1;
-  }
-  a.logo {
+
+  a {
     grid-column: 2;
     grid-row: 1;
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
   }
+
   h1 {
     grid-column: 1;
     grid-row: 1;

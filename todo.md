@@ -31,6 +31,5 @@ Below is a list of things I still need to do for this project. They're listed in
 - Figure out some sort of way to showcase the synth
 - Manual
 - Promotional stuff
-- Make a nicer splash page for this site
 
 Jesus christ I have so much work.
