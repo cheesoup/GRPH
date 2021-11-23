@@ -586,12 +586,24 @@ div.tagged:target {
 }
 
 header.tagged {
-  text-align: right;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   margin-bottom: var(--half_margins);
 }
 
-header.tagged > span {
-  font-weight: bold;
+header.tagged > span:first-child {
+  text-align: left;
+}
+
+header.tagged > span:last-child {
+  text-align: right;
+  display: none;
+}
+
+@media (min-width: 720px) {
+  header.tagged > span:last-child {
+    display: inline;
+  }
 }
 
 div.tagged > ul {
