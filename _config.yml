@@ -9,4 +9,4 @@ plugins:
   - jekyll-seo-tag
 sass:
   style: compressed
-exclude: [serve.bat]
+exclude: [serve.bat, _drafts]

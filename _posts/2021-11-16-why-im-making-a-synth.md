@@ -1,9 +1,9 @@
 ---
 title: Thoughts on why I'm making a synthesizer
 layout: post
-tag: [Music, PureData]
+tag: [Music, PureData, Rants]
 date: Nov. 16, 2021
-categories: [Misc]
+categories: [Audio]
 ---
 
 When it comes to actually writing music, I actually think I'm pretty awful. I spend so much time obsessing over tiny details and always have a hard time seeing the big picture of what I'm trying to do. Honestly, the reason why I've been so upset with my process of creation is due to this indecisiveness to move on from minute details. On top of that, I'm not the most mechanically gifted person in the world. Much like how I struggle with brushes and inks, I can barely play inversions on the piano.
