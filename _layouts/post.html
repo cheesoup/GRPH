@@ -6,8 +6,19 @@ layout: default
 {% assign cat_list = site.categories[cat] %}
 {% assign words = content | number_of_words %}
 <header class="heading">
-  <h1 class="heading title">{{ page.title }}</h1>
-  <div class="heading date">
+  <h1>{{ page.title }}</h1>
+  <div>
+    <small>
+      Category: <a href="{{ cat.url }}">{{ cat | replace:'-', ' ' }}</a>
+    </small>
+    <small>
+      Tags:
+      {% for tag in page.tags %}
+        <a href="{{ 'tags' | relative_url }}#{{ tag | slugify }}">{{ tag | replace:'-', ' ' }}</a>
+      {% endfor %}
+    </small>
+  </div>
+  <div>
     <small>
       {{ page.date | date: "%a, %b %d, %y" }}
     </small>
@@ -19,17 +30,6 @@ layout: default
       {% else %}
         {{ words | divided_by:180 }} mins
       {% endif %}
-    </small>
-  </div>
-  <div class="heading meta">
-    <small>
-      Category: <a href="{{ cat.url }}">{{ cat | replace:'-', ' ' }}</a>
-    </small>
-    <small>
-      Tags:
-      {% for tag in page.tags %}
-        <a href="{{ 'tags' | relative_url }}#{{ tag | slugify }}">{{ tag | replace:'-', ' ' }}</a>
-      {% endfor %}
     </small>
   </div>
 </header>
@@ -59,7 +59,7 @@ layout: default
 
 {{ previous_post.title }}
 
-<footer class="postend">
+<footer class="pagination">
   <nav>
     <h3>Pagination</h3>
     <ul>

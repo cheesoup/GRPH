@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" type="text/css" href="/GRPH/assets/css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="/GRPH/assets/css/style.css"/>
     <link rel="alternate" type="application/atom+xml" title="thesis? idk?" href="/GRPH/feed.xml"/>
     <link rel="shortcut icon" type="image/png" href="/GRPH/icon.ico"/>
     <!-- Begin Jekyll SEO tag v2.7.1 -->
@@ -26,45 +26,31 @@
 
   </head>
   <body>
-    <header>
-      <!-- MENU START -->
-        <a href="/GRPH/"><img src="/GRPH/assets/images/jam_crow.gif" alt="jam_crow.gif" width="128" height="68"/></a>
-        <nav>
-          <ul>
-            
-            <li><a href="/GRPH/about">about</a></li>
-            
-            <li><a href="/GRPH/audio">audio</a></li>
-            
-            <li><a href="/GRPH/website">web</a></li>
-            
-            <li><a href="/GRPH/misc">misc</a></li>
-            
-            <li><a href="/GRPH/tags">tags</a></li>
-            
-          </ul>
-        </nav>
-      <!-- MENU END -->
-    </header>
-    <main>
+    <header>  <!-- HEADER START -->
+      <a href="/GRPH/"><img src="/GRPH/assets/images/jam_crow.gif" alt="jam_crow.gif" width="128" height="68"/></a>
+      <nav>   <!-- MENU START -->
+        <ul>
+          
+          <li><a href="/GRPH/about">about</a></li>
+          
+          <li><a href="/GRPH/audio">audio</a></li>
+          
+          <li><a href="/GRPH/website">web</a></li>
+          
+          <li><a href="/GRPH/misc">misc</a></li>
+          
+          <li><a href="/GRPH/tags">tags</a></li>
+          
+        </ul>
+      </nav>   <!-- MENU END -->
+    </header>  <!-- HEADER END -->
+    <main>     <!-- CONTENT START -->
       
 
 
 <header class="heading">
-  <h1 class="heading title">FFT Spectral Granulator</h1>
-  <div class="heading date">
-    <small>
-      Thu, Oct 14, 21
-    </small>
-    <small>
-      
-      Length:
-      
-        1 min
-      
-    </small>
-  </div>
-  <div class="heading meta">
+  <h1>FFT Spectral Granulator</h1>
+  <div>
     <small>
       Category: <a href="">Audio</a>
     </small>
@@ -77,13 +63,24 @@
       
     </small>
   </div>
+  <div>
+    <small>
+      Thu, Oct 14, 21
+    </small>
+    <small>
+      
+      Length:
+      
+        1 min
+      
+    </small>
+  </div>
 </header>
 
 <p>My main goal with this patch was to experiment with IFFT synthesis in context of a sample based granular synthesizers. It uses Miller Puckette’s <a href="http://msp.ucsd.edu/techniques/latest/book-html/node182.html">phase vocoder example</a> in conjunction with Scott “Acriel” Nordlund’s example of <a href="https://acreil.wordpress.com/2020/01/13/pure-data-frequency-domain-filtering-patch/">frequency domain filtering</a>.</p>
 
 <!-- Include for Video Embedding -->
 <!-- https://github.com/nathancy/jekyll-embed-video#responsive-videos -->
-
 <div class="float ">
   <figure class="embed video">
     <span class="video">
@@ -105,7 +102,7 @@
 
 
 
-<footer class="postend">
+<footer class="pagination">
   <nav>
     <h3>Pagination</h3>
     <ul>
@@ -144,8 +141,8 @@
   </nav>
 </footer>
 
-    </main>
-    <footer>
+    </main>    <!-- CONTENT END -->
+    <footer>   <!-- FOOTER START -->
       <ul>
         <li>
           <a href="https://www.gnu.org/licenses/copyleft.en.html">(C)</a>
@@ -155,6 +152,6 @@
         <li><a href="https://html5.validator.nu/?doc=http://0.0.0.0:4000/GRPH/audio/2021/10/14/fft_grainspec.html">This document is valid HTML5</a></li>
         <li><a href="#">Back to Top</a></li>
       </ul>
-    </footer>
+    </footer>   <!-- FOOTER END -->
   </body>
 </html>

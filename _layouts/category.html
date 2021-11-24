@@ -3,11 +3,11 @@ layout: default
 ---
 
 {% capture category_name %}{{ page.category }}{% endcapture %}
-<header class="tagged">
+<header class="catalog">
   <span>Posts under: <strong>{{ category_name }}</strong></span>
   <span>Date Posted</span>
 </header>
-<ul class="posts">
+<ul class="catalog">
   {% for post in site.categories[category_name] %}
     <li class="posts">
       <header class="heading">

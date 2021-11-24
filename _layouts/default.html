@@ -1,29 +1,27 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" type="text/css" href="{{ "/assets/css/main.css" | relative_url }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ "/assets/css/style.css" | relative_url }}"/>
     <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ "feed.xml" | relative_url }}"/>
     <link rel="shortcut icon" type="image/png" href="{{ "icon.ico" | relative_url }}"/>
     {% seo %}
   </head>
   <body>
-    <header>
-      <!-- MENU START -->
-        <a href="{{ "/" | relative_url }}"><img src="{{ "/assets/images/jam_crow.gif" | relative_url }}" alt="jam_crow.gif" width="128" height="68"/></a>
-        <nav>
-          <ul>
-            {% for item in site.data.navi.pages %}
-            <li><a href="{{ item.url | relative_url }}">{{ item.title }}</a></li>
-            {% endfor %}
-          </ul>
-        </nav>
-      <!-- MENU END -->
-    </header>
-    <main>
+    <header>  <!-- HEADER START -->
+      <a href="{{ "/" | relative_url }}"><img src="{{ "/assets/images/jam_crow.gif" | relative_url }}" alt="jam_crow.gif" width="128" height="68"/></a>
+      <nav>   <!-- MENU START -->
+        <ul>
+          {% for item in site.data.navi.pages %}
+          <li><a href="{{ item.url | relative_url }}">{{ item.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </nav>   <!-- MENU END -->
+    </header>  <!-- HEADER END -->
+    <main>     <!-- CONTENT START -->
       {{ content }}
-    </main>
-    <footer>
+    </main>    <!-- CONTENT END -->
+    <footer>   <!-- FOOTER START -->
       <ul>
         <li>
           <a href="https://www.gnu.org/licenses/copyleft.en.html">(C)</a>
@@ -33,6 +31,6 @@
         <li><a href="https://html5.validator.nu/?doc={{ page.url | absolute_url }}">This document is valid HTML5</a></li>
         <li><a href="#">Back to Top</a></li>
       </ul>
-    </footer>
+    </footer>   <!-- FOOTER END -->
   </body>
 </html>

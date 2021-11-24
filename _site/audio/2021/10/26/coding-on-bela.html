@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" type="text/css" href="/GRPH/assets/css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="/GRPH/assets/css/style.css"/>
     <link rel="alternate" type="application/atom+xml" title="thesis? idk?" href="/GRPH/feed.xml"/>
     <link rel="shortcut icon" type="image/png" href="/GRPH/icon.ico"/>
     <!-- Begin Jekyll SEO tag v2.7.1 -->
@@ -26,45 +26,31 @@
 
   </head>
   <body>
-    <header>
-      <!-- MENU START -->
-        <a href="/GRPH/"><img src="/GRPH/assets/images/jam_crow.gif" alt="jam_crow.gif" width="128" height="68"/></a>
-        <nav>
-          <ul>
-            
-            <li><a href="/GRPH/about">about</a></li>
-            
-            <li><a href="/GRPH/audio">audio</a></li>
-            
-            <li><a href="/GRPH/website">web</a></li>
-            
-            <li><a href="/GRPH/misc">misc</a></li>
-            
-            <li><a href="/GRPH/tags">tags</a></li>
-            
-          </ul>
-        </nav>
-      <!-- MENU END -->
-    </header>
-    <main>
+    <header>  <!-- HEADER START -->
+      <a href="/GRPH/"><img src="/GRPH/assets/images/jam_crow.gif" alt="jam_crow.gif" width="128" height="68"/></a>
+      <nav>   <!-- MENU START -->
+        <ul>
+          
+          <li><a href="/GRPH/about">about</a></li>
+          
+          <li><a href="/GRPH/audio">audio</a></li>
+          
+          <li><a href="/GRPH/website">web</a></li>
+          
+          <li><a href="/GRPH/misc">misc</a></li>
+          
+          <li><a href="/GRPH/tags">tags</a></li>
+          
+        </ul>
+      </nav>   <!-- MENU END -->
+    </header>  <!-- HEADER END -->
+    <main>     <!-- CONTENT START -->
       
 
 
 <header class="heading">
-  <h1 class="heading title">Coding on bela</h1>
-  <div class="heading date">
-    <small>
-      Tue, Oct 26, 21
-    </small>
-    <small>
-      
-      Length:
-      
-        6 mins
-      
-    </small>
-  </div>
-  <div class="heading meta">
+  <h1>Coding on bela</h1>
+  <div>
     <small>
       Category: <a href="">Audio</a>
     </small>
@@ -74,6 +60,18 @@
         <a href="/GRPH/tags#bela">Bela</a>
       
         <a href="/GRPH/tags#oscillators">Oscillators</a>
+      
+    </small>
+  </div>
+  <div>
+    <small>
+      Tue, Oct 26, 21
+    </small>
+    <small>
+      
+      Length:
+      
+        6 mins
       
     </small>
   </div>
@@ -136,7 +134,6 @@
 <p>Unlike Processing, Bela’s setup function returns a boolean. The render loop won’t start unless setup() returns true. In the example provided, the setup function initializes a few variables. <code class="language-plaintext highlighter-rouge">gInverseSampleRate</code> is set to <code class="language-plaintext highlighter-rouge">1 / samplerate</code> and while <code class="language-plaintext highlighter-rouge">gPhase</code> is initialized to <code class="language-plaintext highlighter-rouge">0</code>.</p>
 
 <!-- Include for captioned images -->
-
 <div class="float ">
   <figure class="embed picture">
     <a href="#content-sine-png">
@@ -189,7 +186,7 @@
 
 
 
-<footer class="postend">
+<footer class="pagination">
   <nav>
     <h3>Pagination</h3>
     <ul>
@@ -228,8 +225,8 @@
   </nav>
 </footer>
 
-    </main>
-    <footer>
+    </main>    <!-- CONTENT END -->
+    <footer>   <!-- FOOTER START -->
       <ul>
         <li>
           <a href="https://www.gnu.org/licenses/copyleft.en.html">(C)</a>
@@ -239,6 +236,6 @@
         <li><a href="https://html5.validator.nu/?doc=http://0.0.0.0:4000/GRPH/audio/2021/10/26/coding-on-bela.html">This document is valid HTML5</a></li>
         <li><a href="#">Back to Top</a></li>
       </ul>
-    </footer>
+    </footer>   <!-- FOOTER END -->
   </body>
 </html>

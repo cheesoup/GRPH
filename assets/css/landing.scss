@@ -1,3 +1,8 @@
+---
+sass:
+  style: compressed
+---
+
 :root {
   --body_stack: "Trebuchet MS", Verdana, Arial, sans-serif;
   --h1_stack: "Monaco", "Andale Mono", "Consolas", "Lucida Console", "Courier New", Courier, monospace;
@@ -53,11 +58,11 @@ h1 {
   grid-column-end: span 2;
 }
 
-h1 a {
+h1 > a {
   color: var(--color3);
 }
 
-h1 a:hover {
+h1 > a:hover {
   color: var(--color1);
   background-color: var(--color3);
 }
@@ -85,16 +90,17 @@ ul > li {
   margin: 0;
 }
 
-ul a {
+li > a {
   color: var(--color4);
   text-decoration: none;
 }
 
-ul a:hover {
+li > a:hover {
   color: var(--color0);
   background-color: var(--color3);
 }
 
+/* Browser > 768px */
 @media (min-width: 768px) {
   ul > li {
     display: inline;

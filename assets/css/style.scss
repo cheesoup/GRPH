@@ -1,0 +1,513 @@
+---
+scss:
+  style: compressed
+---
+
+$maxWidth: 720px;
+$body_stack: "Trebuchet MS", Verdana, Arial, sans-serif;
+$h1_stack: "Monaco", "Andale Mono", "Consolas", "Lucida Console", "Courier New", Courier, monospace;
+
+$color0: #FFF;
+$color1: #DDD;
+$color2: #888;
+$color3: #444;
+$color4: #000;
+
+$paragraph_spacing: 10px;
+$margins: 40px;
+$half_margins: 20px;
+$qtr_margins: 10px;
+
+/*~~~~~~~~~~~~~~~*/
+/* Structure CSS */
+/*~~~~~~~~~~~~~~~*/
+body {
+  font-family: $body_stack;
+  background-color: $color0;
+  line-height: 26px;
+  overflow-wrap: break-word;
+  overflow-y: scroll;
+  margin: 0;
+  & > * {
+    margin: 0 auto;
+  }
+  & > main {
+    padding: $margins $margins;
+    margin-bottom: $margins;
+    max-width: 640px;
+    & p {
+      line-height: 26px;
+    }
+  }
+}
+
+/*~~~~~~~~~~~~~~~~~*/
+/* General Styling */
+/*~~~~~~~~~~~~~~~~~*/
+a {
+  cursor: pointer;
+  color: $color3;
+  &:hover {
+    text-decoration: none;
+    background-color: $color3;
+    color: $color0;
+  }
+}
+
+h1 {
+  margin: 0 0 $half_margins;
+  font-family: $h1_stack;
+  font-size: 36px;
+  line-height: 44px;
+}
+
+h2 {
+  font-family: var(--h2_stack);
+  font-size: 20px;
+  line-height: 28px;
+}
+
+h3 {
+  font-family: var(--h2_stack);
+}
+
+hr {
+  margin-bottom: $paragraph_spacing;
+  border: 0;
+  border-top: 2px $color4 dotted;
+}
+
+ul {
+  list-style-type: square;
+  padding-left: $half_margins;
+  & > li {
+    margin-bottom: $paragraph_spacing;
+    padding-left: $qtr_margins;
+  }
+}
+
+/*~~~~~~~~~~~~*/
+/* Navigation */
+/*~~~~~~~~~~~~*/
+nav {
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    & > li {
+      display: inline;
+      margin: 0;
+      padding: 0;
+    }
+  }
+  a {
+    display: inline-block;
+    position: relative;
+    margin: 5px 5px 5px 0;
+    padding: 5px;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    text-decoration: none;
+    color: $color4;
+    border: 1px $color4 solid;
+    box-shadow: 5px 5px $color2;
+    background-color: $color0;
+    &:hover, &:active {
+      left: 3px;
+      top: 3px;
+      color: $color4;
+      background-color: $color0;
+      box-shadow: 2px 2px $color2;
+    }
+  }
+}
+
+/*~~~~~~~~~~~~~~~~~~~~~~*/
+/* Main Header & Footer */
+/*~~~~~~~~~~~~~~~~~~~~~~*/
+body > header {
+  padding-top: $qtr_margins;
+  height: 90px;
+  width: 100%;
+  left: 0;
+  top: 0;
+  background-color: $color0;
+  border-bottom: 1px $color4 solid;
+  text-align: center;
+  & > a:hover {
+    background-color: transparent;
+  }
+  & > nav a {
+    width: 40px;
+  }
+}
+
+body > footer {
+  font-size: 12px;
+  line-height: 18px;
+  text-align: center;
+  width: 100%;
+  padding: $half_margins 0 $margins;
+  border-top: 1px $color4 solid;
+  & a {
+    color: $color4;
+    text-decoration: none;
+  }
+  & > ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    & > li {
+      margin: 0;
+      padding: 0;
+      display: block;
+    }
+  }
+}
+
+/*~~~~~~~~~~~~~~~~~~*/
+/* Blog Post Header */
+/*~~~~~~~~~~~~~~~~~~*/
+header.heading {
+  display: block;
+  padding-bottom: $half_margins;
+  border-bottom: 2px $color4 dotted;
+  @media screen and (min-width: 720px) {
+    display: grid;
+    grid-template-columns: 1fr 120px;
+  }
+  & > h1 {
+    text-align: left;
+    grid-row: 1;
+    grid-column: 1;
+    grid-column-end: span 1;
+    margin: 0;
+    @media screen and (min-width: 720px) {
+      grid-row: 1;
+      grid-column: 1;
+      grid-column-end: span 1;
+    }
+    & > a {
+      text-decoration: none;
+      color: $color4;
+      &:hover {
+        background-color: transparent;
+        color: $color2;
+      }
+    }
+  }
+  & > div {
+    line-height: 16px;
+    & > small:first-child::after {
+      content: " / ";
+    }
+    @media screen and (min-width: 720px) {
+      padding-top: 5px;
+      grid-row: 2;
+      grid-column: 1;
+      &:last-child {
+        text-align: right;
+        grid-row: 1;
+        grid-column: 2;
+        & > small:first-child::after {
+          content: none;
+        }
+      }
+    }
+  }
+}
+
+/*~~~~~~~~~~~~~~~~~*/
+/* Post Pagination */
+/*~~~~~~~~~~~~~~~~~*/
+footer.pagination {
+  & > * {
+    margin: 30px 5px 0;
+    padding-top: $paragraph_spacing;
+    border-top: 2px $color4 dotted;
+    @media (min-width: 720px) {
+      max-width: 310px;
+    }
+  }
+  & > nav > ul > li {
+    display: block;
+    margin: 10px 5px;
+    & > a {
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      &.next:before {
+        content: "Next: ";
+      }
+      &.prev:before {
+        content: "Prev: ";
+      }
+      &:hover {
+        background-color: $color3;
+        color: $color0;
+      }
+    }
+  }
+  @media (min-width: 720px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    & > ul > li {
+      display: inline;
+      &::after {
+        content: " | ";
+      }
+      &:last-child::after {
+        content: none;
+      }
+    }
+  }
+}
+
+/*~~~~~~~~~~~~*/
+/* Post Lists */
+/*~~~~~~~~~~~~*/
+header.catalog {
+  margin-bottom: $half_margins;
+  padding-bottom: 0;
+  border-bottom: 0;
+  & > span:first-child {
+    text-align: left;
+  }
+  & > span:last-child {
+    text-align: right;
+    display: none;
+    @media (min-width: 720px) {
+      display: inline;
+    }
+  }
+  @media (min-width: 720px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+ul.catalog {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  & > li {
+    margin: 10px 0 0;
+    padding: 0;
+    &:first-child,
+    &:first-child > header  {
+      margin-top: 0;
+    }
+    &:last-child > header {
+      margin-bottom: 0;
+      border-bottom: 0;
+    }
+  }
+}
+
+/*~~~~~~~~~~*/
+/* Tag Page */
+/*~~~~~~~~~~*/
+ul.tags {
+  padding-bottom: $paragraph_spacing;
+  margin-bottom: $paragraph_spacing;
+  & > li {
+    margin: $paragraph_spacing 0;
+  }
+}
+
+div.tagged {
+  display: none;
+  padding-top: $half_margins;
+  border-top: 2px $color4 dotted;
+  &:target {
+    display: block;
+  }
+  & > ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    & > li {
+      margin: 0 0 $paragraph_spacing;
+      & > small, & > span {
+        display: block;
+        margin: 0;
+        line-height: 20px;
+      }
+    }
+  }
+}
+
+/*~~~~~~~~*/
+/* Embeds */
+/*~~~~~~~~*/
+div.float {
+  margin: $margins ;
+  display: block;
+  text-align: center;
+  vertical-align: top;
+  & > figure {
+    & > figcaption {
+      text-align: center;
+      font-style: italic;
+      font-size: 12px;
+    }
+    &.embed {
+      margin: 0 auto;
+      padding: 10px;
+      font-style: italic;
+      color: $color3;
+      background-color: $color1;
+      border: 1px $color4 solid;
+      box-shadow: 5px 5px $color2;
+    }
+    &.picture {
+      display: inline-block;
+      & a:hover {
+        background-color: transparent;
+      }
+      & img {
+        border: 1px $color4 solid;
+        max-width: 100%;
+      }
+    }
+    &.video {
+      max-width: 800px;
+      & > span {
+        display: block;
+        position:relative;
+        border: 1px $color4 solid;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+        & > iframe, & > object, & > embed {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          border: 0;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 720px) {
+  div.right {
+    float: right;
+    margin: 5px $margins 5px 10px;
+  }
+
+  div.left {
+    float: left;
+    margin: 5px 15px 5px $margins;
+  }
+}
+
+/* lightbox */
+a.expand {
+  z-index: 0;
+  display: block;
+  position: fixed;
+  visibility: hidden;
+  margin: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: auto;
+  background-color: rgba(0,0,0,0.5);
+  background-repeat: no-repeat;
+  background-position: center;
+  &:target {
+    visibility: visible;
+    z-index: 2;
+  }
+  & > img {
+    border: 1px $color4 solid;
+    position: absolute;
+    max-width: 80%;
+    max-height: 80%;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+}
+
+/*~~~~~~~~~~~*/
+/* CODE TAGS */
+/*~~~~~~~~~~~*/
+.highlighter-route {
+  padding: 3px;
+  font-size: 13px;
+  font-family: "Consolas", "Lucida Console", "Monaco", "Andale Mono", "Courier New", courier, monospace;
+  color: $color0;
+  background-color: $color3;
+}
+
+figure.highlight {
+  overflow-x: scroll;
+  margin: 0 0 15px;
+  padding: 5px $margins;
+  border: 10px $color3 solid;
+  background-color: $color3;
+  & > pre {
+    line-height: 16px;
+    & > code {
+      white-space: pre-wrap;
+      font-size: 13px;
+      font-family: "Consolas", "Lucida Console", "Monaco", "Andale Mono", "Courier New", courier, monospace;
+      color: $color0;
+    }
+  }
+  // Colours
+  // Slash comments
+  & .c1, & .cm {
+    color: #969896;
+  }
+  // Data types
+  & .kt, & .kd {
+    font-weight: bolder;
+    color: #b294bb;
+  }
+  // Boolean values
+  & .nb, & .kc {
+    color: #81a2be;
+  }
+  // Numeric and string values
+  & .mf, & .m1, & .s {
+    color: #f0c674;
+  }
+  // Escape function
+  & .se {
+    color: #cc6666;
+  }
+  // Return/Data Keywords
+  & .k {
+  font-weight: bolder;
+    color: #8abeb7;
+  }
+  // Wrapped in quotation marks
+  & .d1, & .s2 {
+    font-weight: bolder;
+    color: #b5bd68;
+  }
+}
+
+/* Code Block colours */
+
+/*
+Based on Muse Scheme
+from Terminal.sexy
+black         #2e3436       #555753
+red           #a31604       #c60001
+green         #447241       #27a343
+yellow        #c1951a       #d5a30e
+blue          #425387       #4a5a8d
+magenta       #965d98       #893c8c
+cyan          #06989a       #12bccb
+white         #d3d7cf       #eeeeec
+*/

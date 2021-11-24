@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" type="text/css" href="/GRPH/assets/css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="/GRPH/assets/css/style.css"/>
     <link rel="alternate" type="application/atom+xml" title="thesis? idk?" href="/GRPH/feed.xml"/>
     <link rel="shortcut icon" type="image/png" href="/GRPH/icon.ico"/>
     <!-- Begin Jekyll SEO tag v2.7.1 -->
@@ -26,33 +26,42 @@
 
   </head>
   <body>
-    <header>
-      <!-- MENU START -->
-        <a href="/GRPH/"><img src="/GRPH/assets/images/jam_crow.gif" alt="jam_crow.gif" width="128" height="68"/></a>
-        <nav>
-          <ul>
-            
-            <li><a href="/GRPH/about">about</a></li>
-            
-            <li><a href="/GRPH/audio">audio</a></li>
-            
-            <li><a href="/GRPH/website">web</a></li>
-            
-            <li><a href="/GRPH/misc">misc</a></li>
-            
-            <li><a href="/GRPH/tags">tags</a></li>
-            
-          </ul>
-        </nav>
-      <!-- MENU END -->
-    </header>
-    <main>
+    <header>  <!-- HEADER START -->
+      <a href="/GRPH/"><img src="/GRPH/assets/images/jam_crow.gif" alt="jam_crow.gif" width="128" height="68"/></a>
+      <nav>   <!-- MENU START -->
+        <ul>
+          
+          <li><a href="/GRPH/about">about</a></li>
+          
+          <li><a href="/GRPH/audio">audio</a></li>
+          
+          <li><a href="/GRPH/website">web</a></li>
+          
+          <li><a href="/GRPH/misc">misc</a></li>
+          
+          <li><a href="/GRPH/tags">tags</a></li>
+          
+        </ul>
+      </nav>   <!-- MENU END -->
+    </header>  <!-- HEADER END -->
+    <main>     <!-- CONTENT START -->
       
 
 
 <header class="heading">
-  <h1 class="heading title">New Layout!</h1>
-  <div class="heading date">
+  <h1>New Layout!</h1>
+  <div>
+    <small>
+      Category: <a href="">Website</a>
+    </small>
+    <small>
+      Tags:
+      
+        <a href="/GRPH/tags#blog">Blog</a>
+      
+    </small>
+  </div>
+  <div>
     <small>
       Sun, Nov 14, 21
     </small>
@@ -61,17 +70,6 @@
       Length:
       
         3 mins
-      
-    </small>
-  </div>
-  <div class="heading meta">
-    <small>
-      Category: <a href="">Website</a>
-    </small>
-    <small>
-      Tags:
-      
-        <a href="/GRPH/tags#blog">Blog</a>
       
     </small>
   </div>
@@ -86,7 +84,6 @@
 <p>Other than the menu, I also implemented some JS for placing arbitrary text into someone’s copy and paste clipboard. I was mainly using to create hyperlinks which would give the user the URL to the RSS feed. Though the script does work pretty well, if JS is disabled for whatever reason it is impossible to access the RSS. Also I feel like using JS in this way was sort of lazy.</p>
 
 <!-- Include for captioned images -->
-
 <div class="float ">
   <figure class="embed picture">
     <a href="#content-blog-size-0-png">
@@ -104,7 +101,6 @@
 <h2 id="on-to-the-new">On to the New</h2>
 
 <!-- Include for captioned images -->
-
 <div class="float right">
   <figure class="embed picture">
     <a href="#splash-gif">
@@ -132,7 +128,7 @@
 
 
 
-<footer class="postend">
+<footer class="pagination">
   <nav>
     <h3>Pagination</h3>
     <ul>
@@ -171,8 +167,8 @@
   </nav>
 </footer>
 
-    </main>
-    <footer>
+    </main>    <!-- CONTENT END -->
+    <footer>   <!-- FOOTER START -->
       <ul>
         <li>
           <a href="https://www.gnu.org/licenses/copyleft.en.html">(C)</a>
@@ -182,6 +178,6 @@
         <li><a href="https://html5.validator.nu/?doc=http://0.0.0.0:4000/GRPH/website/2021/11/14/new-layout.html">This document is valid HTML5</a></li>
         <li><a href="#">Back to Top</a></li>
       </ul>
-    </footer>
+    </footer>   <!-- FOOTER END -->
   </body>
 </html>
