@@ -2,11 +2,11 @@
 <div class="float {{ include.float }}">
   <figure class="embed picture">
     <a href="#{{ include.url | slugify }}">
-      <img src="{{ '/assets/images/' | relative_url }}{{ include.url }}" alt="{{ include.caption }}" style="width: {{ include.width }}"/>
+      <img src="{{ '/assets/images/' | relative_url }}{{ include.url }}" alt="{{ include.caption }}" style="width: {{ include.width }}" loading="lazy"/>
     </a>
     <figcaption>{{ include.caption }}</figcaption>
   </figure>
   <a href="#/" class="expand" id="{{ include.url | slugify }}">
-    <img src="{{ '/assets/images/' | relative_url }}{{ include.url }}" alt="{{ include.caption }}" style="background-image: url('{{ '/assets/images/' | relative_url }}transparent.gif')"/>
+    <img src="{{ '/assets/images/' | relative_url }}{{ include.url }}" alt="{{ include.caption }}" style="background-image: url('{{ '/assets/images/' | relative_url }}transparent.gif')" loading="lazy"/>
   </a>
 </div>

@@ -7,4 +7,6 @@ baseurl: /GRPH
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+sass:
+  style: compressed
 exclude: [serve.bat]

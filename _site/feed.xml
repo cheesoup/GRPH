@@ -1,15 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://0.0.0.0:4000/GRPH/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://0.0.0.0:4000/GRPH/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/GRPH/" rel="alternate" type="text/html" /><updated>2021-11-24T01:26:12-05:00</updated><id>http://0.0.0.0:4000/GRPH/feed.xml</id><title type="html">thesis? idk?</title><subtitle>a blog for 4th year workshop at OCADU</subtitle><author><name>Chris Carin</name></author><entry><title type="html">Thoughts on why I’m making a synthesizer</title><link href="http://0.0.0.0:4000/GRPH/misc/2021/11/16/why-im-making-a-synth.html" rel="alternate" type="text/html" title="Thoughts on why I’m making a synthesizer" /><published>2021-11-16T00:00:00-05:00</published><updated>2021-11-16T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/misc/2021/11/16/why-im-making-a-synth</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/misc/2021/11/16/why-im-making-a-synth.html">&lt;p&gt;When it comes to actually writing music, I actually think I’m pretty awful. I spend so much time obsessing over tiny details and always have a hard time seeing the big picture of what I’m trying to do. Honestly, the reason why I’ve been so upset with my process of creation is due to this indecisiveness to move on from minute details. On top of that, I’m not the most mechanically gifted person in the world. Much like how I struggle with brushes and inks, I can barely play inversions on the piano.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://0.0.0.0:4000/GRPH/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://0.0.0.0:4000/GRPH/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/GRPH/" rel="alternate" type="text/html" /><updated>2021-11-24T03:21:28-05:00</updated><id>http://0.0.0.0:4000/GRPH/feed.xml</id><title type="html">thesis? idk?</title><subtitle>a blog for 4th year workshop at OCADU</subtitle><author><name>Chris Carin</name></author><entry><title type="html">Thoughts on why I’m making a synthesizer</title><link href="http://0.0.0.0:4000/GRPH/misc/2021/11/16/why-im-making-a-synth.html" rel="alternate" type="text/html" title="Thoughts on why I’m making a synthesizer" /><published>2021-11-16T00:00:00-05:00</published><updated>2021-11-16T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/misc/2021/11/16/why-im-making-a-synth</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/misc/2021/11/16/why-im-making-a-synth.html">&lt;p&gt;When it comes to actually writing music, I actually think I’m pretty awful. I spend so much time obsessing over tiny details and always have a hard time seeing the big picture of what I’m trying to do. Honestly, the reason why I’ve been so upset with my process of creation is due to this indecisiveness to move on from minute details. On top of that, I’m not the most mechanically gifted person in the world. Much like how I struggle with brushes and inks, I can barely play inversions on the piano.&lt;/p&gt;
 
 &lt;!-- Include for captioned images --&gt;
 &lt;div class=&quot;float &quot;&gt;
   &lt;figure class=&quot;embed picture&quot;&gt;
     &lt;a href=&quot;#content-sonic-pi-png&quot;&gt;
-      &lt;img src=&quot;/GRPH/assets/images//content/sonic-pi.png&quot; alt=&quot;Screenshot of Sonic Pi from Wikipedia&quot; style=&quot;width: 800px&quot; /&gt;
+      &lt;img src=&quot;/GRPH/assets/images//content/sonic-pi.png&quot; alt=&quot;Screenshot of Sonic Pi from Wikipedia&quot; style=&quot;width: 800px&quot; loading=&quot;lazy&quot; /&gt;
     &lt;/a&gt;
     &lt;figcaption&gt;Screenshot of Sonic Pi from Wikipedia&lt;/figcaption&gt;
   &lt;/figure&gt;
   &lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;content-sonic-pi-png&quot;&gt;
-    &lt;img src=&quot;/GRPH/assets/images//content/sonic-pi.png&quot; alt=&quot;Screenshot of Sonic Pi from Wikipedia&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; /&gt;
+    &lt;img src=&quot;/GRPH/assets/images//content/sonic-pi.png&quot; alt=&quot;Screenshot of Sonic Pi from Wikipedia&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
   &lt;/a&gt;
 &lt;/div&gt;
 
@@ -21,10 +21,10 @@
 
 &lt;!-- Include for Video Embedding --&gt;
 &lt;!-- https://github.com/nathancy/jekyll-embed-video#responsive-videos --&gt;
-&lt;div class=&quot;float &quot;&gt;
+&lt;div class=&quot;float&quot;&gt;
   &lt;figure class=&quot;embed video&quot;&gt;
     &lt;span class=&quot;video&quot;&gt;
-      &lt;iframe src=&quot;https://player.vimeo.com/video/646396827?h=b0a124d5cc&amp;amp;badge=0&amp;amp;autopause=0&amp;amp;player_id=0&amp;amp;app_id=58479&quot;&gt;
+      &lt;iframe style=&quot;width:100%; height:100%;&quot; src=&quot;https://player.vimeo.com/video/646396827?h=b0a124d5cc&amp;amp;badge=0&amp;amp;autopause=0&amp;amp;player_id=0&amp;amp;app_id=58479&quot; loading=&quot;lazy&quot; allowfullscreen=&quot;&quot;&gt;
       &lt;/iframe&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;caption&quot;&gt;A Pd track I made a couple months ago&lt;/figcaption&gt;
@@ -45,12 +45,12 @@
 &lt;div class=&quot;float &quot;&gt;
   &lt;figure class=&quot;embed picture&quot;&gt;
     &lt;a href=&quot;#content-blog-size-0-png&quot;&gt;
-      &lt;img src=&quot;/GRPH/assets/images//content/blog_size_0.png&quot; alt=&quot;34.1kbs for webfonts&quot; style=&quot;width: &quot; /&gt;
+      &lt;img src=&quot;/GRPH/assets/images//content/blog_size_0.png&quot; alt=&quot;34.1kbs for webfonts&quot; style=&quot;width: &quot; loading=&quot;lazy&quot; /&gt;
     &lt;/a&gt;
     &lt;figcaption&gt;34.1kbs for webfonts&lt;/figcaption&gt;
   &lt;/figure&gt;
   &lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;content-blog-size-0-png&quot;&gt;
-    &lt;img src=&quot;/GRPH/assets/images//content/blog_size_0.png&quot; alt=&quot;34.1kbs for webfonts&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; /&gt;
+    &lt;img src=&quot;/GRPH/assets/images//content/blog_size_0.png&quot; alt=&quot;34.1kbs for webfonts&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
   &lt;/a&gt;
 &lt;/div&gt;
 
@@ -62,12 +62,12 @@
 &lt;div class=&quot;float right&quot;&gt;
   &lt;figure class=&quot;embed picture&quot;&gt;
     &lt;a href=&quot;#splash-gif&quot;&gt;
-      &lt;img src=&quot;/GRPH/assets/images/splash.gif&quot; alt=&quot;Say hi!&quot; style=&quot;width: &quot; /&gt;
+      &lt;img src=&quot;/GRPH/assets/images/splash.gif&quot; alt=&quot;Say hi!&quot; style=&quot;width: &quot; loading=&quot;lazy&quot; /&gt;
     &lt;/a&gt;
     &lt;figcaption&gt;Say hi!&lt;/figcaption&gt;
   &lt;/figure&gt;
   &lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;splash-gif&quot;&gt;
-    &lt;img src=&quot;/GRPH/assets/images/splash.gif&quot; alt=&quot;Say hi!&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; /&gt;
+    &lt;img src=&quot;/GRPH/assets/images/splash.gif&quot; alt=&quot;Say hi!&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
   &lt;/a&gt;
 &lt;/div&gt;
 
@@ -135,12 +135,12 @@
 &lt;div class=&quot;float &quot;&gt;
   &lt;figure class=&quot;embed picture&quot;&gt;
     &lt;a href=&quot;#content-sine-png&quot;&gt;
-      &lt;img src=&quot;/GRPH/assets/images//content/sine.png&quot; alt=&quot;A plot of a sine function with its phase normalized to 2π&quot; style=&quot;width: 800px&quot; /&gt;
+      &lt;img src=&quot;/GRPH/assets/images//content/sine.png&quot; alt=&quot;A plot of a sine function with its phase normalized to 2π&quot; style=&quot;width: 800px&quot; loading=&quot;lazy&quot; /&gt;
     &lt;/a&gt;
     &lt;figcaption&gt;A plot of a sine function with its phase normalized to 2π&lt;/figcaption&gt;
   &lt;/figure&gt;
   &lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;content-sine-png&quot;&gt;
-    &lt;img src=&quot;/GRPH/assets/images//content/sine.png&quot; alt=&quot;A plot of a sine function with its phase normalized to 2π&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; /&gt;
+    &lt;img src=&quot;/GRPH/assets/images//content/sine.png&quot; alt=&quot;A plot of a sine function with its phase normalized to 2π&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
   &lt;/a&gt;
 &lt;/div&gt;
 
@@ -189,10 +189,10 @@
 
 &lt;!-- Include for Video Embedding --&gt;
 &lt;!-- https://github.com/nathancy/jekyll-embed-video#responsive-videos --&gt;
-&lt;div class=&quot;float &quot;&gt;
+&lt;div class=&quot;float&quot;&gt;
   &lt;figure class=&quot;embed video&quot;&gt;
     &lt;span class=&quot;video&quot;&gt;
-      &lt;iframe src=&quot;https://player.vimeo.com/video/645841010?h=b0a124d5cc&amp;amp;badge=0&amp;amp;autopause=0&amp;amp;player_id=0&amp;amp;app_id=58479&quot;&gt;
+      &lt;iframe style=&quot;width:100%; height:100%;&quot; src=&quot;https://player.vimeo.com/video/645841010?h=b0a124d5cc&amp;amp;badge=0&amp;amp;autopause=0&amp;amp;player_id=0&amp;amp;app_id=58479&quot; loading=&quot;lazy&quot; allowfullscreen=&quot;&quot;&gt;
       &lt;/iframe&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;caption&quot;&gt;Demo video of the Pd patch&lt;/figcaption&gt;
@@ -206,30 +206,27 @@
 &lt;div class=&quot;float&quot;&gt;
   &lt;figure class=&quot;embed video&quot;&gt;
     &lt;span class=&quot;video&quot;&gt;
-      &lt;object type=&quot;application/x-shockwave-flash&quot; style=&quot;width:100%; height:100%;&quot; data=&quot;//www.youtube.com/v/3dEH7uhZ-ME?color2=FBE9EC&amp;amp;version=3&quot;&gt;
-        &lt;param name=&quot;movie&quot; value=&quot;//www.youtube.com/v/3dEH7uhZ-ME?color2=FBE9EC&amp;amp;version=3&quot; /&gt;
-        &lt;param name=&quot;allowFullScreen&quot; value=&quot;true&quot; /&gt;
-        &lt;param name=&quot;allowscriptaccess&quot; value=&quot;always&quot; /&gt;
-      &lt;/object&gt;
+      &lt;iframe style=&quot;width:100%; height:100%;&quot; src=&quot;https://www.youtube.com/embed/3dEH7uhZ-ME&quot; loading=&quot;lazy&quot; allowfullscreen=&quot;&quot;&gt;
+      &lt;/iframe&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;caption&quot;&gt;:)&lt;/figcaption&gt;
   &lt;/figure&gt;
 &lt;/div&gt;</content><author><name>Chris Carin</name></author><category term="Misc" /><category term="Music" /><category term="Blog" /><summary type="html">I just wanted to test posting YouTube videos. Here’s one featuring Mr. Funk and possibly John Frusciante.</summary></entry><entry><title type="html">Hello World!</title><link href="http://0.0.0.0:4000/GRPH/misc/2021/10/13/hello-world!.html" rel="alternate" type="text/html" title="Hello World!" /><published>2021-10-13T00:00:00-04:00</published><updated>2021-10-13T00:00:00-04:00</updated><id>http://0.0.0.0:4000/GRPH/misc/2021/10/13/hello-world!</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/misc/2021/10/13/hello-world!.html">&lt;p&gt;Check it out!! It’s my first post!! How cool is that? Comin’ straight from the 647 to the 905 to the 416 etc. I don’t really have much to write about right now. So I guess I’ll just some small updates about what I’ve been up to.&lt;/p&gt;
 
+&lt;p&gt;The &lt;a href=&quot;https://bela.io/&quot;&gt;Bela&lt;/a&gt; development board for my project finally came in. Above is a picture of it. The developers of the board describe it as “an open-source embedded computing platform for creating responsive, real-time interactive systems with audio and sensors”. In laymen terms, essentially it’s single-board computer (think Raspberry Pi) with a programmable cape which specializes in processing signals.&lt;/p&gt;
+
 &lt;!-- Include for captioned images --&gt;
 &lt;div class=&quot;float right&quot;&gt;
   &lt;figure class=&quot;embed picture&quot;&gt;
     &lt;a href=&quot;#content-bela0-jpg&quot;&gt;
-      &lt;img src=&quot;/GRPH/assets/images//content/bela0.jpg&quot; alt=&quot;The bela board!&quot; style=&quot;width: 240px&quot; /&gt;
+      &lt;img src=&quot;/GRPH/assets/images//content/bela0.jpg&quot; alt=&quot;The bela board!&quot; style=&quot;width: 360px&quot; loading=&quot;lazy&quot; /&gt;
     &lt;/a&gt;
     &lt;figcaption&gt;The bela board!&lt;/figcaption&gt;
   &lt;/figure&gt;
   &lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;content-bela0-jpg&quot;&gt;
-    &lt;img src=&quot;/GRPH/assets/images//content/bela0.jpg&quot; alt=&quot;The bela board!&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; /&gt;
+    &lt;img src=&quot;/GRPH/assets/images//content/bela0.jpg&quot; alt=&quot;The bela board!&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
   &lt;/a&gt;
 &lt;/div&gt;
-
-&lt;p&gt;The &lt;a href=&quot;https://bela.io/&quot;&gt;Bela&lt;/a&gt; development board for my project finally came in. Above is a picture of it. The developers of the board describe it as “an open-source embedded computing platform for creating responsive, real-time interactive systems with audio and sensors”. In laymen terms, essentially it’s single-board computer (think Raspberry Pi) with a programmable cape which specializes in processing signals.&lt;/p&gt;
 
 &lt;p&gt;Originally, I was planning on programming the Bela board using PureData. After experimenting a little bit however, I think it might be a better idea to program it in C++. PD patches seem to be a bit heavier on the board in comparison. If I go with the latter route, I’ll probably stick to PD for prototyping signals paths and such.&lt;/p&gt;
 

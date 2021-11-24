@@ -1,9 +1,10 @@
 ---
-scss:
-  style: compressed
+# Primary CSS
 ---
 
-$maxWidth: 720px;
+$break: 800px;
+$width: 720px;
+
 $body_stack: "Trebuchet MS", Verdana, Arial, sans-serif;
 $h1_stack: "Monaco", "Andale Mono", "Consolas", "Lucida Console", "Courier New", Courier, monospace;
 
@@ -34,7 +35,7 @@ body {
   & > main {
     padding: $margins $margins;
     margin-bottom: $margins;
-    max-width: 640px;
+    max-width: $width;
     & p {
       line-height: 26px;
     }
@@ -90,7 +91,7 @@ ul {
 /* Navigation */
 /*~~~~~~~~~~~~*/
 nav {
-  ul {
+  & > ul {
     margin: 0;
     padding: 0;
     list-style: none;
@@ -100,7 +101,7 @@ nav {
       padding: 0;
     }
   }
-  a {
+  & a {
     display: inline-block;
     position: relative;
     margin: 5px 5px 5px 0;
@@ -159,9 +160,18 @@ body > footer {
     margin: 0;
     padding: 0;
     & > li {
+      display: block;
       margin: 0;
       padding: 0;
-      display: block;
+      @media screen and (min-width: $break) {
+        display: inline;
+        &:after {
+          content: " | ";
+        }
+        &:last-child:after {
+          content: none;
+        }
+      }
     }
   }
 }
@@ -173,7 +183,7 @@ header.heading {
   display: block;
   padding-bottom: $half_margins;
   border-bottom: 2px $color4 dotted;
-  @media screen and (min-width: 720px) {
+  @media screen and (min-width: $break) {
     display: grid;
     grid-template-columns: 1fr 120px;
   }
@@ -183,7 +193,7 @@ header.heading {
     grid-column: 1;
     grid-column-end: span 1;
     margin: 0;
-    @media screen and (min-width: 720px) {
+    @media screen and (min-width: $break) {
       grid-row: 1;
       grid-column: 1;
       grid-column-end: span 1;
@@ -202,7 +212,7 @@ header.heading {
     & > small:first-child::after {
       content: " / ";
     }
-    @media screen and (min-width: 720px) {
+    @media screen and (min-width: $break) {
       padding-top: 5px;
       grid-row: 2;
       grid-column: 1;
@@ -226,7 +236,7 @@ footer.pagination {
     margin: 30px 5px 0;
     padding-top: $paragraph_spacing;
     border-top: 2px $color4 dotted;
-    @media (min-width: 720px) {
+    @media (min-width: $break) {
       max-width: 310px;
     }
   }
@@ -250,7 +260,7 @@ footer.pagination {
       }
     }
   }
-  @media (min-width: 720px) {
+  @media (min-width: $break) {
     display: grid;
     grid-template-columns: 1fr 1fr;
     & > ul > li {
@@ -278,11 +288,11 @@ header.catalog {
   & > span:last-child {
     text-align: right;
     display: none;
-    @media (min-width: 720px) {
+    @media (min-width: $break) {
       display: inline;
     }
   }
-  @media (min-width: 720px) {
+  @media (min-width: $break) {
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
@@ -394,7 +404,7 @@ div.float {
   }
 }
 
-@media (min-width: 720px) {
+@media (min-width: $break) {
   div.right {
     float: right;
     margin: 5px $margins 5px 10px;
@@ -449,7 +459,6 @@ a.expand {
 }
 
 figure.highlight {
-  overflow-x: scroll;
   margin: 0 0 15px;
   padding: 5px $margins;
   border: 10px $color3 solid;

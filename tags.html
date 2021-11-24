@@ -32,6 +32,7 @@ https://codinfox.github.io/dev/2015/03/06/use-tags-and-categories-in-your-jekyll
   <ul class="catalog">
     {% for post in site.posts %}
     {% if post.tags contains tag[0] %}
+    {% assign link = post %}
     <li>
       <header class="heading">
         <h1>
