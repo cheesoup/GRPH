@@ -21,8 +21,8 @@ features and in turn have become potentially bigger resource hogs. While these
 new features provide a lot of creative of power to web designers, it’s part of
 the designer's job to wield these powers appropriately.
 
-{% include image.html url='/content/nocss_frontpage.png' caption='What software
-minimal website looks like' %}
+{% include image.html url='/content/nocss_frontpage.png' caption='What a
+software minimal website looks like' %}
 
 Just to be clear, I’m not claiming software minimalism always needs to be a
 designer’s primary consideration when designing a web page. All I’m trying to
@@ -41,7 +41,7 @@ does this make it harder for the a user to load the page, it also increases a
 pages environmental footprint.
 
 {% include image.html url='/content/ocadu_frontpage.png' caption='What software
-minimalism does not look like' %}
+minimal website does not look like' %}
 
 Let’s look at OCADU’s front page for example. I noticed it features a video
 which automatically loads up every time someone visits it. This video is a short
@@ -53,8 +53,8 @@ to visit their websites front.
 
 Below are part of the results provided by Pingdom’s speed benchmarking tool:
 
-{% include image.html url='/content/ocadu_size.png' caption='Size of OCADU front
-page by file type' %}
+{% include image.html url='/content/ocadu_size.png' caption='Size of OCADU's 
+front page by file type' %}
 
 As we can see above, OCADU’s front page is over 20MB. And of course, most of
 that weight is the video the school embedded. If I were bandwidth limited or
