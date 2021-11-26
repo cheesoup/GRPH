@@ -29,42 +29,44 @@ designer’s primary consideration when designing a web page. All I’m trying t
 say is there’s a balance that needs to be respected when it comes to designing
 for the modern web. Some scenarios need access to advance scripting
 functionalities. There wouldn’t be full office suites like Google Docs available
-online without such things. Furthermore, If we were to prioritize software
-minimalism over all other aspects of web page design, most web pages would
-probably look like [this](https://nocss.club/). If that is the internet you
-prefer, you should probably switch to the (gopher protocol)[http://gopher.quux.org:70/]
-or something.
+online without such things. Furthermore, if we were to prioritize software
+minimalism over all other aspects of web page design, most pages would probably
+look like [this](https://nocss.club/). If that is the internet you prefer, you
+should probably switch to the [gopher protocol](http://gopher.quux.org:70/) or
+something.
 
-Just because you can make use of complex elements doesn’t mean you should, however.
-By bloating a web page, a designer runs the risk needlessly increasing the amount
-resources required to load and display the page. Not only does this make it harder
-for a user load the page, it also increases a pages environmental footprint.
+Just because you can make use of complex elements doesn’t mean you should,
+however. By bloating a web page, a designer runs the risk needlessly increasing
+the number of resources required to load and display the page. Not only does
+this make it harder for a users visit (particular those on lower end devices),
+but it also increases a page’s environmental footprint.
 
 {% include image.html url='/content/ocadu_frontpage.png' caption='What software
 minimal website does not look like' %}
 
-Let’s look at OCADU’s front page for example. I noticed it features a video
-which automatically loads up every time someone visits it. This video is a short
-montage of students working at the school. It doesn’t provide any real
-information and seem to be more of a decorative splash element. Before I even
-benchmark the page, having a video as a splash element is a bit rude. By putting
-it there, OCAD’s forcing a lot of people to download this huge video file just
-to visit their websites front.
+Let’s look at [OCADU’s front page](https://ocadu.ca/) for example. I noticed it
+features a video which automatically loads up every time someone visits it. This
+video is a short montage of students working at the school. It doesn’t provide
+any real information and seems to be more of a decorative splash element. Before
+I even benchmark the page, having a video as a splash element is a bit rude. By
+putting it there, OCAD’s forcing a lot of people to download this huge file just
+to visit their websites front page.
 
-Below are part of the results provided by Pingdom’s speed benchmarking tool:
+Below is part of the results provided by Pingdom’s speed benchmarking tool:
 
-{% include image.html url='/content/ocadu_size.png' caption='Size of OCADs
-front page, sorted by file type' %}
+{% include image.html url='/content/ocadu_size.png' caption='Size of OCADs front
+page, sorted by file type' %}
 
-As we can see above, OCADU’s front page is over 20MB. And of course, most of
+As we can see above, my school's front page is over 20MB. And of course, most of
 that weight is the video the school embedded. If I were bandwidth limited or
 data capped, just opening the front page would eat a significant chunk of my
 available transfer for the month. Also, if I were to access this page from an
 older computer, it would probably take up the entirety of its processing power
-just to display. I know there’s plenty of people out there still running Windows XP machines on single core processors. Or
-maybe I’m weird, because I’m the kind of person who doesn’t throw out their old
-computers. Either way there’s enough e-waste out there. The more use cases we
-can provide for older machines, the better.
+just to display. I know there’s plenty of people out there still running Windows
+XP machines on single core processors. Or maybe I’m weird, because I’m the kind
+of person who doesn’t throw out their old computers. Either way there’s enough
+e-waste out there. The more use cases we can provide for older machines, the
+better.
 
 Speaking of e-waste, there’s a carbon cost for each byte of data transferred
 online. According to Wholegrain Digital, every GB costs about 1.8kW of
@@ -81,6 +83,9 @@ first. You may save me an aneurysm.
 
 1.  [The Average Webpage Is Now the Size of the Original
     Doom](https://www.wired.com/2016/04/average-webpage-now-size-original-doom/)
+
 2.  [Webpages Are Getting Larger Every Year, and Here’s Why it
     Matters](https://www.pingdom.com/blog/webpages-are-getting-larger-every-year-and-heres-why-it-matters/)
-3.  [Website Carbon Calculator - How it works](https://www.websitecarbon.com/how-does-it-work/)
+
+3.  [Website Carbon Calculator - How it
+    works](https://www.websitecarbon.com/how-does-it-work/)
