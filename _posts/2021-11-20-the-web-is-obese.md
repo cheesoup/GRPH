@@ -52,7 +52,7 @@ I even benchmark the page, having a video as a splash element is a bit rude. By
 putting it there, OCAD’s forcing a lot of people to download this huge file just
 to visit their websites front page.
 
-Below is part of the results provided by Pingdom’s speed benchmarking tool:
+Below is part of the results provided by [Pingdom’s speed tool](https://tools.pingdom.com/):
 
 {% include image.html url='/content/ocadu_size.png' caption='Size of OCADs front
 page, sorted by file type' %}
