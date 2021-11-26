@@ -53,8 +53,8 @@ to visit their websites front.
 
 Below are part of the results provided by Pingdom’s speed benchmarking tool:
 
-{% include image.html url='/content/ocadu_size.png' caption='Size of OCADU's
-front page by file type' %}
+{% include image.html url='/content/ocadu_size.png' caption='Size of OCADs
+front page, sorted by file type' %}
 
 As we can see above, OCADU’s front page is over 20MB. And of course, most of
 that weight is the video the school embedded. If I were bandwidth limited or

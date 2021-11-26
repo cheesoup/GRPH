@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://0.0.0.0:4000/GRPH/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://0.0.0.0:4000/GRPH/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/GRPH/" rel="alternate" type="text/html" /><updated>2021-11-26T04:25:58-05:00</updated><id>http://0.0.0.0:4000/GRPH/feed.xml</id><title type="html">thesis? idk?</title><subtitle>a blog for 4th year workshop at OCADU</subtitle><author><name>Chris Carin</name></author><entry><title type="html">The Web is Obese</title><link href="http://0.0.0.0:4000/GRPH/website/2021/11/20/the-web-is-obese.html" rel="alternate" type="text/html" title="The Web is Obese" /><published>2021-11-20T00:00:00-05:00</published><updated>2021-11-20T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/website/2021/11/20/the-web-is-obese</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/website/2021/11/20/the-web-is-obese.html">&lt;p&gt;Despite the minimalist trends prevalent throughout the web nowadays, web pages
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://0.0.0.0:4000/GRPH/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://0.0.0.0:4000/GRPH/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/GRPH/" rel="alternate" type="text/html" /><updated>2021-11-26T04:39:48-05:00</updated><id>http://0.0.0.0:4000/GRPH/feed.xml</id><title type="html">thesis? idk?</title><subtitle>a blog for 4th year workshop at OCADU</subtitle><author><name>Chris Carin</name></author><entry><title type="html">The Web is Obese</title><link href="http://0.0.0.0:4000/GRPH/website/2021/11/20/the-web-is-obese.html" rel="alternate" type="text/html" title="The Web is Obese" /><published>2021-11-20T00:00:00-05:00</published><updated>2021-11-20T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/website/2021/11/20/the-web-is-obese</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/website/2021/11/20/the-web-is-obese.html">&lt;p&gt;Despite the minimalist trends prevalent throughout the web nowadays, web pages
 have only gotten more and more bloated. Just 5 years ago the average web page
 was already larger than the original DOOM for MS-DOS. As someone with a
 preference for &lt;a href=&quot;https://suckless.org/philosophy/&quot;&gt;software minimalism&lt;/a&gt;, it’s
@@ -17,15 +17,15 @@ the designer’s job to wield these powers appropriately.&lt;/p&gt;
 &lt;div class=&quot;float &quot;&gt;
   &lt;figure class=&quot;embed picture&quot;&gt;
     &lt;a href=&quot;#content-nocss-frontpage-png&quot;&gt;
-      &lt;img src=&quot;/GRPH/assets/images//content/nocss_frontpage.png&quot; alt=&quot;What software
-minimal website looks like&quot; style=&quot;width: &quot; loading=&quot;lazy&quot; /&gt;
+      &lt;img src=&quot;/GRPH/assets/images//content/nocss_frontpage.png&quot; alt=&quot;What a
+software minimal website looks like&quot; style=&quot;width: &quot; loading=&quot;lazy&quot; /&gt;
     &lt;/a&gt;
-    &lt;figcaption&gt;What software
-minimal website looks like&lt;/figcaption&gt;
+    &lt;figcaption&gt;What a
+software minimal website looks like&lt;/figcaption&gt;
   &lt;/figure&gt;
   &lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;content-nocss-frontpage-png&quot;&gt;
-    &lt;img src=&quot;/GRPH/assets/images//content/nocss_frontpage.png&quot; alt=&quot;What software
-minimal website looks like&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
+    &lt;img src=&quot;/GRPH/assets/images//content/nocss_frontpage.png&quot; alt=&quot;What a
+software minimal website looks like&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
   &lt;/a&gt;
 &lt;/div&gt;
 
@@ -37,27 +37,27 @@ functionalities. There wouldn’t be full office suites like Google Docs availab
 online without such things. Furthermore, If we were to prioritize software
 minimalism over all other aspects of web page design, most web pages would
 probably look like &lt;a href=&quot;https://nocss.club/&quot;&gt;this&lt;/a&gt;. If that is the internet you
-prefer, you should probably switch to the gopher protocol or something.&lt;/p&gt;
+prefer, you should probably switch to the (gopher protocol)[http://gopher.quux.org:70/]
+or something.&lt;/p&gt;
 
-&lt;p&gt;Just because you can create make use of complex elements doesn’t mean you
-should, however. By bloating a web page, a designer runs the risk needlessly
-increasing the amount resources required to load and display the page. Not only
-does this make it harder for the a user to load the page, it also increases a
-pages environmental footprint.&lt;/p&gt;
+&lt;p&gt;Just because you can make use of complex elements doesn’t mean you should, however.
+By bloating a web page, a designer runs the risk needlessly increasing the amount
+resources required to load and display the page. Not only does this make it harder
+for a user load the page, it also increases a pages environmental footprint.&lt;/p&gt;
 
 &lt;!-- Include for captioned images --&gt;
 &lt;div class=&quot;float &quot;&gt;
   &lt;figure class=&quot;embed picture&quot;&gt;
     &lt;a href=&quot;#content-ocadu-frontpage-png&quot;&gt;
       &lt;img src=&quot;/GRPH/assets/images//content/ocadu_frontpage.png&quot; alt=&quot;What software
-minimalism does not look like&quot; style=&quot;width: &quot; loading=&quot;lazy&quot; /&gt;
+minimal website does not look like&quot; style=&quot;width: &quot; loading=&quot;lazy&quot; /&gt;
     &lt;/a&gt;
     &lt;figcaption&gt;What software
-minimalism does not look like&lt;/figcaption&gt;
+minimal website does not look like&lt;/figcaption&gt;
   &lt;/figure&gt;
   &lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;content-ocadu-frontpage-png&quot;&gt;
     &lt;img src=&quot;/GRPH/assets/images//content/ocadu_frontpage.png&quot; alt=&quot;What software
-minimalism does not look like&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
+minimal website does not look like&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
   &lt;/a&gt;
 &lt;/div&gt;
 
@@ -75,15 +75,15 @@ to visit their websites front.&lt;/p&gt;
 &lt;div class=&quot;float &quot;&gt;
   &lt;figure class=&quot;embed picture&quot;&gt;
     &lt;a href=&quot;#content-ocadu-size-png&quot;&gt;
-      &lt;img src=&quot;/GRPH/assets/images//content/ocadu_size.png&quot; alt=&quot;Size of OCADU front
-page by file type&quot; style=&quot;width: &quot; loading=&quot;lazy&quot; /&gt;
+      &lt;img src=&quot;/GRPH/assets/images//content/ocadu_size.png&quot; alt=&quot;Size of OCADs
+front page, sorted by file type&quot; style=&quot;width: &quot; loading=&quot;lazy&quot; /&gt;
     &lt;/a&gt;
-    &lt;figcaption&gt;Size of OCADU front
-page by file type&lt;/figcaption&gt;
+    &lt;figcaption&gt;Size of OCADs
+front page, sorted by file type&lt;/figcaption&gt;
   &lt;/figure&gt;
   &lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;content-ocadu-size-png&quot;&gt;
-    &lt;img src=&quot;/GRPH/assets/images//content/ocadu_size.png&quot; alt=&quot;Size of OCADU front
-page by file type&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
+    &lt;img src=&quot;/GRPH/assets/images//content/ocadu_size.png&quot; alt=&quot;Size of OCADs
+front page, sorted by file type&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
   &lt;/a&gt;
 &lt;/div&gt;
 
@@ -91,9 +91,8 @@ page by file type&quot; style=&quot;background-image: url(&apos;/GRPH/assets/ima
 that weight is the video the school embedded. If I were bandwidth limited or
 data capped, just opening the front page would eat a significant chunk of my
 available transfer for the month. Also, if I were to access this page from an
-older computer (such as my lovely Acer Aspire One D250), it would probably take
-up the entirety of its processing power just to display. I know there’s plenty
-of people out there still using old hardware running Windows XP or something. Or
+older computer, it would probably take up the entirety of its processing power
+just to display. I know there’s plenty of people out there still running Windows XP machines on single core processors. Or
 maybe I’m weird, because I’m the kind of person who doesn’t throw out their old
 computers. Either way there’s enough e-waste out there. The more use cases we
 can provide for older machines, the better.&lt;/p&gt;
@@ -116,6 +115,7 @@ first. You may save me an aneurysm.&lt;/p&gt;
 Doom&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.pingdom.com/blog/webpages-are-getting-larger-every-year-and-heres-why-it-matters/&quot;&gt;Webpages Are Getting Larger Every Year, and Here’s Why it
 Matters&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.websitecarbon.com/how-does-it-work/&quot;&gt;Website Carbon Calculator - How it works&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;</content><author><name>Chris Carin</name></author><category term="Website" /><category term="Blog" /><category term="Web Design" /><category term="Rants" /><summary type="html">Despite the minimalist trends prevalent throughout the web nowadays, web pages have only gotten more and more bloated. Just 5 years ago the average web page was already larger than the original DOOM for MS-DOS. As someone with a preference for software minimalism, it’s something that’s continuously annoyed me throughout the years. What’s worse is that web pages only seem to be getting larger.</summary></entry><entry><title type="html">Thoughts on why I’m making a synthesizer</title><link href="http://0.0.0.0:4000/GRPH/audio/2021/11/16/why-im-making-a-synth.html" rel="alternate" type="text/html" title="Thoughts on why I’m making a synthesizer" /><published>2021-11-16T00:00:00-05:00</published><updated>2021-11-16T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/audio/2021/11/16/why-im-making-a-synth</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/audio/2021/11/16/why-im-making-a-synth.html">&lt;p&gt;When it comes to actually writing music, I actually think I’m pretty awful. I spend so much time obsessing over tiny details and always have a hard time seeing the big picture of what I’m trying to do. Honestly, the reason why I’ve been so upset with my process of creation is due to this indecisiveness to move on from minute details. On top of that, I’m not the most mechanically gifted person in the world. Much like how I struggle with brushes and inks, I can barely play inversions on the piano.&lt;/p&gt;
 
 &lt;!-- Include for captioned images --&gt;
