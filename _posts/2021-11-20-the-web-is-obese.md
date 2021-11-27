@@ -75,13 +75,7 @@ means OCADU’s front page costs approximately 0.03533kWh for each un-cached
 visitor. If we multiply that with the total number of students at OCADU it would
 cost 214.52kWh for each student at OCAD to visit the index page once.
 
-Beyond accessibility however, there is an environmental cost to having a heavy
-website. According to [Wholegrain Digital](https://www.websitecarbon.com/),
-every GB costs about [1.8kW of electricity an
-hour](https://www.websitecarbon.com/how-does-it-work/). If we do the math, that
-means OCADU’s front page costs approximately 0.03533kWh for each un-cached
-visitor. If we multiply that with the total number of students at OCADU it would
-cost 214.52kWh for each student at OCAD to visit the index page once.
+Moving away from the video, we can also see that at most the HTML content of the page is about 0.13% of overall transfer. That means of the 20MB required to load the page, at most 0.13% is written content. A majority of the remaining 8%~ are scripts and stylesheets. If we look at the source, we can kind of see why.
 
 {% highlight html %}
 <link rel="preload" href="/_nuxt/1c029e12983acd1547a7.js" as="script" />
@@ -93,6 +87,8 @@ cost 214.52kWh for each student at OCAD to visit the index page once.
 <link rel="stylesheet" href="/_nuxt/8fda144dac918648a67b.css" />
 <link rel="stylesheet" href="/_nuxt/364a65052d6aaed82138.css" />
 {% endhighlight %}
+
+Though I don't really have much of a basis to question these pre-loaded these scripts, I do wonder why a simple index page would need so many. It seems like each one of these scripts has a CSS file paired with. This leads me to believe that each of JS file is a definition for an embedded application. If they are applications, I'm not really sure what they do. My hunch is that it's for web analytics. Either way, pre-loading this many scripts is not exactly ideal. It forces the user's browser to process said scripts before it can begin to load page. This obviously complexifies and slows down the process of loading a page. Furthermore, since these are all externally linked requests must be made to reach this content. Essentially, it's forcing you to load some other crap before you can even load the page your requesting. This obviously useful in a lot of scenarios, but again it's something not to be abused.
 
 So yeah, OCAD’s homepage sucks. It's slow and bloated and kind of broken at
 times. And it's not just OCAD's homepage that sucks. There are plenty of other

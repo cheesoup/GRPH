@@ -73,7 +73,7 @@
       
       Length:
       
-        5 mins
+        6 mins
       
     </small>
   </div>
@@ -187,13 +187,7 @@ means OCADU’s front page costs approximately 0.03533kWh for each un-cached
 visitor. If we multiply that with the total number of students at OCADU it would
 cost 214.52kWh for each student at OCAD to visit the index page once.</p>
 
-<p>Beyond accessibility however, there is an environmental cost to having a heavy
-website. According to <a href="https://www.websitecarbon.com/">Wholegrain Digital</a>,
-every GB costs about <a href="https://www.websitecarbon.com/how-does-it-work/">1.8kW of electricity an
-hour</a>. If we do the math, that
-means OCADU’s front page costs approximately 0.03533kWh for each un-cached
-visitor. If we multiply that with the total number of students at OCADU it would
-cost 214.52kWh for each student at OCAD to visit the index page once.</p>
+<p>Moving away from the video, we can also see that at most the HTML content of the page is about 0.13% of overall transfer. That means of the 20MB required to load the page, at most 0.13% is written content. A majority of the remaining 8%~ are scripts and stylesheets. If we look at the source, we can kind of see why.</p>
 
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"preload"</span> <span class="na">href=</span><span class="s">"/_nuxt/1c029e12983acd1547a7.js"</span> <span class="na">as=</span><span class="s">"script"</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"preload"</span> <span class="na">href=</span><span class="s">"/_nuxt/0b76837911f386b4e84d.js"</span> <span class="na">as=</span><span class="s">"script"</span> <span class="nt">/&gt;</span>
@@ -203,6 +197,8 @@ cost 214.52kWh for each student at OCAD to visit the index page once.</p>
 <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"preload"</span> <span class="na">href=</span><span class="s">"/_nuxt/cbeb1be2886825385048.js"</span> <span class="na">as=</span><span class="s">"script"</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"/_nuxt/8fda144dac918648a67b.css"</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"/_nuxt/364a65052d6aaed82138.css"</span> <span class="nt">/&gt;</span></code></pre></figure>
+
+<p>Though I don’t really have much of a basis to question these pre-loaded these scripts, I do wonder why a simple index page would need so many. It seems like each one of these scripts has a CSS file paired with. This leads me to believe that each of JS file is a definition for an embedded application. If they are applications, I’m not really sure what they do. My hunch is that it’s for web analytics. Either way, pre-loading this many scripts is not exactly ideal. It forces the user’s browser to process said scripts before it can begin to load page. This obviously complexifies and slows down the process of loading a page. Furthermore, since these are all externally linked requests must be made to reach this content. Essentially, it’s forcing you to load some other crap before you can even load the page your requesting. This obviously useful in a lot of scenarios, but again it’s something not to be abused.</p>
 
 <p>So yeah, OCAD’s homepage sucks. It’s slow and bloated and kind of broken at
 times. And it’s not just OCAD’s homepage that sucks. There are plenty of other
@@ -251,16 +247,16 @@ access, it’s also just straight up worse for the environment.</p>
     
     <ul>
       <li>
-        <a href="/GRPH/website/2021/11/14/new-layout.html">
-          New Layout!
+        <a href="/GRPH/website/2021/10/15/github-pages.html">
+          Some Stuff about Github Pages
         </a>
       </li>
     </ul>
     
     <ul>
       <li>
-        <a href="/GRPH/website/2021/10/15/github-pages.html">
-          Some Stuff about Github Pages
+        <a href="/GRPH/website/2021/11/14/new-layout.html">
+          New Layout!
         </a>
       </li>
     </ul>
