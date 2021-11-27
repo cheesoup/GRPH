@@ -73,22 +73,23 @@
       
       Length:
       
-        6 mins
+        5 mins
       
     </small>
   </div>
 </header>
 
 <p>Despite what minimalist trends prevalent throughout the tech industries may have
-you believe, today’s modern web is very bloated. Just <a href="https://www.wired.com/2016/04/average-webpage-now-size-original-doom/">5 years ago</a>, the average
-web page was already larger than the original DOOM for MS-DOS. In reaction to
-this, I choose to design this blog to be as lightweight and easy to load as
-possible. I remember times back in High School where my computer could barely
-handle 3 or 4 tabs of Chrome or Firefox. It was awful. Since then, modern web
-browsers have implemented a plethora of new features and in turn have become
-potentially bigger resource hogs. And just as they do, designers While these features provide a lot of creative
-of power to web designers, it’s part of the designer’s job to wield these powers
-appropriately.</p>
+you believe, today’s modern web is very bloated. Just <a href="https://www.wired.com/2016/04/average-webpage-now-size-original-doom/">5 years
+ago</a>, the
+average web page was already larger than the original DOOM for MS-DOS. In
+reaction to this, I choose to design this blog to be as lightweight and easy to
+load as possible. I remember times back in High School where my computer could
+barely handle 3 or 4 tabs of Chrome or Firefox. It was awful. Since then, modern
+web browsers have implemented a plethora of new features and in turn have become
+potentially bigger resource hogs. And just as they do, designers While these
+features provide a lot of creative of power to web designers, it’s part of the
+designer’s job to wield these powers appropriately.</p>
 
 <!-- Include for captioned images -->
 <div class="float ">
@@ -178,13 +179,6 @@ available transfer for the month. Furthermore, if I were to access this page
 from an older computer, it would probably take up the entirety of the computer’s
 processing power just to display it.</p>
 
-<p>Beyond accessibility however, there is an environmental cost to having a heavy
-website. According to <a href="https://www.websitecarbon.com/">Wholegrain Digital</a>,
-every GB costs about <a href="https://www.websitecarbon.com/how-does-it-work/">1.8kW of electricity an hour</a>. If we do the math, that means
-OCADU’s front page costs approximately 0.03533kWh for each un-cached visitor. If
-we multiply that with the total number of students at OCADU it would cost
-214.52kWh for each student at OCAD to visit the index page once.</p>
-
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"preload"</span> <span class="na">href=</span><span class="s">"/_nuxt/1c029e12983acd1547a7.js"</span> <span class="na">as=</span><span class="s">"script"</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"preload"</span> <span class="na">href=</span><span class="s">"/_nuxt/0b76837911f386b4e84d.js"</span> <span class="na">as=</span><span class="s">"script"</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"preload"</span> <span class="na">href=</span><span class="s">"/_nuxt/8fda144dac918648a67b.css"</span> <span class="na">as=</span><span class="s">"style"</span> <span class="nt">/&gt;</span>
@@ -194,21 +188,13 @@ we multiply that with the total number of students at OCADU it would cost
 <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"/_nuxt/8fda144dac918648a67b.css"</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"/_nuxt/364a65052d6aaed82138.css"</span> <span class="nt">/&gt;</span></code></pre></figure>
 
-<p>Moving away from the fact that the video is almost the entire pages weight, we
-can also tell from the results that only 0.13% of the loaded content is HTML.
-That means at most only about 0.13% of what has been loaded is actual written
-content. The rest of 8.37% is mostly JavaScript and stylesheets. Though I can’t
-comment on the page’s use of JavaScript without any back-end knowledge, I do the
-question the purpose of preloading all these. Normally it’s a better idea to
-load scripts at the end of a document so that the rest of the page can be loaded
-prior. Either way, linking so many elements externally like this can actually
-slow down a site as well. From what I can tell, each JS files has a
-corresponding CSS file. This leads me to believe these scripts has own
-application. As to what these applications are, I have no idea. My hypothesis is
-that these are extra web trackers loaded on top of the Google ones. OCAD’s
-probably spying on us. I wouldn’t be surprised. Joking aside, this is probably
-just some web analytics stuff. It seems to be related to
-<a href="https://nuxtjs.org/">NuxtJS</a> which I don’t really know much about.</p>
+<p>Beyond accessibility however, there is an environmental cost to having a heavy
+website. According to <a href="https://www.websitecarbon.com/">Wholegrain Digital</a>,
+every GB costs about <a href="https://www.websitecarbon.com/how-does-it-work/">1.8kW of electricity an
+hour</a>. If we do the math, that
+means OCADU’s front page costs approximately 0.03533kWh for each un-cached
+visitor. If we multiply that with the total number of students at OCADU it would
+cost 214.52kWh for each student at OCAD to visit the index page once.</p>
 
 <p>So yeah, OCAD’s homepage sucks. It’s slow and bloated and kind of broken at
 times. And it’s not just OCAD’s homepage that sucks. There are plenty of other
