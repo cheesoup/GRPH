@@ -1,76 +1,78 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://0.0.0.0:4000/GRPH/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://0.0.0.0:4000/GRPH/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/GRPH/" rel="alternate" type="text/html" /><updated>2021-11-26T04:48:35-05:00</updated><id>http://0.0.0.0:4000/GRPH/feed.xml</id><title type="html">thesis? idk?</title><subtitle>a blog for 4th year workshop at OCADU</subtitle><author><name>Chris Carin</name></author><entry><title type="html">The Web is Obese</title><link href="http://0.0.0.0:4000/GRPH/website/2021/11/20/the-web-is-obese.html" rel="alternate" type="text/html" title="The Web is Obese" /><published>2021-11-20T00:00:00-05:00</published><updated>2021-11-20T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/website/2021/11/20/the-web-is-obese</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/website/2021/11/20/the-web-is-obese.html">&lt;p&gt;Despite the minimalist trends prevalent throughout the web nowadays, web pages
-have only gotten more and more bloated. Just 5 years ago the average web page
-was already larger than the original DOOM for MS-DOS. As someone with a
-preference for &lt;a href=&quot;https://suckless.org/philosophy/&quot;&gt;software minimalism&lt;/a&gt;, it’s
-something that’s continuously annoyed me throughout the years. What’s worse is
-that web pages only seem to be getting larger.&lt;/p&gt;
-
-&lt;p&gt;In reaction to this, I choose to design this blog to be as lightweight and easy
-to load as possible. I’ve never had the most powerful PC in the world. I
-remember times back in High School where my computer just couldn’t handle Chrome
-or Firefox. Since then, modern web browsers have implemented a plethora of new
-features and in turn have become potentially bigger resource hogs. While these
-new features provide a lot of creative of power to web designers, it’s part of
-the designer’s job to wield these powers appropriately.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://0.0.0.0:4000/GRPH/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://0.0.0.0:4000/GRPH/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/GRPH/" rel="alternate" type="text/html" /><updated>2021-11-26T23:24:59-05:00</updated><id>http://0.0.0.0:4000/GRPH/feed.xml</id><title type="html">thesis? idk?</title><subtitle>a blog for 4th year workshop at OCADU</subtitle><author><name>Chris Carin</name></author><entry><title type="html">The Web is Obese</title><link href="http://0.0.0.0:4000/GRPH/website/2021/11/20/the-web-is-obese.html" rel="alternate" type="text/html" title="The Web is Obese" /><published>2021-11-20T00:00:00-05:00</published><updated>2021-11-20T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/website/2021/11/20/the-web-is-obese</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/website/2021/11/20/the-web-is-obese.html">&lt;p&gt;Despite what minimalist trends prevalent throughout the tech industries may have
+you believe, today’s modern web is very bloated. Just &lt;a href=&quot;https://www.wired.com/2016/04/average-webpage-now-size-original-doom/&quot;&gt;5 years ago&lt;/a&gt;, the average
+web page was already larger than the original DOOM for MS-DOS. In reaction to
+this, I choose to design this blog to be as lightweight and easy to load as
+possible. I remember times back in High School where my computer could barely
+handle 3 or 4 tabs of Chrome or Firefox. It was awful. Since then, modern web
+browsers have implemented a plethora of new features and in turn have become
+potentially bigger resource hogs. And just as they do, designers While these features provide a lot of creative
+of power to web designers, it’s part of the designer’s job to wield these powers
+appropriately.&lt;/p&gt;
 
 &lt;!-- Include for captioned images --&gt;
 &lt;div class=&quot;float &quot;&gt;
   &lt;figure class=&quot;embed picture&quot;&gt;
     &lt;a href=&quot;#content-nocss-frontpage-png&quot;&gt;
       &lt;img src=&quot;/GRPH/assets/images//content/nocss_frontpage.png&quot; alt=&quot;What a
-software minimal website looks like&quot; style=&quot;width: &quot; loading=&quot;lazy&quot; /&gt;
+software minimal website does look like&quot; style=&quot;width: &quot; loading=&quot;lazy&quot; /&gt;
     &lt;/a&gt;
     &lt;figcaption&gt;What a
-software minimal website looks like&lt;/figcaption&gt;
+software minimal website does look like&lt;/figcaption&gt;
   &lt;/figure&gt;
   &lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;content-nocss-frontpage-png&quot;&gt;
     &lt;img src=&quot;/GRPH/assets/images//content/nocss_frontpage.png&quot; alt=&quot;What a
-software minimal website looks like&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
+software minimal website does look like&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
   &lt;/a&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Just to be clear, I’m not claiming software minimalism always needs to be a
-designer’s primary consideration when designing a web page. All I’m trying to
-say is there’s a balance that needs to be respected when it comes to designing
-for the modern web. Some scenarios need access to advance scripting
-functionalities. There wouldn’t be full office suites like Google Docs available
-online without such things. Furthermore, if we were to prioritize software
-minimalism over all other aspects of web page design, most pages would probably
-look like &lt;a href=&quot;https://nocss.club/&quot;&gt;this&lt;/a&gt;. If that is the internet you prefer, you
-should probably switch to the &lt;a href=&quot;http://gopher.quux.org:70/&quot;&gt;gopher protocol&lt;/a&gt; or
-something.&lt;/p&gt;
+&lt;p&gt;Just to be clear, I’m not claiming page weight and efficiency always need to be
+prioritized over other aspects of page design. If we were to prioritize software
+minimalism over all other things, most sites on the web would probably look like
+&lt;a href=&quot;https://nocss.club/&quot;&gt;this&lt;/a&gt;. If that is the internet you prefer, you’re probably
+be better off switching to the &lt;a href=&quot;http://gopher.quux.org:70/&quot;&gt;gopher protocol&lt;/a&gt; or
+something. There are also plenty of in browser scenarios that require access to
+advance scripting functionalities. Full office suites like Google Docs wouldn’t
+exist without such things.&lt;/p&gt;
 
-&lt;p&gt;Just because you can make use of complex elements doesn’t mean you should,
-however. By bloating a web page, a designer runs the risk needlessly increasing
-the number of resources required to load and display the page. Not only does
-this make it harder for a users visit (particular those on lower end devices),
-but it also increases a page’s environmental footprint.&lt;/p&gt;
+&lt;p&gt;I’m suggesting there is a balance that needs to be respected when it comes
+designing for content on the modern web. Just because we can do something fancy
+and resource expensive, doesn’t mean we always should. If we think of page on
+the web as small pieces of software, the content would be the main process of
+application. The content is the main reason why any given visitor is on any
+given web page. It is what the user is attempting to execute when they visit. By
+bloating up the interface to this process, a designer runs the risk needlessly
+increasing the number of resources required to load and display the content. Not
+only does this make content harder to access for certain users (particularly
+those on mobile and lower end devices), but it also increases a page’s
+environmental footprint.&lt;/p&gt;
 
 &lt;!-- Include for captioned images --&gt;
 &lt;div class=&quot;float &quot;&gt;
   &lt;figure class=&quot;embed picture&quot;&gt;
     &lt;a href=&quot;#content-ocadu-frontpage-png&quot;&gt;
-      &lt;img src=&quot;/GRPH/assets/images//content/ocadu_frontpage.png&quot; alt=&quot;What software
-minimal website does not look like&quot; style=&quot;width: &quot; loading=&quot;lazy&quot; /&gt;
+      &lt;img src=&quot;/GRPH/assets/images//content/ocadu_frontpage.png&quot; alt=&quot;What a
+software minimal website does not look like&quot; style=&quot;width: &quot; loading=&quot;lazy&quot; /&gt;
     &lt;/a&gt;
-    &lt;figcaption&gt;What software
-minimal website does not look like&lt;/figcaption&gt;
+    &lt;figcaption&gt;What a
+software minimal website does not look like&lt;/figcaption&gt;
   &lt;/figure&gt;
   &lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;content-ocadu-frontpage-png&quot;&gt;
-    &lt;img src=&quot;/GRPH/assets/images//content/ocadu_frontpage.png&quot; alt=&quot;What software
-minimal website does not look like&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
+    &lt;img src=&quot;/GRPH/assets/images//content/ocadu_frontpage.png&quot; alt=&quot;What a
+software minimal website does not look like&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
   &lt;/a&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Let’s look at &lt;a href=&quot;https://ocadu.ca/&quot;&gt;OCADU’s front page&lt;/a&gt; for example. I noticed it
-features a video which automatically loads up every time someone visits it. This
-video is a short montage of students working at the school. It doesn’t provide
-any real information and seems to be more of a decorative splash element. Before
-I even benchmark the page, having a video as a splash element is a bit rude. By
-putting it there, OCAD’s forcing a lot of people to download this huge file just
-to visit their websites front page.&lt;/p&gt;
+&lt;p&gt;Let’s look at &lt;a href=&quot;https://ocadu.ca/&quot;&gt;OCADU’s home page&lt;/a&gt; for example. I noticed it
+features a video which automatically loads up every time someone visits it. To
+me, this is already a problem. While the use of videos as splash elements have
+become more popular on today’s web, it is a I trend that I heavily disagree
+with. Landing pages are meant to be quick, flexible, and easy to navigate. They
+need to be because they are literally the index of the rest of the website.
+Embedded videos are the opposite of these characteristics. They are large, slow,
+and often break at different resolutions.&lt;/p&gt;
 
-&lt;p&gt;Below is part of the results provided by &lt;a href=&quot;https://tools.pingdom.com/&quot;&gt;Pingdom’s speed tool&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;Below is part of the results provided by &lt;a href=&quot;https://tools.pingdom.com/&quot;&gt;Pingdom’s speed
+tool&lt;/a&gt;:&lt;/p&gt;
 
 &lt;!-- Include for captioned images --&gt;
 &lt;div class=&quot;float &quot;&gt;
@@ -88,44 +90,52 @@ page, sorted by file type&quot; style=&quot;background-image: url(&apos;/GRPH/as
   &lt;/a&gt;
 &lt;/div&gt;
 
-&lt;p&gt;As we can see above, my school’s front page is over 20MB. And of course, most of
-that weight is the video the school embedded. If I were bandwidth limited or
-data capped, just opening the front page would eat a significant chunk of my
-available transfer for the month. Also, if I were to access this page from an
-older computer, it would probably take up the entirety of its processing power
-just to display. I know there’s plenty of people out there still running Windows
-XP machines on single core processors. Or maybe I’m weird, because I’m the kind
-of person who doesn’t throw out their old computers. Either way there’s enough
-e-waste out there. The more use cases we can provide for older machines, the
-better.&lt;/p&gt;
+&lt;p&gt;As we can see above, OCAD’s front page is over 20MB. And of course, most of that
+weight is the video the school decided to embed. If I were bandwidth limited or
+data capped, opening this home page would eat a significant chunk of my
+available transfer for the month. Furthermore, if I were to access this page
+from an older computer, it would probably take up the entirety of the computer’s
+processing power just to display it.&lt;/p&gt;
 
-&lt;p&gt;Speaking of e-waste, there’s a carbon cost for each byte of data transferred
-online. According to Wholegrain Digital, every GB costs about 1.8kW of
-electricity an hour. If we do the math, that means OCADU’s front page costs
-approximately 0.03533kWh for each un-cached visitor. If we multiply that with
-the total number of students at OCADU it would cost 214.52kWh for each student
-at OCAD to visit the index page once.&lt;/p&gt;
+&lt;p&gt;Beyond accessibility however, there is an environmental cost to having a heavy
+website. According to &lt;a href=&quot;https://www.websitecarbon.com/&quot;&gt;Wholegrain Digital&lt;/a&gt;,
+every GB costs about &lt;a href=&quot;https://www.websitecarbon.com/how-does-it-work/&quot;&gt;1.8kW of electricity an hour&lt;/a&gt;. If we do the math, that means
+OCADU’s front page costs approximately 0.03533kWh for each un-cached visitor. If
+we multiply that with the total number of students at OCADU it would cost
+214.52kWh for each student at OCAD to visit the index page once.&lt;/p&gt;
 
-&lt;p&gt;So please, before you start laying down all those web traffic trackers,
-multimedia elements, and JavaScript libraries, ask yourself if its necessary
-first. You may save me an aneurysm.&lt;/p&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;preload&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/_nuxt/1c029e12983acd1547a7.js&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;as=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;script&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;preload&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/_nuxt/0b76837911f386b4e84d.js&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;as=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;script&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;preload&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/_nuxt/8fda144dac918648a67b.css&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;as=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;style&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;preload&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/_nuxt/a19306e62382a80f9692.js&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;as=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;script&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;preload&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/_nuxt/364a65052d6aaed82138.css&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;as=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;style&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;preload&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/_nuxt/cbeb1be2886825385048.js&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;as=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;script&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;stylesheet&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/_nuxt/8fda144dac918648a67b.css&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;stylesheet&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/_nuxt/364a65052d6aaed82138.css&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;&lt;strong&gt;Citations&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;Moving away from the fact that the video is almost the entire pages weight, we
+can also tell from the results that only 0.13% of the loaded content is HTML.
+That means at most only about 0.13% of what has been loaded is actual written
+content. The rest of 8.37% is mostly JavaScript and stylesheets. Though I can’t
+comment on the page’s use of JavaScript without any back-end knowledge, I do the
+question the purpose of preloading all these. Normally it’s a better idea to
+load scripts at the end of a document so that the rest of the page can be loaded
+prior. Either way, linking so many elements externally like this can actually
+slow down a site as well. From what I can tell, each JS files has a
+corresponding CSS file. This leads me to believe these scripts has own
+application. As to what these applications are, I have no idea. My hypothesis is
+that these are extra web trackers loaded on top of the Google ones. OCAD’s
+probably spying on us. I wouldn’t be surprised. Joking aside, this is probably
+just some web analytics stuff. It seems to be related to
+&lt;a href=&quot;https://nuxtjs.org/&quot;&gt;NuxtJS&lt;/a&gt; which I don’t really know much about.&lt;/p&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;https://www.wired.com/2016/04/average-webpage-now-size-original-doom/&quot;&gt;The Average Webpage Is Now the Size of the Original
-Doom&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;https://www.pingdom.com/blog/webpages-are-getting-larger-every-year-and-heres-why-it-matters/&quot;&gt;Webpages Are Getting Larger Every Year, and Here’s Why it
-Matters&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;https://www.websitecarbon.com/how-does-it-work/&quot;&gt;Website Carbon Calculator - How it
-works&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;</content><author><name>Chris Carin</name></author><category term="Website" /><category term="Blog" /><category term="Web Design" /><category term="Rants" /><summary type="html">Despite the minimalist trends prevalent throughout the web nowadays, web pages have only gotten more and more bloated. Just 5 years ago the average web page was already larger than the original DOOM for MS-DOS. As someone with a preference for software minimalism, it’s something that’s continuously annoyed me throughout the years. What’s worse is that web pages only seem to be getting larger.</summary></entry><entry><title type="html">Thoughts on why I’m making a synthesizer</title><link href="http://0.0.0.0:4000/GRPH/audio/2021/11/16/why-im-making-a-synth.html" rel="alternate" type="text/html" title="Thoughts on why I’m making a synthesizer" /><published>2021-11-16T00:00:00-05:00</published><updated>2021-11-16T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/audio/2021/11/16/why-im-making-a-synth</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/audio/2021/11/16/why-im-making-a-synth.html">&lt;p&gt;When it comes to actually writing music, I actually think I’m pretty awful. I spend so much time obsessing over tiny details and always have a hard time seeing the big picture of what I’m trying to do. Honestly, the reason why I’ve been so upset with my process of creation is due to this indecisiveness to move on from minute details. On top of that, I’m not the most mechanically gifted person in the world. Much like how I struggle with brushes and inks, I can barely play inversions on the piano.&lt;/p&gt;
+&lt;p&gt;So yeah, OCAD’s homepage sucks. It’s slow and bloated and kind of broken at
+times. And it’s not just OCAD’s homepage that sucks. There are plenty of other
+examples of web pages out there which are way heavier than they need to be. It’s
+like an electronic epidemic. So if you ever design a website, please keep
+performance at least somewhat in mind. Think about what is necessary for the
+content. Adding too much to a web page will not only bog down/break a user’s
+access, it’s also just straight up worse for the environment.&lt;/p&gt;</content><author><name>Chris Carin</name></author><category term="Website" /><category term="Blog" /><category term="Web Design" /><category term="Rants" /><summary type="html">Despite what minimalist trends prevalent throughout the tech industries may have you believe, today’s modern web is very bloated. Just 5 years ago, the average web page was already larger than the original DOOM for MS-DOS. In reaction to this, I choose to design this blog to be as lightweight and easy to load as possible. I remember times back in High School where my computer could barely handle 3 or 4 tabs of Chrome or Firefox. It was awful. Since then, modern web browsers have implemented a plethora of new features and in turn have become potentially bigger resource hogs. And just as they do, designers While these features provide a lot of creative of power to web designers, it’s part of the designer’s job to wield these powers appropriately.</summary></entry><entry><title type="html">Thoughts on why I’m making a synthesizer</title><link href="http://0.0.0.0:4000/GRPH/audio/2021/11/16/why-im-making-a-synth.html" rel="alternate" type="text/html" title="Thoughts on why I’m making a synthesizer" /><published>2021-11-16T00:00:00-05:00</published><updated>2021-11-16T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/audio/2021/11/16/why-im-making-a-synth</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/audio/2021/11/16/why-im-making-a-synth.html">&lt;p&gt;When it comes to actually writing music, I actually think I’m pretty awful. I spend so much time obsessing over tiny details and always have a hard time seeing the big picture of what I’m trying to do. Honestly, the reason why I’ve been so upset with my process of creation is due to this indecisiveness to move on from minute details. On top of that, I’m not the most mechanically gifted person in the world. Much like how I struggle with brushes and inks, I can barely play inversions on the piano.&lt;/p&gt;
 
 &lt;!-- Include for captioned images --&gt;
 &lt;div class=&quot;float &quot;&gt;
