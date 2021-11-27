@@ -67,6 +67,14 @@ available transfer for the month. Furthermore, if I were to access this page
 from an older computer, it would probably take up the entirety of the computer’s
 processing power just to display it.
 
+Beyond accessibility however, there is an environmental cost to having a heavy
+website. According to [Wholegrain Digital](https://www.websitecarbon.com/),
+every GB costs about [1.8kW of electricity an
+hour](https://www.websitecarbon.com/how-does-it-work/). If we do the math, that
+means OCADU’s front page costs approximately 0.03533kWh for each un-cached
+visitor. If we multiply that with the total number of students at OCADU it would
+cost 214.52kWh for each student at OCAD to visit the index page once.
+
 {% highlight html %}
 <link rel="preload" href="/_nuxt/1c029e12983acd1547a7.js" as="script" />
 <link rel="preload" href="/_nuxt/0b76837911f386b4e84d.js" as="script" />
