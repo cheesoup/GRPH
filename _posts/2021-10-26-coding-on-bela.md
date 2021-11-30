@@ -1,7 +1,7 @@
 ---
 title: Coding on bela
 layout: post
-tag: [Bela, Oscillators]
+tag: [Programming, Bela, Oscillators]
 date: Oct. 26, 2021
 categories: [Audio]
 ---

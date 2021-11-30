@@ -1,7 +1,7 @@
 ---
 title: The Web is Obese
 layout: post  
-tag: [Blog, Web Design, Rants]  
+tag: [Web Design, Words]  
 date: Nov. 20th, 2021  
 categories: [Website]  
 ---

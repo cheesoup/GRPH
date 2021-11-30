@@ -1,7 +1,7 @@
 ---
 title: Some Stuff about Github Pages
 layout: post
-tag: [Blog]
+tag: [Updates, Web Design]
 date: Oct. 15, 2021
 categories: [Website]
 ---

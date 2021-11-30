@@ -1,7 +1,7 @@
 ---
 title: FFT Spectral Granulator
 layout: post
-tag: [PureData, Oscillators]
+tag: [Programming, PureData]
 date: Oct. 14, 2021
 categories: [Audio]
 ---

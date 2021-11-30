@@ -1,7 +1,7 @@
 ---
 title: Hello World!
 layout: post
-tag: [Blog]
+tag: [Updates]
 date: Oct. 13, 2021
 categories: [Misc]
 ---

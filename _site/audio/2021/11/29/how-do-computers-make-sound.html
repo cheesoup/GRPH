@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="/GRPH/assets/css/style.css"/>
+    <link rel="alternate" type="application/atom+xml" title="thesis? idk?" href="/GRPH/feed.xml"/>
+    <link rel="shortcut icon" type="image/png" href="/GRPH/icon.ico"/>
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>How do computers make sound? | thesis? idk?</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="How do computers make sound?" />
+<meta name="author" content="Chris Carin" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Prior to writing to more in depth on digital synthesis, I think it’s good idea to become acquainted with how exactly digital sound works. I don’t really have much of an introduction to this post, and honestly this whole thing might just come off as incoherent jargon, but I will try my best to explain everything understand about the nature of sound in the digital domain from the ground up. Before we even talk about computers however, we first need to grasp the basics of how sound is reproduced." />
+<meta property="og:description" content="Prior to writing to more in depth on digital synthesis, I think it’s good idea to become acquainted with how exactly digital sound works. I don’t really have much of an introduction to this post, and honestly this whole thing might just come off as incoherent jargon, but I will try my best to explain everything understand about the nature of sound in the digital domain from the ground up. Before we even talk about computers however, we first need to grasp the basics of how sound is reproduced." />
+<link rel="canonical" href="http://0.0.0.0:4000/GRPH/audio/2021/11/29/how-do-computers-make-sound.html" />
+<meta property="og:url" content="http://0.0.0.0:4000/GRPH/audio/2021/11/29/how-do-computers-make-sound.html" />
+<meta property="og:site_name" content="thesis? idk?" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-11-29T00:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="How do computers make sound?" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Chris Carin"},"@type":"BlogPosting","headline":"How do computers make sound?","dateModified":"2021-11-29T00:00:00-05:00","datePublished":"2021-11-29T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/GRPH/audio/2021/11/29/how-do-computers-make-sound.html"},"description":"Prior to writing to more in depth on digital synthesis, I think it’s good idea to become acquainted with how exactly digital sound works. I don’t really have much of an introduction to this post, and honestly this whole thing might just come off as incoherent jargon, but I will try my best to explain everything understand about the nature of sound in the digital domain from the ground up. Before we even talk about computers however, we first need to grasp the basics of how sound is reproduced.","url":"http://0.0.0.0:4000/GRPH/audio/2021/11/29/how-do-computers-make-sound.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+  <body>
+    <header>  <!-- HEADER START -->
+      <a href="/GRPH/"><img src="/GRPH/assets/images/jam_crow.gif" alt="jam_crow.gif" width="128" height="68"/></a>
+      <nav>   <!-- MENU START -->
+        <ul>
+          
+          <li><a href="/GRPH/about">about</a></li>
+          
+          <li><a href="/GRPH/audio">audio</a></li>
+          
+          <li><a href="/GRPH/website">web</a></li>
+          
+          <li><a href="/GRPH/misc">misc</a></li>
+          
+          <li><a href="/GRPH/tags">tags</a></li>
+          
+        </ul>
+      </nav>   <!-- MENU END -->
+    </header>  <!-- HEADER END -->
+    <main>     <!-- CONTENT START -->
+      
+
+
+<header class="heading">
+  <h1>How do computers make sound?</h1>
+  <div>
+    <small>
+      Category: <a href="">Audio</a>
+    </small>
+    <small>
+      Tags:
+      
+        <a href="/GRPH/tags#programming">Programming</a>
+      
+    </small>
+  </div>
+  <div>
+    <small>
+      Mon, Nov 29, 21
+    </small>
+    <small>
+      
+      Length:
+      
+        2 mins
+      
+    </small>
+  </div>
+</header>
+
+<p>Prior to writing to more in depth on digital synthesis, I think it’s good idea
+to become acquainted with how exactly digital sound works. I don’t really have
+much of an introduction to this post, and honestly this whole thing might just
+come off as incoherent jargon, but I will try my best to explain everything
+understand about the nature of sound in the digital domain from the ground up.
+Before we even talk about computers however, we first need to grasp the basics
+of how sound is reproduced.</p>
+
+<p>Before I continue, I want to disclaim that I am neither a physicist nor an
+engineer. Much of what I’m writing about here is just my own understanding of
+the research others have done. I don’t claim to be expert. I’m more so just an
+enthusiast. Thus, this information may not be the most academically “correct”.
+If you do notice a mistake, please point it out to me in an e-mail. So, I guess
+without further ado, <em>here we go…</em></p>
+
+<p>Electric/electronic devices normally produce sound using speakers. When a device
+is wired to a speaker through something like an AUX cable, it is sending an
+electrical signal to drive the speaker’s diaphragm. When the audio signal
+reaches the speaker, a motor within it converts the signal into mechanical
+vibrations based on the voltage level. These vibrations create changes in air
+pressure to produce sound.</p>
+
+<p>To produce audio through a speaker, all that’s needed is an electrical signal
+strong enough to drive it. As mentioned in a previous post, I’m using a single
+board computer with a dedicated sound capelet to generate the audio signals for
+this project. It’s important note how I’m generating these signals because
+signals in the digital domain are discrete.</p>
+
+<!-- Include for captioned images -->
+<div class="float ">
+  <figure class="embed picture">
+    <a href="#content-digital-wave-png">
+      <img src="/GRPH/assets/images//content/digital_wave.png" alt="Visual representation of audio in digital form" style="width: " loading="lazy" />
+    </a>
+    <figcaption>Visual representation of audio in digital form</figcaption>
+  </figure>
+  <a href="#/" class="expand" id="content-digital-wave-png">
+    <img src="/GRPH/assets/images//content/digital_wave.png" alt="Visual representation of audio in digital form" style="background-image: url('/GRPH/assets/images/transparent.gif')" loading="lazy" />
+  </a>
+</div>
+
+<p><sup>(original image: http://grahammitchell.com/writings/vorbis_intro.html)</sup></p>
+
+<p>If you’ve heard of the term CD quality, you may also be aware that like digital
+images, digital audio has resolution. Rather than RGB values within a grid of
+pixels however, digital audio can be thought of as a sequence of voltage levels
+over time. Each value in the sequence is known as a sample. When a digital
+device plays back audio signals, it runs through thousands of samples at a fixed
+rate to produce a composite signal for a speaker to convert into sound. This
+means that unlike their analog counterparts, signals produced through digital
+means cannot be continuous. Rather digital signals can only change with each
+sample. Between each sample, the voltage remains static.</p>
+
+<p>Because of its discrete nature, digital audio signals are limited in range of
+frequencies they can capture and produce. Nyquist theorem states that the
+highest frequency a discrete system can record/produce is equivalent to the
+system’s sampling rate divided 2 (or SR/2). Any frequency capture above that is
+subject to an effect called aliasing.</p>
+
+<p>It’s kind of late, so I’ll probably continue to write this tomorrow.</p>
+
+
+<!-- Grab previous and next post from category -->
+<!-- https://talk.jekyllrb.com/t/how-to-link-to-next-and-previous-posts-for-same-blog-category/629 -->
+
+
+
+
+
+
+<footer class="pagination">
+  <nav>
+    <h3>Pagination</h3>
+    <ul>
+      <!-- Page Up -->
+      <li>
+        <a class="up" href="/GRPH/Audio">
+          Back to Audio
+        </a>
+      </li>
+      <!-- Prev post -->
+      <li>
+        <a class="next" href="/GRPH/audio/2021/11/16/why-im-making-a-synth.html">
+          Thoughts on why I'm making a synthesizer
+        </a>
+      </li>
+      <!-- Next post -->
+      <li>
+        <a class="prev" href="/GRPH/audio/2021/11/29/how-do-computers-make-sound.html">
+          How do computers make sound?
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <nav>
+    <h3>Related Posts</h3>
+    
+    
+    <ul>
+      <li>
+        <a href="/GRPH/audio/2021/10/26/coding-on-bela.html">
+          Coding on bela
+        </a>
+      </li>
+    </ul>
+    
+    <ul>
+      <li>
+        <a href="/GRPH/audio/2021/11/16/why-im-making-a-synth.html">
+          Thoughts on why I'm making a synthesizer
+        </a>
+      </li>
+    </ul>
+    
+    <ul>
+      <li>
+        <a href="/GRPH/audio/2021/10/14/fft_grainspec.html">
+          FFT Spectral Granulator
+        </a>
+      </li>
+    </ul>
+    
+  </nav>
+</footer>
+
+    </main>    <!-- CONTENT END -->
+    <footer>   <!-- FOOTER START -->
+      <ul>
+        <li><a href="/GRPH/feed.xml">RSS Feed</a></li>
+        <li>
+          <a href="https://www.gnu.org/licenses/copyleft.en.html">(C)</a>
+           2021-2022
+          <a href="mailto:chr.carin(a)gmail.com">Chris Carin</a>
+        </li>
+        <li><a href="https://html5.validator.nu/?doc=http://0.0.0.0:4000/GRPH/audio/2021/11/29/how-do-computers-make-sound.html">This document is valid HTML5</a></li>
+        <li><a href="#">Back to Top</a></li>
+      </ul>
+    </footer>   <!-- FOOTER END -->
+  </body>
+</html>

@@ -1,7 +1,7 @@
 ---
 title: New Layout!
 layout: post
-tag: [Blog]
+tag: [Updates, Web Design]
 date: Nov. 14, 2021
 categories: [Website]
 ---
