@@ -18,7 +18,7 @@ potentially bigger resource hogs. And just as they do, designers While these
 features provide a lot of creative of power to web designers, it’s part of the
 designer's job to wield these powers appropriately.
 
-{% include image.html url='/content/nocss_frontpage.png' caption='What a
+{% include image.html url='nocss_frontpage.png' caption='What a
 software minimal website does look like' %}
 
 Just to be clear, I’m not claiming page weight and efficiency always need to be
@@ -42,7 +42,7 @@ only does this make content harder to access for certain users (particularly
 those on mobile and lower end devices), but it also increases a page’s
 environmental footprint.
 
-{% include image.html url='/content/ocadu_frontpage.png' caption='What a
+{% include image.html url='ocadu_frontpage.png' caption='What a
 software minimal website does not look like' %}
 
 Let’s look at [OCADU’s home page](https://ocadu.ca/) for example. I noticed it
@@ -57,7 +57,7 @@ and often break at different resolutions.
 Below is part of the results provided by [Pingdom’s speed
 tool](https://tools.pingdom.com/):
 
-{% include image.html url='/content/ocadu_size.png' caption='Size of OCADs front
+{% include image.html url='ocadu_size.png' caption='Size of OCADs front
 page, sorted by file type' %}
 
 As we can see above, OCAD's front page is over 20MB. And of course, most of that

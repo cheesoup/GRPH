@@ -136,16 +136,24 @@
 <p>Unlike Processing, Bela’s setup function returns a boolean. The render loop won’t start unless setup() returns true. In the example provided, the setup function initializes a few variables. <code class="language-plaintext highlighter-rouge">gInverseSampleRate</code> is set to <code class="language-plaintext highlighter-rouge">1 / samplerate</code> and while <code class="language-plaintext highlighter-rouge">gPhase</code> is initialized to <code class="language-plaintext highlighter-rouge">0</code>.</p>
 
 <!-- Include for captioned images -->
+
 <div class="float ">
-  <figure class="embed picture">
-    <a href="#content-sine-png">
-      <img src="/GRPH/assets/images//content/sine.png" alt="A plot of a sine function with its phase normalized to 2π" style="width: 800px" loading="lazy" />
+  <figure class="embed picture" style="width: ">
+    
+    <a href="#sine-png">
+      <img src="/GRPH/assets/images/content/sine.png" alt="A plot of a sine function with its phase normalized to 2π" style="width: 800px" loading="lazy" />
     </a>
-    <figcaption>A plot of a sine function with its phase normalized to 2π</figcaption>
+    
+    <figcaption>
+      A plot of a sine function with its phase normalized to 2π
+      
+    </figcaption>
   </figure>
-  <a href="#/" class="expand" id="content-sine-png">
-    <img src="/GRPH/assets/images//content/sine.png" alt="A plot of a sine function with its phase normalized to 2π" style="background-image: url('/GRPH/assets/images/transparent.gif')" loading="lazy" />
+  
+  <a href="#/" class="expand" id="sine-png">
+    <img src="/GRPH/assets/images/content/sine.png" alt="A plot of a sine function with its phase normalized to 2π" style="background-image: url('/GRPH/assets/images/transparent.gif')" loading="lazy" />
   </a>
+  
 </div>
 
 <p>When graphing a periodic (repeating) waveform statically like the image above, phase can be described as the current x-value (between 0-1) of the wave. As the x-value increments, the waveform’s y-value oscillates between -1 and 1. To apply this idea to audio, we have think of x as something that is constantly accumulating between 0-1. This is pretty much what Bela’s example code does.</p>
@@ -218,6 +226,14 @@
     
     <ul>
       <li>
+        <a href="/GRPH/audio/2021/11/29/basic-anatomy-of-subtractive-synthesizers.html">
+          Anatomy of Substractive Synthesizers
+        </a>
+      </li>
+    </ul>
+    
+    <ul>
+      <li>
         <a href="/GRPH/audio/2021/10/14/fft_grainspec.html">
           FFT Spectral Granulator
         </a>
@@ -226,16 +242,8 @@
     
     <ul>
       <li>
-        <a href="/GRPH/audio/2021/11/29/how-do-computers-make-sound.html">
-          How do computers make sound?
-        </a>
-      </li>
-    </ul>
-    
-    <ul>
-      <li>
-        <a href="/GRPH/audio/2021/11/16/why-im-making-a-synth.html">
-          Thoughts on why I'm making a synthesizer
+        <a href="/GRPH/audio/2021/11/30/sample-rates-and-harmonics.html">
+          Sample Rates & Harmonics
         </a>
       </li>
     </ul>

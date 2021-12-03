@@ -64,7 +64,7 @@ bool setup(BelaContext *context, void *userData)
 
 Unlike Processing, Bela's setup function returns a boolean. The render loop won't start unless setup() returns true. In the example provided, the setup function initializes a few variables. `gInverseSampleRate` is set to `1 / samplerate` and while `gPhase` is initialized to `0`.
 
-{% include image.html url='/content/sine.png' width='800px' caption='A plot of a sine function with its phase normalized to 2π' %}
+{% include image.html url='sine.png' width='800px' caption='A plot of a sine function with its phase normalized to 2π' %}
 
 When graphing a periodic (repeating) waveform statically like the image above, phase can be described as the current x-value (between 0-1) of the wave. As the x-value increments, the waveform's y-value oscillates between -1 and 1. To apply this idea to audio, we have think of x as something that is constantly accumulating between 0-1. This is pretty much what Bela's example code does.
 

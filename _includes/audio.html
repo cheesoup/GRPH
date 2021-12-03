@@ -1,0 +1,11 @@
+<div class="float {{ include.float }}">
+  <figure class="embed audio">
+    {% for url in include.source %}
+    <audio controls>
+      <source src="{{ '/assets/audio/' | relative_url }}{{ url }}" type="audio/{{ include.type }}" loading="lazy">
+      Your browser does not support the audio element.
+    </audio>
+    {% endfor %}
+    <figcaption>{{ include.caption }}</figcaption>
+  </figure>
+</div>

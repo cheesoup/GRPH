@@ -1,12 +1,22 @@
 <!-- Include for captioned images -->
+{% assign extralength = include.extra.size %}
 <div class="float {{ include.float }}">
-  <figure class="embed picture">
-    <a href="#{{ include.url | slugify }}">
-      <img src="{{ '/assets/images/' | relative_url }}{{ include.url }}" alt="{{ include.caption }}" style="width: {{ include.width }}" loading="lazy"/>
+  <figure class="embed picture" style="width: {{ include.float-width }}">
+    {% for url in include.url %}
+    <a href="#{{ url | slugify }}">
+      <img src="{{ '/assets/images/content/' | relative_url }}{{ url }}" alt="{{ include.caption }}" style="width: {{ include.width }}" loading="lazy"/>
     </a>
-    <figcaption>{{ include.caption }}</figcaption>
+    {% endfor %}
+    <figcaption>
+      {{ include.caption }}
+      {% if extralength > 0 %}
+        <br/>{{ include.extra }}
+      {% endif %}
+    </figcaption>
   </figure>
-  <a href="#/" class="expand" id="{{ include.url | slugify }}">
-    <img src="{{ '/assets/images/' | relative_url }}{{ include.url }}" alt="{{ include.caption }}" style="background-image: url('{{ '/assets/images/' | relative_url }}transparent.gif')" loading="lazy"/>
+  {% for url in include.url %}
+  <a href="#/" class="expand" id="{{ url | slugify }}">
+    <img src="{{ '/assets/images/content/' | relative_url }}{{ url }}" alt="{{ include.caption }}" style="background-image: url('{{ '/assets/images/' | relative_url }}transparent.gif')" loading="lazy"/>
   </a>
+  {% endfor %}
 </div>

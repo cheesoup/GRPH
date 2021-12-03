@@ -1,21 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://0.0.0.0:4000/GRPH/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://0.0.0.0:4000/GRPH/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/GRPH/" rel="alternate" type="text/html" /><updated>2021-11-30T06:24:21-05:00</updated><id>http://0.0.0.0:4000/GRPH/feed.xml</id><title type="html">thesis? idk?</title><subtitle>a blog for 4th year workshop at OCADU</subtitle><author><name>Chris Carin</name></author><entry><title type="html">How do computers make sound?</title><link href="http://0.0.0.0:4000/GRPH/audio/2021/11/29/how-do-computers-make-sound.html" rel="alternate" type="text/html" title="How do computers make sound?" /><published>2021-11-29T00:00:00-05:00</published><updated>2021-11-29T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/audio/2021/11/29/how-do-computers-make-sound</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/audio/2021/11/29/how-do-computers-make-sound.html">&lt;p&gt;Prior to writing to more in depth on digital synthesis, I think it’s good idea
-to become acquainted with how exactly digital sound works. I don’t really have
-much of an introduction to this post, and honestly this whole thing might just
-come off as incoherent jargon, but I will try my best to explain everything
-understand about the nature of sound in the digital domain from the ground up.
-Before we even talk about computers however, we first need to grasp the basics
-of how sound is reproduced.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://0.0.0.0:4000/GRPH/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://0.0.0.0:4000/GRPH/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/GRPH/" rel="alternate" type="text/html" /><updated>2021-12-03T06:10:16-05:00</updated><id>http://0.0.0.0:4000/GRPH/feed.xml</id><title type="html">thesis? idk?</title><subtitle>a blog for 4th year workshop at OCADU</subtitle><author><name>Chris Carin</name></author><entry><title type="html">Sample Rates &amp;amp; Harmonics</title><link href="http://0.0.0.0:4000/GRPH/audio/2021/11/30/sample-rates-and-harmonics.html" rel="alternate" type="text/html" title="Sample Rates &amp;amp; Harmonics" /><published>2021-11-30T00:00:00-05:00</published><updated>2021-11-30T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/audio/2021/11/30/sample-rates-and-harmonics</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/audio/2021/11/30/sample-rates-and-harmonics.html">&lt;p&gt;Before I continue, I want to disclose that I am not an engineer. I am merely an
+enthusiast who enjoys synthesis. This information may not be the most correct or
+academically rigorous. Much of what I’m writing about is my own self-educated
+understanding of these subjects. If I do make a mistake, please point it out to
+me in an email. So, I guess without further ado, &lt;em&gt;here we go…&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;Before I continue, I want to disclaim that I am neither a physicist nor an
-engineer. Much of what I’m writing about here is just my own understanding of
-the research others have done. I don’t claim to be expert. I’m more so just an
-enthusiast. Thus, this information may not be the most academically “correct”.
-If you do notice a mistake, please point it out to me in an e-mail. So, I guess
-without further ado, &lt;em&gt;here we go…&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;When working with sound on computers, it’s useful to become acquainted with how
+digital signals work. A signal is a function which varies over an independent
+variable (normally time). Sound can be thought of as a signal created through
+variations in air pressure over time. When we hear something, what we’re really
+sensing is physical vibration. When an audio waveform is drawn on screen, that
+vibration is what is represented.&lt;/p&gt;
 
-&lt;p&gt;Electric/electronic devices normally produce sound using speakers. When a device
-is wired to a speaker through something like an AUX cable, it is sending an
-electrical signal to drive the speaker’s diaphragm. When the audio signal
+&lt;p&gt;Electric and electronic devices normally produce sound using speakers. When a
+device is wired to a speaker through something like an AUX cable, it is sending
+an electrical signal to drive the speaker’s diaphragm. When the audio signal
 reaches the speaker, a motor within it converts the signal into mechanical
 vibrations based on the voltage level. These vibrations create changes in air
 pressure to produce sound.&lt;/p&gt;
@@ -23,41 +21,174 @@ pressure to produce sound.&lt;/p&gt;
 &lt;p&gt;To produce audio through a speaker, all that’s needed is an electrical signal
 strong enough to drive it. As mentioned in a previous post, I’m using a single
 board computer with a dedicated sound capelet to generate the audio signals for
-this project. It’s important note how I’m generating these signals because
-signals in the digital domain are discrete.&lt;/p&gt;
+this project. It’s important to note how I’m generating these signals because
+signals in the digital domain are discrete. What I mean by discrete is best
+illustrated by discussing audio sample rates and quality.&lt;/p&gt;
 
 &lt;!-- Include for captioned images --&gt;
-&lt;div class=&quot;float &quot;&gt;
-  &lt;figure class=&quot;embed picture&quot;&gt;
-    &lt;a href=&quot;#content-digital-wave-png&quot;&gt;
-      &lt;img src=&quot;/GRPH/assets/images//content/digital_wave.png&quot; alt=&quot;Visual representation of audio in digital form&quot; style=&quot;width: &quot; loading=&quot;lazy&quot; /&gt;
-    &lt;/a&gt;
-    &lt;figcaption&gt;Visual representation of audio in digital form&lt;/figcaption&gt;
-  &lt;/figure&gt;
-  &lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;content-digital-wave-png&quot;&gt;
-    &lt;img src=&quot;/GRPH/assets/images//content/digital_wave.png&quot; alt=&quot;Visual representation of audio in digital form&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
-  &lt;/a&gt;
-&lt;/div&gt;
 
-&lt;p&gt;&lt;sup&gt;(original image: http://grahammitchell.com/writings/vorbis_intro.html)&lt;/sup&gt;&lt;/p&gt;
+&lt;div class=&quot;float &quot;&gt;
+  &lt;figure class=&quot;embed picture&quot; style=&quot;width: &quot;&gt;
+    
+    &lt;a href=&quot;#digital-wave-png&quot;&gt;
+      &lt;img src=&quot;/GRPH/assets/images/content/digital_wave.png&quot; alt=&quot;Visual
+representation of audio in digital form&quot; style=&quot;width: 500px&quot; loading=&quot;lazy&quot; /&gt;
+    &lt;/a&gt;
+    
+    &lt;figcaption&gt;
+      Visual
+representation of audio in digital form
+      
+        &lt;br /&gt;(original image:
+http://grahammitchell.com/writings/vorbis_intro.html)
+      
+    &lt;/figcaption&gt;
+  &lt;/figure&gt;
+  
+  &lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;digital-wave-png&quot;&gt;
+    &lt;img src=&quot;/GRPH/assets/images/content/digital_wave.png&quot; alt=&quot;Visual
+representation of audio in digital form&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
+  &lt;/a&gt;
+  
+&lt;/div&gt;
 
 &lt;p&gt;If you’ve heard of the term CD quality, you may also be aware that like digital
 images, digital audio has resolution. Rather than RGB values within a grid of
-pixels however, digital audio can be thought of as a sequence of voltage levels
-over time. Each value in the sequence is known as a sample. When a digital
-device plays back audio signals, it runs through thousands of samples at a fixed
-rate to produce a composite signal for a speaker to convert into sound. This
-means that unlike their analog counterparts, signals produced through digital
-means cannot be continuous. Rather digital signals can only change with each
-sample. Between each sample, the voltage remains static.&lt;/p&gt;
+pixels, digital audio can be thought of as a sequence of voltage levels over
+time. Each value in the sequence is known as a sample. When a digital device
+plays back audio, it runs through thousands of samples at a fixed rate to
+produce a composite signal for a speaker to convert into sound. This means that
+unlike their physical and analog counterparts, signals produced through digital
+means cannot be continuous. This is basically what a discrete signal is. Between
+each sample, the output voltage remains a static value.&lt;/p&gt;
 
-&lt;p&gt;Because of its discrete nature, digital audio signals are limited in range of
-frequencies they can capture and produce. Nyquist theorem states that the
-highest frequency a discrete system can record/produce is equivalent to the
-system’s sampling rate divided 2 (or SR/2). Any frequency capture above that is
-subject to an effect called aliasing.&lt;/p&gt;
+&lt;p&gt;Because of its discrete nature, there is a limited range of frequencies that a
+digital signal can reproduce accurately. Sampling theorem states that the
+highest frequency a discrete system can represent is equal to the system’s
+sampling rate divided by 2. CD quality’s sampling rate is 44.1kHz, therefore the
+highest representable frequency at CD quality is 22.05kHz. This maximum
+frequency is known as the Nyquist Frequency (or just Nyquist for short). Since
+the range of human hearing is between 20Hz-20kHz, CD quality is more than
+sufficient for casually playing back audio. For digital synthesis however, there
+are benefits to higher rates.&lt;/p&gt;
 
-&lt;p&gt;It’s kind of late, so I’ll probably continue to write this tomorrow.&lt;/p&gt;</content><author><name>Chris Carin</name></author><category term="Audio" /><category term="Programming" /><summary type="html">Prior to writing to more in depth on digital synthesis, I think it’s good idea to become acquainted with how exactly digital sound works. I don’t really have much of an introduction to this post, and honestly this whole thing might just come off as incoherent jargon, but I will try my best to explain everything understand about the nature of sound in the digital domain from the ground up. Before we even talk about computers however, we first need to grasp the basics of how sound is reproduced.</summary></entry><entry><title type="html">The Web is Obese</title><link href="http://0.0.0.0:4000/GRPH/website/2021/11/20/the-web-is-obese.html" rel="alternate" type="text/html" title="The Web is Obese" /><published>2021-11-20T00:00:00-05:00</published><updated>2021-11-20T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/website/2021/11/20/the-web-is-obese</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/website/2021/11/20/the-web-is-obese.html">&lt;p&gt;Despite what minimalist trends prevalent throughout the tech industries may have
+&lt;div class=&quot;float right&quot;&gt;
+  &lt;figure class=&quot;embed audio&quot;&gt;
+    
+    &lt;audio controls=&quot;&quot;&gt;
+      &lt;source src=&quot;/GRPH/assets/audio/piano.mp3&quot; type=&quot;audio/mp3&quot; loading=&quot;lazy&quot; /&gt;
+      Your browser does not support the audio element.
+    &lt;/audio&gt;
+    
+    &lt;audio controls=&quot;&quot;&gt;
+      &lt;source src=&quot;/GRPH/assets/audio/sine.mp3&quot; type=&quot;audio/mp3&quot; loading=&quot;lazy&quot; /&gt;
+      Your browser does not support the audio element.
+    &lt;/audio&gt;
+    
+    &lt;figcaption&gt;A piano (above) and a sine tone (below) playing middle A (440Hz)&lt;/figcaption&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;
+
+&lt;p&gt;It’s important to know about sampling rates because sound synthesis is really
+all about harmonic manipulation. To elaborate, I’ve posted two audio examples
+to the left (or above on mobile). One is the sound of a piano, the other is the sound of a
+sine tone slowly fading out. Both examples are playing middle A. If you compare
+the two, it’s easy to distinguish that they sound nothing alike. The reason for
+this is because the relationship of frequencies (aka the harmonics) produced by
+the sound of a piano key is much more complex than a single sine tone. The
+relationship between frequencies produced over time is what defines what is
+traditionally known as an instrument’s timbre.&lt;/p&gt;
+
+&lt;!-- Include for captioned images --&gt;
+
+&lt;div class=&quot;float &quot;&gt;
+  &lt;figure class=&quot;embed picture&quot; style=&quot;width: &quot;&gt;
+    
+    &lt;a href=&quot;#pianospek-png&quot;&gt;
+      &lt;img src=&quot;/GRPH/assets/images/content/pianospek.png&quot; alt=&quot;The frequency spectrum of a piano (left) and a sine tone (right) playing middle A (440Hz)&quot; style=&quot;width: 300px&quot; loading=&quot;lazy&quot; /&gt;
+    &lt;/a&gt;
+    
+    &lt;a href=&quot;#sinespek-png&quot;&gt;
+      &lt;img src=&quot;/GRPH/assets/images/content/sinespek.png&quot; alt=&quot;The frequency spectrum of a piano (left) and a sine tone (right) playing middle A (440Hz)&quot; style=&quot;width: 300px&quot; loading=&quot;lazy&quot; /&gt;
+    &lt;/a&gt;
+    
+    &lt;figcaption&gt;
+      The frequency spectrum of a piano (left) and a sine tone (right) playing middle A (440Hz)
+      
+    &lt;/figcaption&gt;
+  &lt;/figure&gt;
+  
+  &lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;pianospek-png&quot;&gt;
+    &lt;img src=&quot;/GRPH/assets/images/content/pianospek.png&quot; alt=&quot;The frequency spectrum of a piano (left) and a sine tone (right) playing middle A (440Hz)&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
+  &lt;/a&gt;
+  
+  &lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;sinespek-png&quot;&gt;
+    &lt;img src=&quot;/GRPH/assets/images/content/sinespek.png&quot; alt=&quot;The frequency spectrum of a piano (left) and a sine tone (right) playing middle A (440Hz)&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
+  &lt;/a&gt;
+  
+&lt;/div&gt;
+
+&lt;p&gt;By graphing out the spectral components, we can confirm both the harmonic
+complexity of a piano (on the left), and the simplicity of the sine tone. In
+contrast to the piano, the sine tone contains only a single harmonic located at
+its fundamental frequency. This is true of all sine tones making sine waves the
+harmonically the simplest sound possible. Due to their harmonic simplicity, all
+periodic waveforms can be represented as a summation of multiple sine tones with
+varying frequencies, phases, and amplitudes. By extension, anything that isn’t a
+sine tone is going to have spectra more complex than a single sine wave. Should
+any of the harmonic components of a signal exceed Nyquist frequency, the signal
+becomes subject to a type of digital aliasing known as ‘foldover’. Any signal
+with a frequency above Nyquist will produce a mirrored component equal to
+Nyquist minus the difference of the original frequency and Nyquist.&lt;/p&gt;
+
+&lt;div class=&quot;float &quot;&gt;
+  &lt;figure class=&quot;embed audio&quot;&gt;
+    
+    &lt;audio controls=&quot;&quot;&gt;
+      &lt;source src=&quot;/GRPH/assets/audio/saw_sweep.mp3&quot; type=&quot;audio/mp3&quot; loading=&quot;lazy&quot; /&gt;
+      Your browser does not support the audio element.
+    &lt;/audio&gt;
+    
+    &lt;figcaption&gt;Sawtooth sweep from 0Hz to 22.05kHz and back at a sampling rate of 44.1kHz&lt;/figcaption&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;
+
+&lt;p&gt;To demonstrate foldover, above is an audio example of a naively generated
+sawtooth wave sweeping from 0Hz to 22.05kHz at a sample rate of 44.1kHz. If you pay
+close attention, an FM-like distortion becomes prevalent as the sweep approaches
+Nyquist. To visualize foldover I’ve posted a spectogram of the audio recording below. Notice the how harmonics seem reflect back forth between 0Hz and Nyquist as they fall out of range. While this effect can sound interesting in some situations (I like it on hi-hats), it’s unwanted in most.&lt;/p&gt;
+
+&lt;!-- Include for captioned images --&gt;
+
+&lt;div class=&quot;float &quot;&gt;
+  &lt;figure class=&quot;embed picture&quot; style=&quot;width: &quot;&gt;
+    
+    &lt;a href=&quot;#saw-sweep-spek-png&quot;&gt;
+      &lt;img src=&quot;/GRPH/assets/images/content/saw_sweep_spek.png&quot; alt=&quot;Spectogram of the above example&quot; style=&quot;width: 600px&quot; loading=&quot;lazy&quot; /&gt;
+    &lt;/a&gt;
+    
+    &lt;figcaption&gt;
+      Spectogram of the above example
+      
+    &lt;/figcaption&gt;
+  &lt;/figure&gt;
+  
+  &lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;saw-sweep-spek-png&quot;&gt;
+    &lt;img src=&quot;/GRPH/assets/images/content/saw_sweep_spek.png&quot; alt=&quot;Spectogram of the above example&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
+  &lt;/a&gt;
+  
+&lt;/div&gt;
+
+&lt;p&gt;What I’m trying to get across is that it’s important to understand what digital
+audio is when working with low-level audio synthesis. Without such knowledge,
+it’s easy to end up with consistently poor-quality sounds. Even at increased
+sample rates, having harmonic partials which extend infinitely will always
+distort at some point. Unfortunately, the Bela system is only capable of running
+audio processes at 44.1kHz. While this isn’t entirely ideal, there are
+implementable methods to reduce aliasing which I plan to go over in my next post
+about oscillators.&lt;/p&gt;
+
+&lt;p&gt;The PureData patch I used to generate the sounds for this post can be found &lt;a href=&quot;/GRPH/assets/other/spec_example.zip&quot;&gt;here&lt;/a&gt;. The piano recording originated from &lt;a href=&quot;https://freesound.org/people/ramas26/sounds/95326/&quot;&gt;freesounds&lt;/a&gt;.&lt;/p&gt;</content><author><name>Chris Carin</name></author><category term="Audio" /><category term="Digital Synths" /><summary type="html">Before I continue, I want to disclose that I am not an engineer. I am merely an enthusiast who enjoys synthesis. This information may not be the most correct or academically rigorous. Much of what I’m writing about is my own self-educated understanding of these subjects. If I do make a mistake, please point it out to me in an email. So, I guess without further ado, here we go…</summary></entry><entry><title type="html">Anatomy of Substractive Synthesizers</title><link href="http://0.0.0.0:4000/GRPH/audio/2021/11/29/basic-anatomy-of-subtractive-synthesizers.html" rel="alternate" type="text/html" title="Anatomy of Substractive Synthesizers" /><published>2021-11-29T00:00:00-05:00</published><updated>2021-11-29T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/audio/2021/11/29/basic-anatomy-of-subtractive-synthesizers</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/audio/2021/11/29/basic-anatomy-of-subtractive-synthesizers.html">&lt;p&gt;adad&lt;/p&gt;</content><author><name>Chris Carin</name></author><category term="Audio" /><category term="Digital Synths" /><summary type="html">adad</summary></entry><entry><title type="html">The Web is Obese</title><link href="http://0.0.0.0:4000/GRPH/website/2021/11/20/the-web-is-obese.html" rel="alternate" type="text/html" title="The Web is Obese" /><published>2021-11-20T00:00:00-05:00</published><updated>2021-11-20T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/website/2021/11/20/the-web-is-obese</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/website/2021/11/20/the-web-is-obese.html">&lt;p&gt;Despite what minimalist trends prevalent throughout the tech industries may have
 you believe, today’s modern web is very bloated. Just &lt;a href=&quot;https://www.wired.com/2016/04/average-webpage-now-size-original-doom/&quot;&gt;5 years
 ago&lt;/a&gt;, the
 average web page was already larger than the original DOOM for MS-DOS. In
@@ -70,19 +201,27 @@ features provide a lot of creative of power to web designers, it’s part of the
 designer’s job to wield these powers appropriately.&lt;/p&gt;
 
 &lt;!-- Include for captioned images --&gt;
+
 &lt;div class=&quot;float &quot;&gt;
-  &lt;figure class=&quot;embed picture&quot;&gt;
-    &lt;a href=&quot;#content-nocss-frontpage-png&quot;&gt;
-      &lt;img src=&quot;/GRPH/assets/images//content/nocss_frontpage.png&quot; alt=&quot;What a
+  &lt;figure class=&quot;embed picture&quot; style=&quot;width: &quot;&gt;
+    
+    &lt;a href=&quot;#nocss-frontpage-png&quot;&gt;
+      &lt;img src=&quot;/GRPH/assets/images/content/nocss_frontpage.png&quot; alt=&quot;What a
 software minimal website does look like&quot; style=&quot;width: &quot; loading=&quot;lazy&quot; /&gt;
     &lt;/a&gt;
-    &lt;figcaption&gt;What a
-software minimal website does look like&lt;/figcaption&gt;
+    
+    &lt;figcaption&gt;
+      What a
+software minimal website does look like
+      
+    &lt;/figcaption&gt;
   &lt;/figure&gt;
-  &lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;content-nocss-frontpage-png&quot;&gt;
-    &lt;img src=&quot;/GRPH/assets/images//content/nocss_frontpage.png&quot; alt=&quot;What a
+  
+  &lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;nocss-frontpage-png&quot;&gt;
+    &lt;img src=&quot;/GRPH/assets/images/content/nocss_frontpage.png&quot; alt=&quot;What a
 software minimal website does look like&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
   &lt;/a&gt;
+  
 &lt;/div&gt;
 
 &lt;p&gt;Just to be clear, I’m not claiming page weight and efficiency always need to be
@@ -107,19 +246,27 @@ those on mobile and lower end devices), but it also increases a page’s
 environmental footprint.&lt;/p&gt;
 
 &lt;!-- Include for captioned images --&gt;
+
 &lt;div class=&quot;float &quot;&gt;
-  &lt;figure class=&quot;embed picture&quot;&gt;
-    &lt;a href=&quot;#content-ocadu-frontpage-png&quot;&gt;
-      &lt;img src=&quot;/GRPH/assets/images//content/ocadu_frontpage.png&quot; alt=&quot;What a
+  &lt;figure class=&quot;embed picture&quot; style=&quot;width: &quot;&gt;
+    
+    &lt;a href=&quot;#ocadu-frontpage-png&quot;&gt;
+      &lt;img src=&quot;/GRPH/assets/images/content/ocadu_frontpage.png&quot; alt=&quot;What a
 software minimal website does not look like&quot; style=&quot;width: &quot; loading=&quot;lazy&quot; /&gt;
     &lt;/a&gt;
-    &lt;figcaption&gt;What a
-software minimal website does not look like&lt;/figcaption&gt;
+    
+    &lt;figcaption&gt;
+      What a
+software minimal website does not look like
+      
+    &lt;/figcaption&gt;
   &lt;/figure&gt;
-  &lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;content-ocadu-frontpage-png&quot;&gt;
-    &lt;img src=&quot;/GRPH/assets/images//content/ocadu_frontpage.png&quot; alt=&quot;What a
+  
+  &lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;ocadu-frontpage-png&quot;&gt;
+    &lt;img src=&quot;/GRPH/assets/images/content/ocadu_frontpage.png&quot; alt=&quot;What a
 software minimal website does not look like&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
   &lt;/a&gt;
+  
 &lt;/div&gt;
 
 &lt;p&gt;Let’s look at &lt;a href=&quot;https://ocadu.ca/&quot;&gt;OCADU’s home page&lt;/a&gt; for example. I noticed it
@@ -135,19 +282,27 @@ and often break at different resolutions.&lt;/p&gt;
 tool&lt;/a&gt;:&lt;/p&gt;
 
 &lt;!-- Include for captioned images --&gt;
+
 &lt;div class=&quot;float &quot;&gt;
-  &lt;figure class=&quot;embed picture&quot;&gt;
-    &lt;a href=&quot;#content-ocadu-size-png&quot;&gt;
-      &lt;img src=&quot;/GRPH/assets/images//content/ocadu_size.png&quot; alt=&quot;Size of OCADs front
+  &lt;figure class=&quot;embed picture&quot; style=&quot;width: &quot;&gt;
+    
+    &lt;a href=&quot;#ocadu-size-png&quot;&gt;
+      &lt;img src=&quot;/GRPH/assets/images/content/ocadu_size.png&quot; alt=&quot;Size of OCADs front
 page, sorted by file type&quot; style=&quot;width: &quot; loading=&quot;lazy&quot; /&gt;
     &lt;/a&gt;
-    &lt;figcaption&gt;Size of OCADs front
-page, sorted by file type&lt;/figcaption&gt;
+    
+    &lt;figcaption&gt;
+      Size of OCADs front
+page, sorted by file type
+      
+    &lt;/figcaption&gt;
   &lt;/figure&gt;
-  &lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;content-ocadu-size-png&quot;&gt;
-    &lt;img src=&quot;/GRPH/assets/images//content/ocadu_size.png&quot; alt=&quot;Size of OCADs front
+  
+  &lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;ocadu-size-png&quot;&gt;
+    &lt;img src=&quot;/GRPH/assets/images/content/ocadu_size.png&quot; alt=&quot;Size of OCADs front
 page, sorted by file type&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
   &lt;/a&gt;
+  
 &lt;/div&gt;
 
 &lt;p&gt;As we can see above, OCAD’s front page is over 20MB. And of course, most of that
@@ -187,16 +342,24 @@ content. Adding too much to a web page will not only bog down/break a user’s
 access, it’s also just straight up worse for the environment.&lt;/p&gt;</content><author><name>Chris Carin</name></author><category term="Website" /><category term="Web Design" /><category term="Words" /><summary type="html">Despite what minimalist trends prevalent throughout the tech industries may have you believe, today’s modern web is very bloated. Just 5 years ago, the average web page was already larger than the original DOOM for MS-DOS. In reaction to this, I choose to design this blog to be as lightweight and easy to load as possible. I remember times back in High School where my computer could barely handle 3 or 4 tabs of Chrome or Firefox. It was awful. Since then, modern web browsers have implemented a plethora of new features and in turn have become potentially bigger resource hogs. And just as they do, designers While these features provide a lot of creative of power to web designers, it’s part of the designer’s job to wield these powers appropriately.</summary></entry><entry><title type="html">Thoughts on why I’m making a synthesizer</title><link href="http://0.0.0.0:4000/GRPH/audio/2021/11/16/why-im-making-a-synth.html" rel="alternate" type="text/html" title="Thoughts on why I’m making a synthesizer" /><published>2021-11-16T00:00:00-05:00</published><updated>2021-11-16T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/audio/2021/11/16/why-im-making-a-synth</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/audio/2021/11/16/why-im-making-a-synth.html">&lt;p&gt;When it comes to actually writing music, I actually think I’m pretty awful. I spend so much time obsessing over tiny details and always have a hard time seeing the big picture of what I’m trying to do. Honestly, the reason why I’ve been so upset with my process of creation is due to this indecisiveness to move on from minute details. On top of that, I’m not the most mechanically gifted person in the world. Much like how I struggle with brushes and inks, I can barely play inversions on the piano.&lt;/p&gt;
 
 &lt;!-- Include for captioned images --&gt;
+
 &lt;div class=&quot;float &quot;&gt;
-  &lt;figure class=&quot;embed picture&quot;&gt;
-    &lt;a href=&quot;#content-sonic-pi-png&quot;&gt;
-      &lt;img src=&quot;/GRPH/assets/images//content/sonic-pi.png&quot; alt=&quot;Screenshot of Sonic Pi from Wikipedia&quot; style=&quot;width: 800px&quot; loading=&quot;lazy&quot; /&gt;
+  &lt;figure class=&quot;embed picture&quot; style=&quot;width: &quot;&gt;
+    
+    &lt;a href=&quot;#sonic-pi-png&quot;&gt;
+      &lt;img src=&quot;/GRPH/assets/images/content/sonic-pi.png&quot; alt=&quot;Screenshot of Sonic Pi from Wikipedia&quot; style=&quot;width: 800px&quot; loading=&quot;lazy&quot; /&gt;
     &lt;/a&gt;
-    &lt;figcaption&gt;Screenshot of Sonic Pi from Wikipedia&lt;/figcaption&gt;
+    
+    &lt;figcaption&gt;
+      Screenshot of Sonic Pi from Wikipedia
+      
+    &lt;/figcaption&gt;
   &lt;/figure&gt;
-  &lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;content-sonic-pi-png&quot;&gt;
-    &lt;img src=&quot;/GRPH/assets/images//content/sonic-pi.png&quot; alt=&quot;Screenshot of Sonic Pi from Wikipedia&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
+  
+  &lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;sonic-pi-png&quot;&gt;
+    &lt;img src=&quot;/GRPH/assets/images/content/sonic-pi.png&quot; alt=&quot;Screenshot of Sonic Pi from Wikipedia&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
   &lt;/a&gt;
+  
 &lt;/div&gt;
 
 &lt;p&gt;When it came to design however, I always thought what gave me an edge is my ability to pull magic out of computers. While there was a lot I needed to learn at OCAD to feel even remotely competent with what I was doing, I always felt like I had this talent as a crux. I call it magic because I really think computers are magical. Here is this box. You can put whatever data in it you can think of and with just a little bit of a math you can shape that data into (&lt;a href=&quot;https://www.youtube.com/watch?v=macM_MtS_w4&quot;&gt;almost&lt;/a&gt;) any virtual form you want. If that’s not magic, I don’t know what is. I think that’s what attracted me to electronic music in the first place. I always wanted to make music. I just never had the patience to figure out how to physically play something.&lt;/p&gt;
@@ -228,16 +391,24 @@ access, it’s also just straight up worse for the environment.&lt;/p&gt;</conte
 &lt;p&gt;Other than the menu, I also implemented some JS for placing arbitrary text into someone’s copy and paste clipboard. I was mainly using to create hyperlinks which would give the user the URL to the RSS feed. Though the script does work pretty well, if JS is disabled for whatever reason it is impossible to access the RSS. Also I feel like using JS in this way was sort of lazy.&lt;/p&gt;
 
 &lt;!-- Include for captioned images --&gt;
+
 &lt;div class=&quot;float &quot;&gt;
-  &lt;figure class=&quot;embed picture&quot;&gt;
+  &lt;figure class=&quot;embed picture&quot; style=&quot;width: &quot;&gt;
+    
     &lt;a href=&quot;#content-blog-size-0-png&quot;&gt;
-      &lt;img src=&quot;/GRPH/assets/images//content/blog_size_0.png&quot; alt=&quot;34.1kbs for webfonts&quot; style=&quot;width: &quot; loading=&quot;lazy&quot; /&gt;
+      &lt;img src=&quot;/GRPH/assets/images/content//content/blog_size_0.png&quot; alt=&quot;34.1kbs for webfonts&quot; style=&quot;width: &quot; loading=&quot;lazy&quot; /&gt;
     &lt;/a&gt;
-    &lt;figcaption&gt;34.1kbs for webfonts&lt;/figcaption&gt;
+    
+    &lt;figcaption&gt;
+      34.1kbs for webfonts
+      
+    &lt;/figcaption&gt;
   &lt;/figure&gt;
+  
   &lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;content-blog-size-0-png&quot;&gt;
-    &lt;img src=&quot;/GRPH/assets/images//content/blog_size_0.png&quot; alt=&quot;34.1kbs for webfonts&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
+    &lt;img src=&quot;/GRPH/assets/images/content//content/blog_size_0.png&quot; alt=&quot;34.1kbs for webfonts&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
   &lt;/a&gt;
+  
 &lt;/div&gt;
 
 &lt;p&gt;After getting rid of all the javascript, I found a few &lt;a href=&quot;https://pagespeed.web.dev/&quot;&gt;online&lt;/a&gt; &lt;a href=&quot;https://tools.pingdom.com/&quot;&gt;tools&lt;/a&gt; for measuring how much data a webpage requests whenever it is loaded. As the results above show, webfonts had previously accounted for over 50% of the site’s bandwidth per visit which for me is obviously not cool. To remedy this, I stuck to &lt;a href=&quot;https://www.cssfontstack.com/&quot;&gt;web safe fonts&lt;/a&gt;.&lt;/p&gt;
@@ -245,16 +416,24 @@ access, it’s also just straight up worse for the environment.&lt;/p&gt;</conte
 &lt;h2 id=&quot;on-to-the-new&quot;&gt;On to the New&lt;/h2&gt;
 
 &lt;!-- Include for captioned images --&gt;
+
 &lt;div class=&quot;float right&quot;&gt;
-  &lt;figure class=&quot;embed picture&quot;&gt;
+  &lt;figure class=&quot;embed picture&quot; style=&quot;width: &quot;&gt;
+    
     &lt;a href=&quot;#splash-gif&quot;&gt;
-      &lt;img src=&quot;/GRPH/assets/images/splash.gif&quot; alt=&quot;Say hi!&quot; style=&quot;width: &quot; loading=&quot;lazy&quot; /&gt;
+      &lt;img src=&quot;/GRPH/assets/images/content/splash.gif&quot; alt=&quot;Say hi!&quot; style=&quot;width: &quot; loading=&quot;lazy&quot; /&gt;
     &lt;/a&gt;
-    &lt;figcaption&gt;Say hi!&lt;/figcaption&gt;
+    
+    &lt;figcaption&gt;
+      Say hi!
+      
+    &lt;/figcaption&gt;
   &lt;/figure&gt;
+  
   &lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;splash-gif&quot;&gt;
-    &lt;img src=&quot;/GRPH/assets/images/splash.gif&quot; alt=&quot;Say hi!&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
+    &lt;img src=&quot;/GRPH/assets/images/content/splash.gif&quot; alt=&quot;Say hi!&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
   &lt;/a&gt;
+  
 &lt;/div&gt;
 
 &lt;p&gt;I’m pretty happy about is how small this website is. I’ve managed to get the about my main pages below &lt;a href=&quot;https://pagespeed.web.dev/report?url=https%3A%2F%2Fcheesoup.github.io%2FGRPH%2Fabout&quot;&gt;20kbs&lt;/a&gt;! I think that’s pretty impressive. There are actually still a few things I would like to implement (the main thing being a pure CSS lightbox for photos), but I think that’s a project for another day.&lt;/p&gt;
@@ -318,16 +497,24 @@ access, it’s also just straight up worse for the environment.&lt;/p&gt;</conte
 &lt;p&gt;Unlike Processing, Bela’s setup function returns a boolean. The render loop won’t start unless setup() returns true. In the example provided, the setup function initializes a few variables. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gInverseSampleRate&lt;/code&gt; is set to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1 / samplerate&lt;/code&gt; and while &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gPhase&lt;/code&gt; is initialized to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0&lt;/code&gt;.&lt;/p&gt;
 
 &lt;!-- Include for captioned images --&gt;
+
 &lt;div class=&quot;float &quot;&gt;
-  &lt;figure class=&quot;embed picture&quot;&gt;
-    &lt;a href=&quot;#content-sine-png&quot;&gt;
-      &lt;img src=&quot;/GRPH/assets/images//content/sine.png&quot; alt=&quot;A plot of a sine function with its phase normalized to 2π&quot; style=&quot;width: 800px&quot; loading=&quot;lazy&quot; /&gt;
+  &lt;figure class=&quot;embed picture&quot; style=&quot;width: &quot;&gt;
+    
+    &lt;a href=&quot;#sine-png&quot;&gt;
+      &lt;img src=&quot;/GRPH/assets/images/content/sine.png&quot; alt=&quot;A plot of a sine function with its phase normalized to 2π&quot; style=&quot;width: 800px&quot; loading=&quot;lazy&quot; /&gt;
     &lt;/a&gt;
-    &lt;figcaption&gt;A plot of a sine function with its phase normalized to 2π&lt;/figcaption&gt;
+    
+    &lt;figcaption&gt;
+      A plot of a sine function with its phase normalized to 2π
+      
+    &lt;/figcaption&gt;
   &lt;/figure&gt;
-  &lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;content-sine-png&quot;&gt;
-    &lt;img src=&quot;/GRPH/assets/images//content/sine.png&quot; alt=&quot;A plot of a sine function with its phase normalized to 2π&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
+  
+  &lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;sine-png&quot;&gt;
+    &lt;img src=&quot;/GRPH/assets/images/content/sine.png&quot; alt=&quot;A plot of a sine function with its phase normalized to 2π&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
   &lt;/a&gt;
+  
 &lt;/div&gt;
 
 &lt;p&gt;When graphing a periodic (repeating) waveform statically like the image above, phase can be described as the current x-value (between 0-1) of the wave. As the x-value increments, the waveform’s y-value oscillates between -1 and 1. To apply this idea to audio, we have think of x as something that is constantly accumulating between 0-1. This is pretty much what Bela’s example code does.&lt;/p&gt;
@@ -399,20 +586,28 @@ access, it’s also just straight up worse for the environment.&lt;/p&gt;</conte
   &lt;/figure&gt;
 &lt;/div&gt;</content><author><name>Chris Carin</name></author><category term="Misc" /><category term="Music" /><category term="Updates" /><summary type="html">I just wanted to test posting YouTube videos. Here’s one featuring Mr. Funk and possibly John Frusciante.</summary></entry><entry><title type="html">Hello World!</title><link href="http://0.0.0.0:4000/GRPH/misc/2021/10/13/hello-world!.html" rel="alternate" type="text/html" title="Hello World!" /><published>2021-10-13T00:00:00-04:00</published><updated>2021-10-13T00:00:00-04:00</updated><id>http://0.0.0.0:4000/GRPH/misc/2021/10/13/hello-world!</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/misc/2021/10/13/hello-world!.html">&lt;p&gt;Check it out!! It’s my first post!! How cool is that? Comin’ straight from the 647 to the 905 to the 416 etc. I don’t really have much to write about right now. So I guess I’ll just some small updates about what I’ve been up to.&lt;/p&gt;
 
-&lt;p&gt;The &lt;a href=&quot;https://bela.io/&quot;&gt;Bela&lt;/a&gt; development board for my project finally came in. Above is a picture of it. The developers of the board describe it as “an open-source embedded computing platform for creating responsive, real-time interactive systems with audio and sensors”. In laymen terms, essentially it’s single-board computer (think Raspberry Pi) with a programmable cape which specializes in processing signals.&lt;/p&gt;
-
 &lt;!-- Include for captioned images --&gt;
+
 &lt;div class=&quot;float right&quot;&gt;
-  &lt;figure class=&quot;embed picture&quot;&gt;
-    &lt;a href=&quot;#content-bela0-jpg&quot;&gt;
-      &lt;img src=&quot;/GRPH/assets/images//content/bela0.jpg&quot; alt=&quot;The bela board!&quot; style=&quot;width: 360px&quot; loading=&quot;lazy&quot; /&gt;
+  &lt;figure class=&quot;embed picture&quot; style=&quot;width: &quot;&gt;
+    
+    &lt;a href=&quot;#bela0-jpg&quot;&gt;
+      &lt;img src=&quot;/GRPH/assets/images/content/bela0.jpg&quot; alt=&quot;The bela board!&quot; style=&quot;width: 300px&quot; loading=&quot;lazy&quot; /&gt;
     &lt;/a&gt;
-    &lt;figcaption&gt;The bela board!&lt;/figcaption&gt;
+    
+    &lt;figcaption&gt;
+      The bela board!
+      
+    &lt;/figcaption&gt;
   &lt;/figure&gt;
-  &lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;content-bela0-jpg&quot;&gt;
-    &lt;img src=&quot;/GRPH/assets/images//content/bela0.jpg&quot; alt=&quot;The bela board!&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
+  
+  &lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;bela0-jpg&quot;&gt;
+    &lt;img src=&quot;/GRPH/assets/images/content/bela0.jpg&quot; alt=&quot;The bela board!&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
   &lt;/a&gt;
+  
 &lt;/div&gt;
+
+&lt;p&gt;The &lt;a href=&quot;https://bela.io/&quot;&gt;Bela&lt;/a&gt; development board for my project finally came in. Above is a picture of it. The developers of the board describe it as “an open-source embedded computing platform for creating responsive, real-time interactive systems with audio and sensors”. In laymen terms, essentially it’s single-board computer (think Raspberry Pi) with a programmable cape which specializes in processing signals.&lt;/p&gt;
 
 &lt;p&gt;Originally, I was planning on programming the Bela board using PureData. After experimenting a little bit however, I think it might be a better idea to program it in C++. PD patches seem to be a bit heavier on the board in comparison. If I go with the latter route, I’ll probably stick to PD for prototyping signals paths and such.&lt;/p&gt;
 
