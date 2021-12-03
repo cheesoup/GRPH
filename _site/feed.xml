@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://0.0.0.0:4000/GRPH/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://0.0.0.0:4000/GRPH/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/GRPH/" rel="alternate" type="text/html" /><updated>2021-12-03T06:26:03-05:00</updated><id>http://0.0.0.0:4000/GRPH/feed.xml</id><title type="html">thesis? idk?</title><subtitle>a blog for 4th year workshop at OCADU</subtitle><author><name>Chris Carin</name></author><entry><title type="html">Sample Rates &amp;amp; Harmonics</title><link href="http://0.0.0.0:4000/GRPH/audio/2021/11/30/sample-rates-and-harmonics.html" rel="alternate" type="text/html" title="Sample Rates &amp;amp; Harmonics" /><published>2021-11-30T00:00:00-05:00</published><updated>2021-11-30T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/audio/2021/11/30/sample-rates-and-harmonics</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/audio/2021/11/30/sample-rates-and-harmonics.html">&lt;p&gt;Before I continue, I want to disclose that I am not an engineer. I am merely an
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://0.0.0.0:4000/GRPH/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://0.0.0.0:4000/GRPH/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/GRPH/" rel="alternate" type="text/html" /><updated>2021-12-03T06:28:52-05:00</updated><id>http://0.0.0.0:4000/GRPH/feed.xml</id><title type="html">thesis? idk?</title><subtitle>a blog for 4th year workshop at OCADU</subtitle><author><name>Chris Carin</name></author><entry><title type="html">Sample Rates &amp;amp; Harmonics</title><link href="http://0.0.0.0:4000/GRPH/audio/2021/11/30/sample-rates-and-harmonics.html" rel="alternate" type="text/html" title="Sample Rates &amp;amp; Harmonics" /><published>2021-11-30T00:00:00-05:00</published><updated>2021-11-30T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/audio/2021/11/30/sample-rates-and-harmonics</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/audio/2021/11/30/sample-rates-and-harmonics.html">&lt;p&gt;Before I continue, I want to disclose that I am not an engineer. I am merely an
 enthusiast who enjoys synthesis. This information may not be the most correct or
 academically rigorous. Much of what I’m writing about is my own self-educated
 understanding of these subjects. If I do make a mistake, please point it out to
@@ -31,23 +31,19 @@ illustrated by discussing audio sample rates and quality.&lt;/p&gt;
   &lt;figure class=&quot;embed picture&quot; style=&quot;width: &quot;&gt;
     
     &lt;a href=&quot;#digital-wave-png&quot;&gt;
-      &lt;img src=&quot;/GRPH/assets/images/content/digital_wave.png&quot; alt=&quot;Visual
-representation of audio in digital form&quot; style=&quot;width: 500px&quot; loading=&quot;lazy&quot; /&gt;
+      &lt;img src=&quot;/GRPH/assets/images/content/digital_wave.png&quot; alt=&quot;Visual representation of audio in digital form&quot; style=&quot;width: 500px&quot; loading=&quot;lazy&quot; /&gt;
     &lt;/a&gt;
     
     &lt;figcaption&gt;
-      Visual
-representation of audio in digital form
+      Visual representation of audio in digital form
       
-        &lt;br /&gt;(original image:
-http://grahammitchell.com/writings/vorbis_intro.html)
+        &lt;br /&gt;(original image: http://grahammitchell.com/writings/vorbis_intro.html)
       
     &lt;/figcaption&gt;
   &lt;/figure&gt;
   
   &lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;digital-wave-png&quot;&gt;
-    &lt;img src=&quot;/GRPH/assets/images/content/digital_wave.png&quot; alt=&quot;Visual
-representation of audio in digital form&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
+    &lt;img src=&quot;/GRPH/assets/images/content/digital_wave.png&quot; alt=&quot;Visual representation of audio in digital form&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
   &lt;/a&gt;
   
 &lt;/div&gt;
@@ -90,14 +86,14 @@ are benefits to higher rates.&lt;/p&gt;
 &lt;/div&gt;
 
 &lt;p&gt;It’s important to know about sampling rates because sound synthesis is really
-all about harmonic manipulation. To elaborate, I’ve posted two audio examples
-to the left (or above on mobile). One is the sound of a piano, the other is the sound of a
-sine tone slowly fading out. Both examples are playing middle A. If you compare
-the two, it’s easy to distinguish that they sound nothing alike. The reason for
-this is because the relationship of frequencies (aka the harmonics) produced by
-the sound of a piano key is much more complex than a single sine tone. The
-relationship between frequencies produced over time is what defines what is
-traditionally known as an instrument’s timbre.&lt;/p&gt;
+all about harmonic manipulation. To elaborate, I’ve posted two audio examples to
+the left (or above on mobile). One is the sound of a piano, the other is the
+sound of a sine tone slowly fading out. Both examples are playing middle A. If
+you compare the two, it’s easy to distinguish that they sound nothing alike. The
+reason for this is because the relationship of frequencies (aka the harmonics)
+produced by the sound of a piano key is much more complex than a single sine
+tone. The relationship between frequencies produced over time is what defines
+what is traditionally known as an instrument’s timbre.&lt;/p&gt;
 
 &lt;!-- Include for captioned images --&gt;
 
@@ -154,9 +150,12 @@ Nyquist minus the difference of the original frequency and Nyquist.&lt;/p&gt;
 &lt;/div&gt;
 
 &lt;p&gt;To demonstrate foldover, above is an audio example of a naively generated
-sawtooth wave sweeping from 0Hz to 22.05kHz at a sample rate of 44.1kHz. If you pay
-close attention, an FM-like distortion becomes prevalent as the sweep approaches
-Nyquist. To visualize foldover I’ve posted a spectogram of the audio recording below. Notice the how harmonics seem reflect back forth between 0Hz and Nyquist as they fall out of range. While this effect can sound interesting in some situations (I like it on hi-hats), it’s unwanted in most.&lt;/p&gt;
+sawtooth wave sweeping from 0Hz to 22.05kHz at a sample rate of 44.1kHz. If you
+pay close attention, an FM-like distortion becomes prevalent as the sweep
+approaches Nyquist. To visualize foldover I’ve posted a spectogram of the audio
+recording below. Notice the how harmonics seem reflect back forth between 0Hz
+and Nyquist as they fall out of range. While this effect can sound interesting
+in some situations (I like it on hi-hats), it’s unwanted in most.&lt;/p&gt;
 
 &lt;!-- Include for captioned images --&gt;
 
@@ -185,9 +184,12 @@ it’s easy to end up with consistently poor-quality sounds. Even at increased
 sample rates, having harmonic partials which extend infinitely will always
 distort at some point. Unfortunately, the Bela system is only capable of running
 audio processes at 44.1kHz. While this isn’t entirely ideal, there are
-implementable methods to reduce aliasing which I plan to go over in future posts as needed.&lt;/p&gt;
+implementable methods to reduce aliasing which I plan to go over in future posts
+as needed.&lt;/p&gt;
 
-&lt;p&gt;The PureData patch I used to generate the sounds for this post can be found &lt;a href=&quot;/GRPH/assets/other/spec_example.zip&quot;&gt;here&lt;/a&gt;. The piano recording originated from &lt;a href=&quot;https://freesound.org/people/ramas26/sounds/95326/&quot;&gt;freesounds&lt;/a&gt;.&lt;/p&gt;</content><author><name>Chris Carin</name></author><category term="Audio" /><category term="Digital Synths" /><summary type="html">Before I continue, I want to disclose that I am not an engineer. I am merely an enthusiast who enjoys synthesis. This information may not be the most correct or academically rigorous. Much of what I’m writing about is my own self-educated understanding of these subjects. If I do make a mistake, please point it out to me in an email. So, I guess without further ado, here we go…</summary></entry><entry><title type="html">Anatomy of Substractive Synthesizers</title><link href="http://0.0.0.0:4000/GRPH/audio/2021/11/29/basic-anatomy-of-subtractive-synthesizers.html" rel="alternate" type="text/html" title="Anatomy of Substractive Synthesizers" /><published>2021-11-29T00:00:00-05:00</published><updated>2021-11-29T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/audio/2021/11/29/basic-anatomy-of-subtractive-synthesizers</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/audio/2021/11/29/basic-anatomy-of-subtractive-synthesizers.html">&lt;p&gt;This post is still incomplete ):&lt;/p&gt;
+&lt;p&gt;The PureData patch I used to generate the sounds for this post can be found
+&lt;a href=&quot;/GRPH/assets/other/spec_example.zip&quot;&gt;here&lt;/a&gt;. The piano recording originated from
+&lt;a href=&quot;https://freesound.org/people/ramas26/sounds/95326/&quot;&gt;freesounds&lt;/a&gt;.&lt;/p&gt;</content><author><name>Chris Carin</name></author><category term="Audio" /><category term="Digital Synths" /><summary type="html">Before I continue, I want to disclose that I am not an engineer. I am merely an enthusiast who enjoys synthesis. This information may not be the most correct or academically rigorous. Much of what I’m writing about is my own self-educated understanding of these subjects. If I do make a mistake, please point it out to me in an email. So, I guess without further ado, here we go…</summary></entry><entry><title type="html">Anatomy of Substractive Synthesizers</title><link href="http://0.0.0.0:4000/GRPH/audio/2021/11/29/basic-anatomy-of-subtractive-synthesizers.html" rel="alternate" type="text/html" title="Anatomy of Substractive Synthesizers" /><published>2021-11-29T00:00:00-05:00</published><updated>2021-11-29T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/audio/2021/11/29/basic-anatomy-of-subtractive-synthesizers</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/audio/2021/11/29/basic-anatomy-of-subtractive-synthesizers.html">&lt;p&gt;This post is still incomplete ):&lt;/p&gt;
 
 &lt;p&gt;Despite the ever growing list of ways to form sound, I still find the traditional method of subtractive synthesis to be the most intuitive. What keeps me coming back something like the &lt;a href=&quot;https://www.arturia.com/products/hardware-synths/microfreak/overview&quot;&gt;Microfreak&lt;/a&gt;, is how simple it is to get it sounding anyway you want.&lt;/p&gt;</content><author><name>Chris Carin</name></author><category term="Audio" /><category term="Digital Synths" /><summary type="html">This post is still incomplete ):</summary></entry><entry><title type="html">The Web is Obese</title><link href="http://0.0.0.0:4000/GRPH/website/2021/11/20/the-web-is-obese.html" rel="alternate" type="text/html" title="The Web is Obese" /><published>2021-11-20T00:00:00-05:00</published><updated>2021-11-20T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/website/2021/11/20/the-web-is-obese</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/website/2021/11/20/the-web-is-obese.html">&lt;p&gt;Despite what minimalist trends prevalent throughout the tech industries may have
 you believe, today’s modern web is very bloated. Just &lt;a href=&quot;https://www.wired.com/2016/04/average-webpage-now-size-original-doom/&quot;&gt;5 years

@@ -108,23 +108,19 @@ illustrated by discussing audio sample rates and quality.</p>
   <figure class="embed picture" style="width: ">
     
     <a href="#digital-wave-png">
-      <img src="/GRPH/assets/images/content/digital_wave.png" alt="Visual
-representation of audio in digital form" style="width: 500px" loading="lazy" />
+      <img src="/GRPH/assets/images/content/digital_wave.png" alt="Visual representation of audio in digital form" style="width: 500px" loading="lazy" />
     </a>
     
     <figcaption>
-      Visual
-representation of audio in digital form
+      Visual representation of audio in digital form
       
-        <br />(original image:
-http://grahammitchell.com/writings/vorbis_intro.html)
+        <br />(original image: http://grahammitchell.com/writings/vorbis_intro.html)
       
     </figcaption>
   </figure>
   
   <a href="#/" class="expand" id="digital-wave-png">
-    <img src="/GRPH/assets/images/content/digital_wave.png" alt="Visual
-representation of audio in digital form" style="background-image: url('/GRPH/assets/images/transparent.gif')" loading="lazy" />
+    <img src="/GRPH/assets/images/content/digital_wave.png" alt="Visual representation of audio in digital form" style="background-image: url('/GRPH/assets/images/transparent.gif')" loading="lazy" />
   </a>
   
 </div>
@@ -167,14 +163,14 @@ are benefits to higher rates.</p>
 </div>
 
 <p>It’s important to know about sampling rates because sound synthesis is really
-all about harmonic manipulation. To elaborate, I’ve posted two audio examples
-to the left (or above on mobile). One is the sound of a piano, the other is the sound of a
-sine tone slowly fading out. Both examples are playing middle A. If you compare
-the two, it’s easy to distinguish that they sound nothing alike. The reason for
-this is because the relationship of frequencies (aka the harmonics) produced by
-the sound of a piano key is much more complex than a single sine tone. The
-relationship between frequencies produced over time is what defines what is
-traditionally known as an instrument’s timbre.</p>
+all about harmonic manipulation. To elaborate, I’ve posted two audio examples to
+the left (or above on mobile). One is the sound of a piano, the other is the
+sound of a sine tone slowly fading out. Both examples are playing middle A. If
+you compare the two, it’s easy to distinguish that they sound nothing alike. The
+reason for this is because the relationship of frequencies (aka the harmonics)
+produced by the sound of a piano key is much more complex than a single sine
+tone. The relationship between frequencies produced over time is what defines
+what is traditionally known as an instrument’s timbre.</p>
 
 <!-- Include for captioned images -->
 
@@ -231,9 +227,12 @@ Nyquist minus the difference of the original frequency and Nyquist.</p>
 </div>
 
 <p>To demonstrate foldover, above is an audio example of a naively generated
-sawtooth wave sweeping from 0Hz to 22.05kHz at a sample rate of 44.1kHz. If you pay
-close attention, an FM-like distortion becomes prevalent as the sweep approaches
-Nyquist. To visualize foldover I’ve posted a spectogram of the audio recording below. Notice the how harmonics seem reflect back forth between 0Hz and Nyquist as they fall out of range. While this effect can sound interesting in some situations (I like it on hi-hats), it’s unwanted in most.</p>
+sawtooth wave sweeping from 0Hz to 22.05kHz at a sample rate of 44.1kHz. If you
+pay close attention, an FM-like distortion becomes prevalent as the sweep
+approaches Nyquist. To visualize foldover I’ve posted a spectogram of the audio
+recording below. Notice the how harmonics seem reflect back forth between 0Hz
+and Nyquist as they fall out of range. While this effect can sound interesting
+in some situations (I like it on hi-hats), it’s unwanted in most.</p>
 
 <!-- Include for captioned images -->
 
@@ -262,9 +261,12 @@ it’s easy to end up with consistently poor-quality sounds. Even at increased
 sample rates, having harmonic partials which extend infinitely will always
 distort at some point. Unfortunately, the Bela system is only capable of running
 audio processes at 44.1kHz. While this isn’t entirely ideal, there are
-implementable methods to reduce aliasing which I plan to go over in future posts as needed.</p>
+implementable methods to reduce aliasing which I plan to go over in future posts
+as needed.</p>
 
-<p>The PureData patch I used to generate the sounds for this post can be found <a href="/GRPH/assets/other/spec_example.zip">here</a>. The piano recording originated from <a href="https://freesound.org/people/ramas26/sounds/95326/">freesounds</a>.</p>
+<p>The PureData patch I used to generate the sounds for this post can be found
+<a href="/GRPH/assets/other/spec_example.zip">here</a>. The piano recording originated from
+<a href="https://freesound.org/people/ramas26/sounds/95326/">freesounds</a>.</p>
 
 
 <!-- Grab previous and next post from category -->
@@ -305,6 +307,14 @@ implementable methods to reduce aliasing which I plan to go over in future posts
     
     <ul>
       <li>
+        <a href="/GRPH/audio/2021/11/29/basic-anatomy-of-subtractive-synthesizers.html">
+          Anatomy of Substractive Synthesizers
+        </a>
+      </li>
+    </ul>
+    
+    <ul>
+      <li>
         <a href="/GRPH/audio/2021/10/14/fft_grainspec.html">
           FFT Spectral Granulator
         </a>
@@ -315,14 +325,6 @@ implementable methods to reduce aliasing which I plan to go over in future posts
       <li>
         <a href="/GRPH/audio/2021/10/26/coding-on-bela.html">
           Coding on bela
-        </a>
-      </li>
-    </ul>
-    
-    <ul>
-      <li>
-        <a href="/GRPH/audio/2021/11/29/basic-anatomy-of-subtractive-synthesizers.html">
-          Anatomy of Substractive Synthesizers
         </a>
       </li>
     </ul>

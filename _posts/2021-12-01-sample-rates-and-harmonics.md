@@ -33,9 +33,7 @@ this project. It’s important to note how I’m generating these signals becaus
 signals in the digital domain are discrete. What I mean by discrete is best
 illustrated by discussing audio sample rates and quality.
 
-{% include image.html url='digital_wave.png' caption='Visual
-representation of audio in digital form' width='500px' extra='(original image:
-http://grahammitchell.com/writings/vorbis_intro.html)' %}
+{% include image.html url='digital_wave.png' caption='Visual representation of audio in digital form' width='500px' extra='(original image: http://grahammitchell.com/writings/vorbis_intro.html)' %}
 
 If you’ve heard of the term CD quality, you may also be aware that like digital
 images, digital audio has resolution. Rather than RGB values within a grid of
@@ -61,14 +59,14 @@ are benefits to higher rates.
 {% include audio.html source=audiofiles type='mp3' caption='A piano (above) and a sine tone (below) playing middle A (440Hz)' float='right' width='50%' %}
 
 It's important to know about sampling rates because sound synthesis is really
-all about harmonic manipulation. To elaborate, I’ve posted two audio examples
-to the left (or above on mobile). One is the sound of a piano, the other is the sound of a
-sine tone slowly fading out. Both examples are playing middle A. If you compare
-the two, it’s easy to distinguish that they sound nothing alike. The reason for
-this is because the relationship of frequencies (aka the harmonics) produced by
-the sound of a piano key is much more complex than a single sine tone. The
-relationship between frequencies produced over time is what defines what is
-traditionally known as an instrument’s timbre.
+all about harmonic manipulation. To elaborate, I’ve posted two audio examples to
+the left (or above on mobile). One is the sound of a piano, the other is the
+sound of a sine tone slowly fading out. Both examples are playing middle A. If
+you compare the two, it’s easy to distinguish that they sound nothing alike. The
+reason for this is because the relationship of frequencies (aka the harmonics)
+produced by the sound of a piano key is much more complex than a single sine
+tone. The relationship between frequencies produced over time is what defines
+what is traditionally known as an instrument’s timbre.
 
 {% assign imgfiles = "pianospek.png, sinespek.png" | split: ", " %}
 {% include image.html url=imgfiles caption='The frequency spectrum of a piano (left) and a sine tone (right) playing middle A (440Hz)' width='300px' %}
@@ -89,9 +87,12 @@ Nyquist minus the difference of the original frequency and Nyquist.
 {% include audio.html source='saw_sweep.mp3' type='mp3' caption='Sawtooth sweep from 0Hz to 22.05kHz and back at a sampling rate of 44.1kHz' %}
 
 To demonstrate foldover, above is an audio example of a naively generated
-sawtooth wave sweeping from 0Hz to 22.05kHz at a sample rate of 44.1kHz. If you pay
-close attention, an FM-like distortion becomes prevalent as the sweep approaches
-Nyquist. To visualize foldover I've posted a spectogram of the audio recording below. Notice the how harmonics seem reflect back forth between 0Hz and Nyquist as they fall out of range. While this effect can sound interesting in some situations (I like it on hi-hats), it’s unwanted in most.
+sawtooth wave sweeping from 0Hz to 22.05kHz at a sample rate of 44.1kHz. If you
+pay close attention, an FM-like distortion becomes prevalent as the sweep
+approaches Nyquist. To visualize foldover I've posted a spectogram of the audio
+recording below. Notice the how harmonics seem reflect back forth between 0Hz
+and Nyquist as they fall out of range. While this effect can sound interesting
+in some situations (I like it on hi-hats), it’s unwanted in most.
 
 {% include image.html url='saw_sweep_spek.png' caption='Spectogram of the above example' width='600px' %}
 
@@ -101,6 +102,9 @@ it’s easy to end up with consistently poor-quality sounds. Even at increased
 sample rates, having harmonic partials which extend infinitely will always
 distort at some point. Unfortunately, the Bela system is only capable of running
 audio processes at 44.1kHz. While this isn’t entirely ideal, there are
-implementable methods to reduce aliasing which I plan to go over in future posts as needed.
+implementable methods to reduce aliasing which I plan to go over in future posts
+as needed.
 
-The PureData patch I used to generate the sounds for this post can be found [here](/GRPH/assets/other/spec_example.zip). The piano recording originated from [freesounds](https://freesound.org/people/ramas26/sounds/95326/).
+The PureData patch I used to generate the sounds for this post can be found
+[here](/GRPH/assets/other/spec_example.zip). The piano recording originated from
+[freesounds](https://freesound.org/people/ramas26/sounds/95326/).
