@@ -101,7 +101,6 @@ it’s easy to end up with consistently poor-quality sounds. Even at increased
 sample rates, having harmonic partials which extend infinitely will always
 distort at some point. Unfortunately, the Bela system is only capable of running
 audio processes at 44.1kHz. While this isn’t entirely ideal, there are
-implementable methods to reduce aliasing which I plan to go over in my next post
-about oscillators.
+implementable methods to reduce aliasing which I plan to go over in future posts as needed.
 
 The PureData patch I used to generate the sounds for this post can be found [here](/GRPH/assets/other/spec_example.zip). The piano recording originated from [freesounds](https://freesound.org/people/ramas26/sounds/95326/).
