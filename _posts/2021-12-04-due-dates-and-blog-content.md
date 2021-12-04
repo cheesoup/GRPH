@@ -17,7 +17,7 @@ I don't think I'm going to be able to write all of the content I would like befo
 
 I realize now that it's really hard to describe signal processing related things without falling back on jargon. I guess I take for granted how much I've internalized a lot of the terminology I would read about while obsessively researching things. It also doesn't help that I feel like I struggle with writing in general. Even with this post I'm, constantly editing myself while I write. It's making it take forever to actually finish. It's horrible.
 
-Honestly, I don't even think the amount content I have right now is bad. It's just not everything I have to talk about which I feel is a little disappointing. Either way, if I fail to get these posts up by 8th, I think I can at least get them written within the week of. The nice thing about a blog is that it can always be updated after the fact.
+Honestly, I don't even think the amount content I have right now is bad. It's just not everything I have to talk about which I feel is a little disappointing. Either way, if I fail to get these posts up by the 8th, I think I can at least get them written within the week of. The nice thing about blogs is that it can always be updated after the fact.
 
 Anyways, here's some Sade. If you don't like this song, your life choices are incorrect.
 {% include youtube.html id='MmOau-PMWJk' caption="sade is waifu" %}
