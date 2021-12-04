@@ -1,29 +1,130 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://0.0.0.0:4000/GRPH/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://0.0.0.0:4000/GRPH/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/GRPH/" rel="alternate" type="text/html" /><updated>2021-12-03T06:28:52-05:00</updated><id>http://0.0.0.0:4000/GRPH/feed.xml</id><title type="html">thesis? idk?</title><subtitle>a blog for 4th year workshop at OCADU</subtitle><author><name>Chris Carin</name></author><entry><title type="html">Sample Rates &amp;amp; Harmonics</title><link href="http://0.0.0.0:4000/GRPH/audio/2021/11/30/sample-rates-and-harmonics.html" rel="alternate" type="text/html" title="Sample Rates &amp;amp; Harmonics" /><published>2021-11-30T00:00:00-05:00</published><updated>2021-11-30T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/audio/2021/11/30/sample-rates-and-harmonics</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/audio/2021/11/30/sample-rates-and-harmonics.html">&lt;p&gt;Before I continue, I want to disclose that I am not an engineer. I am merely an
-enthusiast who enjoys synthesis. This information may not be the most correct or
-academically rigorous. Much of what I’m writing about is my own self-educated
-understanding of these subjects. If I do make a mistake, please point it out to
-me in an email. So, I guess without further ado, &lt;em&gt;here we go…&lt;/em&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://0.0.0.0:4000/GRPH/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://0.0.0.0:4000/GRPH/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/GRPH/" rel="alternate" type="text/html" /><updated>2021-12-04T05:34:46-05:00</updated><id>http://0.0.0.0:4000/GRPH/feed.xml</id><title type="html">thesis? idk?</title><subtitle>a blog for 4th year workshop at OCADU</subtitle><author><name>Chris Carin</name></author><entry><title type="html">Anatomy of Subtractive Synths Pt. I - Audio Signal Paths</title><link href="http://0.0.0.0:4000/GRPH/audio/2021/12/03/audio-signal-paths.html" rel="alternate" type="text/html" title="Anatomy of Subtractive Synths Pt. I - Audio Signal Paths" /><published>2021-12-03T00:00:00-05:00</published><updated>2021-12-03T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/audio/2021/12/03/audio-signal-paths</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/audio/2021/12/03/audio-signal-paths.html">&lt;!-- Include for captioned images --&gt;
 
-&lt;p&gt;When working with sound on computers, it’s useful to become acquainted with how
-digital signals work. A signal is a function which varies over an independent
-variable (normally time). Sound can be thought of as a signal created through
-variations in air pressure over time. When we hear something, what we’re really
-sensing is physical vibration. When an audio waveform is drawn on screen, that
-vibration is what is represented.&lt;/p&gt;
+&lt;div class=&quot;float &quot;&gt;
+  &lt;figure class=&quot;embed picture&quot; style=&quot;width: &quot;&gt;
+    
+    &lt;a href=&quot;#micron-signalpath-png&quot;&gt;
+      &lt;img src=&quot;/GRPH/assets/images/content/micron_signalpath.png&quot; alt=&quot;Signal path for the Alesis Micron&quot; style=&quot;width: 500px&quot; loading=&quot;lazy&quot; /&gt;
+    &lt;/a&gt;
+    
+    &lt;figcaption&gt;
+      Signal path for the Alesis Micron
+      
+    &lt;/figcaption&gt;
+  &lt;/figure&gt;
+  
+  &lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;micron-signalpath-png&quot;&gt;
+    &lt;img src=&quot;/GRPH/assets/images/content/micron_signalpath.png&quot; alt=&quot;Signal path for the Alesis Micron&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
+  &lt;/a&gt;
+  
+&lt;/div&gt;
 
-&lt;p&gt;Electric and electronic devices normally produce sound using speakers. When a
-device is wired to a speaker through something like an AUX cable, it is sending
-an electrical signal to drive the speaker’s diaphragm. When the audio signal
-reaches the speaker, a motor within it converts the signal into mechanical
-vibrations based on the voltage level. These vibrations create changes in air
-pressure to produce sound.&lt;/p&gt;
+&lt;p&gt;As mentioned in my previous post, sound can be thought of as a signal. Synthesizers make the most of this fact by producing sound through the manipulation of signals. Despite the countless methods to manipulate signals, most synthesizers on the market follow a similar structure when it comes to the components that make it up. As a culmination of audio processes, most synthesizers can be can be described with the following signal path: &lt;strong&gt;Generator -&amp;gt; Filter -&amp;gt; Output&lt;/strong&gt;.&lt;/p&gt;
 
-&lt;p&gt;To produce audio through a speaker, all that’s needed is an electrical signal
-strong enough to drive it. As mentioned in a previous post, I’m using a single
-board computer with a dedicated sound capelet to generate the audio signals for
-this project. It’s important to note how I’m generating these signals because
-signals in the digital domain are discrete. What I mean by discrete is best
-illustrated by discussing audio sample rates and quality.&lt;/p&gt;
+&lt;p&gt;This architecture is the basis of something called subtractive synthesis. It was initially popularized in the 70s by synthesizers like the &lt;a href=&quot;https://www.vintagesynth.com/moog/moog.php&quot;&gt;MiniMoog&lt;/a&gt;, the &lt;a href=&quot;https://www.vintagesynth.com/oberheim/obxa.php&quot;&gt;OB-Xa&lt;/a&gt;, and the &lt;a href=&quot;https://www.vintagesynth.com/korg/ms20.php&quot;&gt;MS-20&lt;/a&gt;. The idea behind subtractive synthesis is to take an already harmonically rich sound source and to sculpt it by attenuating it’s amplitude and frequency components overtime. Even though this architecture is catered towards a specific method of synthesis, this signal path is not limited to it. Because of its flexibility, most synths nowadays follow a similar architecture. The point of deviation is normally within the design of the generator and/or the filter.&lt;/p&gt;
+
+&lt;p&gt;Traditionally, synthesizers like the MiniMoog were implemented with analog circuits. In contrast, my project is trying to emulate similar processes in a digital manner. To better understand these processes, I’m dedicating this post to briefly go over the standard audio processing components of a synthesizer mentioned above.&lt;/p&gt;
+
+&lt;h2 id=&quot;generators&quot;&gt;Generators&lt;/h2&gt;
+
+&lt;!-- Include for captioned images --&gt;
+
+&lt;div class=&quot;float right&quot;&gt;
+  &lt;figure class=&quot;embed picture&quot; style=&quot;width: &quot;&gt;
+    
+    &lt;a href=&quot;#waveform-gif&quot;&gt;
+      &lt;img src=&quot;/GRPH/assets/images/content/waveform.gif&quot; alt=&quot;Basic Wave Shapes&quot; style=&quot;width: 180px&quot; loading=&quot;lazy&quot; /&gt;
+    &lt;/a&gt;
+    
+    &lt;figcaption&gt;
+      Basic Wave Shapes
+      
+    &lt;/figcaption&gt;
+  &lt;/figure&gt;
+  
+  &lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;waveform-gif&quot;&gt;
+    &lt;img src=&quot;/GRPH/assets/images/content/waveform.gif&quot; alt=&quot;Basic Wave Shapes&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
+  &lt;/a&gt;
+  
+&lt;/div&gt;
+
+&lt;p&gt;As the name implies, a generator is a function which generates a signal. Normally synths use oscillators as a primary source of generation. Oscillators are functions that produce periodic (repeating) signals such as sine waves and sawtooth waves, as mentioned in previous posts. The parameters of an oscillator normally control its shape and relative pitch. What these parameters are vary depending on design on the oscillator. Oscillators are not necessarily limited to basic wave shapes. They can really take any complex shape a user desires, though it’s important to keep aliasing in mind when creating custom wave shapes. An example of a non-standard oscillator would be the &lt;a href=&quot;/GRPH/audio/2021/10/14/fft_grainspec.html&quot;&gt;time-stretching phase vocoder&lt;/a&gt; I put together in Pd.&lt;/p&gt;
+
+&lt;p&gt;Though most use one or more oscillators as a generator, there are synths out there which don’t use any sort of periodic function generator. A common example are synths which use pre-recorded sounds as their audio generation source such as the &lt;a href=&quot;https://www.soundonsound.com/reviews/mellotron-mkvi&quot;&gt;Mellotron&lt;/a&gt;. These kinds of instruments often border on sampler territory in their feature set and capabilities. A less common method of non-periodic audio generation is through use of digital waveguides to emulate physical models. A very basic example of this would be the &lt;a href=&quot;https://ccrma.stanford.edu/~jos/pasp/Karplus_Strong_Algorithm.html&quot;&gt;Karplus-Strong algorithm&lt;/a&gt;. This territory is a bit beyond the scope of this project so I won’t talk about it much. Instead, I offer &lt;a href=&quot;https://www.youtube.com/watch?v=ppx72p27JNU&quot;&gt;this&lt;/a&gt; video for more information if you’re interested. I may talk about Karplus-Strong later however.&lt;/p&gt;
+
+&lt;h2 id=&quot;filters&quot;&gt;Filters&lt;/h2&gt;
+
+&lt;p&gt;Filters are functions which are used to alter the phase and/or frequency components within a signal. While there many different types of filters, the ones most commonly found on synthesizers are low-pass, high-pass, and band-pass. The function of these filters can more or less be deduced by their name.&lt;/p&gt;
+
+&lt;!-- Include for captioned images --&gt;
+
+&lt;div class=&quot;float &quot;&gt;
+  &lt;figure class=&quot;embed picture&quot; style=&quot;width: &quot;&gt;
+    
+    &lt;a href=&quot;#filter-types-jpg&quot;&gt;
+      &lt;img src=&quot;/GRPH/assets/images/content/filter_types.jpg&quot; alt=&quot;Basic Filter Types&quot; style=&quot;width: &quot; loading=&quot;lazy&quot; /&gt;
+    &lt;/a&gt;
+    
+    &lt;figcaption&gt;
+      Basic Filter Types
+      
+    &lt;/figcaption&gt;
+  &lt;/figure&gt;
+  
+  &lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;filter-types-jpg&quot;&gt;
+    &lt;img src=&quot;/GRPH/assets/images/content/filter_types.jpg&quot; alt=&quot;Basic Filter Types&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
+  &lt;/a&gt;
+  
+&lt;/div&gt;
+
+&lt;p&gt;A low-pass attenuates frequencies above a given cutoff frequency, only allowing lower frequencies through. A high-pass does the opposite. These two filters are normally controlled by a cutoff and resonance parameters. Cutoff controls the maximum/minimum frequency to be passed by filter. Resonance controls amplitude gain at the cutoff point.&lt;/p&gt;
+
+&lt;p&gt;A band-pass attenuates frequencies the further away they are from a set center band. They can be thought of as the combination of both a highpass and lowpass filter. Band-pass filters are normally controlled using a center and Q parameter. The center controls the center of the passband, while the q controls the passband’s width.&lt;/p&gt;
+
+&lt;p&gt;Less commonly found on synthesizers are band-stop (aka notch) filters. Band-stops attenuate frequencies the closer they are to a given frequency band. They can be thought of as the inverse of a band-pass. Other kinds of filters include shelving, peaking, all-pass, and comb filters. The first two are normally found in EQs, while the latter two are normally used as diffusers and resonators for delay type effects. I won’t go in detail about the frequency response of these filters, but do know they exist. I may or may not elaborate on them later if needed.&lt;/p&gt;
+
+&lt;h2 id=&quot;output&quot;&gt;Output&lt;/h2&gt;
+
+&lt;p&gt;Prior to output, a synthesizer typically has a time-varying amplifier for controlling the output level of the instrument. Typically, this amplifier is controlled by a separate signal known as an envelope. I’ll talk about it more in part two of this post, but an envelope is a signal used to define the value of a parameter over time. In the case of the output amplifier, it is used to define a sound’s output level over time.&lt;/p&gt;
+
+&lt;p&gt;Beyond level controls, some synthesizers offer on-board effects such as distortions, delays, choruses, and reverbs. I’m not sure if I’ll have time or system resources to handle such processes, but if I do manage to implement any of these things, I’ll definitely write a post elaborating on how so-and-so effect works.&lt;/p&gt;
+
+&lt;h2 id=&quot;parameters-and-control-signals&quot;&gt;Parameters and Control Signals&lt;/h2&gt;
+
+&lt;p&gt;One of the most powerful features of many synthesizers is their ability to vary the parameters over time. I mentioned in the previous section how the amplifier on the output of most audio paths is normally automated by a control signal. A lot of synths will actually allow you to apply the exact same type of automation to whatever parameter you want. In my next post, I plan to go over how these automation signals work and the kind of effects you can get by applying them to some of the parameters mentioned above.&lt;/p&gt;</content><author><name>Chris Carin</name></author><category term="Audio" /><category term="Digital Synths" /><summary type="html">Signal path for the Alesis Micron</summary></entry><entry><title type="html">sade is waifu</title><link href="http://0.0.0.0:4000/GRPH/misc/2021/12/03/sade-is-waifu.html" rel="alternate" type="text/html" title="sade is waifu" /><published>2021-12-03T00:00:00-05:00</published><updated>2021-12-03T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/misc/2021/12/03/sade-is-waifu</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/misc/2021/12/03/sade-is-waifu.html">&lt;!-- Include Video Embedding --&gt;
+&lt;!-- https://github.com/nathancy/jekyll-embed-video#responsive-videos --&gt;
+&lt;div class=&quot;float&quot;&gt;
+  &lt;figure class=&quot;embed video&quot;&gt;
+    &lt;span class=&quot;video&quot;&gt;
+      &lt;iframe style=&quot;width:100%; height:100%;&quot; src=&quot;https://www.youtube.com/embed/MmOau-PMWJk&quot; loading=&quot;lazy&quot; allowfullscreen=&quot;&quot;&gt;
+      &lt;/iframe&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;caption&quot;&gt;sade is waifu&lt;/figcaption&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;</content><author><name>Chris Carin</name></author><category term="Misc" /><category term="sade is waifu" /><category term="Music" /><summary type="html">sade is waifu</summary></entry><entry><title type="html">Due Dates and Blog Content</title><link href="http://0.0.0.0:4000/GRPH/misc/2021/12/03/due-dates-and-blog-content.html" rel="alternate" type="text/html" title="Due Dates and Blog Content" /><published>2021-12-03T00:00:00-05:00</published><updated>2021-12-03T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/misc/2021/12/03/due-dates-and-blog-content</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/misc/2021/12/03/due-dates-and-blog-content.html">&lt;p&gt;&lt;strong&gt;TLDR:&lt;/strong&gt; I have too much stuff to write about and not enough time. In case I don’t finish, below is list of posts I still have drafted up. You can refer to this list for updates on these unfinished drafts. My goal is get all these up within a week of submission day at least.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Drafts that haven’t been posted yet:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Anatomy of Subtractive Synths Pt. II&lt;/li&gt;
+  &lt;li&gt;Code Overview: Oscillators&lt;/li&gt;
+  &lt;li&gt;Code Overview: Delays&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;I don’t think I’m going to be able to write all of the content I would like before Dec. 8th. Unfortunately, I have an essay due for another class on the exact same day. My goal for now is to finish my overview on synth anatomy and then quickly write about the code and design decisions I have finalized. While I do have a functioning synth engine on Bela, a lot of it is still underdeveloped and not exactly ready to be shared. The only things which have been finalized so far are the oscillators, the delay section, and the overall signal path (minus the effects). The latter of these topic doesn’t really require any sort code breakdown to explain thankfully.&lt;/p&gt;
+
+&lt;p&gt;I realize now that it’s really hard to describe signal processing related things without falling back on jargon. I guess I take for granted how much I’ve internalized a lot of the terminology I would read about while obsessively researching things. It also doesn’t help that I feel like I struggle with writing in general. Even with this post I’m, constantly editing myself while I write. It’s making it take forever to actually finish. It’s horrible.&lt;/p&gt;
+
+&lt;p&gt;Honestly, I don’t even think the amount content I have right now is bad. It’s just not everything I have to talk about which I feel is a little disappointing. Anyways, if I fail to get these posts up by 8th, I think I can at least get them written within the week of. The nice thing about a blog is that it can always updated after the fact.&lt;/p&gt;</content><author><name>Chris Carin</name></author><category term="Misc" /><category term="Updates" /><summary type="html">TLDR: I have too much stuff to write about and not enough time. In case I don’t finish, below is list of posts I still have drafted up. You can refer to this list for updates on these unfinished drafts. My goal is get all these up within a week of submission day at least.</summary></entry><entry><title type="html">Sampling Rates &amp;amp; Harmonics</title><link href="http://0.0.0.0:4000/GRPH/audio/2021/11/29/sample-rates-and-harmonics.html" rel="alternate" type="text/html" title="Sampling Rates &amp;amp; Harmonics" /><published>2021-11-29T00:00:00-05:00</published><updated>2021-11-29T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/audio/2021/11/29/sample-rates-and-harmonics</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/audio/2021/11/29/sample-rates-and-harmonics.html">&lt;p&gt;Before I continue, I want to disclose that I am not an engineer. I am merely an enthusiast who enjoys synthesis. This information may not be the most correct or academically rigorous. Much of what I’m writing about is my own self-educated understanding of these subjects. If I do make a mistake, please point it out to me in an email. So, I guess without further ado, &lt;em&gt;here we go…&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;When working with sound on computers, it’s useful to become acquainted with how digital signals work. A signal is a function which varies over an independent variable (normally time). Sound can be thought of as a signal created through variations in air pressure over time. When we hear something, what we’re really sensing is physical vibration. When an audio waveform is drawn on screen, that vibration is what is represented.&lt;/p&gt;
+
+&lt;p&gt;Electric and electronic devices normally produce sound using speakers. When a device is wired to a speaker through something like an AUX cable, it is sending a control signal to drive a speaker’s diaphragm. When such a signal reaches a speaker, an electromagnetic motor converts the signal into mechanical vibrations based on its voltage level. These vibrations create changes in air pressure to produce sound. This is of course a very abridged version of speakers work, but for our purposes it’s all we need to know. If you want to read more about speakers &lt;a href=&quot;https://animagraffs.com/loudspeaker/&quot;&gt;this page&lt;/a&gt; is pretty informative (warning: it contains a large infographic).&lt;/p&gt;
+
+&lt;p&gt;To produce audio through a speaker, all that’s needed is an electrical signal strong enough to drive diaphragm. As mentioned in a previous post, I’m using a single board computer with a dedicated sound capelet to generate the audio signals for this project. It’s important to note how I’m generating these signals because signals in the digital domain are discrete. What I mean by discrete is best illustrated by discussing audio sample rates and quality.&lt;/p&gt;
+
+&lt;h2 id=&quot;whats-a-discrete-signal&quot;&gt;What’s a Discrete Signal?&lt;/h2&gt;
+
+&lt;p&gt;If you’ve heard of the term &lt;a href=&quot;https://blog.discmakers.com/2019/06/cds-just-sound-better/&quot;&gt;CD quality&lt;/a&gt;, you may also be aware that like digital images, digital audio has resolution. Rather than RGB values within a grid of pixels, digital audio can be thought of as a sequence of voltage levels over time. Each value in the sequence is known as a sample. When a digital device plays back audio, it runs through thousands of samples at a fixed rate to produce a composite signal for a speaker to convert into sound.&lt;/p&gt;
 
 &lt;!-- Include for captioned images --&gt;
 
@@ -48,25 +149,11 @@ illustrated by discussing audio sample rates and quality.&lt;/p&gt;
   
 &lt;/div&gt;
 
-&lt;p&gt;If you’ve heard of the term CD quality, you may also be aware that like digital
-images, digital audio has resolution. Rather than RGB values within a grid of
-pixels, digital audio can be thought of as a sequence of voltage levels over
-time. Each value in the sequence is known as a sample. When a digital device
-plays back audio, it runs through thousands of samples at a fixed rate to
-produce a composite signal for a speaker to convert into sound. This means that
-unlike their physical and analog counterparts, signals produced through digital
-means cannot be continuous. This is basically what a discrete signal is. Between
-each sample, the output voltage remains a static value.&lt;/p&gt;
+&lt;p&gt;Unlike their physical and analog counterparts, signals produced through digital means cannot have continuous fidelity. Rather, digital signals can be thought of as a countable series of states. This is basically what I mean when I use the term discrete. Think of it this way: when working with print, graphic designers often use units of length such as inches or millimeters as measurements of size. When designing for the digital domain however, graphic designers will instead measure by pixel. Conceptually, pixels and units of length are completely different. While there is such a thing as a fraction of an inch, there is no such thing as a fraction of a pixel. This same concept can be applied to sound by viewing audio signals as a function over time. Rather than counting by seconds however, we are instead counting by samples.&lt;/p&gt;
 
-&lt;p&gt;Because of its discrete nature, there is a limited range of frequencies that a
-digital signal can reproduce accurately. Sampling theorem states that the
-highest frequency a discrete system can represent is equal to the system’s
-sampling rate divided by 2. CD quality’s sampling rate is 44.1kHz, therefore the
-highest representable frequency at CD quality is 22.05kHz. This maximum
-frequency is known as the Nyquist Frequency (or just Nyquist for short). Since
-the range of human hearing is between 20Hz-20kHz, CD quality is more than
-sufficient for casually playing back audio. For digital synthesis however, there
-are benefits to higher rates.&lt;/p&gt;
+&lt;p&gt;Because of its discrete nature, there is a limited range of frequencies that a digital signal can reproduce accurately. &lt;a href=&quot;https://mathworld.wolfram.com/SamplingTheorem.html&quot;&gt;Sampling theorem&lt;/a&gt; states that the highest frequency a discrete system can represent is equal to the system’s sampling rate divided by 2. CD quality’s sampling rate is 44.1kHz, therefore the highest representable frequency at CD quality is 22.05kHz. This maximum frequency is known as the &lt;a href=&quot;https://mathworld.wolfram.com/NyquistFrequency.html&quot;&gt;Nyquist Frequency&lt;/a&gt; (or just Nyquist for short). Since the range of human hearing is between 20Hz-20kHz, CD quality is more than sufficient for casually playing back audio. For digital synthesis however, there are benefits to higher rates.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-relationship-between-timbre-and-sample-rate&quot;&gt;The Relationship between Timbre and Sample Rate&lt;/h2&gt;
 
 &lt;div class=&quot;float right&quot;&gt;
   &lt;figure class=&quot;embed audio&quot;&gt;
@@ -85,15 +172,7 @@ are benefits to higher rates.&lt;/p&gt;
   &lt;/figure&gt;
 &lt;/div&gt;
 
-&lt;p&gt;It’s important to know about sampling rates because sound synthesis is really
-all about harmonic manipulation. To elaborate, I’ve posted two audio examples to
-the left (or above on mobile). One is the sound of a piano, the other is the
-sound of a sine tone slowly fading out. Both examples are playing middle A. If
-you compare the two, it’s easy to distinguish that they sound nothing alike. The
-reason for this is because the relationship of frequencies (aka the harmonics)
-produced by the sound of a piano key is much more complex than a single sine
-tone. The relationship between frequencies produced over time is what defines
-what is traditionally known as an instrument’s timbre.&lt;/p&gt;
+&lt;p&gt;It’s important to know about sampling rates because sound synthesis is really all about harmonic manipulation. To elaborate, I’ve posted two audio examples to the left (or above on mobile). One is the sound of a piano, the other is the sound of a sine tone slowly fading out. Both examples are playing middle A. If you compare the two, it’s easy to distinguish that they sound nothing alike. The reason for this is because the relationship of frequencies (aka the harmonics) produced by the sound of a piano key is much more complex than a single sine tone. The relationship between frequencies produced over time is what defines what is traditionally known as an instrument’s timbre.&lt;/p&gt;
 
 &lt;!-- Include for captioned images --&gt;
 
@@ -124,18 +203,28 @@ what is traditionally known as an instrument’s timbre.&lt;/p&gt;
   
 &lt;/div&gt;
 
-&lt;p&gt;By graphing out the spectral components, we can confirm both the harmonic
-complexity of a piano (on the left), and the simplicity of the sine tone. In
-contrast to the piano, the sine tone contains only a single harmonic located at
-its fundamental frequency. This is true of all sine tones making sine waves the
-harmonically the simplest sound possible. Due to their harmonic simplicity, all
-periodic waveforms can be represented as a summation of multiple sine tones with
-varying frequencies, phases, and amplitudes. By extension, anything that isn’t a
-sine tone is going to have spectra more complex than a single sine wave. Should
-any of the harmonic components of a signal exceed Nyquist frequency, the signal
-becomes subject to a type of digital aliasing known as ‘foldover’. Any signal
-with a frequency above Nyquist will produce a mirrored component equal to
-Nyquist minus the difference of the original frequency and Nyquist.&lt;/p&gt;
+&lt;p&gt;By graphing out the spectral components, we can confirm both the harmonic complexity of a piano (on the left), and the simplicity of the sine tone. In contrast to the piano, the sine tone contains only a single harmonic located at its fundamental frequency. This is true of all sine tones making sine waves the harmonically the simplest sound possible. Due to their harmonic simplicity, all periodic waveforms can be represented as a summation of multiple sine tones with varying frequencies, phases, and amplitudes. By extension, anything that isn’t a sine tone is going to have spectra more complex than a single sine wave. Should any of the harmonic components of a signal exceed Nyquist frequency, the signal becomes subject to a type of digital aliasing known as ‘foldover’. Any signal with a frequency above Nyquist will produce a mirrored component equal to Nyquist minus the difference of the original frequency and Nyquist.&lt;/p&gt;
+
+&lt;!-- Include for captioned images --&gt;
+
+&lt;div class=&quot;float &quot;&gt;
+  &lt;figure class=&quot;embed picture&quot; style=&quot;width: &quot;&gt;
+    
+    &lt;a href=&quot;#saw-sweep-spek-png&quot;&gt;
+      &lt;img src=&quot;/GRPH/assets/images/content/saw_sweep_spek.png&quot; alt=&quot;Spectogram of a niave sawtooth sweep&quot; style=&quot;width: 600px&quot; loading=&quot;lazy&quot; /&gt;
+    &lt;/a&gt;
+    
+    &lt;figcaption&gt;
+      Spectogram of a niave sawtooth sweep
+      
+    &lt;/figcaption&gt;
+  &lt;/figure&gt;
+  
+  &lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;saw-sweep-spek-png&quot;&gt;
+    &lt;img src=&quot;/GRPH/assets/images/content/saw_sweep_spek.png&quot; alt=&quot;Spectogram of a niave sawtooth sweep&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
+  &lt;/a&gt;
+  
+&lt;/div&gt;
 
 &lt;div class=&quot;float &quot;&gt;
   &lt;figure class=&quot;embed audio&quot;&gt;
@@ -145,63 +234,16 @@ Nyquist minus the difference of the original frequency and Nyquist.&lt;/p&gt;
       Your browser does not support the audio element.
     &lt;/audio&gt;
     
-    &lt;figcaption&gt;Sawtooth sweep from 0Hz to 22.05kHz and back at a sampling rate of 44.1kHz&lt;/figcaption&gt;
+    &lt;figcaption&gt;Niave sawtooth sweep from 0Hz to 22.05kHz and back at a sampling rate of 44.1kHz&lt;/figcaption&gt;
   &lt;/figure&gt;
 &lt;/div&gt;
 
-&lt;p&gt;To demonstrate foldover, above is an audio example of a naively generated
-sawtooth wave sweeping from 0Hz to 22.05kHz at a sample rate of 44.1kHz. If you
-pay close attention, an FM-like distortion becomes prevalent as the sweep
-approaches Nyquist. To visualize foldover I’ve posted a spectogram of the audio
-recording below. Notice the how harmonics seem reflect back forth between 0Hz
-and Nyquist as they fall out of range. While this effect can sound interesting
-in some situations (I like it on hi-hats), it’s unwanted in most.&lt;/p&gt;
+&lt;p&gt;To demonstrate foldover, to the above is an audio example of a naively generated sawtooth wave sweeping from 0Hz to 22.05kHz at a sample rate of 44.1kHz. If you pay close attention, a swirling distortion becomes prevalent as the sweep approaches Nyquist. To visualize foldover I’ve posted a spectrogram of the audio recording. Notice how harmonics seem to reflect back and forth between 0Hz and Nyquist as they fall out of range. While this effect can sound interesting in some situations (I like it on hi-hats), it’s unwanted in most. I don’t exactly want to go into detail as to why fold over occurs (this post is already almost 1000 words long), so I will instead defer to &lt;a href=&quot;http://www.dspguide.com/ch3/2.htm&quot;&gt;this resource&lt;/a&gt; for more information.&lt;/p&gt;
 
-&lt;!-- Include for captioned images --&gt;
+&lt;p&gt;What I’m trying to get across is that it’s important to understand what digital audio is when working with low-level audio synthesis. Without such knowledge, it’s easy to end up with consistently poor-quality sounds. Even at increased sample rates, it’s easy to end up with something distorted when you aren’t taking harmonic content into account. For my situation, I don’t even really have access to higher sample rates. The Bela board is actually locked to a 44.1kHz sample rate. While this isn’t entirely ideal, there are implementable methods to reduce aliasing which I plan to go over in future posts as needed.&lt;/p&gt;
 
-&lt;div class=&quot;float &quot;&gt;
-  &lt;figure class=&quot;embed picture&quot; style=&quot;width: &quot;&gt;
-    
-    &lt;a href=&quot;#saw-sweep-spek-png&quot;&gt;
-      &lt;img src=&quot;/GRPH/assets/images/content/saw_sweep_spek.png&quot; alt=&quot;Spectogram of the above example&quot; style=&quot;width: 600px&quot; loading=&quot;lazy&quot; /&gt;
-    &lt;/a&gt;
-    
-    &lt;figcaption&gt;
-      Spectogram of the above example
-      
-    &lt;/figcaption&gt;
-  &lt;/figure&gt;
-  
-  &lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;saw-sweep-spek-png&quot;&gt;
-    &lt;img src=&quot;/GRPH/assets/images/content/saw_sweep_spek.png&quot; alt=&quot;Spectogram of the above example&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
-  &lt;/a&gt;
-  
-&lt;/div&gt;
-
-&lt;p&gt;What I’m trying to get across is that it’s important to understand what digital
-audio is when working with low-level audio synthesis. Without such knowledge,
-it’s easy to end up with consistently poor-quality sounds. Even at increased
-sample rates, having harmonic partials which extend infinitely will always
-distort at some point. Unfortunately, the Bela system is only capable of running
-audio processes at 44.1kHz. While this isn’t entirely ideal, there are
-implementable methods to reduce aliasing which I plan to go over in future posts
-as needed.&lt;/p&gt;
-
-&lt;p&gt;The PureData patch I used to generate the sounds for this post can be found
-&lt;a href=&quot;/GRPH/assets/other/spec_example.zip&quot;&gt;here&lt;/a&gt;. The piano recording originated from
-&lt;a href=&quot;https://freesound.org/people/ramas26/sounds/95326/&quot;&gt;freesounds&lt;/a&gt;.&lt;/p&gt;</content><author><name>Chris Carin</name></author><category term="Audio" /><category term="Digital Synths" /><summary type="html">Before I continue, I want to disclose that I am not an engineer. I am merely an enthusiast who enjoys synthesis. This information may not be the most correct or academically rigorous. Much of what I’m writing about is my own self-educated understanding of these subjects. If I do make a mistake, please point it out to me in an email. So, I guess without further ado, here we go…</summary></entry><entry><title type="html">Anatomy of Substractive Synthesizers</title><link href="http://0.0.0.0:4000/GRPH/audio/2021/11/29/basic-anatomy-of-subtractive-synthesizers.html" rel="alternate" type="text/html" title="Anatomy of Substractive Synthesizers" /><published>2021-11-29T00:00:00-05:00</published><updated>2021-11-29T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/audio/2021/11/29/basic-anatomy-of-subtractive-synthesizers</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/audio/2021/11/29/basic-anatomy-of-subtractive-synthesizers.html">&lt;p&gt;This post is still incomplete ):&lt;/p&gt;
-
-&lt;p&gt;Despite the ever growing list of ways to form sound, I still find the traditional method of subtractive synthesis to be the most intuitive. What keeps me coming back something like the &lt;a href=&quot;https://www.arturia.com/products/hardware-synths/microfreak/overview&quot;&gt;Microfreak&lt;/a&gt;, is how simple it is to get it sounding anyway you want.&lt;/p&gt;</content><author><name>Chris Carin</name></author><category term="Audio" /><category term="Digital Synths" /><summary type="html">This post is still incomplete ):</summary></entry><entry><title type="html">The Web is Obese</title><link href="http://0.0.0.0:4000/GRPH/website/2021/11/20/the-web-is-obese.html" rel="alternate" type="text/html" title="The Web is Obese" /><published>2021-11-20T00:00:00-05:00</published><updated>2021-11-20T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/website/2021/11/20/the-web-is-obese</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/website/2021/11/20/the-web-is-obese.html">&lt;p&gt;Despite what minimalist trends prevalent throughout the tech industries may have
-you believe, today’s modern web is very bloated. Just &lt;a href=&quot;https://www.wired.com/2016/04/average-webpage-now-size-original-doom/&quot;&gt;5 years
-ago&lt;/a&gt;, the
-average web page was already larger than the original DOOM for MS-DOS. In
-reaction to this, I choose to design this blog to be as lightweight and easy to
-load as possible. I remember times back in High School where my computer could
-barely handle 3 or 4 tabs of Chrome or Firefox. It was awful. Since then, modern
-web browsers have implemented a plethora of new features and in turn have become
-potentially bigger resource hogs. And just as they do, designers While these
-features provide a lot of creative of power to web designers, it’s part of the
-designer’s job to wield these powers appropriately.&lt;/p&gt;
+&lt;p&gt;The PureData patch I used to generate the sounds for this post can be found &lt;a href=&quot;/GRPH/assets/other/spec_example.zip&quot;&gt;here&lt;/a&gt;. The piano recording originated from &lt;a href=&quot;https://freesound.org/people/ramas26/sounds/95326/&quot;&gt;freesounds&lt;/a&gt;.&lt;/p&gt;</content><author><name>Chris Carin</name></author><category term="Audio" /><category term="Digital Synths" /><summary type="html">Before I continue, I want to disclose that I am not an engineer. I am merely an enthusiast who enjoys synthesis. This information may not be the most correct or academically rigorous. Much of what I’m writing about is my own self-educated understanding of these subjects. If I do make a mistake, please point it out to me in an email. So, I guess without further ado, here we go…</summary></entry><entry><title type="html">The Web is Obese</title><link href="http://0.0.0.0:4000/GRPH/website/2021/11/20/the-web-is-obese.html" rel="alternate" type="text/html" title="The Web is Obese" /><published>2021-11-20T00:00:00-05:00</published><updated>2021-11-20T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/website/2021/11/20/the-web-is-obese</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/website/2021/11/20/the-web-is-obese.html">&lt;p&gt;Despite what minimalist trends prevalent throughout the tech industries may have you believe, today’s modern web is very bloated. Just &lt;a href=&quot;https://www.wired.com/2016/04/average-webpage-now-size-original-doom/&quot;&gt;5 years ago&lt;/a&gt;, the average web page was already larger than the original DOOM for MS-DOS. In reaction to this, I choose to design this blog to be as lightweight and easy to load as possible. I remember times back in High School where my computer could barely handle 3 or 4 tabs of Chrome or Firefox. It was awful. Since then, modern
+web browsers have implemented a plethora of new features and in turn have become potentially bigger resource hogs. And just as they do, designers While these features provide a lot of creative power to web designers, it’s part of the designer’s job to wield these powers appropriately.&lt;/p&gt;
 
 &lt;!-- Include for captioned images --&gt;
 
@@ -209,44 +251,24 @@ designer’s job to wield these powers appropriately.&lt;/p&gt;
   &lt;figure class=&quot;embed picture&quot; style=&quot;width: &quot;&gt;
     
     &lt;a href=&quot;#nocss-frontpage-png&quot;&gt;
-      &lt;img src=&quot;/GRPH/assets/images/content/nocss_frontpage.png&quot; alt=&quot;What a
-software minimal website does look like&quot; style=&quot;width: &quot; loading=&quot;lazy&quot; /&gt;
+      &lt;img src=&quot;/GRPH/assets/images/content/nocss_frontpage.png&quot; alt=&quot;What a software minimal website does look like&quot; style=&quot;width: &quot; loading=&quot;lazy&quot; /&gt;
     &lt;/a&gt;
     
     &lt;figcaption&gt;
-      What a
-software minimal website does look like
+      What a software minimal website does look like
       
     &lt;/figcaption&gt;
   &lt;/figure&gt;
   
   &lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;nocss-frontpage-png&quot;&gt;
-    &lt;img src=&quot;/GRPH/assets/images/content/nocss_frontpage.png&quot; alt=&quot;What a
-software minimal website does look like&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
+    &lt;img src=&quot;/GRPH/assets/images/content/nocss_frontpage.png&quot; alt=&quot;What a software minimal website does look like&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
   &lt;/a&gt;
   
 &lt;/div&gt;
 
-&lt;p&gt;Just to be clear, I’m not claiming page weight and efficiency always need to be
-prioritized over other aspects of page design. If we were to prioritize software
-minimalism over all other things, most sites on the web would probably look like
-&lt;a href=&quot;https://nocss.club/&quot;&gt;this&lt;/a&gt;. If that is the internet you prefer, you’re probably
-be better off switching to the &lt;a href=&quot;http://gopher.quux.org:70/&quot;&gt;gopher protocol&lt;/a&gt; or
-something. There are also plenty of in browser scenarios that require access to
-advance scripting functionalities. Full office suites like Google Docs wouldn’t
-exist without such things.&lt;/p&gt;
+&lt;p&gt;Just to be clear, I’m not claiming page weight and efficiency always need to be prioritized over other aspects of page design. If we were to prioritize software minimalism over all other things, most sites on the web would look like &lt;a href=&quot;https://nocss.club/&quot;&gt;this&lt;/a&gt;. If that is the internet you prefer, you’re probably better off switching to the &lt;a href=&quot;http://gopher.quux.org:70/&quot;&gt;gopher protocol&lt;/a&gt; or something. There are also plenty of in browser scenarios that require access to advanced scripting functionalities. Full office suites like Google Docs wouldn’t exist without such things.&lt;/p&gt;
 
-&lt;p&gt;I’m suggesting there is a balance that needs to be respected when it comes
-designing for content on the modern web. Just because we can do something fancy
-and resource expensive, doesn’t mean we always should. If we think of page on
-the web as small pieces of software, the content would be the main process of
-application. The content is the main reason why any given visitor is on any
-given web page. It is what the user is attempting to execute when they visit. By
-bloating up the interface to this process, a designer runs the risk needlessly
-increasing the number of resources required to load and display the content. Not
-only does this make content harder to access for certain users (particularly
-those on mobile and lower end devices), but it also increases a page’s
-environmental footprint.&lt;/p&gt;
+&lt;p&gt;I’m suggesting there is a balance that needs to be respected when it comes designing for content on the modern web. Just because we can do something fancy and resource expensive, doesn’t mean we always should. If we think of a page on the web as small pieces of software, the content would be the main process of application. The content is the main reason why any given visitor is on any given web page. It is what the user is attempting to execute when they visit. By bloating up the interface to this process, a designer runs the risk needlessly increasing the number of resources required to load and display the content. Not only does this make content harder to access for certain users (particularly those on mobile and lower end devices), but it also increases a page’s environmental footprint.&lt;/p&gt;
 
 &lt;!-- Include for captioned images --&gt;
 
@@ -254,35 +276,24 @@ environmental footprint.&lt;/p&gt;
   &lt;figure class=&quot;embed picture&quot; style=&quot;width: &quot;&gt;
     
     &lt;a href=&quot;#ocadu-frontpage-png&quot;&gt;
-      &lt;img src=&quot;/GRPH/assets/images/content/ocadu_frontpage.png&quot; alt=&quot;What a
-software minimal website does not look like&quot; style=&quot;width: &quot; loading=&quot;lazy&quot; /&gt;
+      &lt;img src=&quot;/GRPH/assets/images/content/ocadu_frontpage.png&quot; alt=&quot;What a software minimal website does not look like&quot; style=&quot;width: &quot; loading=&quot;lazy&quot; /&gt;
     &lt;/a&gt;
     
     &lt;figcaption&gt;
-      What a
-software minimal website does not look like
+      What a software minimal website does not look like
       
     &lt;/figcaption&gt;
   &lt;/figure&gt;
   
   &lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;ocadu-frontpage-png&quot;&gt;
-    &lt;img src=&quot;/GRPH/assets/images/content/ocadu_frontpage.png&quot; alt=&quot;What a
-software minimal website does not look like&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
+    &lt;img src=&quot;/GRPH/assets/images/content/ocadu_frontpage.png&quot; alt=&quot;What a software minimal website does not look like&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
   &lt;/a&gt;
   
 &lt;/div&gt;
 
-&lt;p&gt;Let’s look at &lt;a href=&quot;https://ocadu.ca/&quot;&gt;OCADU’s home page&lt;/a&gt; for example. I noticed it
-features a video which automatically loads up every time someone visits it. To
-me, this is already a problem. While the use of videos as splash elements have
-become more popular on today’s web, it is a I trend that I heavily disagree
-with. Landing pages are meant to be quick, flexible, and easy to navigate. They
-need to be because they are literally the index of the rest of the website.
-Embedded videos are the opposite of these characteristics. They are large, slow,
-and often break at different resolutions.&lt;/p&gt;
+&lt;p&gt;Let’s look at &lt;a href=&quot;https://ocadu.ca/&quot;&gt;OCADU’s homepage&lt;/a&gt; for example. I noticed it features a video which automatically loads up every time someone visits it. To me, this is already a problem. While the use of videos as splash elements have become more popular on today’s web, it is a trend that I heavily disagree with. Landing pages are meant to be quick, flexible, and easy to navigate. They need to be because they are literally the index of the rest of the website. Embedded videos are the opposite of these characteristics. They are large, slow, and often break at different resolutions.&lt;/p&gt;
 
-&lt;p&gt;Below is part of the results provided by &lt;a href=&quot;https://tools.pingdom.com/&quot;&gt;Pingdom’s speed
-tool&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;Below is part of the results provided by &lt;a href=&quot;https://tools.pingdom.com/&quot;&gt;Pingdom’s speed tool&lt;/a&gt;:&lt;/p&gt;
 
 &lt;!-- Include for captioned images --&gt;
 
@@ -290,38 +301,24 @@ tool&lt;/a&gt;:&lt;/p&gt;
   &lt;figure class=&quot;embed picture&quot; style=&quot;width: &quot;&gt;
     
     &lt;a href=&quot;#ocadu-size-png&quot;&gt;
-      &lt;img src=&quot;/GRPH/assets/images/content/ocadu_size.png&quot; alt=&quot;Size of OCADs front
-page, sorted by file type&quot; style=&quot;width: &quot; loading=&quot;lazy&quot; /&gt;
+      &lt;img src=&quot;/GRPH/assets/images/content/ocadu_size.png&quot; alt=&quot;Size of OCADs front page, sorted by file type&quot; style=&quot;width: &quot; loading=&quot;lazy&quot; /&gt;
     &lt;/a&gt;
     
     &lt;figcaption&gt;
-      Size of OCADs front
-page, sorted by file type
+      Size of OCADs front page, sorted by file type
       
     &lt;/figcaption&gt;
   &lt;/figure&gt;
   
   &lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;ocadu-size-png&quot;&gt;
-    &lt;img src=&quot;/GRPH/assets/images/content/ocadu_size.png&quot; alt=&quot;Size of OCADs front
-page, sorted by file type&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
+    &lt;img src=&quot;/GRPH/assets/images/content/ocadu_size.png&quot; alt=&quot;Size of OCADs front page, sorted by file type&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
   &lt;/a&gt;
   
 &lt;/div&gt;
 
-&lt;p&gt;As we can see above, OCAD’s front page is over 20MB. And of course, most of that
-weight is the video the school decided to embed. If I were bandwidth limited or
-data capped, opening this home page would eat a significant chunk of my
-available transfer for the month. Furthermore, if I were to access this page
-from an older computer, it would probably take up the entirety of the computer’s
-processing power just to display it.&lt;/p&gt;
+&lt;p&gt;As we can see above, OCAD’s front page is over 20MB. And of course, most of that weight is the video the school decided to embed. If I were bandwidth limited or data capped, opening this home page would eat a significant chunk of my available transfer for the month. Furthermore, if I were to access this page from an older computer, it would probably take up the entirety of the computer’s processing power just to display it.&lt;/p&gt;
 
-&lt;p&gt;Beyond accessibility however, there is an environmental cost to having a heavy
-website. According to &lt;a href=&quot;https://www.websitecarbon.com/&quot;&gt;Wholegrain Digital&lt;/a&gt;,
-every GB costs about &lt;a href=&quot;https://www.websitecarbon.com/how-does-it-work/&quot;&gt;1.8kW of electricity an
-hour&lt;/a&gt;. If we do the math, that
-means OCADU’s front page costs approximately 0.03533kWh for each un-cached
-visitor. If we multiply that with the total number of students at OCADU it would
-cost 214.52kWh for each student at OCAD to visit the index page once.&lt;/p&gt;
+&lt;p&gt;Beyond accessibility however, there is an environmental cost to having a heavy website. According to &lt;a href=&quot;https://www.websitecarbon.com/&quot;&gt;Wholegrain Digital&lt;/a&gt;, every GB costs about &lt;a href=&quot;https://www.websitecarbon.com/how-does-it-work/&quot;&gt;1.8kW of electricity an hour&lt;/a&gt;. If we do the math, that means OCADU’s front page costs approximately 0.03533kWh for each un-cached visitor. If we multiply that with the total number of students at OCADU it would cost 214.52kWh for each student at OCAD to visit the index page once.&lt;/p&gt;
 
 &lt;p&gt;Moving away from the video, we can also see that at most the HTML content of the page is about 0.13% of overall transfer. That means of the 20MB required to load the page, at most 0.13% is written content. A majority of the remaining 8%~ are scripts and stylesheets. If we look at the source, we can kind of see why.&lt;/p&gt;
 
@@ -334,15 +331,9 @@ cost 214.52kWh for each student at OCAD to visit the index page once.&lt;/p&gt;
 &lt;span class=&quot;nt&quot;&gt;&amp;lt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;stylesheet&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/_nuxt/8fda144dac918648a67b.css&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
 &lt;span class=&quot;nt&quot;&gt;&amp;lt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;stylesheet&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/_nuxt/364a65052d6aaed82138.css&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Though I don’t really have much of a basis to question these pre-loaded these scripts, I do wonder why a simple index page would need so many. It seems like each one of these scripts has a CSS file paired with. This leads me to believe that each of JS file is a definition for an embedded application. If they are applications, I’m not really sure what they do. My hunch is that it’s for web analytics. Either way, pre-loading this much stuff is not exactly ideal especially in the case of scripts. Pre-loading a script forces the user’s browser to process said scripts before it begins to load page. This obviously complexifies and slows down the initial process. Also, since these are externally linked files, secondary requests must be made before they can be loaded. Essentially, it’s forcing you to load some other crap before you can get actual content you’re requesting. This can be obviously useful in a lot of scenarios, but again it’s something not to be abused.&lt;/p&gt;
+&lt;p&gt;Though I don’t really have much of a basis to question these pre-loaded scripts, I do wonder why a simple index page would need so many. It seems like each one of these scripts has a CSS file paired with. This leads me to believe each JS file is a definition for an embedded application. If they are applications, I’m not really sure what they do. My hunch is that it’s for web analytics. Either way, pre-loading this much stuff is not exactly ideal especially in the case of scripts. Pre-loading a script forces the user’s browser to process said scripts before it begins to load the page. This obviously complexifies and slows down the initial process. Also, since these are externally linked files, secondary requests must be made before they can be loaded. Essentially, it’s forcing you to load some other crap before you can get actual content you’re requesting. This can be obviously useful in a lot of scenarios, but again it’s something not to be abused.&lt;/p&gt;
 
-&lt;p&gt;So yeah, OCAD’s homepage sucks. It’s slow and bloated and kind of broken at
-times. And it’s not just OCAD’s homepage that sucks. There are plenty of other
-examples of web pages out there which are way heavier than they need to be. It’s
-like an electronic epidemic. So if you ever design a website, please keep
-performance at least somewhat in mind. Think about what is necessary for the
-content. Adding too much to a web page will not only bog down/break a user’s
-access, it’s also just straight up worse for the environment.&lt;/p&gt;</content><author><name>Chris Carin</name></author><category term="Website" /><category term="Web Design" /><category term="Words" /><summary type="html">Despite what minimalist trends prevalent throughout the tech industries may have you believe, today’s modern web is very bloated. Just 5 years ago, the average web page was already larger than the original DOOM for MS-DOS. In reaction to this, I choose to design this blog to be as lightweight and easy to load as possible. I remember times back in High School where my computer could barely handle 3 or 4 tabs of Chrome or Firefox. It was awful. Since then, modern web browsers have implemented a plethora of new features and in turn have become potentially bigger resource hogs. And just as they do, designers While these features provide a lot of creative of power to web designers, it’s part of the designer’s job to wield these powers appropriately.</summary></entry><entry><title type="html">Thoughts on why I’m making a synthesizer</title><link href="http://0.0.0.0:4000/GRPH/audio/2021/11/16/why-im-making-a-synth.html" rel="alternate" type="text/html" title="Thoughts on why I’m making a synthesizer" /><published>2021-11-16T00:00:00-05:00</published><updated>2021-11-16T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/audio/2021/11/16/why-im-making-a-synth</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/audio/2021/11/16/why-im-making-a-synth.html">&lt;p&gt;When it comes to actually writing music, I actually think I’m pretty awful. I spend so much time obsessing over tiny details and always have a hard time seeing the big picture of what I’m trying to do. Honestly, the reason why I’ve been so upset with my process of creation is due to this indecisiveness to move on from minute details. On top of that, I’m not the most mechanically gifted person in the world. Much like how I struggle with brushes and inks, I can barely play inversions on the piano.&lt;/p&gt;
+&lt;p&gt;So yeah, OCAD’s homepage sucks. It’s slow and bloated and kind of broken at times. And it’s not just OCAD’s homepage that sucks. There are plenty of other examples of web pages out there which are way heavier than they need to be. It’s like an electronic epidemic. So if you ever design a website, please keep performance at least somewhat in mind. Think about what is necessary for the content. Adding too much to a web page will not only bog down/break a user’s access, it’s also just straight up worse for the environment.&lt;/p&gt;</content><author><name>Chris Carin</name></author><category term="Website" /><category term="Web Design" /><category term="Nonsense" /><summary type="html">Despite what minimalist trends prevalent throughout the tech industries may have you believe, today’s modern web is very bloated. Just 5 years ago, the average web page was already larger than the original DOOM for MS-DOS. In reaction to this, I choose to design this blog to be as lightweight and easy to load as possible. I remember times back in High School where my computer could barely handle 3 or 4 tabs of Chrome or Firefox. It was awful. Since then, modern web browsers have implemented a plethora of new features and in turn have become potentially bigger resource hogs. And just as they do, designers While these features provide a lot of creative power to web designers, it’s part of the designer’s job to wield these powers appropriately.</summary></entry><entry><title type="html">Thoughts on why I’m making a synthesizer</title><link href="http://0.0.0.0:4000/GRPH/audio/2021/11/16/why-im-making-a-synth.html" rel="alternate" type="text/html" title="Thoughts on why I’m making a synthesizer" /><published>2021-11-16T00:00:00-05:00</published><updated>2021-11-16T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/audio/2021/11/16/why-im-making-a-synth</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/audio/2021/11/16/why-im-making-a-synth.html">&lt;p&gt;When it comes to actually writing music, I actually think I’m pretty awful. I spend so much time obsessing over tiny details and always have a hard time seeing the big picture of what I’m trying to do. Honestly, the reason why I’ve been so upset with my process of creation is due to this indecisiveness to move on from minute details. On top of that, I’m not the most mechanically gifted person in the world. Much like how I struggle with brushes and inks, I can barely play inversions on the piano.&lt;/p&gt;
 
 &lt;!-- Include for captioned images --&gt;
 
@@ -385,7 +376,7 @@ access, it’s also just straight up worse for the environment.&lt;/p&gt;</conte
 
 &lt;p&gt;Eventually I began dissecting other user patches to better understand how to build things like fancy oscillators and simple audio effects. This led me to start reading up and researching audio processing techniques. One particular resource I always mention that I found really useful is Miller Puckette’s &lt;a href=&quot;http://msp.ucsd.edu/techniques/v0.11/book-html/&quot;&gt;Theory and Techniques of Electronic Music&lt;/a&gt;. It features plenty of examples of various audio processing algorithms and is written by the guy who created Pd. I think part of me believed that by understanding these sound processes on a deeper level, I would unlock some sort of understanding of the kind of music I wanted to make. Obviously, this didn’t come true and I still have no idea what I’m doing. At multiple points however, I believed it enough to coax myself into attempting to build my own &lt;a href=&quot;https://en.wikipedia.org/wiki/Eurorack&quot;&gt;eurorack&lt;/a&gt;-style system for algorithmic music. Every time I tried though, my system would end up being overly complexed and too much of a hassle to play. On top of that, I often found Pd’s small selection of basic UI options to be quite limiting when trying to make something substantial.&lt;/p&gt;
 
-&lt;p&gt;Ultimately, my experience with Pd is kind of what drives me to make this electronic instrument for my workshop project. Though I still I don’t really know much of anything about music (I don’t even know much about computers tbh), I do know how to make sounds using software. I haven’t decided on how I want the this instrument to play or look like just yet, but I’m hoping by shifting my focus a bit to a single tangible thing I can at least come up with something interesting and fun to play.&lt;/p&gt;</content><author><name>Chris Carin</name></author><category term="Audio" /><category term="Music" /><category term="PureData" /><category term="Words" /><summary type="html">When it comes to actually writing music, I actually think I’m pretty awful. I spend so much time obsessing over tiny details and always have a hard time seeing the big picture of what I’m trying to do. Honestly, the reason why I’ve been so upset with my process of creation is due to this indecisiveness to move on from minute details. On top of that, I’m not the most mechanically gifted person in the world. Much like how I struggle with brushes and inks, I can barely play inversions on the piano.</summary></entry><entry><title type="html">New Layout!</title><link href="http://0.0.0.0:4000/GRPH/website/2021/11/14/new-layout.html" rel="alternate" type="text/html" title="New Layout!" /><published>2021-11-14T00:00:00-05:00</published><updated>2021-11-14T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/website/2021/11/14/new-layout</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/website/2021/11/14/new-layout.html">&lt;p&gt;Over the last couple days I’ve been kind of taking a break from programming the Bela in order to focus my attention on this blog. Despite aiming for a lightweight website, I made a few compromises by deciding to use javascript and webfonts for the sake of style. After testing the website on an &lt;a href=&quot;https://www.cnet.com/products/acer-aspire-one-d250/specs/&quot;&gt;old netbook&lt;/a&gt; however, I noticed that even having a minimal amount of scripting was a bit too much. On top of that, further testing showed that the typefaces imported by Google fonts accounted for the a majority of my sites digital weight.&lt;/p&gt;
+&lt;p&gt;Ultimately, my experience with Pd is kind of what drives me to make this electronic instrument for my workshop project. Though I still I don’t really know much of anything about music (I don’t even know much about computers tbh), I do know how to make sounds using software. I haven’t decided on how I want the this instrument to play or look like just yet, but I’m hoping by shifting my focus a bit to a single tangible thing I can at least come up with something interesting and fun to play.&lt;/p&gt;</content><author><name>Chris Carin</name></author><category term="Audio" /><category term="Music" /><category term="PureData" /><category term="Nonsense" /><summary type="html">When it comes to actually writing music, I actually think I’m pretty awful. I spend so much time obsessing over tiny details and always have a hard time seeing the big picture of what I’m trying to do. Honestly, the reason why I’ve been so upset with my process of creation is due to this indecisiveness to move on from minute details. On top of that, I’m not the most mechanically gifted person in the world. Much like how I struggle with brushes and inks, I can barely play inversions on the piano.</summary></entry><entry><title type="html">New Layout!</title><link href="http://0.0.0.0:4000/GRPH/website/2021/11/14/new-layout.html" rel="alternate" type="text/html" title="New Layout!" /><published>2021-11-14T00:00:00-05:00</published><updated>2021-11-14T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/website/2021/11/14/new-layout</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/website/2021/11/14/new-layout.html">&lt;p&gt;Over the last couple days I’ve been kind of taking a break from programming the Bela in order to focus my attention on this blog. Despite aiming for a lightweight website, I made a few compromises by deciding to use javascript and webfonts for the sake of style. After testing the website on an &lt;a href=&quot;https://www.cnet.com/products/acer-aspire-one-d250/specs/&quot;&gt;old netbook&lt;/a&gt; however, I noticed that even having a minimal amount of scripting was a bit too much. On top of that, further testing showed that the typefaces imported by Google fonts accounted for the a majority of my sites digital weight.&lt;/p&gt;
 
 &lt;h2 id=&quot;issues-with-the-old-layout&quot;&gt;Issues with the Old Layout&lt;/h2&gt;
 
@@ -398,8 +389,8 @@ access, it’s also just straight up worse for the environment.&lt;/p&gt;</conte
 &lt;div class=&quot;float &quot;&gt;
   &lt;figure class=&quot;embed picture&quot; style=&quot;width: &quot;&gt;
     
-    &lt;a href=&quot;#content-blog-size-0-png&quot;&gt;
-      &lt;img src=&quot;/GRPH/assets/images/content//content/blog_size_0.png&quot; alt=&quot;34.1kbs for webfonts&quot; style=&quot;width: &quot; loading=&quot;lazy&quot; /&gt;
+    &lt;a href=&quot;#blog-size-0-png&quot;&gt;
+      &lt;img src=&quot;/GRPH/assets/images/content/blog_size_0.png&quot; alt=&quot;34.1kbs for webfonts&quot; style=&quot;width: &quot; loading=&quot;lazy&quot; /&gt;
     &lt;/a&gt;
     
     &lt;figcaption&gt;
@@ -408,8 +399,8 @@ access, it’s also just straight up worse for the environment.&lt;/p&gt;</conte
     &lt;/figcaption&gt;
   &lt;/figure&gt;
   
-  &lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;content-blog-size-0-png&quot;&gt;
-    &lt;img src=&quot;/GRPH/assets/images/content//content/blog_size_0.png&quot; alt=&quot;34.1kbs for webfonts&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
+  &lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;blog-size-0-png&quot;&gt;
+    &lt;img src=&quot;/GRPH/assets/images/content/blog_size_0.png&quot; alt=&quot;34.1kbs for webfonts&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
   &lt;/a&gt;
   
 &lt;/div&gt;
@@ -424,7 +415,7 @@ access, it’s also just straight up worse for the environment.&lt;/p&gt;</conte
   &lt;figure class=&quot;embed picture&quot; style=&quot;width: &quot;&gt;
     
     &lt;a href=&quot;#splash-gif&quot;&gt;
-      &lt;img src=&quot;/GRPH/assets/images/content/splash.gif&quot; alt=&quot;Say hi!&quot; style=&quot;width: &quot; loading=&quot;lazy&quot; /&gt;
+      &lt;img src=&quot;/GRPH/assets/images/content/../splash.gif&quot; alt=&quot;Say hi!&quot; style=&quot;width: &quot; loading=&quot;lazy&quot; /&gt;
     &lt;/a&gt;
     
     &lt;figcaption&gt;
@@ -434,7 +425,7 @@ access, it’s also just straight up worse for the environment.&lt;/p&gt;</conte
   &lt;/figure&gt;
   
   &lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;splash-gif&quot;&gt;
-    &lt;img src=&quot;/GRPH/assets/images/content/splash.gif&quot; alt=&quot;Say hi!&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
+    &lt;img src=&quot;/GRPH/assets/images/content/../splash.gif&quot; alt=&quot;Say hi!&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
   &lt;/a&gt;
   
 &lt;/div&gt;
@@ -575,43 +566,4 @@ access, it’s also just straight up worse for the environment.&lt;/p&gt;</conte
   &lt;/figure&gt;
 &lt;/div&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://drive.google.com/file/d/1Eh7-vdZ8O2aogQ6mitHBcSlV4N7GJCWh/view?usp=sharing&quot;&gt;Click here to Download&lt;/a&gt;&lt;/p&gt;</content><author><name>Chris Carin</name></author><category term="Audio" /><category term="Programming" /><category term="PureData" /><summary type="html">My main goal with this patch was to experiment with IFFT synthesis in context of a sample based granular synthesizers. It uses Miller Puckette’s phase vocoder example in conjunction with Scott “Acriel” Nordlund’s example of frequency domain filtering.</summary></entry><entry><title type="html">vsnares</title><link href="http://0.0.0.0:4000/GRPH/misc/2021/10/14/vsnarez.html" rel="alternate" type="text/html" title="vsnares" /><published>2021-10-14T00:00:00-04:00</published><updated>2021-10-14T00:00:00-04:00</updated><id>http://0.0.0.0:4000/GRPH/misc/2021/10/14/vsnarez</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/misc/2021/10/14/vsnarez.html">&lt;p&gt;I just wanted to test posting YouTube videos. Here’s one featuring Mr. Funk and possibly John Frusciante.&lt;/p&gt;
-
-&lt;!-- Include Video Embedding --&gt;
-&lt;!-- https://github.com/nathancy/jekyll-embed-video#responsive-videos --&gt;
-&lt;div class=&quot;float&quot;&gt;
-  &lt;figure class=&quot;embed video&quot;&gt;
-    &lt;span class=&quot;video&quot;&gt;
-      &lt;iframe style=&quot;width:100%; height:100%;&quot; src=&quot;https://www.youtube.com/embed/3dEH7uhZ-ME&quot; loading=&quot;lazy&quot; allowfullscreen=&quot;&quot;&gt;
-      &lt;/iframe&gt;
-    &lt;/span&gt;
-    &lt;figcaption class=&quot;caption&quot;&gt;:)&lt;/figcaption&gt;
-  &lt;/figure&gt;
-&lt;/div&gt;</content><author><name>Chris Carin</name></author><category term="Misc" /><category term="Music" /><category term="Updates" /><summary type="html">I just wanted to test posting YouTube videos. Here’s one featuring Mr. Funk and possibly John Frusciante.</summary></entry><entry><title type="html">Hello World!</title><link href="http://0.0.0.0:4000/GRPH/misc/2021/10/13/hello-world!.html" rel="alternate" type="text/html" title="Hello World!" /><published>2021-10-13T00:00:00-04:00</published><updated>2021-10-13T00:00:00-04:00</updated><id>http://0.0.0.0:4000/GRPH/misc/2021/10/13/hello-world!</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/misc/2021/10/13/hello-world!.html">&lt;p&gt;Check it out!! It’s my first post!! How cool is that? Comin’ straight from the 647 to the 905 to the 416 etc. I don’t really have much to write about right now. So I guess I’ll just some small updates about what I’ve been up to.&lt;/p&gt;
-
-&lt;!-- Include for captioned images --&gt;
-
-&lt;div class=&quot;float right&quot;&gt;
-  &lt;figure class=&quot;embed picture&quot; style=&quot;width: &quot;&gt;
-    
-    &lt;a href=&quot;#bela0-jpg&quot;&gt;
-      &lt;img src=&quot;/GRPH/assets/images/content/bela0.jpg&quot; alt=&quot;The bela board!&quot; style=&quot;width: 300px&quot; loading=&quot;lazy&quot; /&gt;
-    &lt;/a&gt;
-    
-    &lt;figcaption&gt;
-      The bela board!
-      
-    &lt;/figcaption&gt;
-  &lt;/figure&gt;
-  
-  &lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;bela0-jpg&quot;&gt;
-    &lt;img src=&quot;/GRPH/assets/images/content/bela0.jpg&quot; alt=&quot;The bela board!&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
-  &lt;/a&gt;
-  
-&lt;/div&gt;
-
-&lt;p&gt;The &lt;a href=&quot;https://bela.io/&quot;&gt;Bela&lt;/a&gt; development board for my project finally came in. Above is a picture of it. The developers of the board describe it as “an open-source embedded computing platform for creating responsive, real-time interactive systems with audio and sensors”. In laymen terms, essentially it’s single-board computer (think Raspberry Pi) with a programmable cape which specializes in processing signals.&lt;/p&gt;
-
-&lt;p&gt;Originally, I was planning on programming the Bela board using PureData. After experimenting a little bit however, I think it might be a better idea to program it in C++. PD patches seem to be a bit heavier on the board in comparison. If I go with the latter route, I’ll probably stick to PD for prototyping signals paths and such.&lt;/p&gt;
-
-&lt;p&gt;Other than experimenting with the board, I’ve mostly just been spending my time developing this blog. This blog is the first time I’ve used &lt;a href=&quot;https://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt; for a project. It’s basically a static site generator that I really wanted try out. I’m still new to working with this kind of platform, so let me know if you run into any bugs/broken link.&lt;/p&gt;</content><author><name>Chris Carin</name></author><category term="Misc" /><category term="Updates" /><summary type="html">Check it out!! It’s my first post!! How cool is that? Comin’ straight from the 647 to the 905 to the 416 etc. I don’t really have much to write about right now. So I guess I’ll just some small updates about what I’ve been up to.</summary></entry></feed>
+&lt;p&gt;&lt;a href=&quot;https://drive.google.com/file/d/1Eh7-vdZ8O2aogQ6mitHBcSlV4N7GJCWh/view?usp=sharing&quot;&gt;Click here to Download&lt;/a&gt;&lt;/p&gt;</content><author><name>Chris Carin</name></author><category term="Audio" /><category term="Programming" /><category term="PureData" /><summary type="html">My main goal with this patch was to experiment with IFFT synthesis in context of a sample based granular synthesizers. It uses Miller Puckette’s phase vocoder example in conjunction with Scott “Acriel” Nordlund’s example of frequency domain filtering.</summary></entry></feed>

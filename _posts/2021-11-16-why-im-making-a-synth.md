@@ -1,7 +1,7 @@
 ---
 title: Thoughts on why I'm making a synthesizer
 layout: post
-tag: [Music, PureData, Words]
+tag: [Music, PureData, Nonsense]
 date: Nov. 16, 2021
 categories: [Audio]
 ---

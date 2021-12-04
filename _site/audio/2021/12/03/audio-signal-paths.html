@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="/GRPH/assets/css/style.css"/>
+    <link rel="alternate" type="application/atom+xml" title="thesis? idk?" href="/GRPH/feed.xml"/>
+    <link rel="shortcut icon" type="image/png" href="/GRPH/icon.ico"/>
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Anatomy of Subtractive Synths Pt. I - Audio Signal Paths | thesis? idk?</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Anatomy of Subtractive Synths Pt. I - Audio Signal Paths" />
+<meta name="author" content="Chris Carin" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Signal path for the Alesis Micron" />
+<meta property="og:description" content="Signal path for the Alesis Micron" />
+<link rel="canonical" href="http://0.0.0.0:4000/GRPH/audio/2021/12/03/audio-signal-paths.html" />
+<meta property="og:url" content="http://0.0.0.0:4000/GRPH/audio/2021/12/03/audio-signal-paths.html" />
+<meta property="og:site_name" content="thesis? idk?" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-12-03T00:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Anatomy of Subtractive Synths Pt. I - Audio Signal Paths" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Chris Carin"},"@type":"BlogPosting","headline":"Anatomy of Subtractive Synths Pt. I - Audio Signal Paths","dateModified":"2021-12-03T00:00:00-05:00","datePublished":"2021-12-03T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/GRPH/audio/2021/12/03/audio-signal-paths.html"},"description":"Signal path for the Alesis Micron","url":"http://0.0.0.0:4000/GRPH/audio/2021/12/03/audio-signal-paths.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+  <body>
+    <header>  <!-- HEADER START -->
+      <a href="/GRPH/"><img src="/GRPH/assets/images/jam_crow.gif" alt="jam_crow.gif" width="128" height="68"/></a>
+      <nav>   <!-- MENU START -->
+        <ul>
+          
+          <li><a href="/GRPH/about">about</a></li>
+          
+          <li><a href="/GRPH/audio">audio</a></li>
+          
+          <li><a href="/GRPH/website">web</a></li>
+          
+          <li><a href="/GRPH/misc">misc</a></li>
+          
+          <li><a href="/GRPH/tags">tags</a></li>
+          
+        </ul>
+      </nav>   <!-- MENU END -->
+    </header>  <!-- HEADER END -->
+    <main>     <!-- CONTENT START -->
+      
+
+
+<header class="heading">
+  <h1>Anatomy of Subtractive Synths Pt. I - Audio Signal Paths</h1>
+  <div>
+    <small>
+      Category: <a href="">Audio</a>
+    </small>
+    <small>
+      Tags:
+      
+        <a href="/GRPH/tags#digital-synths">Digital Synths</a>
+      
+    </small>
+  </div>
+  <div>
+    <small>
+      Fri, Dec 03, 21
+    </small>
+    <small>
+      
+      Length:
+      
+        6 mins
+      
+    </small>
+  </div>
+</header>
+
+<!-- Include for captioned images -->
+
+<div class="float ">
+  <figure class="embed picture" style="width: ">
+    
+    <a href="#micron-signalpath-png">
+      <img src="/GRPH/assets/images/content/micron_signalpath.png" alt="Signal path for the Alesis Micron" style="width: 500px" loading="lazy" />
+    </a>
+    
+    <figcaption>
+      Signal path for the Alesis Micron
+      
+    </figcaption>
+  </figure>
+  
+  <a href="#/" class="expand" id="micron-signalpath-png">
+    <img src="/GRPH/assets/images/content/micron_signalpath.png" alt="Signal path for the Alesis Micron" style="background-image: url('/GRPH/assets/images/transparent.gif')" loading="lazy" />
+  </a>
+  
+</div>
+
+<p>As mentioned in my previous post, sound can be thought of as a signal. Synthesizers make the most of this fact by producing sound through the manipulation of signals. Despite the countless methods to manipulate signals, most synthesizers on the market follow a similar structure when it comes to the components that make it up. As a culmination of audio processes, most synthesizers can be can be described with the following signal path: <strong>Generator -&gt; Filter -&gt; Output</strong>.</p>
+
+<p>This architecture is the basis of something called subtractive synthesis. It was initially popularized in the 70s by synthesizers like the <a href="https://www.vintagesynth.com/moog/moog.php">MiniMoog</a>, the <a href="https://www.vintagesynth.com/oberheim/obxa.php">OB-Xa</a>, and the <a href="https://www.vintagesynth.com/korg/ms20.php">MS-20</a>. The idea behind subtractive synthesis is to take an already harmonically rich sound source and to sculpt it by attenuating it’s amplitude and frequency components overtime. Even though this architecture is catered towards a specific method of synthesis, this signal path is not limited to it. Because of its flexibility, most synths nowadays follow a similar architecture. The point of deviation is normally within the design of the generator and/or the filter.</p>
+
+<p>Traditionally, synthesizers like the MiniMoog were implemented with analog circuits. In contrast, my project is trying to emulate similar processes in a digital manner. To better understand these processes, I’m dedicating this post to briefly go over the standard audio processing components of a synthesizer mentioned above.</p>
+
+<h2 id="generators">Generators</h2>
+
+<!-- Include for captioned images -->
+
+<div class="float right">
+  <figure class="embed picture" style="width: ">
+    
+    <a href="#waveform-gif">
+      <img src="/GRPH/assets/images/content/waveform.gif" alt="Basic Wave Shapes" style="width: 180px" loading="lazy" />
+    </a>
+    
+    <figcaption>
+      Basic Wave Shapes
+      
+    </figcaption>
+  </figure>
+  
+  <a href="#/" class="expand" id="waveform-gif">
+    <img src="/GRPH/assets/images/content/waveform.gif" alt="Basic Wave Shapes" style="background-image: url('/GRPH/assets/images/transparent.gif')" loading="lazy" />
+  </a>
+  
+</div>
+
+<p>As the name implies, a generator is a function which generates a signal. Normally synths use oscillators as a primary source of generation. Oscillators are functions that produce periodic (repeating) signals such as sine waves and sawtooth waves, as mentioned in previous posts. The parameters of an oscillator normally control its shape and relative pitch. What these parameters are vary depending on design on the oscillator. Oscillators are not necessarily limited to basic wave shapes. They can really take any complex shape a user desires, though it’s important to keep aliasing in mind when creating custom wave shapes. An example of a non-standard oscillator would be the <a href="/GRPH/audio/2021/10/14/fft_grainspec.html">time-stretching phase vocoder</a> I put together in Pd.</p>
+
+<p>Though most use one or more oscillators as a generator, there are synths out there which don’t use any sort of periodic function generator. A common example are synths which use pre-recorded sounds as their audio generation source such as the <a href="https://www.soundonsound.com/reviews/mellotron-mkvi">Mellotron</a>. These kinds of instruments often border on sampler territory in their feature set and capabilities. A less common method of non-periodic audio generation is through use of digital waveguides to emulate physical models. A very basic example of this would be the <a href="https://ccrma.stanford.edu/~jos/pasp/Karplus_Strong_Algorithm.html">Karplus-Strong algorithm</a>. This territory is a bit beyond the scope of this project so I won’t talk about it much. Instead, I offer <a href="https://www.youtube.com/watch?v=ppx72p27JNU">this</a> video for more information if you’re interested. I may talk about Karplus-Strong later however.</p>
+
+<h2 id="filters">Filters</h2>
+
+<p>Filters are functions which are used to alter the phase and/or frequency components within a signal. While there many different types of filters, the ones most commonly found on synthesizers are low-pass, high-pass, and band-pass. The function of these filters can more or less be deduced by their name.</p>
+
+<!-- Include for captioned images -->
+
+<div class="float ">
+  <figure class="embed picture" style="width: ">
+    
+    <a href="#filter-types-jpg">
+      <img src="/GRPH/assets/images/content/filter_types.jpg" alt="Basic Filter Types" style="width: " loading="lazy" />
+    </a>
+    
+    <figcaption>
+      Basic Filter Types
+      
+    </figcaption>
+  </figure>
+  
+  <a href="#/" class="expand" id="filter-types-jpg">
+    <img src="/GRPH/assets/images/content/filter_types.jpg" alt="Basic Filter Types" style="background-image: url('/GRPH/assets/images/transparent.gif')" loading="lazy" />
+  </a>
+  
+</div>
+
+<p>A low-pass attenuates frequencies above a given cutoff frequency, only allowing lower frequencies through. A high-pass does the opposite. These two filters are normally controlled by a cutoff and resonance parameters. Cutoff controls the maximum/minimum frequency to be passed by filter. Resonance controls amplitude gain at the cutoff point.</p>
+
+<p>A band-pass attenuates frequencies the further away they are from a set center band. They can be thought of as the combination of both a highpass and lowpass filter. Band-pass filters are normally controlled using a center and Q parameter. The center controls the center of the passband, while the q controls the passband’s width.</p>
+
+<p>Less commonly found on synthesizers are band-stop (aka notch) filters. Band-stops attenuate frequencies the closer they are to a given frequency band. They can be thought of as the inverse of a band-pass. Other kinds of filters include shelving, peaking, all-pass, and comb filters. The first two are normally found in EQs, while the latter two are normally used as diffusers and resonators for delay type effects. I won’t go in detail about the frequency response of these filters, but do know they exist. I may or may not elaborate on them later if needed.</p>
+
+<h2 id="output">Output</h2>
+
+<p>Prior to output, a synthesizer typically has a time-varying amplifier for controlling the output level of the instrument. Typically, this amplifier is controlled by a separate signal known as an envelope. I’ll talk about it more in part two of this post, but an envelope is a signal used to define the value of a parameter over time. In the case of the output amplifier, it is used to define a sound’s output level over time.</p>
+
+<p>Beyond level controls, some synthesizers offer on-board effects such as distortions, delays, choruses, and reverbs. I’m not sure if I’ll have time or system resources to handle such processes, but if I do manage to implement any of these things, I’ll definitely write a post elaborating on how so-and-so effect works.</p>
+
+<h2 id="parameters-and-control-signals">Parameters and Control Signals</h2>
+
+<p>One of the most powerful features of many synthesizers is their ability to vary the parameters over time. I mentioned in the previous section how the amplifier on the output of most audio paths is normally automated by a control signal. A lot of synths will actually allow you to apply the exact same type of automation to whatever parameter you want. In my next post, I plan to go over how these automation signals work and the kind of effects you can get by applying them to some of the parameters mentioned above.</p>
+
+
+<!-- Grab previous and next post from category -->
+<!-- https://talk.jekyllrb.com/t/how-to-link-to-next-and-previous-posts-for-same-blog-category/629 -->
+
+
+
+
+
+
+<footer class="pagination">
+  <nav>
+    <h3>Pagination</h3>
+    <ul>
+      <!-- Page Up -->
+      <li>
+        <a class="up" href="/GRPH/Audio">
+          Back to Audio
+        </a>
+      </li>
+      <!-- Prev post -->
+      <li>
+        <a class="next" href="/GRPH/audio/2021/11/29/sample-rates-and-harmonics.html">
+          Sampling Rates & Harmonics
+        </a>
+      </li>
+      <!-- Next post -->
+      <li>
+        <a class="prev" href="/GRPH/audio/2021/12/03/audio-signal-paths.html">
+          Anatomy of Subtractive Synths Pt. I - Audio Signal Paths
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <nav>
+    <h3>Related Posts</h3>
+    
+    
+    <ul>
+      <li>
+        <a href="/GRPH/audio/2021/10/26/coding-on-bela.html">
+          Coding on bela
+        </a>
+      </li>
+    </ul>
+    
+    <ul>
+      <li>
+        <a href="/GRPH/audio/2021/11/29/sample-rates-and-harmonics.html">
+          Sampling Rates & Harmonics
+        </a>
+      </li>
+    </ul>
+    
+    <ul>
+      <li>
+        <a href="/GRPH/audio/2021/11/16/why-im-making-a-synth.html">
+          Thoughts on why I'm making a synthesizer
+        </a>
+      </li>
+    </ul>
+    
+  </nav>
+</footer>
+
+    </main>    <!-- CONTENT END -->
+    <footer>   <!-- FOOTER START -->
+      <ul>
+        <li><a href="/GRPH/feed.xml">RSS Feed</a></li>
+        <li>
+          <a href="https://www.gnu.org/licenses/copyleft.en.html">(C)</a>
+           2021-2022
+          <a href="mailto:chr.carin(a)gmail.com">Chris Carin</a>
+        </li>
+        <li><a href="https://html5.validator.nu/?doc=http://0.0.0.0:4000/GRPH/audio/2021/12/03/audio-signal-paths.html">This document is valid HTML5</a></li>
+        <li><a href="#">Back to Top</a></li>
+      </ul>
+    </footer>   <!-- FOOTER END -->
+  </body>
+</html>

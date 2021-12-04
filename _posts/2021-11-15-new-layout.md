@@ -14,13 +14,13 @@ Prior to the re-design, the main thing I was using JS for was to show and hide m
 
 Other than the menu, I also implemented some JS for placing arbitrary text into someone's copy and paste clipboard. I was mainly using to create hyperlinks which would give the user the URL to the RSS feed. Though the script does work pretty well, if JS is disabled for whatever reason it is impossible to access the RSS. Also I feel like using JS in this way was sort of lazy.
 
-{% include image.html url='/content/blog_size_0.png' caption='34.1kbs for webfonts' %}
+{% include image.html url='blog_size_0.png' caption='34.1kbs for webfonts' %}
 
 After getting rid of all the javascript, I found a few [online](https://pagespeed.web.dev/) [tools](https://tools.pingdom.com/) for measuring how much data a webpage requests whenever it is loaded. As the results above show, webfonts had previously accounted for over 50% of the site's bandwidth per visit which for me is obviously not cool. To remedy this, I stuck to [web safe fonts](https://www.cssfontstack.com/).
 
 ## On to the New
 
-{% include image.html float='right' url='splash.gif' caption='Say hi!' %}
+{% include image.html float='right' url='../splash.gif' caption='Say hi!' %}
 
 I'm pretty happy about is how small this website is. I've managed to get the about my main pages below [20kbs](https://pagespeed.web.dev/report?url=https%3A%2F%2Fcheesoup.github.io%2FGRPH%2Fabout)! I think that's pretty impressive. There are actually still a few things I would like to implement (the main thing being a pure CSS lightbox for photos), but I think that's a project for another day.
 

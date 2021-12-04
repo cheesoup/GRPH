@@ -401,6 +401,7 @@ div.float {
         border: 1px $color4 solid;
         padding-bottom: 56.25%;
         height: 0;
+        margin-bottom: 8px;
         overflow: hidden;
         & > iframe, & > object, & > embed {
           position: absolute;

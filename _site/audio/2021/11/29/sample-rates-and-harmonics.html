@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="/GRPH/assets/css/style.css"/>
+    <link rel="alternate" type="application/atom+xml" title="thesis? idk?" href="/GRPH/feed.xml"/>
+    <link rel="shortcut icon" type="image/png" href="/GRPH/icon.ico"/>
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Sampling Rates &amp; Harmonics | thesis? idk?</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Sampling Rates &amp; Harmonics" />
+<meta name="author" content="Chris Carin" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Before I continue, I want to disclose that I am not an engineer. I am merely an enthusiast who enjoys synthesis. This information may not be the most correct or academically rigorous. Much of what I’m writing about is my own self-educated understanding of these subjects. If I do make a mistake, please point it out to me in an email. So, I guess without further ado, here we go…" />
+<meta property="og:description" content="Before I continue, I want to disclose that I am not an engineer. I am merely an enthusiast who enjoys synthesis. This information may not be the most correct or academically rigorous. Much of what I’m writing about is my own self-educated understanding of these subjects. If I do make a mistake, please point it out to me in an email. So, I guess without further ado, here we go…" />
+<link rel="canonical" href="http://0.0.0.0:4000/GRPH/audio/2021/11/29/sample-rates-and-harmonics.html" />
+<meta property="og:url" content="http://0.0.0.0:4000/GRPH/audio/2021/11/29/sample-rates-and-harmonics.html" />
+<meta property="og:site_name" content="thesis? idk?" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-11-29T00:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Sampling Rates &amp; Harmonics" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Chris Carin"},"@type":"BlogPosting","headline":"Sampling Rates &amp; Harmonics","dateModified":"2021-11-29T00:00:00-05:00","datePublished":"2021-11-29T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/GRPH/audio/2021/11/29/sample-rates-and-harmonics.html"},"description":"Before I continue, I want to disclose that I am not an engineer. I am merely an enthusiast who enjoys synthesis. This information may not be the most correct or academically rigorous. Much of what I’m writing about is my own self-educated understanding of these subjects. If I do make a mistake, please point it out to me in an email. So, I guess without further ado, here we go…","url":"http://0.0.0.0:4000/GRPH/audio/2021/11/29/sample-rates-and-harmonics.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+  <body>
+    <header>  <!-- HEADER START -->
+      <a href="/GRPH/"><img src="/GRPH/assets/images/jam_crow.gif" alt="jam_crow.gif" width="128" height="68"/></a>
+      <nav>   <!-- MENU START -->
+        <ul>
+          
+          <li><a href="/GRPH/about">about</a></li>
+          
+          <li><a href="/GRPH/audio">audio</a></li>
+          
+          <li><a href="/GRPH/website">web</a></li>
+          
+          <li><a href="/GRPH/misc">misc</a></li>
+          
+          <li><a href="/GRPH/tags">tags</a></li>
+          
+        </ul>
+      </nav>   <!-- MENU END -->
+    </header>  <!-- HEADER END -->
+    <main>     <!-- CONTENT START -->
+      
+
+
+<header class="heading">
+  <h1>Sampling Rates & Harmonics</h1>
+  <div>
+    <small>
+      Category: <a href="">Audio</a>
+    </small>
+    <small>
+      Tags:
+      
+        <a href="/GRPH/tags#digital-synths">Digital Synths</a>
+      
+    </small>
+  </div>
+  <div>
+    <small>
+      Mon, Nov 29, 21
+    </small>
+    <small>
+      
+      Length:
+      
+        8 mins
+      
+    </small>
+  </div>
+</header>
+
+<p>Before I continue, I want to disclose that I am not an engineer. I am merely an enthusiast who enjoys synthesis. This information may not be the most correct or academically rigorous. Much of what I’m writing about is my own self-educated understanding of these subjects. If I do make a mistake, please point it out to me in an email. So, I guess without further ado, <em>here we go…</em></p>
+
+<p>When working with sound on computers, it’s useful to become acquainted with how digital signals work. A signal is a function which varies over an independent variable (normally time). Sound can be thought of as a signal created through variations in air pressure over time. When we hear something, what we’re really sensing is physical vibration. When an audio waveform is drawn on screen, that vibration is what is represented.</p>
+
+<p>Electric and electronic devices normally produce sound using speakers. When a device is wired to a speaker through something like an AUX cable, it is sending a control signal to drive a speaker’s diaphragm. When such a signal reaches a speaker, an electromagnetic motor converts the signal into mechanical vibrations based on its voltage level. These vibrations create changes in air pressure to produce sound. This is of course a very abridged version of speakers work, but for our purposes it’s all we need to know. If you want to read more about speakers <a href="https://animagraffs.com/loudspeaker/">this page</a> is pretty informative (warning: it contains a large infographic).</p>
+
+<p>To produce audio through a speaker, all that’s needed is an electrical signal strong enough to drive diaphragm. As mentioned in a previous post, I’m using a single board computer with a dedicated sound capelet to generate the audio signals for this project. It’s important to note how I’m generating these signals because signals in the digital domain are discrete. What I mean by discrete is best illustrated by discussing audio sample rates and quality.</p>
+
+<h2 id="whats-a-discrete-signal">What’s a Discrete Signal?</h2>
+
+<p>If you’ve heard of the term <a href="https://blog.discmakers.com/2019/06/cds-just-sound-better/">CD quality</a>, you may also be aware that like digital images, digital audio has resolution. Rather than RGB values within a grid of pixels, digital audio can be thought of as a sequence of voltage levels over time. Each value in the sequence is known as a sample. When a digital device plays back audio, it runs through thousands of samples at a fixed rate to produce a composite signal for a speaker to convert into sound.</p>
+
+<!-- Include for captioned images -->
+
+<div class="float ">
+  <figure class="embed picture" style="width: ">
+    
+    <a href="#digital-wave-png">
+      <img src="/GRPH/assets/images/content/digital_wave.png" alt="Visual representation of audio in digital form" style="width: 500px" loading="lazy" />
+    </a>
+    
+    <figcaption>
+      Visual representation of audio in digital form
+      
+        <br />(original image: http://grahammitchell.com/writings/vorbis_intro.html)
+      
+    </figcaption>
+  </figure>
+  
+  <a href="#/" class="expand" id="digital-wave-png">
+    <img src="/GRPH/assets/images/content/digital_wave.png" alt="Visual representation of audio in digital form" style="background-image: url('/GRPH/assets/images/transparent.gif')" loading="lazy" />
+  </a>
+  
+</div>
+
+<p>Unlike their physical and analog counterparts, signals produced through digital means cannot have continuous fidelity. Rather, digital signals can be thought of as a countable series of states. This is basically what I mean when I use the term discrete. Think of it this way: when working with print, graphic designers often use units of length such as inches or millimeters as measurements of size. When designing for the digital domain however, graphic designers will instead measure by pixel. Conceptually, pixels and units of length are completely different. While there is such a thing as a fraction of an inch, there is no such thing as a fraction of a pixel. This same concept can be applied to sound by viewing audio signals as a function over time. Rather than counting by seconds however, we are instead counting by samples.</p>
+
+<p>Because of its discrete nature, there is a limited range of frequencies that a digital signal can reproduce accurately. <a href="https://mathworld.wolfram.com/SamplingTheorem.html">Sampling theorem</a> states that the highest frequency a discrete system can represent is equal to the system’s sampling rate divided by 2. CD quality’s sampling rate is 44.1kHz, therefore the highest representable frequency at CD quality is 22.05kHz. This maximum frequency is known as the <a href="https://mathworld.wolfram.com/NyquistFrequency.html">Nyquist Frequency</a> (or just Nyquist for short). Since the range of human hearing is between 20Hz-20kHz, CD quality is more than sufficient for casually playing back audio. For digital synthesis however, there are benefits to higher rates.</p>
+
+<h2 id="the-relationship-between-timbre-and-sample-rate">The Relationship between Timbre and Sample Rate</h2>
+
+<div class="float right">
+  <figure class="embed audio">
+    
+    <audio controls="">
+      <source src="/GRPH/assets/audio/piano.mp3" type="audio/mp3" loading="lazy" />
+      Your browser does not support the audio element.
+    </audio>
+    
+    <audio controls="">
+      <source src="/GRPH/assets/audio/sine.mp3" type="audio/mp3" loading="lazy" />
+      Your browser does not support the audio element.
+    </audio>
+    
+    <figcaption>A piano (above) and a sine tone (below) playing middle A (440Hz)</figcaption>
+  </figure>
+</div>
+
+<p>It’s important to know about sampling rates because sound synthesis is really all about harmonic manipulation. To elaborate, I’ve posted two audio examples to the left (or above on mobile). One is the sound of a piano, the other is the sound of a sine tone slowly fading out. Both examples are playing middle A. If you compare the two, it’s easy to distinguish that they sound nothing alike. The reason for this is because the relationship of frequencies (aka the harmonics) produced by the sound of a piano key is much more complex than a single sine tone. The relationship between frequencies produced over time is what defines what is traditionally known as an instrument’s timbre.</p>
+
+<!-- Include for captioned images -->
+
+<div class="float ">
+  <figure class="embed picture" style="width: ">
+    
+    <a href="#pianospek-png">
+      <img src="/GRPH/assets/images/content/pianospek.png" alt="The frequency spectrum of a piano (left) and a sine tone (right) playing middle A (440Hz)" style="width: 300px" loading="lazy" />
+    </a>
+    
+    <a href="#sinespek-png">
+      <img src="/GRPH/assets/images/content/sinespek.png" alt="The frequency spectrum of a piano (left) and a sine tone (right) playing middle A (440Hz)" style="width: 300px" loading="lazy" />
+    </a>
+    
+    <figcaption>
+      The frequency spectrum of a piano (left) and a sine tone (right) playing middle A (440Hz)
+      
+    </figcaption>
+  </figure>
+  
+  <a href="#/" class="expand" id="pianospek-png">
+    <img src="/GRPH/assets/images/content/pianospek.png" alt="The frequency spectrum of a piano (left) and a sine tone (right) playing middle A (440Hz)" style="background-image: url('/GRPH/assets/images/transparent.gif')" loading="lazy" />
+  </a>
+  
+  <a href="#/" class="expand" id="sinespek-png">
+    <img src="/GRPH/assets/images/content/sinespek.png" alt="The frequency spectrum of a piano (left) and a sine tone (right) playing middle A (440Hz)" style="background-image: url('/GRPH/assets/images/transparent.gif')" loading="lazy" />
+  </a>
+  
+</div>
+
+<p>By graphing out the spectral components, we can confirm both the harmonic complexity of a piano (on the left), and the simplicity of the sine tone. In contrast to the piano, the sine tone contains only a single harmonic located at its fundamental frequency. This is true of all sine tones making sine waves the harmonically the simplest sound possible. Due to their harmonic simplicity, all periodic waveforms can be represented as a summation of multiple sine tones with varying frequencies, phases, and amplitudes. By extension, anything that isn’t a sine tone is going to have spectra more complex than a single sine wave. Should any of the harmonic components of a signal exceed Nyquist frequency, the signal becomes subject to a type of digital aliasing known as ‘foldover’. Any signal with a frequency above Nyquist will produce a mirrored component equal to Nyquist minus the difference of the original frequency and Nyquist.</p>
+
+<!-- Include for captioned images -->
+
+<div class="float ">
+  <figure class="embed picture" style="width: ">
+    
+    <a href="#saw-sweep-spek-png">
+      <img src="/GRPH/assets/images/content/saw_sweep_spek.png" alt="Spectogram of a niave sawtooth sweep" style="width: 600px" loading="lazy" />
+    </a>
+    
+    <figcaption>
+      Spectogram of a niave sawtooth sweep
+      
+    </figcaption>
+  </figure>
+  
+  <a href="#/" class="expand" id="saw-sweep-spek-png">
+    <img src="/GRPH/assets/images/content/saw_sweep_spek.png" alt="Spectogram of a niave sawtooth sweep" style="background-image: url('/GRPH/assets/images/transparent.gif')" loading="lazy" />
+  </a>
+  
+</div>
+
+<div class="float ">
+  <figure class="embed audio">
+    
+    <audio controls="">
+      <source src="/GRPH/assets/audio/saw_sweep.mp3" type="audio/mp3" loading="lazy" />
+      Your browser does not support the audio element.
+    </audio>
+    
+    <figcaption>Niave sawtooth sweep from 0Hz to 22.05kHz and back at a sampling rate of 44.1kHz</figcaption>
+  </figure>
+</div>
+
+<p>To demonstrate foldover, to the above is an audio example of a naively generated sawtooth wave sweeping from 0Hz to 22.05kHz at a sample rate of 44.1kHz. If you pay close attention, a swirling distortion becomes prevalent as the sweep approaches Nyquist. To visualize foldover I’ve posted a spectrogram of the audio recording. Notice how harmonics seem to reflect back and forth between 0Hz and Nyquist as they fall out of range. While this effect can sound interesting in some situations (I like it on hi-hats), it’s unwanted in most. I don’t exactly want to go into detail as to why fold over occurs (this post is already almost 1000 words long), so I will instead defer to <a href="http://www.dspguide.com/ch3/2.htm">this resource</a> for more information.</p>
+
+<p>What I’m trying to get across is that it’s important to understand what digital audio is when working with low-level audio synthesis. Without such knowledge, it’s easy to end up with consistently poor-quality sounds. Even at increased sample rates, it’s easy to end up with something distorted when you aren’t taking harmonic content into account. For my situation, I don’t even really have access to higher sample rates. The Bela board is actually locked to a 44.1kHz sample rate. While this isn’t entirely ideal, there are implementable methods to reduce aliasing which I plan to go over in future posts as needed.</p>
+
+<p>The PureData patch I used to generate the sounds for this post can be found <a href="/GRPH/assets/other/spec_example.zip">here</a>. The piano recording originated from <a href="https://freesound.org/people/ramas26/sounds/95326/">freesounds</a>.</p>
+
+
+<!-- Grab previous and next post from category -->
+<!-- https://talk.jekyllrb.com/t/how-to-link-to-next-and-previous-posts-for-same-blog-category/629 -->
+
+
+
+
+
+
+<footer class="pagination">
+  <nav>
+    <h3>Pagination</h3>
+    <ul>
+      <!-- Page Up -->
+      <li>
+        <a class="up" href="/GRPH/Audio">
+          Back to Audio
+        </a>
+      </li>
+      <!-- Prev post -->
+      <li>
+        <a class="next" href="/GRPH/audio/2021/11/16/why-im-making-a-synth.html">
+          Thoughts on why I'm making a synthesizer
+        </a>
+      </li>
+      <!-- Next post -->
+      <li>
+        <a class="prev" href="/GRPH/audio/2021/12/03/audio-signal-paths.html">
+          Anatomy of Subtractive Synths Pt. I - Audio Signal Paths
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <nav>
+    <h3>Related Posts</h3>
+    
+    
+    <ul>
+      <li>
+        <a href="/GRPH/audio/2021/10/14/fft_grainspec.html">
+          FFT Spectral Granulator
+        </a>
+      </li>
+    </ul>
+    
+    <ul>
+      <li>
+        <a href="/GRPH/audio/2021/11/16/why-im-making-a-synth.html">
+          Thoughts on why I'm making a synthesizer
+        </a>
+      </li>
+    </ul>
+    
+    <ul>
+      <li>
+        <a href="/GRPH/audio/2021/10/26/coding-on-bela.html">
+          Coding on bela
+        </a>
+      </li>
+    </ul>
+    
+  </nav>
+</footer>
+
+    </main>    <!-- CONTENT END -->
+    <footer>   <!-- FOOTER START -->
+      <ul>
+        <li><a href="/GRPH/feed.xml">RSS Feed</a></li>
+        <li>
+          <a href="https://www.gnu.org/licenses/copyleft.en.html">(C)</a>
+           2021-2022
+          <a href="mailto:chr.carin(a)gmail.com">Chris Carin</a>
+        </li>
+        <li><a href="https://html5.validator.nu/?doc=http://0.0.0.0:4000/GRPH/audio/2021/11/29/sample-rates-and-harmonics.html">This document is valid HTML5</a></li>
+        <li><a href="#">Back to Top</a></li>
+      </ul>
+    </footer>   <!-- FOOTER END -->
+  </body>
+</html>
