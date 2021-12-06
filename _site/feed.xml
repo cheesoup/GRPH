@@ -1,4 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://0.0.0.0:4000/GRPH/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://0.0.0.0:4000/GRPH/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/GRPH/" rel="alternate" type="text/html" /><updated>2021-12-04T05:49:33-05:00</updated><id>http://0.0.0.0:4000/GRPH/feed.xml</id><title type="html">thesis? idk?</title><subtitle>a blog for 4th year workshop at OCADU</subtitle><author><name>Chris Carin</name></author><entry><title type="html">Anatomy of Subtractive Synths Pt. I - Audio Signal Paths</title><link href="http://0.0.0.0:4000/GRPH/audio/2021/12/03/audio-signal-paths.html" rel="alternate" type="text/html" title="Anatomy of Subtractive Synths Pt. I - Audio Signal Paths" /><published>2021-12-03T00:00:00-05:00</published><updated>2021-12-03T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/audio/2021/12/03/audio-signal-paths</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/audio/2021/12/03/audio-signal-paths.html">&lt;!-- Include for captioned images --&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://0.0.0.0:4000/GRPH/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://0.0.0.0:4000/GRPH/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/GRPH/" rel="alternate" type="text/html" /><updated>2021-12-06T06:43:33-05:00</updated><id>http://0.0.0.0:4000/GRPH/feed.xml</id><title type="html">thesis? idk?</title><subtitle>a blog for 4th year workshop at OCADU</subtitle><author><name>Chris Carin</name></author><entry><title type="html">CheeseVA Demo Footage!</title><link href="http://0.0.0.0:4000/GRPH/audio/2021/12/05/CheeseVA-Demo-Footage.html" rel="alternate" type="text/html" title="CheeseVA Demo Footage!" /><published>2021-12-05T00:00:00-05:00</published><updated>2021-12-05T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/audio/2021/12/05/CheeseVA-Demo-Footage</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/audio/2021/12/05/CheeseVA-Demo-Footage.html">&lt;p&gt;I just realized I had no actual footage of my sound engine on this blog. I guess better late than never. The overall signal path is still subject to change but most of the oscillator features are more or less finalized at this point. It may take a few posts to fully go over how just the oscillators work. The source code for the engine can be found &lt;a href=&quot;https://github.com/cheesoup/CheeseVA&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;!-- Include for Video Embedding --&gt;
+&lt;!-- https://github.com/nathancy/jekyll-embed-video#responsive-videos --&gt;
+&lt;div class=&quot;float&quot;&gt;
+  &lt;figure class=&quot;embed video&quot;&gt;
+    &lt;span class=&quot;video&quot;&gt;
+      &lt;iframe style=&quot;width:100%; height:100%;&quot; src=&quot;https://player.vimeo.com/video/653644087?h=b0a124d5cc&amp;amp;badge=0&amp;amp;autopause=0&amp;amp;player_id=0&amp;amp;app_id=58479&quot; loading=&quot;lazy&quot; allowfullscreen=&quot;&quot;&gt;
+      &lt;/iframe&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;caption&quot;&gt;Demo footage the CheeseVA engine so far&lt;/figcaption&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;</content><author><name>Chris Carin</name></author><category term="Audio" /><category term="Updates" /><category term="Bela" /><category term="Demo" /><summary type="html">I just realized I had no actual footage of my sound engine on this blog. I guess better late than never. The overall signal path is still subject to change but most of the oscillator features are more or less finalized at this point. It may take a few posts to fully go over how just the oscillators work. The source code for the engine can be found here.</summary></entry><entry><title type="html">sade is waifu</title><link href="http://0.0.0.0:4000/GRPH/misc/2021/12/05/sade-is-waifu.html" rel="alternate" type="text/html" title="sade is waifu" /><published>2021-12-05T00:00:00-05:00</published><updated>2021-12-05T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/misc/2021/12/05/sade-is-waifu</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/misc/2021/12/05/sade-is-waifu.html">&lt;p&gt;If you don’t like this song, your life choices are incorrect.
+&lt;!-- Include Video Embedding --&gt;
+&lt;!-- https://github.com/nathancy/jekyll-embed-video#responsive-videos --&gt;&lt;/p&gt;
+&lt;div class=&quot;float&quot;&gt;
+  &lt;figure class=&quot;embed video&quot;&gt;
+    &lt;span class=&quot;video&quot;&gt;
+      &lt;iframe style=&quot;width:100%; height:100%;&quot; src=&quot;https://www.youtube.com/embed/MmOau-PMWJk&quot; loading=&quot;lazy&quot; allowfullscreen=&quot;&quot;&gt;
+      &lt;/iframe&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;caption&quot;&gt;sade is waifu&lt;/figcaption&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;</content><author><name>Chris Carin</name></author><category term="Misc" /><category term="sade is waifu" /><summary type="html">If you don’t like this song, your life choices are incorrect. sade is waifu</summary></entry><entry><title type="html">Anatomy of Subtractive Synths</title><link href="http://0.0.0.0:4000/GRPH/audio/2021/12/03/anatomy-of-subtractive-synths.html" rel="alternate" type="text/html" title="Anatomy of Subtractive Synths" /><published>2021-12-03T00:00:00-05:00</published><updated>2021-12-03T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/audio/2021/12/03/anatomy-of-subtractive-synths</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/audio/2021/12/03/anatomy-of-subtractive-synths.html">&lt;!-- Include for captioned images --&gt;
 
 &lt;div class=&quot;float &quot;&gt;
   &lt;figure class=&quot;embed picture&quot; style=&quot;width: &quot;&gt;
@@ -81,43 +104,119 @@
 
 &lt;p&gt;A band-pass attenuates frequencies the further away they are from a set center band. They can be thought of as the combination of both a highpass and lowpass filter. Band-pass filters are normally controlled using a center and Q parameter. The center controls the center of the passband, while the q controls the passband’s width.&lt;/p&gt;
 
-&lt;p&gt;Less commonly found on synthesizers are band-stop (aka notch) filters. Band-stops attenuate frequencies the closer they are to a given frequency band. They can be thought of as the inverse of a band-pass. Other kinds of filters include shelving, peaking, all-pass, and comb filters. The first two are normally found in EQs, while the latter two are normally used as diffusers and resonators for delay type effects. I won’t go in detail about the frequency response of these filters, but do know they exist. I may or may not elaborate on them later if needed.&lt;/p&gt;
+&lt;p&gt;Below is a video demo of the filters mentioned above. The original Pd patch for this example can be found &lt;a href=&quot;/GRPH/assets/other/filter_example.zip&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h2 id=&quot;output&quot;&gt;Output&lt;/h2&gt;
-
-&lt;p&gt;Prior to output, a synthesizer typically has a time-varying amplifier for controlling the output level of the instrument. Typically, this amplifier is controlled by a separate signal known as an envelope. I’ll talk about it more in part two of this post, but an envelope is a signal used to define the value of a parameter over time. In the case of the output amplifier, it is used to define a sound’s output level over time.&lt;/p&gt;
-
-&lt;p&gt;Beyond level controls, some synthesizers offer on-board effects such as distortions, delays, choruses, and reverbs. I’m not sure if I’ll have time or system resources to handle such processes, but if I do manage to implement any of these things, I’ll definitely write a post elaborating on how so-and-so effect works.&lt;/p&gt;
-
-&lt;h2 id=&quot;parameters-and-control-signals&quot;&gt;Parameters and Control Signals&lt;/h2&gt;
-
-&lt;p&gt;One of the most powerful features of many synthesizers is their ability to vary the parameters over time. I mentioned in the previous section how the amplifier on the output of most audio paths is normally automated by a control signal. A lot of synths will actually allow you to apply the exact same type of automation to whatever parameter you want. In my next post, I plan to go over how these automation signals work and the kind of effects you can get by applying them to some of the parameters mentioned above.&lt;/p&gt;</content><author><name>Chris Carin</name></author><category term="Audio" /><category term="Digital Synths" /><summary type="html">Signal path for the Alesis Micron</summary></entry><entry><title type="html">Due Dates and Blog Content</title><link href="http://0.0.0.0:4000/GRPH/misc/2021/12/03/due-dates-and-blog-content.html" rel="alternate" type="text/html" title="Due Dates and Blog Content" /><published>2021-12-03T00:00:00-05:00</published><updated>2021-12-03T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/misc/2021/12/03/due-dates-and-blog-content</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/misc/2021/12/03/due-dates-and-blog-content.html">&lt;p&gt;&lt;strong&gt;TLDR:&lt;/strong&gt; I have too much stuff to write about and not enough time. In case I don’t finish, below is list of posts I still have drafted up. You can refer to this list for updates on these unfinished drafts. My goal is get all these up within a week of submission day at least.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Drafts that haven’t been posted yet:&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;Anatomy of Subtractive Synths Pt. II&lt;/li&gt;
-  &lt;li&gt;Code Overview: Oscillators&lt;/li&gt;
-  &lt;li&gt;Code Overview: Delays&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;I don’t think I’m going to be able to write all of the content I would like before Dec. 8th. Unfortunately, I have an essay due for another class on the exact same day. My goal for now is to finish my overview on synth anatomy and then quickly write about the code and design decisions I have finalized. While I do have a functioning synth engine on Bela, a lot of it is still underdeveloped and not exactly ready to be shared. The only things which have been finalized so far are the oscillators, the delay section, and the overall signal path (minus the effects). The latter of these topic doesn’t really require any sort code breakdown to explain thankfully.&lt;/p&gt;
-
-&lt;p&gt;I realize now that it’s really hard to describe signal processing related things without falling back on jargon. I guess I take for granted how much I’ve internalized a lot of the terminology I would read about while obsessively researching things. It also doesn’t help that I feel like I struggle with writing in general. Even with this post, I’m constantly editing myself while I write. It’s horrible.&lt;/p&gt;
-
-&lt;p&gt;Honestly, I don’t even think the amount content I have right now is bad. It’s just not everything I have to talk about which I feel is a little disappointing. Either way, if I fail to get these posts up by the 8th, I think I can at least get them written within the week of. The nice thing about blogs is that they can always be updated after the fact.&lt;/p&gt;
-
-&lt;p&gt;Anyways, here’s some Sade. If you don’t like this song, your life choices are incorrect.
-&lt;!-- Include Video Embedding --&gt;
-&lt;!-- https://github.com/nathancy/jekyll-embed-video#responsive-videos --&gt;&lt;/p&gt;
+&lt;!-- Include for Video Embedding --&gt;
+&lt;!-- https://github.com/nathancy/jekyll-embed-video#responsive-videos --&gt;
 &lt;div class=&quot;float&quot;&gt;
   &lt;figure class=&quot;embed video&quot;&gt;
     &lt;span class=&quot;video&quot;&gt;
-      &lt;iframe style=&quot;width:100%; height:100%;&quot; src=&quot;https://www.youtube.com/embed/MmOau-PMWJk&quot; loading=&quot;lazy&quot; allowfullscreen=&quot;&quot;&gt;
+      &lt;iframe style=&quot;width:100%; height:100%;&quot; src=&quot;https://player.vimeo.com/video/653521212?h=b0a124d5cc&amp;amp;badge=0&amp;amp;autopause=0&amp;amp;player_id=0&amp;amp;app_id=58479&quot; loading=&quot;lazy&quot; allowfullscreen=&quot;&quot;&gt;
       &lt;/iframe&gt;
     &lt;/span&gt;
-    &lt;figcaption class=&quot;caption&quot;&gt;sade is waifu&lt;/figcaption&gt;
+    &lt;figcaption class=&quot;caption&quot;&gt;Demonstration of a low-pass, high-pass, and band-pass filter.&lt;/figcaption&gt;
   &lt;/figure&gt;
-&lt;/div&gt;</content><author><name>Chris Carin</name></author><category term="Misc" /><category term="Updates" /><summary type="html">TLDR: I have too much stuff to write about and not enough time. In case I don’t finish, below is list of posts I still have drafted up. You can refer to this list for updates on these unfinished drafts. My goal is get all these up within a week of submission day at least.</summary></entry><entry><title type="html">Sampling Rates &amp;amp; Harmonics</title><link href="http://0.0.0.0:4000/GRPH/audio/2021/11/29/sample-rates-and-harmonics.html" rel="alternate" type="text/html" title="Sampling Rates &amp;amp; Harmonics" /><published>2021-11-29T00:00:00-05:00</published><updated>2021-11-29T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/audio/2021/11/29/sample-rates-and-harmonics</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/audio/2021/11/29/sample-rates-and-harmonics.html">&lt;p&gt;Before I continue, I want to disclose that I am not an engineer. I am merely an enthusiast who enjoys synthesis. This information may not be the most correct or academically rigorous. Much of what I’m writing about is my own self-educated understanding of these subjects. If I do make a mistake, please point it out to me in an email. So, I guess without further ado, &lt;em&gt;here we go…&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Less commonly found on synthesizers are band-stop (aka notch) filters. Band-stops attenuate frequencies the closer they are to a given frequency band. They can be thought of as the inverse of a band-pass. Other kinds of filters include shelving, peaking, all-pass, and comb filters. The first two are normally found in EQs, while the latter two are normally used as diffusers and resonators for delay type effects. I won’t go in detail about the frequency response of these filters, but do know they exist. I may or may not elaborate on them later if needed.&lt;/p&gt;
+
+&lt;h2 id=&quot;control-signals&quot;&gt;Control Signals&lt;/h2&gt;
+
+&lt;p&gt;As mentioned in the introduction, control signals are signals used to automate parameters. There are two types commonly found on most synthesizers: LFOs and envelopes.&lt;/p&gt;
+
+&lt;div class=&quot;float right&quot;&gt;
+  &lt;figure class=&quot;embed audio&quot; style=&quot;width: 200px&quot;&gt;
+    
+    &lt;audio controls=&quot;&quot;&gt;
+      &lt;source src=&quot;/GRPH/assets/audio/tremolo.mp3&quot; type=&quot;audio/mp3&quot; loading=&quot;lazy&quot; /&gt;
+      Your browser does not support the audio element.
+    &lt;/audio&gt;
+    
+    &lt;audio controls=&quot;&quot;&gt;
+      &lt;source src=&quot;/GRPH/assets/audio/vibrato.mp3&quot; type=&quot;audio/mp3&quot; loading=&quot;lazy&quot; /&gt;
+      Your browser does not support the audio element.
+    &lt;/audio&gt;
+    
+    &lt;figcaption&gt;An example of pitch (above) and volume (below) modulation via LFO&lt;/figcaption&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;
+
+&lt;p&gt;LFOs (Low Frequency Oscillators) are oscillators used to automate parameters. The ‘LF’ refers to the fact that these oscillators are typically set to frequencies below the range of human hearing. Because oscillators are periodic, they can be useful for creating a sense of motion when used to automate parameters. For example applying an LFO to the pitch of a generator will create a tremolo like effect. Applying it to volume will create something like vibrato.&lt;/p&gt;
+
+&lt;!-- Include for captioned images --&gt;
+
+&lt;div class=&quot;float &quot;&gt;
+  &lt;figure class=&quot;embed picture&quot; style=&quot;width: &quot;&gt;
+    
+    &lt;a href=&quot;#adsrenvelope-png&quot;&gt;
+      &lt;img src=&quot;/GRPH/assets/images/content/adsrenvelope.png&quot; alt=&quot;Diagram of an ADSR envelopes output value and stages over time&quot; style=&quot;width: &quot; loading=&quot;lazy&quot; /&gt;
+    &lt;/a&gt;
+    
+    &lt;figcaption&gt;
+      Diagram of an ADSR envelopes output value and stages over time
+      
+    &lt;/figcaption&gt;
+  &lt;/figure&gt;
+  
+  &lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;adsrenvelope-png&quot;&gt;
+    &lt;img src=&quot;/GRPH/assets/images/content/adsrenvelope.png&quot; alt=&quot;Diagram of an ADSR envelopes output value and stages over time&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
+  &lt;/a&gt;
+  
+&lt;/div&gt;
+
+&lt;p&gt;Envelopes are a type of non-periodic signal which normally reset each time a user inputs a new note. They can be thought of as a sequence of points which are output over set-able amount of time. Most envelopes have four parameters which correspond to its stages of change over time. These are:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Attack - The time it takes for a signal to reach peak value from resting value.&lt;/li&gt;
+  &lt;li&gt;Decay - The time it takes for a signal to decay to the sustain value after reaching its peak.&lt;/li&gt;
+  &lt;li&gt;Sustain - The value to hold when as a note while is active (post-decay stage)&lt;/li&gt;
+  &lt;li&gt;Release - The time it takes for a signal to decay to resting value.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Prior to output, a synthesizer typically has a voltage controlled amplifier (VCA) for controlling the overall gain of the instrument. What makes the amplifier ‘voltage controlled’ is the fact that it is normally controlled by an envelope. This gives the user access to a large range of volume contours for their sound. To elaborate, below are some more audio examples demonstrating how an envelope can shape the volume contour.&lt;/p&gt;
+
+&lt;div class=&quot;float &quot;&gt;
+  &lt;figure class=&quot;embed audio&quot; style=&quot;width: &quot;&gt;
+    
+    &lt;audio controls=&quot;&quot;&gt;
+      &lt;source src=&quot;/GRPH/assets/audio/short_atk.mp3&quot; type=&quot;audio/mp3&quot; loading=&quot;lazy&quot; /&gt;
+      Your browser does not support the audio element.
+    &lt;/audio&gt;
+    
+    &lt;audio controls=&quot;&quot;&gt;
+      &lt;source src=&quot;/GRPH/assets/audio/long_atk_long_rel.mp3&quot; type=&quot;audio/mp3&quot; loading=&quot;lazy&quot; /&gt;
+      Your browser does not support the audio element.
+    &lt;/audio&gt;
+    
+    &lt;audio controls=&quot;&quot;&gt;
+      &lt;source src=&quot;/GRPH/assets/audio/short_rel.mp3&quot; type=&quot;audio/mp3&quot; loading=&quot;lazy&quot; /&gt;
+      Your browser does not support the audio element.
+    &lt;/audio&gt;
+    
+    &lt;figcaption&gt;Three sound examples. The first has a short attack and long release, the second has a long attack and long release, the third has a long attack and short release&lt;/figcaption&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;output&quot;&gt;Output&lt;/h2&gt;
+
+&lt;p&gt;Post VCA, some synthesizers offer on-board effects such as distortions, delays, choruses, and reverbs. Effects can do a lot of things to sound. For example, distortions will usually thicken a sound by adding harmonic content. Delays cause an echoing effect which can turn into all sorts of wacky stuff when you start automating the parameters.&lt;/p&gt;
+
+&lt;p&gt;I’m not sure if I’ll have the time or system resources to handle too many effects, but if I do manage to implement any of these things, I’ll definitely write a post elaborating on how so-and-so effect works. Otherwise, there’s way too many processes out there to go over in this post. If anything, check out this list of the different types of guitar pedal if you’re interested in seeing what kind of effects are out there in the world.&lt;/p&gt;</content><author><name>Chris Carin</name></author><category term="Audio" /><category term="Digital Synths" /><summary type="html">Signal path for the Alesis Micron</summary></entry><entry><title type="html">Due Dates and Blog Content</title><link href="http://0.0.0.0:4000/GRPH/misc/2021/12/03/due-dates-and-blog-content.html" rel="alternate" type="text/html" title="Due Dates and Blog Content" /><published>2021-12-03T00:00:00-05:00</published><updated>2021-12-03T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/misc/2021/12/03/due-dates-and-blog-content</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/misc/2021/12/03/due-dates-and-blog-content.html">&lt;p&gt;&lt;strong&gt;TLDR:&lt;/strong&gt; I have too much stuff to write about and not enough time to write it. In case I don’t finish, below is list of posts I still have drafted up. You can refer to this list for updates on these unfinished drafts. My goal is get all these up within a week of submission day at least.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Things that I want posted:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;del&gt;Anatomy of Subtractive Synths Pt. 2&lt;/del&gt; (Merged with part 1)&lt;/li&gt;
+  &lt;li&gt;Oscillator Design pt. 1: Anti-aliasing&lt;/li&gt;
+  &lt;li&gt;Oscillator Design pt. 2: Arbitrary Wavemorphing&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;I don’t think I’m going to be able to write all of the content I would like before Dec. 8th. Unfortunately, I have an essay due for another class on the exact same day. My goal for now is to finish my overview on synth anatomy and then quickly write about the code and design decisions I have finalized. While I do have a functioning synth engine on Bela, a lot of it is still underdeveloped and not exactly ready to be shared. The only things which have been finalized so far are the oscillator and the voice signal path.&lt;/p&gt;
+
+&lt;p&gt;I realize now that it’s really hard to describe signal processing related things without falling back on jargon. I guess I take for granted how much I’ve internalized a lot of the terminology I would read about while obsessively researching things. It also doesn’t help that I feel like I struggle with writing in general. Even with this post, I’m constantly editing myself while I write. It’s horrible.&lt;/p&gt;
+
+&lt;p&gt;Honestly, I don’t even think the amount content I have right now is bad. It’s just not everything I have to talk about which I feel is a little disappointing. Either way, if I fail to get these posts up by the 8th, I think I can at least get them written within the week of. The nice thing about blogs is that they can always be updated after the fact.&lt;/p&gt;</content><author><name>Chris Carin</name></author><category term="Misc" /><category term="Updates" /><summary type="html">TLDR: I have too much stuff to write about and not enough time to write it. In case I don’t finish, below is list of posts I still have drafted up. You can refer to this list for updates on these unfinished drafts. My goal is get all these up within a week of submission day at least.</summary></entry><entry><title type="html">Sampling Rates &amp;amp; Harmonics</title><link href="http://0.0.0.0:4000/GRPH/audio/2021/11/29/sample-rates-and-harmonics.html" rel="alternate" type="text/html" title="Sampling Rates &amp;amp; Harmonics" /><published>2021-11-29T00:00:00-05:00</published><updated>2021-11-29T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/audio/2021/11/29/sample-rates-and-harmonics</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/audio/2021/11/29/sample-rates-and-harmonics.html">&lt;p&gt;Before I continue, I want to disclose that I am not an engineer. I am merely an enthusiast who enjoys synthesis. This information may not be the most correct or academically rigorous. Much of what I’m writing about is my own self-educated understanding of these subjects. If I do make a mistake, please point it out to me in an email. So, I guess without further ado, &lt;em&gt;here we go…&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;When working with sound on computers, it’s useful to become acquainted with how digital signals work. A signal is a function which varies over an independent variable (normally time). Sound can be thought of as a signal created through variations in air pressure over time. When we hear something, what we’re really sensing is physical vibration. When an audio waveform is drawn on screen, that vibration is what is represented.&lt;/p&gt;
 
@@ -159,7 +258,7 @@
 &lt;h2 id=&quot;the-relationship-between-timbre-and-sample-rate&quot;&gt;The Relationship between Timbre and Sample Rate&lt;/h2&gt;
 
 &lt;div class=&quot;float right&quot;&gt;
-  &lt;figure class=&quot;embed audio&quot;&gt;
+  &lt;figure class=&quot;embed audio&quot; style=&quot;width: 200px&quot;&gt;
     
     &lt;audio controls=&quot;&quot;&gt;
       &lt;source src=&quot;/GRPH/assets/audio/piano.mp3&quot; type=&quot;audio/mp3&quot; loading=&quot;lazy&quot; /&gt;
@@ -230,7 +329,7 @@
 &lt;/div&gt;
 
 &lt;div class=&quot;float &quot;&gt;
-  &lt;figure class=&quot;embed audio&quot;&gt;
+  &lt;figure class=&quot;embed audio&quot; style=&quot;width: &quot;&gt;
     
     &lt;audio controls=&quot;&quot;&gt;
       &lt;source src=&quot;/GRPH/assets/audio/saw_sweep.mp3&quot; type=&quot;audio/mp3&quot; loading=&quot;lazy&quot; /&gt;
@@ -243,9 +342,7 @@
 
 &lt;p&gt;To demonstrate foldover, to the above is an audio example of a naively generated sawtooth wave sweeping from 0Hz to 22.05kHz at a sample rate of 44.1kHz. If you pay close attention, a swirling distortion becomes prevalent as the sweep approaches Nyquist. To visualize foldover I’ve posted a spectrogram of the audio recording. Notice how harmonics seem to reflect back and forth between 0Hz and Nyquist as they fall out of range. While this effect can sound interesting in some situations (I like it on hi-hats), it’s unwanted in most. I don’t exactly want to go into detail as to why fold over occurs (this post is already almost 1000 words long), so I will instead defer to &lt;a href=&quot;http://www.dspguide.com/ch3/2.htm&quot;&gt;this resource&lt;/a&gt; for more information.&lt;/p&gt;
 
-&lt;p&gt;What I’m trying to get across is that it’s important to understand what digital audio is when working with low-level audio synthesis. Without such knowledge, it’s easy to end up with consistently poor-quality sounds. Even at increased sample rates, it’s easy to end up with something distorted when you aren’t taking harmonic content into account. For my situation, I don’t even really have access to higher sample rates. The Bela board is actually locked to a 44.1kHz sample rate. While this isn’t entirely ideal, there are implementable methods to reduce aliasing which I plan to go over in future posts as needed.&lt;/p&gt;
-
-&lt;p&gt;The PureData patch I used to generate the sounds for this post can be found &lt;a href=&quot;/GRPH/assets/other/spec_example.zip&quot;&gt;here&lt;/a&gt;. The piano recording originated from &lt;a href=&quot;https://freesound.org/people/ramas26/sounds/95326/&quot;&gt;freesounds&lt;/a&gt;.&lt;/p&gt;</content><author><name>Chris Carin</name></author><category term="Audio" /><category term="Digital Synths" /><summary type="html">Before I continue, I want to disclose that I am not an engineer. I am merely an enthusiast who enjoys synthesis. This information may not be the most correct or academically rigorous. Much of what I’m writing about is my own self-educated understanding of these subjects. If I do make a mistake, please point it out to me in an email. So, I guess without further ado, here we go…</summary></entry><entry><title type="html">The Web is Obese</title><link href="http://0.0.0.0:4000/GRPH/website/2021/11/20/the-web-is-obese.html" rel="alternate" type="text/html" title="The Web is Obese" /><published>2021-11-20T00:00:00-05:00</published><updated>2021-11-20T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/website/2021/11/20/the-web-is-obese</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/website/2021/11/20/the-web-is-obese.html">&lt;p&gt;Despite what minimalist trends prevalent throughout the tech industries may have you believe, today’s modern web is very bloated. Just &lt;a href=&quot;https://www.wired.com/2016/04/average-webpage-now-size-original-doom/&quot;&gt;5 years ago&lt;/a&gt;, the average web page was already larger than the original DOOM for MS-DOS. In reaction to this, I choose to design this blog to be as lightweight and easy to load as possible. I remember times back in High School where my computer could barely handle 3 or 4 tabs of Chrome or Firefox. It was awful. Since then, modern
+&lt;p&gt;What I’m trying to get across is that it’s important to understand what digital audio is when working with low-level audio synthesis. Without such knowledge, it’s easy to end up with consistently poor-quality sounds. Even at increased sample rates, it’s easy to end up with something distorted when you aren’t taking harmonic content into account. For my situation, I don’t even really have access to higher sample rates. The Bela board is actually locked to a 44.1kHz sample rate. While this isn’t entirely ideal, there are implementable methods to reduce aliasing which I plan to go over in future posts as needed.&lt;/p&gt;</content><author><name>Chris Carin</name></author><category term="Audio" /><category term="Digital Synths" /><summary type="html">Before I continue, I want to disclose that I am not an engineer. I am merely an enthusiast who enjoys synthesis. This information may not be the most correct or academically rigorous. Much of what I’m writing about is my own self-educated understanding of these subjects. If I do make a mistake, please point it out to me in an email. So, I guess without further ado, here we go…</summary></entry><entry><title type="html">The Web is Obese</title><link href="http://0.0.0.0:4000/GRPH/website/2021/11/20/the-web-is-obese.html" rel="alternate" type="text/html" title="The Web is Obese" /><published>2021-11-20T00:00:00-05:00</published><updated>2021-11-20T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/website/2021/11/20/the-web-is-obese</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/website/2021/11/20/the-web-is-obese.html">&lt;p&gt;Despite what minimalist trends prevalent throughout the tech industries may have you believe, today’s modern web is very bloated. Just &lt;a href=&quot;https://www.wired.com/2016/04/average-webpage-now-size-original-doom/&quot;&gt;5 years ago&lt;/a&gt;, the average web page was already larger than the original DOOM for MS-DOS. In reaction to this, I choose to design this blog to be as lightweight and easy to load as possible. I remember times back in High School where my computer could barely handle 3 or 4 tabs of Chrome or Firefox. It was awful. Since then, modern
 web browsers have implemented a plethora of new features and in turn have become potentially bigger resource hogs. And just as they do, designers While these features provide a lot of creative power to web designers, it’s part of the designer’s job to wield these powers appropriately.&lt;/p&gt;
 
 &lt;!-- Include for captioned images --&gt;
@@ -555,30 +652,4 @@ web browsers have implemented a plethora of new features and in turn have become
 
 &lt;p&gt;I still need to get the RSS working. I don’t think it’s that important though&lt;/p&gt;
 
-&lt;p&gt;EDIT: Nevermind, I added an RSS feed.&lt;/p&gt;</content><author><name>Chris Carin</name></author><category term="Website" /><category term="Updates" /><category term="Web Design" /><summary type="html">Debugging this site was a lot more of a pain in the ass than I thought it would be. After an extra day of website work, I finally managed to get my Github Pages to recognize my Jekyll source repository as a website. I feel like this should’ve been obvious how to do, but I’m actually pretty unfamiliar with the git protocol.</summary></entry><entry><title type="html">FFT Spectral Granulator</title><link href="http://0.0.0.0:4000/GRPH/audio/2021/10/14/fft_grainspec.html" rel="alternate" type="text/html" title="FFT Spectral Granulator" /><published>2021-10-14T00:00:00-04:00</published><updated>2021-10-14T00:00:00-04:00</updated><id>http://0.0.0.0:4000/GRPH/audio/2021/10/14/fft_grainspec</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/audio/2021/10/14/fft_grainspec.html">&lt;p&gt;My main goal with this patch was to experiment with IFFT synthesis in context of a sample based granular synthesizers. It uses Miller Puckette’s &lt;a href=&quot;http://msp.ucsd.edu/techniques/latest/book-html/node182.html&quot;&gt;phase vocoder example&lt;/a&gt; in conjunction with Scott “Acriel” Nordlund’s example of &lt;a href=&quot;https://acreil.wordpress.com/2020/01/13/pure-data-frequency-domain-filtering-patch/&quot;&gt;frequency domain filtering&lt;/a&gt;.&lt;/p&gt;
-
-&lt;!-- Include for Video Embedding --&gt;
-&lt;!-- https://github.com/nathancy/jekyll-embed-video#responsive-videos --&gt;
-&lt;div class=&quot;float&quot;&gt;
-  &lt;figure class=&quot;embed video&quot;&gt;
-    &lt;span class=&quot;video&quot;&gt;
-      &lt;iframe style=&quot;width:100%; height:100%;&quot; src=&quot;https://player.vimeo.com/video/645841010?h=b0a124d5cc&amp;amp;badge=0&amp;amp;autopause=0&amp;amp;player_id=0&amp;amp;app_id=58479&quot; loading=&quot;lazy&quot; allowfullscreen=&quot;&quot;&gt;
-      &lt;/iframe&gt;
-    &lt;/span&gt;
-    &lt;figcaption class=&quot;caption&quot;&gt;Demo video of the Pd patch&lt;/figcaption&gt;
-  &lt;/figure&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://drive.google.com/file/d/1Eh7-vdZ8O2aogQ6mitHBcSlV4N7GJCWh/view?usp=sharing&quot;&gt;Click here to Download&lt;/a&gt;&lt;/p&gt;</content><author><name>Chris Carin</name></author><category term="Audio" /><category term="Programming" /><category term="PureData" /><summary type="html">My main goal with this patch was to experiment with IFFT synthesis in context of a sample based granular synthesizers. It uses Miller Puckette’s phase vocoder example in conjunction with Scott “Acriel” Nordlund’s example of frequency domain filtering.</summary></entry><entry><title type="html">vsnares</title><link href="http://0.0.0.0:4000/GRPH/misc/2021/10/14/vsnarez.html" rel="alternate" type="text/html" title="vsnares" /><published>2021-10-14T00:00:00-04:00</published><updated>2021-10-14T00:00:00-04:00</updated><id>http://0.0.0.0:4000/GRPH/misc/2021/10/14/vsnarez</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/misc/2021/10/14/vsnarez.html">&lt;p&gt;I just wanted to test posting YouTube videos. Here’s one featuring Mr. Funk and possibly John Frusciante.&lt;/p&gt;
-
-&lt;!-- Include Video Embedding --&gt;
-&lt;!-- https://github.com/nathancy/jekyll-embed-video#responsive-videos --&gt;
-&lt;div class=&quot;float&quot;&gt;
-  &lt;figure class=&quot;embed video&quot;&gt;
-    &lt;span class=&quot;video&quot;&gt;
-      &lt;iframe style=&quot;width:100%; height:100%;&quot; src=&quot;https://www.youtube.com/embed/3dEH7uhZ-ME&quot; loading=&quot;lazy&quot; allowfullscreen=&quot;&quot;&gt;
-      &lt;/iframe&gt;
-    &lt;/span&gt;
-    &lt;figcaption class=&quot;caption&quot;&gt;:)&lt;/figcaption&gt;
-  &lt;/figure&gt;
-&lt;/div&gt;</content><author><name>Chris Carin</name></author><category term="Misc" /><category term="Music" /><category term="Updates" /><summary type="html">I just wanted to test posting YouTube videos. Here’s one featuring Mr. Funk and possibly John Frusciante.</summary></entry></feed>
+&lt;p&gt;EDIT: Nevermind, I added an RSS feed.&lt;/p&gt;</content><author><name>Chris Carin</name></author><category term="Website" /><category term="Updates" /><category term="Web Design" /><summary type="html">Debugging this site was a lot more of a pain in the ass than I thought it would be. After an extra day of website work, I finally managed to get my Github Pages to recognize my Jekyll source repository as a website. I feel like this should’ve been obvious how to do, but I’m actually pretty unfamiliar with the git protocol.</summary></entry></feed>

@@ -1,7 +1,7 @@
 ---
 title: About
 layout: default
-date: Nov. 16th, 2021
+date: Dec. 5th, 2021
 ---
 
 # About Chrissy
@@ -12,7 +12,10 @@ date: Nov. 16th, 2021
 
 My full name's Christopher Miguel Carin. I'm a fourth year Graphic Design student at OCADU. This is my blog where I write nonsense about my Graphic Design Workshop. Other than discord, I don't really use social media so the best way contact me is probably there.
 
-My end goal for this project revolves around building some sort of digital musical instrument on embedded hardware. Currently, I'm trying to do so by working with a [Bela](http://bela.io/) development board. I have a to do list for this project **[here](todo)**.
+My end goal for this project revolves around building some sort of digital musical instrument on embedded hardware. Currently, I'm trying to do so by working with a [Bela](http://bela.io/) development board.
+
+The source code for my project can be found at: **[github.com/cheesoup/CheeseVA](https://github.com/cheesoup/CheeseVA)**.\
+I have a to do list **[here](todo)**.
 
 I like computers and synthesizers and stuff I guess.
 
@@ -26,8 +29,7 @@ The little bird at the top was illustrated using [Aseprite](https://www.aseprite
 
 I'm planning to use this blog to keep track of notes, prototypes, ideas, etc. Things I plan on posting include: PureData/MaxMSP patches, random Bela and C++ stuff, badly explained DSP math, and just general nonsense about design, sound, and music. Maybe I'll post some p5.js or processing stuff if it's relevant too.
 
-This site's source code can found at:\
-[github.com/cheesoup/GRPH](https://github.com/cheesoup/GRPH)
+This site's source code can found at: **[github.com/cheesoup/GRPH](https://github.com/cheesoup/GRPH)**
 
 ---
 

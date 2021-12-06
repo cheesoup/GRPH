@@ -1,5 +1,5 @@
 ---
-title: Anatomy of Subtractive Synths Pt. I - Audio Signal Paths
+title: Anatomy of Subtractive Synths
 layout: post
 tag: [Digital Synths]
 date: Dec. 3rd, 2021
@@ -32,14 +32,37 @@ A low-pass attenuates frequencies above a given cutoff frequency, only allowing 
 
 A band-pass attenuates frequencies the further away they are from a set center band. They can be thought of as the combination of both a highpass and lowpass filter. Band-pass filters are normally controlled using a center and Q parameter. The center controls the center of the passband, while the q controls the passband’s width.
 
+Below is a video demo of the filters mentioned above. The original Pd patch for this example can be found [here](/GRPH/assets/other/filter_example.zip).
+
+{% include vimeo.html id='653521212' caption='Demonstration of a low-pass, high-pass, and band-pass filter.' %}
+
 Less commonly found on synthesizers are band-stop (aka notch) filters. Band-stops attenuate frequencies the closer they are to a given frequency band. They can be thought of as the inverse of a band-pass. Other kinds of filters include shelving, peaking, all-pass, and comb filters. The first two are normally found in EQs, while the latter two are normally used as diffusers and resonators for delay type effects. I won’t go in detail about the frequency response of these filters, but do know they exist. I may or may not elaborate on them later if needed.
+
+## Control Signals
+
+As mentioned in the introduction, control signals are signals used to automate parameters. There are two types commonly found on most synthesizers: LFOs and envelopes.
+
+{% assign audiofiles = "tremolo.mp3, vibrato.mp3" | split: ", " %}
+{% include audio.html source=audiofiles type='mp3' caption='An example of pitch (above) and volume (below) modulation via LFO' float='right' width='200px' %}
+
+LFOs (Low Frequency Oscillators) are oscillators used to automate parameters. The ‘LF’ refers to the fact that these oscillators are typically set to frequencies below the range of human hearing. Because oscillators are periodic, they can be useful for creating a sense of motion when used to automate parameters. For example applying an LFO to the pitch of a generator will create a tremolo like effect. Applying it to volume will create something like vibrato.
+
+{% include image.html url='adsrenvelope.png' caption='Diagram of an ADSR envelopes output value and stages over time' %}
+
+Envelopes are a type of non-periodic signal which normally reset each time a user inputs a new note. They can be thought of as a sequence of points which are output over set-able amount of time. Most envelopes have four parameters which correspond to its stages of change over time. These are:
+
+1. Attack - The time it takes for a signal to reach peak value from resting value.
+2. Decay - The time it takes for a signal to decay to the sustain value after reaching its peak.
+3. Sustain - The value to hold when as a note while is active (post-decay stage)
+4. Release - The time it takes for a signal to decay to resting value.
+
+Prior to output, a synthesizer typically has a voltage controlled amplifier (VCA) for controlling the overall gain of the instrument. What makes the amplifier ‘voltage controlled’ is the fact that it is normally controlled by an envelope. This gives the user access to a large range of volume contours for their sound. To elaborate, below are some more audio examples demonstrating how an envelope can shape the volume contour.
+
+{% assign audiofiles = "short_atk.mp3, long_atk_long_rel.mp3, short_rel.mp3" | split: ", " %}
+{% include audio.html source=audiofiles type='mp3' caption='Three sound examples. The first has a short attack and long release, the second has a long attack and long release, the third has a long attack and short release' %}
 
 ## Output
 
-Prior to output, a synthesizer typically has a time-varying amplifier for controlling the output level of the instrument. Typically, this amplifier is controlled by a separate signal known as an envelope. I’ll talk about it more in part two of this post, but an envelope is a signal used to define the value of a parameter over time. In the case of the output amplifier, it is used to define a sound's output level over time.
+Post VCA, some synthesizers offer on-board effects such as distortions, delays, choruses, and reverbs. Effects can do a lot of things to sound. For example, distortions will usually thicken a sound by adding harmonic content. Delays cause an echoing effect which can turn into all sorts of wacky stuff when you start automating the parameters.
 
-Beyond level controls, some synthesizers offer on-board effects such as distortions, delays, choruses, and reverbs. I’m not sure if I’ll have time or system resources to handle such processes, but if I do manage to implement any of these things, I’ll definitely write a post elaborating on how so-and-so effect works.
-
-## Parameters and Control Signals
-
-One of the most powerful features of many synthesizers is their ability to vary the parameters over time. I mentioned in the previous section how the amplifier on the output of most audio paths is normally automated by a control signal. A lot of synths will actually allow you to apply the exact same type of automation to whatever parameter you want. In my next post, I plan to go over how these automation signals work and the kind of effects you can get by applying them to some of the parameters mentioned above.
+I’m not sure if I’ll have the time or system resources to handle too many effects, but if I do manage to implement any of these things, I’ll definitely write a post elaborating on how so-and-so effect works. Otherwise, there’s way too many processes out there to go over in this post. If anything, check out this list of the different types of guitar pedal if you’re interested in seeing what kind of effects are out there in the world.

@@ -6,22 +6,22 @@
     <link rel="alternate" type="application/atom+xml" title="thesis? idk?" href="/GRPH/feed.xml"/>
     <link rel="shortcut icon" type="image/png" href="/GRPH/icon.ico"/>
     <!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>Anatomy of Subtractive Synths Pt. I - Audio Signal Paths | thesis? idk?</title>
+<title>Anatomy of Subtractive Synths | thesis? idk?</title>
 <meta name="generator" content="Jekyll v3.9.0" />
-<meta property="og:title" content="Anatomy of Subtractive Synths Pt. I - Audio Signal Paths" />
+<meta property="og:title" content="Anatomy of Subtractive Synths" />
 <meta name="author" content="Chris Carin" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Signal path for the Alesis Micron" />
 <meta property="og:description" content="Signal path for the Alesis Micron" />
-<link rel="canonical" href="http://0.0.0.0:4000/GRPH/audio/2021/12/03/audio-signal-paths.html" />
-<meta property="og:url" content="http://0.0.0.0:4000/GRPH/audio/2021/12/03/audio-signal-paths.html" />
+<link rel="canonical" href="http://0.0.0.0:4000/GRPH/audio/2021/12/03/anatomy-of-subtractive-synths.html" />
+<meta property="og:url" content="http://0.0.0.0:4000/GRPH/audio/2021/12/03/anatomy-of-subtractive-synths.html" />
 <meta property="og:site_name" content="thesis? idk?" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2021-12-03T00:00:00-05:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Anatomy of Subtractive Synths Pt. I - Audio Signal Paths" />
+<meta property="twitter:title" content="Anatomy of Subtractive Synths" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Chris Carin"},"@type":"BlogPosting","headline":"Anatomy of Subtractive Synths Pt. I - Audio Signal Paths","dateModified":"2021-12-03T00:00:00-05:00","datePublished":"2021-12-03T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/GRPH/audio/2021/12/03/audio-signal-paths.html"},"description":"Signal path for the Alesis Micron","url":"http://0.0.0.0:4000/GRPH/audio/2021/12/03/audio-signal-paths.html","@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"Chris Carin"},"@type":"BlogPosting","headline":"Anatomy of Subtractive Synths","dateModified":"2021-12-03T00:00:00-05:00","datePublished":"2021-12-03T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/GRPH/audio/2021/12/03/anatomy-of-subtractive-synths.html"},"description":"Signal path for the Alesis Micron","url":"http://0.0.0.0:4000/GRPH/audio/2021/12/03/anatomy-of-subtractive-synths.html","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -49,7 +49,7 @@
 
 
 <header class="heading">
-  <h1>Anatomy of Subtractive Synths Pt. I - Audio Signal Paths</h1>
+  <h1>Anatomy of Subtractive Synths</h1>
   <div>
     <small>
       Category: <a href="">Audio</a>
@@ -69,7 +69,7 @@
       
       Length:
       
-        6 mins
+        8 mins
       
     </small>
   </div>
@@ -158,17 +158,104 @@
 
 <p>A band-pass attenuates frequencies the further away they are from a set center band. They can be thought of as the combination of both a highpass and lowpass filter. Band-pass filters are normally controlled using a center and Q parameter. The center controls the center of the passband, while the q controls the passband’s width.</p>
 
+<p>Below is a video demo of the filters mentioned above. The original Pd patch for this example can be found <a href="/GRPH/assets/other/filter_example.zip">here</a>.</p>
+
+<!-- Include for Video Embedding -->
+<!-- https://github.com/nathancy/jekyll-embed-video#responsive-videos -->
+<div class="float">
+  <figure class="embed video">
+    <span class="video">
+      <iframe style="width:100%; height:100%;" src="https://player.vimeo.com/video/653521212?h=b0a124d5cc&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" loading="lazy" allowfullscreen="">
+      </iframe>
+    </span>
+    <figcaption class="caption">Demonstration of a low-pass, high-pass, and band-pass filter.</figcaption>
+  </figure>
+</div>
+
 <p>Less commonly found on synthesizers are band-stop (aka notch) filters. Band-stops attenuate frequencies the closer they are to a given frequency band. They can be thought of as the inverse of a band-pass. Other kinds of filters include shelving, peaking, all-pass, and comb filters. The first two are normally found in EQs, while the latter two are normally used as diffusers and resonators for delay type effects. I won’t go in detail about the frequency response of these filters, but do know they exist. I may or may not elaborate on them later if needed.</p>
+
+<h2 id="control-signals">Control Signals</h2>
+
+<p>As mentioned in the introduction, control signals are signals used to automate parameters. There are two types commonly found on most synthesizers: LFOs and envelopes.</p>
+
+<div class="float right">
+  <figure class="embed audio" style="width: 200px">
+    
+    <audio controls="">
+      <source src="/GRPH/assets/audio/tremolo.mp3" type="audio/mp3" loading="lazy" />
+      Your browser does not support the audio element.
+    </audio>
+    
+    <audio controls="">
+      <source src="/GRPH/assets/audio/vibrato.mp3" type="audio/mp3" loading="lazy" />
+      Your browser does not support the audio element.
+    </audio>
+    
+    <figcaption>An example of pitch (above) and volume (below) modulation via LFO</figcaption>
+  </figure>
+</div>
+
+<p>LFOs (Low Frequency Oscillators) are oscillators used to automate parameters. The ‘LF’ refers to the fact that these oscillators are typically set to frequencies below the range of human hearing. Because oscillators are periodic, they can be useful for creating a sense of motion when used to automate parameters. For example applying an LFO to the pitch of a generator will create a tremolo like effect. Applying it to volume will create something like vibrato.</p>
+
+<!-- Include for captioned images -->
+
+<div class="float ">
+  <figure class="embed picture" style="width: ">
+    
+    <a href="#adsrenvelope-png">
+      <img src="/GRPH/assets/images/content/adsrenvelope.png" alt="Diagram of an ADSR envelopes output value and stages over time" style="width: " loading="lazy" />
+    </a>
+    
+    <figcaption>
+      Diagram of an ADSR envelopes output value and stages over time
+      
+    </figcaption>
+  </figure>
+  
+  <a href="#/" class="expand" id="adsrenvelope-png">
+    <img src="/GRPH/assets/images/content/adsrenvelope.png" alt="Diagram of an ADSR envelopes output value and stages over time" style="background-image: url('/GRPH/assets/images/transparent.gif')" loading="lazy" />
+  </a>
+  
+</div>
+
+<p>Envelopes are a type of non-periodic signal which normally reset each time a user inputs a new note. They can be thought of as a sequence of points which are output over set-able amount of time. Most envelopes have four parameters which correspond to its stages of change over time. These are:</p>
+
+<ol>
+  <li>Attack - The time it takes for a signal to reach peak value from resting value.</li>
+  <li>Decay - The time it takes for a signal to decay to the sustain value after reaching its peak.</li>
+  <li>Sustain - The value to hold when as a note while is active (post-decay stage)</li>
+  <li>Release - The time it takes for a signal to decay to resting value.</li>
+</ol>
+
+<p>Prior to output, a synthesizer typically has a voltage controlled amplifier (VCA) for controlling the overall gain of the instrument. What makes the amplifier ‘voltage controlled’ is the fact that it is normally controlled by an envelope. This gives the user access to a large range of volume contours for their sound. To elaborate, below are some more audio examples demonstrating how an envelope can shape the volume contour.</p>
+
+<div class="float ">
+  <figure class="embed audio" style="width: ">
+    
+    <audio controls="">
+      <source src="/GRPH/assets/audio/short_atk.mp3" type="audio/mp3" loading="lazy" />
+      Your browser does not support the audio element.
+    </audio>
+    
+    <audio controls="">
+      <source src="/GRPH/assets/audio/long_atk_long_rel.mp3" type="audio/mp3" loading="lazy" />
+      Your browser does not support the audio element.
+    </audio>
+    
+    <audio controls="">
+      <source src="/GRPH/assets/audio/short_rel.mp3" type="audio/mp3" loading="lazy" />
+      Your browser does not support the audio element.
+    </audio>
+    
+    <figcaption>Three sound examples. The first has a short attack and long release, the second has a long attack and long release, the third has a long attack and short release</figcaption>
+  </figure>
+</div>
 
 <h2 id="output">Output</h2>
 
-<p>Prior to output, a synthesizer typically has a time-varying amplifier for controlling the output level of the instrument. Typically, this amplifier is controlled by a separate signal known as an envelope. I’ll talk about it more in part two of this post, but an envelope is a signal used to define the value of a parameter over time. In the case of the output amplifier, it is used to define a sound’s output level over time.</p>
+<p>Post VCA, some synthesizers offer on-board effects such as distortions, delays, choruses, and reverbs. Effects can do a lot of things to sound. For example, distortions will usually thicken a sound by adding harmonic content. Delays cause an echoing effect which can turn into all sorts of wacky stuff when you start automating the parameters.</p>
 
-<p>Beyond level controls, some synthesizers offer on-board effects such as distortions, delays, choruses, and reverbs. I’m not sure if I’ll have time or system resources to handle such processes, but if I do manage to implement any of these things, I’ll definitely write a post elaborating on how so-and-so effect works.</p>
-
-<h2 id="parameters-and-control-signals">Parameters and Control Signals</h2>
-
-<p>One of the most powerful features of many synthesizers is their ability to vary the parameters over time. I mentioned in the previous section how the amplifier on the output of most audio paths is normally automated by a control signal. A lot of synths will actually allow you to apply the exact same type of automation to whatever parameter you want. In my next post, I plan to go over how these automation signals work and the kind of effects you can get by applying them to some of the parameters mentioned above.</p>
+<p>I’m not sure if I’ll have the time or system resources to handle too many effects, but if I do manage to implement any of these things, I’ll definitely write a post elaborating on how so-and-so effect works. Otherwise, there’s way too many processes out there to go over in this post. If anything, check out this list of the different types of guitar pedal if you’re interested in seeing what kind of effects are out there in the world.</p>
 
 
 <!-- Grab previous and next post from category -->
@@ -197,8 +284,8 @@
       </li>
       <!-- Next post -->
       <li>
-        <a class="prev" href="/GRPH/audio/2021/12/03/audio-signal-paths.html">
-          Anatomy of Subtractive Synths Pt. I - Audio Signal Paths
+        <a class="prev" href="/GRPH/audio/2021/12/05/CheeseVA-Demo-Footage.html">
+          CheeseVA Demo Footage!
         </a>
       </li>
     </ul>
@@ -217,16 +304,16 @@
     
     <ul>
       <li>
-        <a href="/GRPH/audio/2021/10/14/fft_grainspec.html">
-          FFT Spectral Granulator
+        <a href="/GRPH/audio/2021/11/16/why-im-making-a-synth.html">
+          Thoughts on why I'm making a synthesizer
         </a>
       </li>
     </ul>
     
     <ul>
       <li>
-        <a href="/GRPH/audio/2021/11/16/why-im-making-a-synth.html">
-          Thoughts on why I'm making a synthesizer
+        <a href="/GRPH/audio/2021/10/14/fft_grainspec.html">
+          FFT Spectral Granulator
         </a>
       </li>
     </ul>
@@ -243,7 +330,7 @@
            2021-2022
           <a href="mailto:chr.carin(a)gmail.com">Chris Carin</a>
         </li>
-        <li><a href="https://html5.validator.nu/?doc=http://0.0.0.0:4000/GRPH/audio/2021/12/03/audio-signal-paths.html">This document is valid HTML5</a></li>
+        <li><a href="https://html5.validator.nu/?doc=http://0.0.0.0:4000/GRPH/audio/2021/12/03/anatomy-of-subtractive-synths.html">This document is valid HTML5</a></li>
         <li><a href="#">Back to Top</a></li>
       </ul>
     </footer>   <!-- FOOTER END -->

@@ -117,7 +117,7 @@
 <h2 id="the-relationship-between-timbre-and-sample-rate">The Relationship between Timbre and Sample Rate</h2>
 
 <div class="float right">
-  <figure class="embed audio">
+  <figure class="embed audio" style="width: 200px">
     
     <audio controls="">
       <source src="/GRPH/assets/audio/piano.mp3" type="audio/mp3" loading="lazy" />
@@ -188,7 +188,7 @@
 </div>
 
 <div class="float ">
-  <figure class="embed audio">
+  <figure class="embed audio" style="width: ">
     
     <audio controls="">
       <source src="/GRPH/assets/audio/saw_sweep.mp3" type="audio/mp3" loading="lazy" />
@@ -202,8 +202,6 @@
 <p>To demonstrate foldover, to the above is an audio example of a naively generated sawtooth wave sweeping from 0Hz to 22.05kHz at a sample rate of 44.1kHz. If you pay close attention, a swirling distortion becomes prevalent as the sweep approaches Nyquist. To visualize foldover I’ve posted a spectrogram of the audio recording. Notice how harmonics seem to reflect back and forth between 0Hz and Nyquist as they fall out of range. While this effect can sound interesting in some situations (I like it on hi-hats), it’s unwanted in most. I don’t exactly want to go into detail as to why fold over occurs (this post is already almost 1000 words long), so I will instead defer to <a href="http://www.dspguide.com/ch3/2.htm">this resource</a> for more information.</p>
 
 <p>What I’m trying to get across is that it’s important to understand what digital audio is when working with low-level audio synthesis. Without such knowledge, it’s easy to end up with consistently poor-quality sounds. Even at increased sample rates, it’s easy to end up with something distorted when you aren’t taking harmonic content into account. For my situation, I don’t even really have access to higher sample rates. The Bela board is actually locked to a 44.1kHz sample rate. While this isn’t entirely ideal, there are implementable methods to reduce aliasing which I plan to go over in future posts as needed.</p>
-
-<p>The PureData patch I used to generate the sounds for this post can be found <a href="/GRPH/assets/other/spec_example.zip">here</a>. The piano recording originated from <a href="https://freesound.org/people/ramas26/sounds/95326/">freesounds</a>.</p>
 
 
 <!-- Grab previous and next post from category -->
@@ -232,8 +230,8 @@
       </li>
       <!-- Next post -->
       <li>
-        <a class="prev" href="/GRPH/audio/2021/12/03/audio-signal-paths.html">
-          Anatomy of Subtractive Synths Pt. I - Audio Signal Paths
+        <a class="prev" href="/GRPH/audio/2021/12/03/anatomy-of-subtractive-synths.html">
+          Anatomy of Subtractive Synths
         </a>
       </li>
     </ul>
@@ -244,16 +242,8 @@
     
     <ul>
       <li>
-        <a href="/GRPH/audio/2021/12/03/audio-signal-paths.html">
-          Anatomy of Subtractive Synths Pt. I - Audio Signal Paths
-        </a>
-      </li>
-    </ul>
-    
-    <ul>
-      <li>
-        <a href="/GRPH/audio/2021/10/26/coding-on-bela.html">
-          Coding on bela
+        <a href="/GRPH/audio/2021/12/05/CheeseVA-Demo-Footage.html">
+          CheeseVA Demo Footage!
         </a>
       </li>
     </ul>
@@ -262,6 +252,14 @@
       <li>
         <a href="/GRPH/audio/2021/11/16/why-im-making-a-synth.html">
           Thoughts on why I'm making a synthesizer
+        </a>
+      </li>
+    </ul>
+    
+    <ul>
+      <li>
+        <a href="/GRPH/audio/2021/10/14/fft_grainspec.html">
+          FFT Spectral Granulator
         </a>
       </li>
     </ul>

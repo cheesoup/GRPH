@@ -27,7 +27,7 @@ Because of its discrete nature, there is a limited range of frequencies that a d
 ## The Relationship between Timbre and Sample Rate
 
 {% assign audiofiles = "piano.mp3, sine.mp3" | split: ", " %}
-{% include audio.html source=audiofiles type='mp3' caption='A piano (above) and a sine tone (below) playing middle A (440Hz)' float='right' width='50%' %}
+{% include audio.html source=audiofiles type='mp3' caption='A piano (above) and a sine tone (below) playing middle A (440Hz)' float='right' width='200px' %}
 
 It's important to know about sampling rates because sound synthesis is really all about harmonic manipulation. To elaborate, I’ve posted two audio examples to the left (or above on mobile). One is the sound of a piano, the other is the sound of a sine tone slowly fading out. Both examples are playing middle A. If you compare the two, it’s easy to distinguish that they sound nothing alike. The reason for this is because the relationship of frequencies (aka the harmonics) produced by the sound of a piano key is much more complex than a single sine tone. The relationship between frequencies produced over time is what defines what is traditionally known as an instrument’s timbre.
 
@@ -42,5 +42,3 @@ By graphing out the spectral components, we can confirm both the harmonic comple
 To demonstrate foldover, to the above is an audio example of a naively generated sawtooth wave sweeping from 0Hz to 22.05kHz at a sample rate of 44.1kHz. If you pay close attention, a swirling distortion becomes prevalent as the sweep approaches Nyquist. To visualize foldover I've posted a spectrogram of the audio recording. Notice how harmonics seem to reflect back and forth between 0Hz and Nyquist as they fall out of range. While this effect can sound interesting in some situations (I like it on hi-hats), it’s unwanted in most. I don't exactly want to go into detail as to why fold over occurs (this post is already almost 1000 words long), so I will instead defer to [this resource](http://www.dspguide.com/ch3/2.htm) for more information.
 
 What I’m trying to get across is that it's important to understand what digital audio is when working with low-level audio synthesis. Without such knowledge, it’s easy to end up with consistently poor-quality sounds. Even at increased sample rates, it's easy to end up with something distorted when you aren't taking harmonic content into account. For my situation, I don't even really have access to higher sample rates. The Bela board is actually locked to a 44.1kHz sample rate. While this isn’t entirely ideal, there are implementable methods to reduce aliasing which I plan to go over in future posts as needed.
-
-The PureData patch I used to generate the sounds for this post can be found [here](/GRPH/assets/other/spec_example.zip). The piano recording originated from [freesounds](https://freesound.org/people/ramas26/sounds/95326/).

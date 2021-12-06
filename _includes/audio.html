@@ -1,5 +1,5 @@
 <div class="float {{ include.float }}">
-  <figure class="embed audio">
+  <figure class="embed audio" style="width: {{ include.width }}">
     {% for url in include.source %}
     <audio controls>
       <source src="{{ '/assets/audio/' | relative_url }}{{ url }}" type="audio/{{ include.type }}" loading="lazy">
