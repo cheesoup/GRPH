@@ -27,7 +27,7 @@ Because of its discrete nature, there is a limited range of frequencies that a d
 ## The Relationship between Timbre and Sample Rate
 
 {% assign audiofiles = "piano.mp3, sine.mp3" | split: ", " %}
-{% include audio.html source=audiofiles type='mp3' caption='A piano (above) and a sine tone (below) playing middle A (440Hz)' float='right' width='200px' %}
+{% include audio.html source=audiofiles type='mp3' caption='A piano (above) and a sine tone (below) playing middle A (440Hz)' %}
 
 It's important to know about sampling rates because sound synthesis is really all about harmonic manipulation. To elaborate, I’ve posted two audio examples to the left (or above on mobile). One is the sound of a piano, the other is the sound of a sine tone slowly fading out. Both examples are playing middle A. If you compare the two, it’s easy to distinguish that they sound nothing alike. The reason for this is because the relationship of frequencies (aka the harmonics) produced by the sound of a piano key is much more complex than a single sine tone. The relationship between frequencies produced over time is what defines what is traditionally known as an instrument’s timbre.
 

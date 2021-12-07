@@ -10,8 +10,8 @@ categories: [Misc]
 
 **Things that I want posted:**
 1. ~~Anatomy of Subtractive Synths Pt. 2~~ (Merged with part 1)
-2. Oscillator Design pt. 1: Anti-aliasing (Still requires demos)
-3. Oscillator Design pt. 2: Arbitrary Wavemorphing
+2. ~~Oscillator Design pt. 1: Anti-aliasing~~
+3. Oscillator Design pt. 2: Waveshaping
 
 ---
 

@@ -1,39 +1,110 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://0.0.0.0:4000/GRPH/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://0.0.0.0:4000/GRPH/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/GRPH/" rel="alternate" type="text/html" /><updated>2021-12-06T10:04:58-05:00</updated><id>http://0.0.0.0:4000/GRPH/feed.xml</id><title type="html">thesis? idk?</title><subtitle>a blog for 4th year workshop at OCADU</subtitle><author><name>Chris Carin</name></author><entry><title type="html">Oscillator Design Part I - Anti-aliasing</title><link href="http://0.0.0.0:4000/GRPH/audio/2021/12/06/oscillator-design-antialiasing.html" rel="alternate" type="text/html" title="Oscillator Design Part I - Anti-aliasing" /><published>2021-12-06T00:00:00-05:00</published><updated>2021-12-06T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/audio/2021/12/06/oscillator-design-antialiasing</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/audio/2021/12/06/oscillator-design-antialiasing.html">&lt;p&gt;I mentioned in a previous post how naively generating waveforms digitally can result in unwanted distortion. The distortion is caused by a phenomenon known as fold-over aliasing and is often the reason why older implementations of digital oscillators sound ‘cheap’. To handle fold-over, I’ve incorporated two algorithms within my oscillators which have proven effective when working in PureData. The first is a well-known algorithm known as PolyBLEP. The second is a bit of an
-obscure one dubbed ‘Frequency Dithering’.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://0.0.0.0:4000/GRPH/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://0.0.0.0:4000/GRPH/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/GRPH/" rel="alternate" type="text/html" /><updated>2021-12-06T22:24:51-05:00</updated><id>http://0.0.0.0:4000/GRPH/feed.xml</id><title type="html">thesis? idk?</title><subtitle>a blog for 4th year workshop at OCADU</subtitle><author><name>Chris Carin</name></author><entry><title type="html">Anti-aliased Oscillators</title><link href="http://0.0.0.0:4000/GRPH/audio/2021/12/06/antialiased-oscillators.html" rel="alternate" type="text/html" title="Anti-aliased Oscillators" /><published>2021-12-06T00:00:00-05:00</published><updated>2021-12-06T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/audio/2021/12/06/antialiased-oscillators</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/audio/2021/12/06/antialiased-oscillators.html">&lt;p&gt;I mentioned in a previous post how naively generating waveforms digitally can result in unwanted distortion. The distortion is caused by a phenomenon known as fold-over aliasing and is often the reason why older implementations of digital oscillators sound ‘cheap’. To handle fold-over, I’ve incorporated two algorithms within my oscillators which have proven effective when working in PureData. The first is a well-known algorithm known as PolyBLEP. The second is a bit of an obscure one dubbed ‘Frequency Dithering’.&lt;/p&gt;
+
+&lt;!-- Include for captioned images --&gt;
+
+&lt;div class=&quot;float &quot;&gt;
+  &lt;figure class=&quot;embed picture&quot; style=&quot;width: &quot;&gt;
+    
+    &lt;a href=&quot;#sweep-naive-png&quot;&gt;
+      &lt;img src=&quot;/GRPH/assets/images/content/sweep_naive.png&quot; alt=&quot;Spectrogram of a non-bandlimited sawtooth sweep from 0 to Nyquist&quot; style=&quot;width: &quot; loading=&quot;lazy&quot; /&gt;
+    &lt;/a&gt;
+    
+    &lt;figcaption&gt;
+      Spectrogram of a non-bandlimited sawtooth sweep from 0 to Nyquist
+      
+    &lt;/figcaption&gt;
+  &lt;/figure&gt;
+  
+  &lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;sweep-naive-png&quot;&gt;
+    &lt;img src=&quot;/GRPH/assets/images/content/sweep_naive.png&quot; alt=&quot;Spectrogram of a non-bandlimited sawtooth sweep from 0 to Nyquist&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
+  &lt;/a&gt;
+  
+&lt;/div&gt;
 
 &lt;h2 id=&quot;polybleps&quot;&gt;PolyBLEPs&lt;/h2&gt;
 
-&lt;p&gt;The PolyBLEP algorithm is part of a family of BLIT/BLEP algorithms. The idea behind BLITs/BLEPs is to smooth out discontinuities using bandlimited functions. The PolyBLEP in particular is named so due to its use of a &lt;a href=&quot;https://www.scribd.com/document/85351585/Computation-Ally-Effective-Methods-of-Sound-Synthesis&quot;&gt;polynomial bandlimited step function&lt;/a&gt; to achieve this. All this really means is two things: 1) it makes use of one of those math problems from high school that you can solve using the quadratic formula, 2) this math problem is limited in the frequency band it can produce.&lt;/p&gt;
+&lt;p&gt;The PolyBLEP algorithm is part of a family of BLIT/BLEP algorithms. The idea behind BLITs/BLEPs is to smooth out discontinuities using bandlimited functions. The PolyBLEP in particular is named so due to its use of a &lt;a href=&quot;https://www.scribd.com/document/85351585/Computation-Ally-Effective-Methods-of-Sound-Synthesis&quot;&gt;polynomial bandlimited step function&lt;/a&gt; to achieve this. All this really means is two things: 1) it makes use of one of those math problems from high school that you can solve using the quadratic formula, 2) this math problem is limited in the frequency band it can produce. Below is a spectrogram of Sawtooth sweep using PolyBLEP Aliasing. While not perfect, they are extremely effective at reducing fold-over to say the least.&lt;/p&gt;
+
+&lt;!-- Include for captioned images --&gt;
+
+&lt;div class=&quot;float &quot;&gt;
+  &lt;figure class=&quot;embed picture&quot; style=&quot;width: &quot;&gt;
+    
+    &lt;a href=&quot;#sweep-blep-png&quot;&gt;
+      &lt;img src=&quot;/GRPH/assets/images/content/sweep_blep.png&quot; alt=&quot;Sawtooth Sweep w/ PolyBLEP Anti-aliasing&quot; style=&quot;width: &quot; loading=&quot;lazy&quot; /&gt;
+    &lt;/a&gt;
+    
+    &lt;figcaption&gt;
+      Sawtooth Sweep w/ PolyBLEP Anti-aliasing
+      
+    &lt;/figcaption&gt;
+  &lt;/figure&gt;
+  
+  &lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;sweep-blep-png&quot;&gt;
+    &lt;img src=&quot;/GRPH/assets/images/content/sweep_blep.png&quot; alt=&quot;Sawtooth Sweep w/ PolyBLEP Anti-aliasing&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
+  &lt;/a&gt;
+  
+&lt;/div&gt;
 
 &lt;p&gt;My implementation is primarily based on a blog post by &lt;a href=&quot;http://www.martin-finke.de/blog/articles/audio-plugins-018-polyblep-oscillator/&quot;&gt;Martin Finke&lt;/a&gt; which in turn is based on a &lt;a href=&quot;https://www.kvraudio.com/forum/viewtopic.php?t=375517&quot;&gt;KVRforums thread&lt;/a&gt;. As mentioned above, PolyBLEPs make use of a polynomial to smooth out discontinuities within a periodic waveform. To make use of polyBLEPs, we first need to synthesize a waveform with discontinuities. The simplest way to do this is with a sawtooth wave.&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;span class=&quot;n&quot;&gt;delta&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;frequency&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sample_rate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;phase&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;delta&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;current_sample_count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;sample&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;phase&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// Change in phase for the current.&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;delta&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;frequency&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sample_rate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// Phase of the oscillator at the current sample index&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;phase&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;delta&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;current_sample_count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// Sample value&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sample&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;phase&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;From here, we check if the phase is within range of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0&lt;/code&gt; to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;delta&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1 - delta&lt;/code&gt; to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;delta&lt;/code&gt;. If it is, we splice in the function &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;phase*phase + 2*phase + 1&lt;/code&gt;. Otherwise, we don’t do anything. Below is how this function is implemented in the original KVR thread. &lt;a href=&quot;https://github.com/cheesoup/CheeseVA/blob/b403b30badaec110a6298c1580ad2d2e85ccac06/BasicWaves.cpp#L167&quot;&gt;My implementation&lt;/a&gt; isn’t much different.&lt;/p&gt;
+&lt;p&gt;The discontinuity within at sawtooth wave lies within it’s transition from -1 to 1. This normally occurs when the phase counter jumps from 1 back down to 0. To smooth the discontinuity, we create a function which checks the current phase position relative the phase reset point. If the phase is between &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;delta&lt;/code&gt;, we return &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;2 * (phase - phase^2/2 - 0.5)&lt;/code&gt;. If it is between &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;delta&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1 - delta&lt;/code&gt;, we instead return &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;2 * (phase^2/2 + phase + 0.5)&lt;/code&gt;. If it isn’t within range of either, we output 0. The result of the function is then summed into the original sawtooth wave. Below is how this function is implemented in the original KVR thread. While &lt;a href=&quot;https://github.com/cheesoup/CheeseVA/blob/b403b30badaec110a6298c1580ad2d2e85ccac06/BasicWaves.cpp#L167&quot;&gt;my implementation&lt;/a&gt; isn’t much different, I think the original is more elegant to read.&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// 0 &amp;lt;= t &amp;lt; 1&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;phase&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;delta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;phase&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;delta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;phase&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;phase&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;phase&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;phase&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// -1 &amp;lt; t &amp;lt; 0&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;phase&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;delta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;phase&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;phase&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;delta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;phase&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;phase&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;phase&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;phase&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// 0 otherwise&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;polyBLEP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;phase&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;delta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// 0 &amp;lt;= t &amp;lt; 1&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;phase&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;delta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;phase&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;delta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;phase&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;phase&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;phase&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;phase&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// -1 &amp;lt; t &amp;lt; 0&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;phase&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;delta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;phase&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;phase&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;delta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;phase&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;phase&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;phase&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;phase&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// 0 otherwise&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;sample&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;polyBLEP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;phase&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;delta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;h2 id=&quot;frequency-dithering&quot;&gt;Frequency Dithering&lt;/h2&gt;
 
-&lt;p&gt;The original implementation of frequency dithering was put together by &lt;a href=&quot;https://www.youtube.com/channel/UC84u8v2FyqmXjSxYh1d7PRQ&quot;&gt;Scott ‘Acriel’ Nordlund&lt;/a&gt; in PureData. Other than on the &lt;a href=&quot;https://forum.pdpatchrepo.info/topic/6759/new-anti-aliasing-and-phase-distortion-abstractions&quot;&gt;Pd forums&lt;/a&gt;, I’ve never actually seen this algorithm written about. The idea behind it is to fix frequencies to integer ratios to sample rate. This by itself has the effect of causing a frequency components above Nyquist to re-align with the harmonic series (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;base_freq * 2, * 4, * 8, * 16, etc&lt;/code&gt;) at the cost of tuning error. To fix tuning, we generate an average frequency by calculating the two closest frequencies allowed given the above restrictions and rapidly modulate between them.&lt;/p&gt;
+&lt;p&gt;The original implementation of frequency dithering was put together by &lt;a href=&quot;https://www.youtube.com/channel/UC84u8v2FyqmXjSxYh1d7PRQ&quot;&gt;Scott ‘Acriel’ Nordlund&lt;/a&gt; in PureData. The place only I’ve ever seen this method of anti-aliasing discussed is on &lt;a href=&quot;https://forum.pdpatchrepo.info/topic/6759/new-anti-aliasing-and-phase-distortion-abstractions&quot;&gt;Pd forums&lt;/a&gt;. While not an algorithm for reducing aliasing perse, frequency dithering shapes harmonics which have folded over into something a bit more tolerable. Below is a spectrogram of a sawtooth sweep which makes uses of frequency dithering. In contrast to the polyBLEP spectrogram, it is much noisier. However, there is no perceivable fold-over.&lt;/p&gt;
+
+&lt;!-- Include for captioned images --&gt;
+
+&lt;div class=&quot;float &quot;&gt;
+  &lt;figure class=&quot;embed picture&quot; style=&quot;width: &quot;&gt;
+    
+    &lt;a href=&quot;#sweep-dither-png&quot;&gt;
+      &lt;img src=&quot;/GRPH/assets/images/content/sweep_dither.png&quot; alt=&quot;Sawtooth Sweep w/ Frequency Dithering&quot; style=&quot;width: &quot; loading=&quot;lazy&quot; /&gt;
+    &lt;/a&gt;
+    
+    &lt;figcaption&gt;
+      Sawtooth Sweep w/ Frequency Dithering
+      
+    &lt;/figcaption&gt;
+  &lt;/figure&gt;
+  
+  &lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;sweep-dither-png&quot;&gt;
+    &lt;img src=&quot;/GRPH/assets/images/content/sweep_dither.png&quot; alt=&quot;Sawtooth Sweep w/ Frequency Dithering&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
+  &lt;/a&gt;
+  
+&lt;/div&gt;
+
+&lt;p&gt;The idea behind frequency dithering revolves around translating an oscillator’s frequency to integer ratios of the sample rate (i.e. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;x / 44100&lt;/code&gt; where &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;x&lt;/code&gt; is a whole number) prior to the calculation of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;delta&lt;/code&gt;. This has the effect of causing harmonic partials above Nyquist to re-align with the harmonic series (i.e. integer ratios of the base frequency) at the cost of tuning inaccuracies. To fix these inaccuracies, we can generate a perceived average frequency by calculating the two closest frequencies allowed given the above restrictions and rapidly modulate between them.&lt;/p&gt;
 
 &lt;p&gt;Below is my implementation of the frequency dithering in C++. Prior to calculating frequencies, we check if the target frequency is 0. If it is, we skip the whole process and output 0. Otherwise, the first of the pair of frequencies are found by dividing the sample rate by the incoming frequency and flooring it, and then dividing the sample rate by the result. The second frequency is found the same way except prior to dividing the sample rate, we add one to the floored ratio. To decide which of the two frequencies to output, we calculated the distance of both frequencies from the target and then performed a weighted dice roll to choose.&lt;/p&gt;
 
@@ -54,9 +125,57 @@ obscure one dubbed ‘Frequency Dithering’.&lt;/p&gt;
   &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
 
-&lt;p&gt;So yeah, that’s about it. I’m a little tired, so I’ll probably put up some examples of how a sawtooth sweep of how these oscillators sound another time. For my next post I plan to go over arbitrary wavemorphing again. My original version of that post kinda sucked. Until then, GOOD NIGHT!&lt;/p&gt;</content><author><name>Chris Carin</name></author><category term="Audio" /><category term="Programming" /><category term="Oscillators" /><category term="Bela" /><summary type="html">I mentioned in a previous post how naively generating waveforms digitally can result in unwanted distortion. The distortion is caused by a phenomenon known as fold-over aliasing and is often the reason why older implementations of digital oscillators sound ‘cheap’. To handle fold-over, I’ve incorporated two algorithms within my oscillators which have proven effective when working in PureData. The first is a well-known algorithm known as PolyBLEP. The second is a bit of an obscure one dubbed ‘Frequency Dithering’.</summary></entry><entry><title type="html">CheeseVA Demo Footage!</title><link href="http://0.0.0.0:4000/GRPH/audio/2021/12/05/CheeseVA-Demo-Footage.html" rel="alternate" type="text/html" title="CheeseVA Demo Footage!" /><published>2021-12-05T00:00:00-05:00</published><updated>2021-12-05T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/audio/2021/12/05/CheeseVA-Demo-Footage</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/audio/2021/12/05/CheeseVA-Demo-Footage.html">&lt;p&gt;I just realized I had no actual footage of my sound engine on this blog. I guess better late than never. The overall signal path is still subject to change but most of the oscillator features are more or less finalized at this point. It may take a few posts to fully go over how just the oscillators work. The source code for the engine can be found &lt;a href=&quot;https://github.com/cheesoup/CheeseVA&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Above is resulting spectrogram when combining the two algorithms as well some audio examples of these methods in action. Together, the algorithms provide a strong basis for keeping fold-over at bay. What’s neat about polyBLEPs just how easy yet effective they are. By adding frequency dithering on top, harmonic partials which fold over fade into a soft noise. Below I’ve also provided&lt;/p&gt;
+
+&lt;!-- Include for captioned images --&gt;
+
+&lt;div class=&quot;float &quot;&gt;
+  &lt;figure class=&quot;embed picture&quot; style=&quot;width: &quot;&gt;
+    
+    &lt;a href=&quot;#sweep-ditherblep-png&quot;&gt;
+      &lt;img src=&quot;/GRPH/assets/images/content/sweep_ditherblep.png&quot; alt=&quot;Sawtooth Sweep w/ Frequency Dithering &amp;amp; PolyBLEP Anti-aliasing&quot; style=&quot;width: &quot; loading=&quot;lazy&quot; /&gt;
+    &lt;/a&gt;
+    
+    &lt;figcaption&gt;
+      Sawtooth Sweep w/ Frequency Dithering &amp;amp; PolyBLEP Anti-aliasing
+      
+    &lt;/figcaption&gt;
+  &lt;/figure&gt;
+  
+  &lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;sweep-ditherblep-png&quot;&gt;
+    &lt;img src=&quot;/GRPH/assets/images/content/sweep_ditherblep.png&quot; alt=&quot;Sawtooth Sweep w/ Frequency Dithering &amp;amp; PolyBLEP Anti-aliasing&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
+  &lt;/a&gt;
+  
+&lt;/div&gt;
+
+&lt;div class=&quot;float &quot;&gt;
+  &lt;figure class=&quot;embed audio&quot; style=&quot;width: &quot;&gt;
+    
+    &lt;audio controls=&quot;&quot;&gt;
+      &lt;source src=&quot;/GRPH/assets/audio/sweep_naive.mp3&quot; type=&quot;audio/mp3&quot; loading=&quot;lazy&quot; /&gt;
+      Your browser does not support the audio element.
+    &lt;/audio&gt;
+    
+    &lt;audio controls=&quot;&quot;&gt;
+      &lt;source src=&quot;/GRPH/assets/audio/sweep_dither.mp3&quot; type=&quot;audio/mp3&quot; loading=&quot;lazy&quot; /&gt;
+      Your browser does not support the audio element.
+    &lt;/audio&gt;
+    
+    &lt;audio controls=&quot;&quot;&gt;
+      &lt;source src=&quot;/GRPH/assets/audio/sweep_blep.mp3&quot; type=&quot;audio/mp3&quot; loading=&quot;lazy&quot; /&gt;
+      Your browser does not support the audio element.
+    &lt;/audio&gt;
+    
+    &lt;audio controls=&quot;&quot;&gt;
+      &lt;source src=&quot;/GRPH/assets/audio/sweep_ditherblep.mp3&quot; type=&quot;audio/mp3&quot; loading=&quot;lazy&quot; /&gt;
+      Your browser does not support the audio element.
+    &lt;/audio&gt;
+    
+    &lt;figcaption&gt;Sawtooth Sweep Examples. (Top to Bottom) 1) Naive, 2) Dithered, 3) PolyBLEP, 4) Dithered + PolyBLEP&lt;/figcaption&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;</content><author><name>Chris Carin</name></author><category term="Audio" /><category term="Programming" /><category term="Oscillators" /><category term="Bela" /><summary type="html">I mentioned in a previous post how naively generating waveforms digitally can result in unwanted distortion. The distortion is caused by a phenomenon known as fold-over aliasing and is often the reason why older implementations of digital oscillators sound ‘cheap’. To handle fold-over, I’ve incorporated two algorithms within my oscillators which have proven effective when working in PureData. The first is a well-known algorithm known as PolyBLEP. The second is a bit of an obscure one dubbed ‘Frequency Dithering’.</summary></entry><entry><title type="html">CheeseVA Demo Footage!</title><link href="http://0.0.0.0:4000/GRPH/audio/2021/12/05/CheeseVA-Demo-Footage.html" rel="alternate" type="text/html" title="CheeseVA Demo Footage!" /><published>2021-12-05T00:00:00-05:00</published><updated>2021-12-05T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/audio/2021/12/05/CheeseVA-Demo-Footage</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/audio/2021/12/05/CheeseVA-Demo-Footage.html">&lt;p&gt;I just realized I had no actual footage of my sound engine on this blog. I guess better late than never. The overall signal path is still subject to change but most of the oscillator features are more or less finalized at this point. It may take a few posts to fully go over how just the oscillators work. The source code for the engine can be found &lt;a href=&quot;https://github.com/cheesoup/CheeseVA&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
 &lt;!-- Include for Video Embedding --&gt;
 &lt;!-- https://github.com/nathancy/jekyll-embed-video#responsive-videos --&gt;
@@ -182,8 +301,8 @@ obscure one dubbed ‘Frequency Dithering’.&lt;/p&gt;
 
 &lt;p&gt;As mentioned in the introduction, control signals are signals used to automate parameters. There are two types commonly found on most synthesizers: LFOs and envelopes.&lt;/p&gt;
 
-&lt;div class=&quot;float right&quot;&gt;
-  &lt;figure class=&quot;embed audio&quot; style=&quot;width: 200px&quot;&gt;
+&lt;div class=&quot;float &quot;&gt;
+  &lt;figure class=&quot;embed audio&quot; style=&quot;width: &quot;&gt;
     
     &lt;audio controls=&quot;&quot;&gt;
       &lt;source src=&quot;/GRPH/assets/audio/tremolo.mp3&quot; type=&quot;audio/mp3&quot; loading=&quot;lazy&quot; /&gt;
@@ -264,8 +383,8 @@ obscure one dubbed ‘Frequency Dithering’.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Things that I want posted:&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
   &lt;li&gt;&lt;del&gt;Anatomy of Subtractive Synths Pt. 2&lt;/del&gt; (Merged with part 1)&lt;/li&gt;
-  &lt;li&gt;Oscillator Design pt. 1: Anti-aliasing (Still requires demos)&lt;/li&gt;
-  &lt;li&gt;Oscillator Design pt. 2: Arbitrary Wavemorphing&lt;/li&gt;
+  &lt;li&gt;&lt;del&gt;Oscillator Design pt. 1: Anti-aliasing&lt;/del&gt;&lt;/li&gt;
+  &lt;li&gt;Oscillator Design pt. 2: Waveshaping&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;hr /&gt;
@@ -315,8 +434,8 @@ obscure one dubbed ‘Frequency Dithering’.&lt;/p&gt;
 
 &lt;h2 id=&quot;the-relationship-between-timbre-and-sample-rate&quot;&gt;The Relationship between Timbre and Sample Rate&lt;/h2&gt;
 
-&lt;div class=&quot;float right&quot;&gt;
-  &lt;figure class=&quot;embed audio&quot; style=&quot;width: 200px&quot;&gt;
+&lt;div class=&quot;float &quot;&gt;
+  &lt;figure class=&quot;embed audio&quot; style=&quot;width: &quot;&gt;
     
     &lt;audio controls=&quot;&quot;&gt;
       &lt;source src=&quot;/GRPH/assets/audio/piano.mp3&quot; type=&quot;audio/mp3&quot; loading=&quot;lazy&quot; /&gt;

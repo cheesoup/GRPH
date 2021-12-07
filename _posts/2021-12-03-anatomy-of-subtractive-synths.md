@@ -43,7 +43,7 @@ Less commonly found on synthesizers are band-stop (aka notch) filters. Band-stop
 As mentioned in the introduction, control signals are signals used to automate parameters. There are two types commonly found on most synthesizers: LFOs and envelopes.
 
 {% assign audiofiles = "tremolo.mp3, vibrato.mp3" | split: ", " %}
-{% include audio.html source=audiofiles type='mp3' caption='An example of pitch (above) and volume (below) modulation via LFO' float='right' width='200px' %}
+{% include audio.html source=audiofiles type='mp3' caption='An example of pitch (above) and volume (below) modulation via LFO' %}
 
 LFOs (Low Frequency Oscillators) are oscillators used to automate parameters. The ‘LF’ refers to the fact that these oscillators are typically set to frequencies below the range of human hearing. Because oscillators are periodic, they can be useful for creating a sense of motion when used to automate parameters. For example applying an LFO to the pitch of a generator will create a tremolo like effect. Applying it to volume will create something like vibrato.
 
