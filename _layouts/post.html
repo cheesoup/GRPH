@@ -65,7 +65,7 @@ layout: default
     <ul>
       <!-- Page Up -->
       <li>
-        <a class="up" href="{{ page.categories | first | relative_url }}">
+        <a class="up" href="{{ site.baseurl }}/{{ page.categories | first | downcase }}">
           Back to {{ page.categories | first }}
         </a>
       </li>

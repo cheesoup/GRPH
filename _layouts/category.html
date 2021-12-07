@@ -8,7 +8,7 @@ layout: default
   <span>Date Posted</span>
 </header>
 <ul class="catalog">
-  {% for post in site.categories[category_name] %}
+  {% for post in site.categories[category_name] reversed %}
     <li class="posts">
       <header class="heading">
         <h1 class="title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h1>
