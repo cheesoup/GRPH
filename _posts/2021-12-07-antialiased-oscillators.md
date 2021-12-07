@@ -84,7 +84,7 @@ if(*f != 0.0) {
 
 ## Results
 
-The resulting spectrogram when combining the two algorithms can be seen below. I've also added some audio examples to demonstrate these methods in action. Together, the algorithms provide a strong basis for keeping fold-over at bay. What's neat about PolyBLEPs is how lightweight and frequency dither are how lightweight yet effective they are. As you already know, I'm a fan of software minimalism. When programming for Bela, efficiency is important due to the limited resources of the platform. While there are other methods which can generate waveforms with higher harmonic accuracy, these two algorithms combined provide high enough quality while remaining light on system resources.
+The resulting spectrogram when combining the two algorithms can be seen below. I've also added some audio examples to demonstrate these methods in action. Together, the algorithms provide a strong basis for keeping fold-over at bay. What's neat about PolyBLEPs and frequency dithering are how lightweight yet effective they are. When programming for Bela, efficiency is important due to the limited amount of system resources.
 
 {% include image.html url='sweep_ditherblep.png' caption='Sawtooth Sweep w/ Frequency Dithering & PolyBLEP Anti-aliasing' %}
 
