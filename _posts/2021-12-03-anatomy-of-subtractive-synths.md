@@ -16,7 +16,7 @@ Traditionally, synthesizers like the MiniMoog were implemented with analog circu
 
 ## Generators
 
-{% include image.html url='waveform.gif' caption='Basic Wave Shapes' float='right' width='180px' %}
+{% include image.html url='waveform.gif' caption='Basic Wave Shapes' float='right' width='120px' %}
 
 As the name implies, a generator is a function which generates a signal. Normally synths use oscillators as a primary source of generation. Oscillators are functions that produce periodic (repeating) signals such as sine waves and sawtooth waves, as mentioned in previous posts. The parameters of an oscillator normally control its shape and relative pitch. What these parameters are vary depending on design on the oscillator. Oscillators are not necessarily limited to basic wave shapes. They can really take any complex shape a user desires, though it’s important to keep aliasing in mind when creating custom wave shapes. An example of a non-standard oscillator would be the [time-stretching phase vocoder]({{ '/audio/2021/10/14/fft_grainspec.html' | relative_url }}) I put together in Pd.
 

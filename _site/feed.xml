@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://0.0.0.0:4000/GRPH/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://0.0.0.0:4000/GRPH/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/GRPH/" rel="alternate" type="text/html" /><updated>2021-12-07T18:41:34-05:00</updated><id>http://0.0.0.0:4000/GRPH/feed.xml</id><title type="html">thesis? idk?</title><subtitle>a blog for 4th year workshop at OCADU</subtitle><author><name>Chris Carin</name></author><entry><title type="html">Anti-aliased Oscillators</title><link href="http://0.0.0.0:4000/GRPH/audio/2021/12/06/antialiased-oscillators.html" rel="alternate" type="text/html" title="Anti-aliased Oscillators" /><published>2021-12-06T00:00:00-05:00</published><updated>2021-12-06T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/audio/2021/12/06/antialiased-oscillators</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/audio/2021/12/06/antialiased-oscillators.html">&lt;p&gt;I mentioned in a previous post how naively generating waveforms digitally can result in unwanted distortion. The distortion is caused by a phenomenon known as fold-over aliasing and is often the reason why older implementations of digital oscillators sound ‘cheap’. To handle fold-over, I’ve incorporated two algorithms within my oscillators which have proven effective when working in PureData. The first is a well-known algorithm known as PolyBLEP. The second is a bit of an obscure one dubbed ‘Frequency Dithering’.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://0.0.0.0:4000/GRPH/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://0.0.0.0:4000/GRPH/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/GRPH/" rel="alternate" type="text/html" /><updated>2021-12-07T23:26:08-05:00</updated><id>http://0.0.0.0:4000/GRPH/feed.xml</id><title type="html">thesis? idk?</title><subtitle>a blog for 4th year workshop at OCADU</subtitle><author><name>Chris Carin</name></author><entry><title type="html">Anti-Aliased Oscillators</title><link href="http://0.0.0.0:4000/GRPH/audio/2021/12/06/antialiased-oscillators.html" rel="alternate" type="text/html" title="Anti-Aliased Oscillators" /><published>2021-12-06T00:00:00-05:00</published><updated>2021-12-06T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/audio/2021/12/06/antialiased-oscillators</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/audio/2021/12/06/antialiased-oscillators.html">&lt;p&gt;I mentioned in a previous post how naively generating waveforms digitally can result in unwanted distortion. The distortion is caused by a phenomenon known as fold-over aliasing and is often the reason why older implementations of digital oscillators sound ‘cheap’. To handle fold-over, I’ve incorporated two algorithms within my oscillators which have proven effective when working in PureData. The first is a well-known algorithm known as PolyBLEP. The second is a bit of an obscure one dubbed ‘Frequency Dithering’.&lt;/p&gt;
 
 &lt;!-- Include for captioned images --&gt;
 
@@ -21,6 +21,18 @@
   
 &lt;/div&gt;
 
+&lt;div class=&quot;float &quot;&gt;
+  &lt;figure class=&quot;embed audio&quot; style=&quot;width: &quot;&gt;
+    
+    &lt;audio controls=&quot;&quot;&gt;
+      &lt;source src=&quot;/GRPH/assets/audio/sweep_naive.mp3&quot; type=&quot;audio/mp3&quot; loading=&quot;lazy&quot; /&gt;
+      Your browser does not support the audio element.
+    &lt;/audio&gt;
+    
+    &lt;figcaption&gt;Naive Sawtooth Sweep&lt;/figcaption&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;
+
 &lt;h2 id=&quot;polybleps&quot;&gt;PolyBLEPs&lt;/h2&gt;
 
 &lt;p&gt;The PolyBLEP algorithm is part of a family of BLIT/BLEP algorithms. The idea behind BLITs/BLEPs is to smooth out discontinuities using bandlimited functions. The PolyBLEP in particular is named so due to its use of a &lt;a href=&quot;https://www.scribd.com/document/85351585/Computation-Ally-Effective-Methods-of-Sound-Synthesis&quot;&gt;polynomial bandlimited step function&lt;/a&gt; to achieve this. All this really means is two things: 1) it makes use of one of those math problems from high school that you can solve using the quadratic formula, 2) this math problem is limited in the frequency band it can produce. Below is a spectrogram of a Sawtooth sweep using PolyBLEP Aliasing. While not perfect, PolyBLEPs are extremely effective at reducing fold-over to say the least.&lt;/p&gt;
@@ -31,19 +43,31 @@
   &lt;figure class=&quot;embed picture&quot; style=&quot;width: &quot;&gt;
     
     &lt;a href=&quot;#sweep-blep-png&quot;&gt;
-      &lt;img src=&quot;/GRPH/assets/images/content/sweep_blep.png&quot; alt=&quot;Sawtooth Sweep w/ PolyBLEP Anti-aliasing&quot; style=&quot;width: &quot; loading=&quot;lazy&quot; /&gt;
+      &lt;img src=&quot;/GRPH/assets/images/content/sweep_blep.png&quot; alt=&quot;Spectrogram of a Sawtooth Sweep w/ PolyBLEP Anti-Aliasing&quot; style=&quot;width: &quot; loading=&quot;lazy&quot; /&gt;
     &lt;/a&gt;
     
     &lt;figcaption&gt;
-      Sawtooth Sweep w/ PolyBLEP Anti-aliasing
+      Spectrogram of a Sawtooth Sweep w/ PolyBLEP Anti-Aliasing
       
     &lt;/figcaption&gt;
   &lt;/figure&gt;
   
   &lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;sweep-blep-png&quot;&gt;
-    &lt;img src=&quot;/GRPH/assets/images/content/sweep_blep.png&quot; alt=&quot;Sawtooth Sweep w/ PolyBLEP Anti-aliasing&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
+    &lt;img src=&quot;/GRPH/assets/images/content/sweep_blep.png&quot; alt=&quot;Spectrogram of a Sawtooth Sweep w/ PolyBLEP Anti-Aliasing&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
   &lt;/a&gt;
   
+&lt;/div&gt;
+
+&lt;div class=&quot;float &quot;&gt;
+  &lt;figure class=&quot;embed audio&quot; style=&quot;width: &quot;&gt;
+    
+    &lt;audio controls=&quot;&quot;&gt;
+      &lt;source src=&quot;/GRPH/assets/audio/sweep_blep.mp3&quot; type=&quot;audio/mp3&quot; loading=&quot;lazy&quot; /&gt;
+      Your browser does not support the audio element.
+    &lt;/audio&gt;
+    
+    &lt;figcaption&gt;Sawtooth Sweep w/ Anti-Aliasing&lt;/figcaption&gt;
+  &lt;/figure&gt;
 &lt;/div&gt;
 
 &lt;p&gt;My implementation is primarily based on a blog post by &lt;a href=&quot;http://www.martin-finke.de/blog/articles/audio-plugins-018-polyblep-oscillator/&quot;&gt;Martin Finke&lt;/a&gt; which in turn is based on a &lt;a href=&quot;https://www.kvraudio.com/forum/viewtopic.php?t=375517&quot;&gt;KVRforums thread&lt;/a&gt;. As mentioned above, PolyBLEPs make use of a polynomial to smooth out discontinuities within a periodic waveform. To make use of PolyBLEPs, we first need to synthesize a waveform with discontinuities. The simplest way to do this is with a sawtooth wave.&lt;/p&gt;
@@ -89,19 +113,31 @@
   &lt;figure class=&quot;embed picture&quot; style=&quot;width: &quot;&gt;
     
     &lt;a href=&quot;#sweep-dither-png&quot;&gt;
-      &lt;img src=&quot;/GRPH/assets/images/content/sweep_dither.png&quot; alt=&quot;Sawtooth Sweep w/ Frequency Dithering&quot; style=&quot;width: &quot; loading=&quot;lazy&quot; /&gt;
+      &lt;img src=&quot;/GRPH/assets/images/content/sweep_dither.png&quot; alt=&quot;Spectrogram of a Sawtooth Sweep w/ Frequency Dithering&quot; style=&quot;width: &quot; loading=&quot;lazy&quot; /&gt;
     &lt;/a&gt;
     
     &lt;figcaption&gt;
-      Sawtooth Sweep w/ Frequency Dithering
+      Spectrogram of a Sawtooth Sweep w/ Frequency Dithering
       
     &lt;/figcaption&gt;
   &lt;/figure&gt;
   
   &lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;sweep-dither-png&quot;&gt;
-    &lt;img src=&quot;/GRPH/assets/images/content/sweep_dither.png&quot; alt=&quot;Sawtooth Sweep w/ Frequency Dithering&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
+    &lt;img src=&quot;/GRPH/assets/images/content/sweep_dither.png&quot; alt=&quot;Spectrogram of a Sawtooth Sweep w/ Frequency Dithering&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
   &lt;/a&gt;
   
+&lt;/div&gt;
+
+&lt;div class=&quot;float &quot;&gt;
+  &lt;figure class=&quot;embed audio&quot; style=&quot;width: &quot;&gt;
+    
+    &lt;audio controls=&quot;&quot;&gt;
+      &lt;source src=&quot;/GRPH/assets/audio/sweep_dither.mp3&quot; type=&quot;audio/mp3&quot; loading=&quot;lazy&quot; /&gt;
+      Your browser does not support the audio element.
+    &lt;/audio&gt;
+    
+    &lt;figcaption&gt;Sawtooth Sweep w/ Frequency Dithering&lt;/figcaption&gt;
+  &lt;/figure&gt;
 &lt;/div&gt;
 
 &lt;p&gt;The idea behind frequency dithering revolves around translating an oscillator’s frequency to integer ratios of the sample rate (i.e. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;x / 44100&lt;/code&gt; where &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;x&lt;/code&gt; is a whole number) prior to the calculation of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;delta&lt;/code&gt;. This has the effect of causing harmonic partials above Nyquist to re-align with the harmonic series (integer ratios of the base frequency) at the cost of tuning inaccuracies. To fix these inaccuracies, we can generate an average frequency by calculating the two closest frequencies to a target frequency given the above restrictions and rapidly modulate between them.&lt;/p&gt;
@@ -154,26 +190,11 @@
   &lt;figure class=&quot;embed audio&quot; style=&quot;width: &quot;&gt;
     
     &lt;audio controls=&quot;&quot;&gt;
-      &lt;source src=&quot;/GRPH/assets/audio/sweep_naive.mp3&quot; type=&quot;audio/mp3&quot; loading=&quot;lazy&quot; /&gt;
-      Your browser does not support the audio element.
-    &lt;/audio&gt;
-    
-    &lt;audio controls=&quot;&quot;&gt;
-      &lt;source src=&quot;/GRPH/assets/audio/sweep_dither.mp3&quot; type=&quot;audio/mp3&quot; loading=&quot;lazy&quot; /&gt;
-      Your browser does not support the audio element.
-    &lt;/audio&gt;
-    
-    &lt;audio controls=&quot;&quot;&gt;
-      &lt;source src=&quot;/GRPH/assets/audio/sweep_blep.mp3&quot; type=&quot;audio/mp3&quot; loading=&quot;lazy&quot; /&gt;
-      Your browser does not support the audio element.
-    &lt;/audio&gt;
-    
-    &lt;audio controls=&quot;&quot;&gt;
       &lt;source src=&quot;/GRPH/assets/audio/sweep_ditherblep.mp3&quot; type=&quot;audio/mp3&quot; loading=&quot;lazy&quot; /&gt;
       Your browser does not support the audio element.
     &lt;/audio&gt;
     
-    &lt;figcaption&gt;Sawtooth Sweep Examples. (Top to Bottom) 1) Naive, 2) Dithered, 3) PolyBLEP, 4) Dithered + PolyBLEP&lt;/figcaption&gt;
+    &lt;figcaption&gt;Sawtooth Sweep w/ Frequency Dithering and PolyBLEP Anti-Aliasing&lt;/figcaption&gt;
   &lt;/figure&gt;
 &lt;/div&gt;</content><author><name>Chris Carin</name></author><category term="Audio" /><category term="Programming" /><category term="Oscillators" /><category term="Bela" /><summary type="html">I mentioned in a previous post how naively generating waveforms digitally can result in unwanted distortion. The distortion is caused by a phenomenon known as fold-over aliasing and is often the reason why older implementations of digital oscillators sound ‘cheap’. To handle fold-over, I’ve incorporated two algorithms within my oscillators which have proven effective when working in PureData. The first is a well-known algorithm known as PolyBLEP. The second is a bit of an obscure one dubbed ‘Frequency Dithering’.</summary></entry><entry><title type="html">CheeseVA Demo Footage!</title><link href="http://0.0.0.0:4000/GRPH/audio/2021/12/05/CheeseVA-Demo-Footage.html" rel="alternate" type="text/html" title="CheeseVA Demo Footage!" /><published>2021-12-05T00:00:00-05:00</published><updated>2021-12-05T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/audio/2021/12/05/CheeseVA-Demo-Footage</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/audio/2021/12/05/CheeseVA-Demo-Footage.html">&lt;p&gt;I just realized I had no actual footage of my sound engine on this blog. I guess better late than never. The overall signal path is still subject to change but most of the oscillator features are more or less finalized at this point. It may take a few posts to fully go over how just the oscillators work. The source code for the engine can be found &lt;a href=&quot;https://github.com/cheesoup/CheeseVA&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
@@ -233,7 +254,7 @@
   &lt;figure class=&quot;embed picture&quot; style=&quot;width: &quot;&gt;
     
     &lt;a href=&quot;#waveform-gif&quot;&gt;
-      &lt;img src=&quot;/GRPH/assets/images/content/waveform.gif&quot; alt=&quot;Basic Wave Shapes&quot; style=&quot;width: 180px&quot; loading=&quot;lazy&quot; /&gt;
+      &lt;img src=&quot;/GRPH/assets/images/content/waveform.gif&quot; alt=&quot;Basic Wave Shapes&quot; style=&quot;width: 120px&quot; loading=&quot;lazy&quot; /&gt;
     &lt;/a&gt;
     
     &lt;figcaption&gt;

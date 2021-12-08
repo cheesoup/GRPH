@@ -1,5 +1,5 @@
 ---
-title: Anti-aliased Oscillators
+title: Anti-Aliased Oscillators
 layout: post
 tag: [Programming, Oscillators, Bela]
 date: Dec. 6th, 2021
@@ -10,11 +10,15 @@ I mentioned in a previous post how naively generating waveforms digitally can re
 
 {% include image.html url='sweep_naive.png' caption='Spectrogram of a non-bandlimited sawtooth sweep from 0 to Nyquist' %}
 
+{% include audio.html source='sweep_naive.mp3' type='mp3' caption='Naive Sawtooth Sweep' %}
+
 ## PolyBLEPs
 
 The PolyBLEP algorithm is part of a family of BLIT/BLEP algorithms. The idea behind BLITs/BLEPs is to smooth out discontinuities using bandlimited functions. The PolyBLEP in particular is named so due to its use of a [polynomial bandlimited step function](https://www.scribd.com/document/85351585/Computation-Ally-Effective-Methods-of-Sound-Synthesis) to achieve this. All this really means is two things: 1) it makes use of one of those math problems from high school that you can solve using the quadratic formula, 2) this math problem is limited in the frequency band it can produce. Below is a spectrogram of a Sawtooth sweep using PolyBLEP Aliasing. While not perfect, PolyBLEPs are extremely effective at reducing fold-over to say the least.
 
-{% include image.html url='sweep_blep.png' caption='Sawtooth Sweep w/ PolyBLEP Anti-aliasing' %}
+{% include image.html url='sweep_blep.png' caption='Spectrogram of a Sawtooth Sweep w/ PolyBLEP Anti-Aliasing' %}
+
+{% include audio.html source='sweep_blep.mp3' type='mp3' caption='Sawtooth Sweep w/ Anti-Aliasing' %}
 
 My implementation is primarily based on a blog post by [Martin Finke](http://www.martin-finke.de/blog/articles/audio-plugins-018-polyblep-oscillator/) which in turn is based on a [KVRforums thread](https://www.kvraudio.com/forum/viewtopic.php?t=375517). As mentioned above, PolyBLEPs make use of a polynomial to smooth out discontinuities within a periodic waveform. To make use of PolyBLEPs, we first need to synthesize a waveform with discontinuities. The simplest way to do this is with a sawtooth wave.
 
@@ -57,7 +61,9 @@ sample -= polyBLEP(phase, delta);
 
 From what I can tell, frequency dithering was initially implemented by [Scott 'Acriel' Nordlund](https://www.youtube.com/channel/UC84u8v2FyqmXjSxYh1d7PRQ) in PureData. While not an algorithm for reducing aliasing perse, frequency dithering shapes harmonics which have folded over into something a bit more tolerable. Below is a spectrogram of a sawtooth sweep which makes uses of frequency dithering. In contrast to the PolyBLEP spectrogram, it is much noisier. However, there is no perceivable fold-over past a certain threshold.
 
-{% include image.html url='sweep_dither.png' caption='Sawtooth Sweep w/ Frequency Dithering' %}
+{% include image.html url='sweep_dither.png' caption='Spectrogram of a Sawtooth Sweep w/ Frequency Dithering' %}
+
+{% include audio.html source='sweep_dither.mp3' type='mp3' caption='Sawtooth Sweep w/ Frequency Dithering' %}
 
 The idea behind frequency dithering revolves around translating an oscillator's frequency to integer ratios of the sample rate (i.e. ``x / 44100`` where ``x`` is a whole number) prior to the calculation of ``delta``. This has the effect of causing harmonic partials above Nyquist to re-align with the harmonic series (integer ratios of the base frequency) at the cost of tuning inaccuracies. To fix these inaccuracies, we can generate an average frequency by calculating the two closest frequencies to a target frequency given the above restrictions and rapidly modulate between them.
 
@@ -88,5 +94,4 @@ The resulting spectrogram when combining the two algorithms can be seen below. I
 
 {% include image.html url='sweep_ditherblep.png' caption='Sawtooth Sweep w/ Frequency Dithering & PolyBLEP Anti-aliasing' %}
 
-{% assign audiofiles = "sweep_naive.mp3, sweep_dither.mp3, sweep_blep.mp3, sweep_ditherblep.mp3" | split: ", " %}
-{% include audio.html source=audiofiles type='mp3' caption='Sawtooth Sweep Examples. (Top to Bottom) 1) Naive, 2) Dithered, 3) PolyBLEP, 4) Dithered + PolyBLEP' %}
+{% include audio.html source='sweep_ditherblep.mp3' type='mp3' caption='Sawtooth Sweep w/ Frequency Dithering and PolyBLEP Anti-Aliasing' %}
