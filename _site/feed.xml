@@ -1,8 +1,50 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://0.0.0.0:4000/GRPH/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://0.0.0.0:4000/GRPH/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/GRPH/" rel="alternate" type="text/html" /><updated>2021-12-09T10:30:29-05:00</updated><id>http://0.0.0.0:4000/GRPH/feed.xml</id><title type="html">thesis? idk?</title><subtitle>a blog for 4th year workshop at OCADU</subtitle><author><name>Chris Carin</name></author><entry><title type="html">Sleepless Ramblings on Digital Tools</title><link href="http://0.0.0.0:4000/GRPH/audio/2021/12/08/ramblings-from-canvas-discussion.html" rel="alternate" type="text/html" title="Sleepless Ramblings on Digital Tools" /><published>2021-12-08T00:00:00-05:00</published><updated>2021-12-08T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/audio/2021/12/08/ramblings-from-canvas-discussion</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/audio/2021/12/08/ramblings-from-canvas-discussion.html">&lt;p&gt;(This is a re-post of something I wrote on my discussion board thread.)&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://0.0.0.0:4000/GRPH/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://0.0.0.0:4000/GRPH/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/GRPH/" rel="alternate" type="text/html" /><updated>2021-12-09T10:37:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/feed.xml</id><title type="html">thesis? idk?</title><subtitle>a blog for 4th year workshop at OCADU</subtitle><author><name>Chris Carin</name></author><entry><title type="html">Sleepless Ramblings on Digital Tools</title><link href="http://0.0.0.0:4000/GRPH/audio/2021/12/08/ramblings-from-canvas-discussion.html" rel="alternate" type="text/html" title="Sleepless Ramblings on Digital Tools" /><published>2021-12-08T00:00:00-05:00</published><updated>2021-12-08T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/audio/2021/12/08/ramblings-from-canvas-discussion</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/audio/2021/12/08/ramblings-from-canvas-discussion.html">&lt;p&gt;(This is a re-post of something I wrote on my discussion board thread.)&lt;/p&gt;
 
 &lt;p&gt;Even though we’re a school of creative individuals, most of what we know about visual design is tied to a single environment: the Adobe Creative Suite. Though our classes tend to focus on the broader concepts that can be applied to design, I’ve always been annoyed by the lack of an alternative software system available to us. Even when I first registered at OCAD, immediately they strongly suggest that I needed a Mac. But why? Wouldn’t it be better if the creative industry actually had diversity in software? How are we supposed to move away from Adobe when ya’ll don’t even wanna learn Windows?&lt;/p&gt;
 
+&lt;!-- Include for captioned images --&gt;
+
+&lt;div class=&quot;float &quot;&gt;
+  &lt;figure class=&quot;embed picture&quot; style=&quot;width: &quot;&gt;
+    
+    &lt;a href=&quot;#boingo-jpg&quot;&gt;
+      &lt;img src=&quot;/GRPH/assets/images/content/boingo.jpg&quot; alt=&quot;Isnt it beautiful?&quot; style=&quot;width: &quot; loading=&quot;lazy&quot; /&gt;
+    &lt;/a&gt;
+    
+    &lt;figcaption&gt;
+      Isnt it beautiful?
+      
+    &lt;/figcaption&gt;
+  &lt;/figure&gt;
+  
+  &lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;boingo-jpg&quot;&gt;
+    &lt;img src=&quot;/GRPH/assets/images/content/boingo.jpg&quot; alt=&quot;Isnt it beautiful?&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
+  &lt;/a&gt;
+  
+&lt;/div&gt;
+
 &lt;p&gt;To contrast this lack of choice, I want to talk about what I admired so much about the late 90s to early 2000s internet. Despite the gaudy GIFs, lack of hierarchy, stolen assets, and overuse of marquee, the internet back then was at least a place of individuality. With services like Geocities, Freewebs, Tripod, Angelfire, etc, it felt like you owned this tiny piece real estate to say whatever you want, however you want (within ToS of course). People would do all sorts of stuff with their 5MB of space. The beauty WEB1.0 was the majority of people had no clue what the they were doing online. They were just making stuff about the things they cared about. There were pages dedicated to anything you can think of: life, TV shows, music, art, poetry, anime, you name it. It was glorious as it was visually hideous. That’s pretty much all gone now. It went away when the empires of social media came around to homogenize how we represent ourselves digitally.&lt;/p&gt;
+
+&lt;!-- Include for captioned images --&gt;
+
+&lt;div class=&quot;float &quot;&gt;
+  &lt;figure class=&quot;embed picture&quot; style=&quot;width: &quot;&gt;
+    
+    &lt;a href=&quot;#buzzscreenshot-png&quot;&gt;
+      &lt;img src=&quot;/GRPH/assets/images/content/BuzzScreenshot.png&quot; alt=&quot;Jeskola Buzz, a freeware music making application&quot; style=&quot;width: &quot; loading=&quot;lazy&quot; /&gt;
+    &lt;/a&gt;
+    
+    &lt;figcaption&gt;
+      Jeskola Buzz, a freeware music making application
+      
+    &lt;/figcaption&gt;
+  &lt;/figure&gt;
+  
+  &lt;a href=&quot;#/&quot; class=&quot;expand&quot; id=&quot;buzzscreenshot-png&quot;&gt;
+    &lt;img src=&quot;/GRPH/assets/images/content/BuzzScreenshot.png&quot; alt=&quot;Jeskola Buzz, a freeware music making application&quot; style=&quot;background-image: url(&apos;/GRPH/assets/images/transparent.gif&apos;)&quot; loading=&quot;lazy&quot; /&gt;
+  &lt;/a&gt;
+  
+&lt;/div&gt;
 
 &lt;p&gt;What I found refreshing about working with audio was the amount options I had when it came to software. While not a perfect software economy (most large studios will run Pro Tools, Logic, and/or Cubase which are all expensive), there seemed to be software available no matter what the budget. Even if I didn’t want to pay for the most software thing, there were &lt;a href=&quot;https://www.awakenings.com/en/artists/james-holden/670/&quot;&gt;people&lt;/a&gt; out there making &lt;a href=&quot;https://www.youtube.com/watch?v=KRWUZh5nD8I&quot;&gt;fantastic music&lt;/a&gt; with &lt;a href=&quot;http://jeskola.net/buzz/&quot;&gt;free software&lt;/a&gt; alone. And unlike visual design, the use of these lesser-known ‘alternative’ systems for music creation and seemed valorised. As Warren Burt puts it, “A machine with its own idiosyncrasies cannot help but have a unique sound” (&lt;a href=&quot;http://static1.1.sqspcdn.com/static/f/288545/5157843/1261635154293/Burt1975AardvarksIVMastersThesisUCSD.pdf?token=D1qQOnpuHm2BTKx%2F%2Beyrb84v4W8%3D&quot;&gt;p. 29-30&lt;/a&gt;).&lt;/p&gt;
 
