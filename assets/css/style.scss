@@ -36,9 +36,6 @@ body {
     padding: $margins $margins;
     margin-bottom: $margins;
     max-width: $width;
-    & p {
-      line-height: 26px;
-    }
   }
 }
 
@@ -84,6 +81,14 @@ ul {
   & > li {
     margin-bottom: $paragraph_spacing;
     padding-left: $qtr_margins;
+  }
+}
+
+blockquote {
+  font-size: 24px;
+  & > p {
+    line-height: 32px;
+    text-indent: -0.5em;
   }
 }
 
