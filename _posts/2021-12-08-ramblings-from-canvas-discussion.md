@@ -3,7 +3,7 @@ title: Sleepless Ramblings on Digital Tools
 layout: post
 tag: [Nonsense]
 date: Dec. 8th, 2021
-categories: [Audio]
+categories: [Misc]
 ---
 
 (This is a re-post of something I wrote on my discussion board thread.)
