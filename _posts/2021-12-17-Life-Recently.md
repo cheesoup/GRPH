@@ -1,7 +1,7 @@
 ---
 title: These Last Couple Days
 layout: post
-tag: [Nonsense]
+tag: [Updates]
 date: Dec. 17th, 2021
 categories: [Misc]
 ---
