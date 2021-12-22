@@ -170,12 +170,7 @@ To blend between the four wave shapes, we linearly interpolate (aka crossfade) b
 `f(1.25) = waves[1]*(0.25) + waves[2]*(1 - (0.25))`\
 `f(1.25) = waves[PULSE]*(0.25) + waves[EXPO]*(0.75)`
 
-The order of waveforms are as follows:
-
-1. Triangle
-2. Pulse
-3. Exponential
-4. Sawtooth
+The order of waveforms are as follows: 0 = Triangle, 1 = Pulse, 2 = Exponential, 3 = Sawtooth.
 
 # Arcsine Wave Shaping
 
@@ -229,4 +224,4 @@ To morph between a sine wave and another wave shape, all we need to do is add th
 
 # Conclusion
 
-That's all there really is to the oscilltor so far though. The last part of chain has already been covered in my [Coding on Bela]({{ '/audio/2021/10/26/coding-on-bela.html' | relative_url }}) post. All that's left is controlling of the output level which is done through the `lvl` variable. Beyond single oscillators, there are some cool things you can do when you combine two of them. In my upcoming posts, I'll go more into some these dual-oscillator techniques I currently have programmed.
+That's all there really is to the oscilltor so far though . The last part of chain has already been covered in my [Coding on Bela]({{ '/audio/2021/10/26/coding-on-bela.html' | relative_url }}) post. All that's left is controlling of the output level which is done through the `lvl` variable. Beyond single oscillators, there are some cool things you can do when you combine two of them. In my upcoming posts, I'll go more into some these dual-oscillator techniques I currently have programmed. The code for my oscillator can be found [here](https://github.com/cheesoup/CheeseVA/blob/main/BasicWaves.cpp). If you happen to have a Bela unit, the code to run a oscillator demo can found [here](/GRPH/assets/other/demo_arcsinOsc.zip).

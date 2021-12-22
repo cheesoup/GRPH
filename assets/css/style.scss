@@ -246,7 +246,7 @@ footer.pagination {
     padding-top: $paragraph_spacing;
     border-top: 2px $color4 dotted;
     @media (min-width: $break) {
-      max-width: 310px;
+      max-width: $width / 2;
     }
   }
   & > nav > ul > li {

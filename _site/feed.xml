@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://0.0.0.0:4000/GRPH/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://0.0.0.0:4000/GRPH/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/GRPH/" rel="alternate" type="text/html" /><updated>2021-12-22T01:44:46-05:00</updated><id>http://0.0.0.0:4000/GRPH/feed.xml</id><title type="html">thesis? idk?</title><subtitle>a blog for 4th year workshop at OCADU</subtitle><author><name>Chris Carin</name></author><entry><title type="html">Stuff About Wave Shaping</title><link href="http://0.0.0.0:4000/GRPH/audio/2021/12/17/arbitrary-wavemorphing.html" rel="alternate" type="text/html" title="Stuff About Wave Shaping" /><published>2021-12-17T00:00:00-05:00</published><updated>2021-12-17T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/audio/2021/12/17/arbitrary-wavemorphing</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/audio/2021/12/17/arbitrary-wavemorphing.html">&lt;!-- Include for Video Embedding --&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://0.0.0.0:4000/GRPH/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://0.0.0.0:4000/GRPH/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/GRPH/" rel="alternate" type="text/html" /><updated>2021-12-22T02:24:26-05:00</updated><id>http://0.0.0.0:4000/GRPH/feed.xml</id><title type="html">thesis? idk?</title><subtitle>a blog for 4th year workshop at OCADU</subtitle><author><name>Chris Carin</name></author><entry><title type="html">Stuff About Wave Shaping</title><link href="http://0.0.0.0:4000/GRPH/audio/2021/12/17/arbitrary-wavemorphing.html" rel="alternate" type="text/html" title="Stuff About Wave Shaping" /><published>2021-12-17T00:00:00-05:00</published><updated>2021-12-17T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/audio/2021/12/17/arbitrary-wavemorphing</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/audio/2021/12/17/arbitrary-wavemorphing.html">&lt;!-- Include for Video Embedding --&gt;
 &lt;!-- https://github.com/nathancy/jekyll-embed-video#responsive-videos --&gt;
 &lt;div class=&quot;float&quot;&gt;
   &lt;figure class=&quot;embed video&quot;&gt;
@@ -184,14 +184,7 @@
 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;f(1.25) = waves[1]*(0.25) + waves[2]*(1 - (0.25))&lt;/code&gt;&lt;br /&gt;
 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;f(1.25) = waves[PULSE]*(0.25) + waves[EXPO]*(0.75)&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;The order of waveforms are as follows:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Triangle&lt;/li&gt;
-  &lt;li&gt;Pulse&lt;/li&gt;
-  &lt;li&gt;Exponential&lt;/li&gt;
-  &lt;li&gt;Sawtooth&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;The order of waveforms are as follows: 0 = Triangle, 1 = Pulse, 2 = Exponential, 3 = Sawtooth.&lt;/p&gt;
 
 &lt;h1 id=&quot;arcsine-wave-shaping&quot;&gt;Arcsine Wave Shaping&lt;/h1&gt;
 
@@ -239,7 +232,7 @@
 
 &lt;h1 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h1&gt;
 
-&lt;p&gt;That’s all there really is to the oscilltor so far though. The last part of chain has already been covered in my &lt;a href=&quot;/GRPH/audio/2021/10/26/coding-on-bela.html&quot;&gt;Coding on Bela&lt;/a&gt; post. All that’s left is controlling of the output level which is done through the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lvl&lt;/code&gt; variable. Beyond single oscillators, there are some cool things you can do when you combine two of them. In my upcoming posts, I’ll go more into some these dual-oscillator techniques I currently have programmed.&lt;/p&gt;</content><author><name>Chris Carin</name></author><category term="Audio" /><category term="Bela" /><category term="Audio Programming" /><category term="Oscillators" /><category term="C++" /><summary type="html">Demo of my current oscillator iteration</summary></entry><entry><title type="html">These Last Couple Days</title><link href="http://0.0.0.0:4000/GRPH/misc/2021/12/17/these-last-couple-days.html" rel="alternate" type="text/html" title="These Last Couple Days" /><published>2021-12-17T00:00:00-05:00</published><updated>2021-12-17T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/misc/2021/12/17/these-last-couple-days</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/misc/2021/12/17/these-last-couple-days.html">&lt;p&gt;Reality’s been pretty rough these last couple days.&lt;/p&gt;
+&lt;p&gt;That’s all there really is to the oscilltor so far though . The last part of chain has already been covered in my &lt;a href=&quot;/GRPH/audio/2021/10/26/coding-on-bela.html&quot;&gt;Coding on Bela&lt;/a&gt; post. All that’s left is controlling of the output level which is done through the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lvl&lt;/code&gt; variable. Beyond single oscillators, there are some cool things you can do when you combine two of them. In my upcoming posts, I’ll go more into some these dual-oscillator techniques I currently have programmed. The code for my oscillator can be found &lt;a href=&quot;https://github.com/cheesoup/CheeseVA/blob/main/BasicWaves.cpp&quot;&gt;here&lt;/a&gt;. If you happen to have a Bela unit, the code to run a oscillator demo can found &lt;a href=&quot;/GRPH/assets/other/demo_arcsinOsc.zip&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;</content><author><name>Chris Carin</name></author><category term="Audio" /><category term="Bela" /><category term="Audio Programming" /><category term="Oscillators" /><category term="C++" /><summary type="html">Demo of my current oscillator iteration</summary></entry><entry><title type="html">These Last Couple Days</title><link href="http://0.0.0.0:4000/GRPH/misc/2021/12/17/these-last-couple-days.html" rel="alternate" type="text/html" title="These Last Couple Days" /><published>2021-12-17T00:00:00-05:00</published><updated>2021-12-17T00:00:00-05:00</updated><id>http://0.0.0.0:4000/GRPH/misc/2021/12/17/these-last-couple-days</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/misc/2021/12/17/these-last-couple-days.html">&lt;p&gt;Reality’s been pretty rough these last couple days.&lt;/p&gt;
 
 &lt;p&gt;My partner’s mother passed away a couple days ago (rest in peace Ana Ghansiam). They’ve been taking it pretty well I think. Between viewings and trying to spend as much time as I can with my partner, I’ve been a little pre-occupied to say the least. Before I could even visit, I had to bust 5 all nighters in a row just to get my work done and it was fucking frustrating. Things are starting to slowdown again, but right now my focus is really on my partner’s well-being. In most circumstances, they’re extremely helpful when it comes to these sort of DIY electronic projects. Beyond emotional support, they’re actually pretty good at programming and know more about basic electronics than I do. Right now though, I think they need sometime to digest everything first.&lt;/p&gt;
 
@@ -708,7 +701,7 @@ Chris&lt;/p&gt;</content><author><name>Chris Carin</name></author><category term
 &lt;ol&gt;
   &lt;li&gt;&lt;del&gt;Anatomy of Subtractive Synths Pt. 2&lt;/del&gt; (Merged with part 1)&lt;/li&gt;
   &lt;li&gt;&lt;del&gt;Oscillator Design pt. 1: Anti-aliasing&lt;/del&gt;&lt;/li&gt;
-  &lt;li&gt;Oscillator Design pt. 2: Waveshaping&lt;/li&gt;
+  &lt;li&gt;&lt;del&gt;Oscillator Design pt. 2: Waveshaping&lt;/del&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;hr /&gt;
