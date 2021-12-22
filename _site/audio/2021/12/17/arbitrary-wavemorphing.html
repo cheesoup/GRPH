@@ -136,7 +136,7 @@
 	<span class="k">return</span> <span class="n">p</span> <span class="o">&lt;</span> <span class="n">pw</span> <span class="o">?</span> <span class="n">p</span> <span class="o">*</span> <span class="p">(</span><span class="mf">0.5</span> <span class="o">/</span> <span class="n">pw</span><span class="p">)</span> <span class="o">:</span> <span class="p">(</span><span class="n">p</span> <span class="o">-</span> <span class="n">pw</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">-</span> <span class="n">pw</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">;</span>
 <span class="p">}</span></code></pre></figure>
 
-<p>If we recall from the Coding on Bela example, phase can be thought as a periodic ramp from 0-1. Generating a sine wave is equivalent to feeding the ramp into sin(2π). Rather than generating phase linearly however, we can modify the duty cycle by splitting the ramp in half and reading the two parts at varying but relative playback rates. The above code defines the split point using variable <code class="language-plaintext highlighter-rouge">pw</code>. This split point refers to where during the cycle the phase is equal to 0.5. The playback rate of both parts is relative to this center point. This has the effect creating a ‘knee’ within the ramp as illusrated below.</p>
+<p>If we recall from the Coding on Bela example, phase can be thought as a periodic ramp from 0-1. Generating a sine wave is equivalent to feeding the ramp into sin(2πx). Rather than generating phase linearly however, we can modify the duty cycle by splitting the ramp in half and reading the two parts at varying but relative playback rates. The above code defines the split point using variable <code class="language-plaintext highlighter-rouge">pw</code>. This split point refers to where during the cycle the phase is equal to 0.5. The playback rate of both parts is relative to this center point. This has the effect creating a ‘knee’ within the ramp as illusrated below.</p>
 
 <!-- Include for captioned images -->
 
@@ -363,14 +363,6 @@
     
     <ul>
       <li>
-        <a href="/GRPH/audio/2021/10/14/fft_grainspec.html">
-          FFT Spectral Granulator
-        </a>
-      </li>
-    </ul>
-    
-    <ul>
-      <li>
         <a href="/GRPH/audio/2021/12/05/CheeseVA-Demo-Footage.html">
           CheeseVA Demo Footage!
         </a>
@@ -379,8 +371,16 @@
     
     <ul>
       <li>
-        <a href="/GRPH/audio/2021/12/06/antialiased-oscillators.html">
-          Anti-Aliased Oscillators
+        <a href="/GRPH/audio/2021/12/03/anatomy-of-subtractive-synths.html">
+          Anatomy of Subtractive Synths
+        </a>
+      </li>
+    </ul>
+    
+    <ul>
+      <li>
+        <a href="/GRPH/audio/2021/10/14/fft_grainspec.html">
+          FFT Spectral Granulator
         </a>
       </li>
     </ul>
