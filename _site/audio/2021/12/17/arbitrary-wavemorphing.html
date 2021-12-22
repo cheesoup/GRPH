@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="/GRPH/assets/css/style.css"/>
+    <link rel="alternate" type="application/atom+xml" title="thesis? idk?" href="/GRPH/feed.xml"/>
+    <link rel="shortcut icon" type="image/png" href="/GRPH/icon.ico"/>
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Stuff About Wave Shaping | thesis? idk?</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Stuff About Wave Shaping" />
+<meta name="author" content="Chris Carin" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Demo of my current oscillator iteration" />
+<meta property="og:description" content="Demo of my current oscillator iteration" />
+<link rel="canonical" href="http://0.0.0.0:4000/GRPH/audio/2021/12/17/arbitrary-wavemorphing.html" />
+<meta property="og:url" content="http://0.0.0.0:4000/GRPH/audio/2021/12/17/arbitrary-wavemorphing.html" />
+<meta property="og:site_name" content="thesis? idk?" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-12-17T00:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Stuff About Wave Shaping" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Chris Carin"},"@type":"BlogPosting","headline":"Stuff About Wave Shaping","dateModified":"2021-12-17T00:00:00-05:00","datePublished":"2021-12-17T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/GRPH/audio/2021/12/17/arbitrary-wavemorphing.html"},"description":"Demo of my current oscillator iteration","url":"http://0.0.0.0:4000/GRPH/audio/2021/12/17/arbitrary-wavemorphing.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+  <body>
+    <header>  <!-- HEADER START -->
+      <a href="/GRPH/"><img src="/GRPH/assets/images/jam_crow.gif" alt="jam_crow.gif" width="128" height="68"/></a>
+      <nav>   <!-- MENU START -->
+        <ul>
+          
+          <li><a href="/GRPH/about">about</a></li>
+          
+          <li><a href="/GRPH/audio">audio</a></li>
+          
+          <li><a href="/GRPH/website">web</a></li>
+          
+          <li><a href="/GRPH/misc">misc</a></li>
+          
+          <li><a href="/GRPH/tags">tags</a></li>
+          
+        </ul>
+      </nav>   <!-- MENU END -->
+    </header>  <!-- HEADER END -->
+    <main>     <!-- CONTENT START -->
+      
+
+
+<header class="heading">
+  <h1>Stuff About Wave Shaping</h1>
+  <div>
+    <small>
+      Category: <a href="">Audio</a>
+    </small>
+    <small>
+      Tags:
+      
+        <a href="/GRPH/tags#bela">Bela</a>
+      
+        <a href="/GRPH/tags#audio-programming">Audio Programming</a>
+      
+        <a href="/GRPH/tags#oscillators">Oscillators</a>
+      
+        <a href="/GRPH/tags#c">C++</a>
+      
+    </small>
+  </div>
+  <div>
+    <small>
+      Fri, Dec 17, 21
+    </small>
+    <small>
+      
+      Length:
+      
+        15 mins
+      
+    </small>
+  </div>
+</header>
+
+<!-- Include for Video Embedding -->
+<!-- https://github.com/nathancy/jekyll-embed-video#responsive-videos -->
+<div class="float">
+  <figure class="embed video">
+    <span class="video">
+      <iframe style="width:100%; height:100%;" src="https://player.vimeo.com/video/640603019?h=b0a124d5cc&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" loading="lazy" allowfullscreen="">
+      </iframe>
+    </span>
+    <figcaption class="caption">Demo of my current oscillator iteration</figcaption>
+  </figure>
+</div>
+
+<p>Above is a demo of the current state of my oscillator. In this post, my goal is to breakdown how my code for this works. It uses a phase distortion algorithm which allows for non-linear interpolation between a sine wave and a secondary waveform which can take any shape so long as it periodic. For this project, the secondary waveform is selected by cross-fading between ‘classic’ wave shapes. My implementation, also features pulse width control because you know that’s always fun.</p>
+
+<h1 id="signal-flow">Signal Flow</h1>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="kt">float</span> <span class="n">BasicWaves</span><span class="o">::</span><span class="n">process</span><span class="p">(</span><span class="kt">float</span> <span class="n">f</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="kt">float</span> <span class="n">delta</span> <span class="o">=</span> <span class="n">ditherFreq</span><span class="p">(</span><span class="o">&amp;</span><span class="n">f</span><span class="p">);</span>
+	<span class="n">delta</span> <span class="o">*=</span> <span class="n">tune</span><span class="p">;</span>
+	<span class="n">delta</span> <span class="o">*=</span> <span class="n">iSR</span><span class="p">;</span>
+
+	<span class="c1">// Calculate sample</span>
+	<span class="kt">float</span> <span class="n">p</span> <span class="o">=</span> <span class="n">pwPhase</span><span class="p">(</span><span class="n">phase</span><span class="p">);</span>
+	<span class="kt">float</span> <span class="n">s</span> <span class="o">=</span> <span class="n">shapePhase</span><span class="p">(</span><span class="o">&amp;</span><span class="n">p</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">delta</span><span class="p">);</span>
+	<span class="n">distortPhase</span><span class="p">(</span><span class="o">&amp;</span><span class="n">p</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">s</span><span class="p">);</span>
+
+	<span class="c1">// Increment Phase</span>
+	<span class="n">phase</span> <span class="o">+=</span> <span class="n">delta</span><span class="p">;</span>
+	<span class="k">if</span> <span class="p">((</span><span class="kt">int</span><span class="p">)</span><span class="n">phase</span><span class="p">)</span> <span class="n">phase</span><span class="o">--</span><span class="p">;</span>
+	<span class="k">return</span> <span class="n">p</span> <span class="o">*</span> <span class="n">lvl</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Each signal processing object coded for this project contains a function called <code class="language-plaintext highlighter-rouge">process</code>. This function is called every sample an object is active and is used to determine the object’s output value. This particular process function can thought of as an outline to the oscillator’s algorithm. The steps are:</p>
+
+<ol>
+  <li>Dither input frequency.</li>
+  <li>Calculate the amount to increment the phase by (aka delta).</li>
+  <li>Apply pulse width shaping to phase.</li>
+  <li>Calculate the sine inverse of the secondary wave.</li>
+  <li>Apply sine morphing.</li>
+  <li>Increment phase.</li>
+</ol>
+
+<p>Among these steps, this post will be focusing on steps 3-5. Step 1 is covered in my post about <a href="/GRPH/audio/2021/12/06/antialiased-oscillators.html">anti-aliased oscillators</a> while steps 2 and 6 are covered in my initial post about <a href="/GRPH/audio/2021/10/26/coding-on-bela.html">Bela coding</a>.</p>
+
+<h1 id="modifying-duty-cycle-pulse-width">Modifying Duty Cycle (Pulse Width)</h1>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="c1">// Pulse width control based on varying playback speeds</span>
+<span class="c1">// between the first and second halfs of the wave period</span>
+<span class="kr">inline</span> <span class="kt">float</span> <span class="n">BasicWaves</span><span class="o">::</span><span class="n">pwPhase</span><span class="p">(</span><span class="kt">float</span> <span class="n">p</span><span class="p">)</span> <span class="k">const</span>
+<span class="p">{</span>
+	<span class="k">return</span> <span class="n">p</span> <span class="o">&lt;</span> <span class="n">pw</span> <span class="o">?</span> <span class="n">p</span> <span class="o">*</span> <span class="p">(</span><span class="mf">0.5</span> <span class="o">/</span> <span class="n">pw</span><span class="p">)</span> <span class="o">:</span> <span class="p">(</span><span class="n">p</span> <span class="o">-</span> <span class="n">pw</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">-</span> <span class="n">pw</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>If we recall from the Coding on Bela example, phase can be thought as a periodic ramp from 0-1. Generating a sine wave is equivalent to feeding the ramp into sin(2π). Rather than generating phase linearly however, we can modify the duty cycle by splitting the ramp in half and reading the two parts at varying but relative playback rates. The above code defines the split point using variable <code class="language-plaintext highlighter-rouge">pw</code>. This split point refers to where during the cycle the phase is equal to 0.5. The playback rate of both parts is relative to this center point. This has the effect creating a ‘knee’ within the ramp as illusrated below.</p>
+
+<!-- Include for captioned images -->
+
+<div class="float ">
+  <figure class="embed picture" style="width: ">
+    
+    <a href="#phasedistortion-1-full-jpg">
+      <img src="/GRPH/assets/images/content/PhaseDistortion-1-full.jpg" alt="Pulse Width Modulation via Phase Distortion" style="width: " loading="lazy" />
+    </a>
+    
+    <figcaption>
+      Pulse Width Modulation via Phase Distortion
+      
+        <br />Original image: https://www.perfectcircuit.com/media/wysiwyg/articles/PD_FM/PhaseDistortion-1-full.jpg
+      
+    </figcaption>
+  </figure>
+  
+  <a href="#/" class="expand" id="phasedistortion-1-full-jpg">
+    <img src="/GRPH/assets/images/content/PhaseDistortion-1-full.jpg" alt="Pulse Width Modulation via Phase Distortion" style="background-image: url('/GRPH/assets/images/transparent.gif')" loading="lazy" />
+  </a>
+  
+</div>
+
+<h1 id="generating-wave-shapes">Generating Wave Shapes</h1>
+
+<p>These section is dedicated to describing the methods used to synthesize basic waveforms for this projects. A lot of this is based on code originating from <a href="http://www.martin-finke.de/blog/articles/audio-plugins-018-polyblep-oscillator/">this</a> blog post. While the ideas for generating these waveforms remain unmodified for the most part, the code provided by Martin Finke does not implement an exponential wave, nor any sort pulse width control or wave form blending.</p>
+
+<h2 id="generating-sawtooths-waves">Generating Sawtooths Waves</h2>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="c1">// Sawtooth is required to generate a square wave</span>
+<span class="c1">// Synthesize by taking phase and stretching to -1 and 1</span>
+<span class="n">waves</span><span class="p">[</span><span class="n">SAW</span><span class="p">]</span> <span class="o">=</span> <span class="n">fmath</span><span class="o">::</span><span class="n">fast_fwrap</span><span class="p">(</span><span class="o">*</span><span class="n">p</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">*</span> <span class="mf">2.0</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">;</span>
+<span class="n">waves</span><span class="p">[</span><span class="n">SAW</span><span class="p">]</span> <span class="o">-=</span> <span class="n">polyBLEP</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">+</span> <span class="p">(</span><span class="mf">0.5</span> <span class="o">-</span> <span class="n">pw</span><span class="p">),</span> <span class="n">delta</span><span class="p">);</span></code></pre></figure>
+
+<p>Because a phase ramp can already be thought of as a sawtooth between 0 to 1, all we need to do is amplify and offset the phase such that it ranges from -1 to 1. To bandlimit it, we integrate the resulting sawtooth with a polyBLEP signal. In the above example, I add an additional offset of 0.5 to produce a better phase relationship when transforming from a sawtooth wave to a sine wave.</p>
+
+<h2 id="generating-pulse-waves">Generating Pulse Waves</h2>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="c1">// Square wave is required to generate all other shapes</span>
+<span class="c1">// Synthesize by integrating a second saw into the first saw</span>
+<span class="n">waves</span><span class="p">[</span><span class="n">PULSE</span><span class="p">]</span> <span class="o">=</span> <span class="n">waves</span><span class="p">[</span><span class="n">SAW</span><span class="p">]</span> <span class="o">-</span> <span class="p">(</span><span class="o">*</span><span class="n">p</span> <span class="o">*</span> <span class="mf">2.0</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">);</span>
+<span class="n">waves</span><span class="p">[</span><span class="n">PULSE</span><span class="p">]</span> <span class="o">+=</span> <span class="n">polyBLEP</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">delta</span><span class="p">);</span></code></pre></figure>
+
+<p>To create a bandlimited square wave, we synthesize another sawtooth offset by -0.5 and integrate it into the initial sawtooth wave. The initial sawtooth is already offset by 0.5, thus the overall offset for the current one is 0. For bandlimiting, rather than integrating the polyBLEP, we add it. The polyBLEP can be thought of as part of the sawtooth wave. Because we’re integrating the sawtooth into another waveform, the integration of the polyBLEP becomes addition (negative * negative = positive).</p>
+
+<h2 id="generating-exponential-waves">Generating Exponential Waves</h2>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="c1">// Exponential phase value</span>
+<span class="c1">// amplitude modulated by the square wave</span>
+<span class="n">waves</span><span class="p">[</span><span class="n">EXPO</span><span class="p">]</span> <span class="o">=</span> <span class="n">fmath</span><span class="o">::</span><span class="n">fast_fwrap</span><span class="p">(</span><span class="o">*</span><span class="n">p</span> <span class="o">*</span> <span class="mf">2.0</span><span class="p">);</span>
+<span class="n">waves</span><span class="p">[</span><span class="n">EXPO</span><span class="p">]</span> <span class="o">*=</span> <span class="n">waves</span><span class="p">[</span><span class="n">EXPO</span><span class="p">];</span>
+<span class="n">waves</span><span class="p">[</span><span class="n">EXPO</span><span class="p">]</span> <span class="o">*=</span> <span class="n">waves</span><span class="p">[</span><span class="n">PULSE</span><span class="p">];</span></code></pre></figure>
+
+<p>The exponential wave is synthesized by first multiplying the phase by 2 and re-wrapping it between 0 and 1. This has the effect of doubling the frequency of the phase signal. From there, we multiply the signal by itself and then multiply product by the previously synthesized square wave. The first step has the effect of creating a curving exponential function rather than a linear ramp. The second step bandlimits the signal and forces it to alternate between positive and negative values.</p>
+
+<h2 id="generating-triangle-waves">Generating Triangle Waves</h2>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="c1">// Leak integration (Low-pass) of a square wave</span>
+<span class="c1">// * 32 is arbitrarily for better PWM range</span>
+<span class="kt">float</span> <span class="n">leak</span> <span class="o">=</span> <span class="mf">32.0</span> <span class="o">*</span> <span class="n">fmath</span><span class="o">::</span><span class="n">fast_fabs</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">-</span> <span class="n">pw</span><span class="p">)</span> <span class="o">*</span> <span class="n">fmath</span><span class="o">::</span><span class="n">fast_fabs</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">-</span> <span class="n">pw</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">leak</span> <span class="o">*=</span> <span class="o">*</span><span class="n">delta</span> <span class="o">*</span> <span class="n">M_PI</span> <span class="o">*</span> <span class="mf">2.0</span><span class="p">;</span>
+<span class="n">waves</span><span class="p">[</span><span class="n">TRI</span><span class="p">]</span> <span class="o">=</span> <span class="n">fminf</span><span class="p">(</span><span class="n">leak</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">)</span> <span class="o">*</span> <span class="n">waves</span><span class="p">[</span><span class="n">PULSE</span><span class="p">];</span>
+<span class="n">waves</span><span class="p">[</span><span class="n">TRI</span><span class="p">]</span> <span class="o">+=</span> <span class="n">fmaxf</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">leak</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span> <span class="o">*</span> <span class="n">last</span><span class="p">;</span>
+<span class="n">last</span> <span class="o">=</span> <span class="n">waves</span><span class="p">[</span><span class="n">TRI</span><span class="p">];</span></code></pre></figure>
+
+<p>Bandlimited triangle waves are synthesized by taking a weighted average of a square wave’s output between the current sample and the previous output. Because triangle waves are synthesized by basically filtering the squaring wave, they’re not very PWM compatible. To rememdy this slightly, the signal is amplified based on the <code class="language-plaintext highlighter-rouge">pw</code> variable.</p>
+
+<h2 id="putting-it-all-together">Putting it all together</h2>
+
+<p>Below is how all this code is stitched together. Both the triangle and exponential waves are dependant on the pulse wave, while the pulse wave is dependant on the sawtooth wave. These dependencies require constant synthesis of the sawtooth and pulse wave. The latter two can be toggled on and off as necessary. Note that all four signal values are contained in an array of floats called <code class="language-plaintext highlighter-rouge">waves</code>. This useful for blending between them later.</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="c1">// Phase distortion between arbitrary waveforms</span>
+<span class="c1">// Stolen from: https://forum.pdpatchrepo.info/topic/6759/new-anti-aliasing-and-phase-distortion-abstractions</span>
+<span class="kr">inline</span> <span class="kt">float</span> <span class="n">BasicWaves</span><span class="o">::</span><span class="n">shapePhase</span><span class="p">(</span><span class="kt">float</span><span class="o">*</span> <span class="n">p</span><span class="p">,</span> <span class="kt">float</span><span class="o">*</span> <span class="n">delta</span><span class="p">)</span> <span class="k">const</span>
+<span class="p">{</span>
+	<span class="k">static</span> <span class="kt">float</span> <span class="n">last</span><span class="p">;</span>
+	<span class="kt">float</span> <span class="n">waves</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+
+	<span class="c1">// Sawtooth is required to generate a square wave</span>
+	<span class="c1">// Synthesize by taking phase and stretching to -1 and 1</span>
+	<span class="n">waves</span><span class="p">[</span><span class="n">SAW</span><span class="p">]</span> <span class="o">=</span> <span class="n">fmath</span><span class="o">::</span><span class="n">fast_fwrap</span><span class="p">(</span><span class="o">*</span><span class="n">p</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">*</span> <span class="mf">2.0</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">;</span>
+	<span class="n">waves</span><span class="p">[</span><span class="n">SAW</span><span class="p">]</span> <span class="o">-=</span> <span class="n">polyBLEP</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">+</span> <span class="p">(</span><span class="mf">0.5</span> <span class="o">-</span> <span class="n">pw</span><span class="p">),</span> <span class="n">delta</span><span class="p">);</span>
+
+	<span class="c1">// Square wave is required to generate all other shapes</span>
+	<span class="c1">// Synthesize by integrating a second niave saw into the first saw</span>
+	<span class="n">waves</span><span class="p">[</span><span class="n">PULSE</span><span class="p">]</span> <span class="o">=</span> <span class="n">waves</span><span class="p">[</span><span class="n">SAW</span><span class="p">]</span> <span class="o">-</span> <span class="p">(</span><span class="o">*</span><span class="n">p</span> <span class="o">*</span> <span class="mf">2.0</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">);</span>
+	<span class="n">waves</span><span class="p">[</span><span class="n">PULSE</span><span class="p">]</span> <span class="o">+=</span> <span class="n">polyBLEP</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">delta</span><span class="p">);</span>
+
+	<span class="c1">// Check if triangle or exponential are selected</span>
+	<span class="c1">// before spending resources to synthesize them</span>
+	<span class="k">switch</span><span class="p">((</span><span class="n">wave</span><span class="p">)</span><span class="n">shape</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="nl">default:</span>
+			<span class="k">break</span><span class="p">;</span>
+		<span class="k">case</span> <span class="n">TRI</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+		<span class="k">case</span> <span class="n">TRI</span><span class="p">:</span>
+		<span class="p">{</span>
+			<span class="c1">// Leak integration (Low-pass) of a square wave</span>
+			<span class="c1">// * 32 is arbitrarily for better PWM range</span>
+			<span class="kt">float</span> <span class="n">leak</span> <span class="o">=</span> <span class="mf">32.0</span> <span class="o">*</span> <span class="n">fmath</span><span class="o">::</span><span class="n">fast_fabs</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">-</span> <span class="n">pw</span><span class="p">)</span> <span class="o">*</span> <span class="n">fmath</span><span class="o">::</span><span class="n">fast_fabs</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">-</span> <span class="n">pw</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+			<span class="n">leak</span> <span class="o">*=</span> <span class="o">*</span><span class="n">delta</span> <span class="o">*</span> <span class="n">M_PI</span> <span class="o">*</span> <span class="mf">2.0</span><span class="p">;</span>
+			<span class="n">waves</span><span class="p">[</span><span class="n">TRI</span><span class="p">]</span> <span class="o">=</span> <span class="n">fminf</span><span class="p">(</span><span class="n">leak</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">)</span> <span class="o">*</span> <span class="n">waves</span><span class="p">[</span><span class="n">PULSE</span><span class="p">];</span>
+			<span class="n">waves</span><span class="p">[</span><span class="n">TRI</span><span class="p">]</span> <span class="o">+=</span> <span class="n">fmaxf</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">leak</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span> <span class="o">*</span> <span class="n">last</span><span class="p">;</span>
+			<span class="n">last</span> <span class="o">=</span> <span class="n">waves</span><span class="p">[</span><span class="n">TRI</span><span class="p">];</span>
+			<span class="k">break</span><span class="p">;</span>
+		<span class="p">}</span>
+		<span class="k">case</span> <span class="n">EXPO</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+		<span class="k">case</span> <span class="n">EXPO</span><span class="p">:</span>
+		<span class="p">{</span>
+			<span class="c1">// Exponential phase value</span>
+			<span class="c1">// amplitude modulated by the square wave</span>
+			<span class="n">waves</span><span class="p">[</span><span class="n">EXPO</span><span class="p">]</span> <span class="o">=</span> <span class="n">fmath</span><span class="o">::</span><span class="n">fast_fwrap</span><span class="p">(</span><span class="o">*</span><span class="n">p</span> <span class="o">*</span> <span class="mf">2.0</span><span class="p">)</span> <span class="o">*</span> <span class="n">fmath</span><span class="o">::</span><span class="n">fast_fwrap</span><span class="p">(</span><span class="o">*</span><span class="n">p</span> <span class="o">*</span> <span class="mf">2.0</span><span class="p">);</span>
+			<span class="n">waves</span><span class="p">[</span><span class="n">EXPO</span><span class="p">]</span> <span class="o">*=</span> <span class="n">waves</span><span class="p">[</span><span class="n">PULSE</span><span class="p">];</span>
+			<span class="k">break</span><span class="p">;</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+
+	<span class="c1">// Linear interpolation between adjacent waves, y = (1-x)a + xb</span>
+	<span class="kt">float</span> <span class="n">interpolate</span> <span class="o">=</span> <span class="n">fmath</span><span class="o">::</span><span class="n">fast_fwrap</span><span class="p">(</span><span class="n">shape</span><span class="p">);</span>
+	<span class="k">return</span> <span class="n">waves</span><span class="p">[(</span><span class="kt">int</span><span class="p">)</span><span class="n">shape</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">interpolate</span><span class="p">)</span> <span class="o">+</span> <span class="n">waves</span><span class="p">[(</span><span class="kt">int</span><span class="p">)</span><span class="n">shape</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">interpolate</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>To blend between the four wave shapes, we linearly interpolate (aka crossfade) between adjacent signals within the array. To do this, we use a user controlled variable between 0 and 4 called <code class="language-plaintext highlighter-rouge">shape</code>. This variable is used to determine what shapes and how much of each  blend. The decimal value of the number is used to determine the crossfade amount, while the integer value is used to determine what two shapes are being crossfaded. For example, a value of 1.25 would be calculated as:</p>
+
+<p><code class="language-plaintext highlighter-rouge">f(1.25) = waves[floor(1.25)]*(1.25 - (1.25 &gt; 1)) + waves[floor(1.25 + 1)]*(1 - (1.25 - (1.25 &gt; 1)))</code><br />
+<code class="language-plaintext highlighter-rouge">f(1.25) = waves[1]*(1.25 - 1) + waves[2]*(1 - (1.25 - 1))</code><br />
+<code class="language-plaintext highlighter-rouge">f(1.25) = waves[1]*(0.25) + waves[2]*(1 - (0.25))</code><br />
+<code class="language-plaintext highlighter-rouge">f(1.25) = waves[PULSE]*(0.25) + waves[EXPO]*(0.75)</code></p>
+
+<p>The order of waveforms are as follows:</p>
+
+<ol>
+  <li>Triangle</li>
+  <li>Pulse</li>
+  <li>Exponential</li>
+  <li>Sawtooth</li>
+</ol>
+
+<h1 id="arcsine-wave-shaping">Arcsine Wave Shaping</h1>
+
+<p>Phase distortion refers to the idea of tranforming the phase of a periodic wave to modify it’s resulting wave shape. As the name implies, there are numerous ways to do this, all if which result in different effects. I’ve already mentioned one method with my implementation of pulse width control. The code below makes use of phase distortion to non-linearly interpolate between an arbitrary wave shapes and a sine wave. This particular method makes use of the trignometric identity <code class="language-plaintext highlighter-rouge">arcsin(sin(x)) = x</code>. I believe it was first introduced online by Scott ‘Acriel’ Nordlund in the same <a href="https://forum.pdpatchrepo.info/topic/6759/new-anti-aliasing-and-phase-distortion-abstractions">forum post</a> they wrote about frequency dithering.</p>
+
+<h2 id="triangle-phase">Triangle Phase</h2>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="c1">// Wrap phase as a triangle wave between -0.5 and 0.5</span>
+<span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="o">*</span><span class="n">p</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">;</span>
+<span class="n">fmath</span><span class="o">::</span><span class="n">fast_fwrap</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+<span class="o">*</span><span class="n">p</span> <span class="o">-=</span> <span class="mf">0.5</span><span class="p">;</span>
+<span class="n">fmath</span><span class="o">::</span><span class="n">fast_fabs</span><span class="p">(</span><span class="n">p</span><span class="p">);</span></code></pre></figure>
+
+<p>We first shape the phase into a triangle wave by adding 0.5, re-wrapping between 0 and 1, subtracting 0.5, and calcuating resulting absolute value. The triangle wave can still be used to calculate a sine wave. Rather than reading through values between 0 and 2PI however, phase in triangle wave form ping pongs between -PI and PI. What’s useful about this method is it gives us a way to arbitrarily interpolate the resulting sine wave into any other shape we want.</p>
+
+<h2 id="calculating-normalized-arcsine">Calculating Normalized Arcsine</h2>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="c1">// Convert shapePhase to asin of shapePhase</span>
+<span class="n">fmath</span><span class="o">::</span><span class="n">fast_asin</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+<span class="o">*</span><span class="n">s</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.159155</span> <span class="o">*</span> <span class="o">*</span><span class="n">s</span> <span class="o">-</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span></code></pre></figure>
+
+<p>My code accomplishes this, by calculating the arcsine of the signal generated in the previously mentioned <code class="language-plaintext highlighter-rouge">shapePhase</code> function. Note that rather than calculating it using <code class="language-plaintext highlighter-rouge">Math.asin(x)</code>, I’m actually calculating an <a href="https://www.desmos.com/calculator/yoq4xjnw01">approximation</a>. This trades calculation accuracy in favor of performance. From what I can tell from my own tests however, the inaccuracies have no real affect on the sound. The signal is then normalized to 1 radian (<code class="language-plaintext highlighter-rouge">-0.159155 * *s</code>). From there we integrate the triangle phase into the arcsine signal.</p>
+
+<h2 id="sine-wave-morphing">Sine Wave Morphing</h2>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="kr">inline</span> <span class="kt">void</span> <span class="n">BasicWaves</span><span class="o">::</span><span class="n">distortPhase</span><span class="p">(</span><span class="kt">float</span><span class="o">*</span> <span class="n">p</span><span class="p">,</span> <span class="kt">float</span><span class="o">*</span> <span class="n">s</span><span class="p">)</span> <span class="k">const</span>
+<span class="p">{</span>
+	<span class="c1">// Wrap phase as a triangle wave between -0.5 and 0.5</span>
+	<span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="o">*</span><span class="n">p</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">;</span>
+	<span class="n">fmath</span><span class="o">::</span><span class="n">fast_fwrap</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+	<span class="o">*</span><span class="n">p</span> <span class="o">-=</span> <span class="mf">0.5</span><span class="p">;</span>
+	<span class="n">fmath</span><span class="o">::</span><span class="n">fast_fabs</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+
+	<span class="c1">// Convert shapePhase to asin of shapePhase</span>
+	<span class="n">fmath</span><span class="o">::</span><span class="n">fast_asin</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+
+	<span class="c1">// Normalize asin(shapePhase) to 1rad/period.</span>
+	<span class="c1">// Integrate into wrapped phase and shift values to</span>
+	<span class="c1">// return the cosine from fmath::fast_sin.</span>
+	<span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="n">p</span> <span class="o">+</span> <span class="p">((</span><span class="o">-</span><span class="mf">0.159155</span> <span class="o">*</span> <span class="o">*</span><span class="n">s</span> <span class="o">-</span> <span class="o">*</span><span class="n">p</span> <span class="o">+</span> <span class="mf">0.25</span><span class="p">)</span> <span class="o">*</span> <span class="n">dist</span><span class="p">))</span> <span class="o">*</span> <span class="mf">2.0</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">;</span>
+	<span class="n">fmath</span><span class="o">::</span><span class="n">fast_sin</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>To morph between a sine wave and another wave shape, all we need to do is add the signal produced above to the triangle phase prior to calculating sine. The variable <code class="language-plaintext highlighter-rouge">dist</code> controls how much of the signal is added to the phase. 0.25 is added once again for better phase alignment between transformations. Like the arcsine function, I’m using a <a href="https://www.desmos.com/calculator/fhqmn3abo0">approximation</a> for calculating sine. This approximation is actually much more accurate, though its valid range is limited.</p>
+
+<h1 id="conclusion">Conclusion</h1>
+
+<p>That’s all there really is to the oscilltor so far though. The last part of chain has already been covered in my <a href="/GRPH/audio/2021/10/26/coding-on-bela.html">Coding on Bela</a> post. All that’s left is controlling of the output level which is done through the <code class="language-plaintext highlighter-rouge">lvl</code> variable. Beyond single oscillators, there are some cool things you can do when you combine two of them. In my upcoming posts, I’ll go more into some these dual-oscillator techniques I currently have programmed.</p>
+
+
+<!-- Grab previous and next post from category -->
+<!-- https://talk.jekyllrb.com/t/how-to-link-to-next-and-previous-posts-for-same-blog-category/629 -->
+
+
+
+
+
+
+<footer class="pagination">
+  <nav>
+    <h3>Pagination</h3>
+    <ul>
+      <!-- Page Up -->
+      <li>
+        <a class="up" href="/GRPH/audio">
+          Back to Audio
+        </a>
+      </li>
+      <!-- Prev post -->
+      <li>
+        <a class="next" href="/GRPH/audio/2021/12/06/antialiased-oscillators.html">
+          Anti-Aliased Oscillators
+        </a>
+      </li>
+      <!-- Next post -->
+      <li>
+        <a class="prev" href="/GRPH/audio/2021/12/17/arbitrary-wavemorphing.html">
+          Stuff About Wave Shaping
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <nav>
+    <h3>Related Posts</h3>
+    
+    
+    <ul>
+      <li>
+        <a href="/GRPH/audio/2021/10/14/fft_grainspec.html">
+          FFT Spectral Granulator
+        </a>
+      </li>
+    </ul>
+    
+    <ul>
+      <li>
+        <a href="/GRPH/audio/2021/12/05/CheeseVA-Demo-Footage.html">
+          CheeseVA Demo Footage!
+        </a>
+      </li>
+    </ul>
+    
+    <ul>
+      <li>
+        <a href="/GRPH/audio/2021/12/06/antialiased-oscillators.html">
+          Anti-Aliased Oscillators
+        </a>
+      </li>
+    </ul>
+    
+  </nav>
+</footer>
+
+    </main>    <!-- CONTENT END -->
+    <footer>   <!-- FOOTER START -->
+      <ul>
+        <li><a href="/GRPH/feed.xml">RSS Feed</a></li>
+        <li>
+          <a href="https://www.gnu.org/licenses/copyleft.en.html">(C)</a>
+           2021-2022
+          <a href="mailto:chr.carin(a)gmail.com">Chris Carin</a>
+        </li>
+        <li><a href="https://html5.validator.nu/?doc=http://0.0.0.0:4000/GRPH/audio/2021/12/17/arbitrary-wavemorphing.html">This document is valid HTML5</a></li>
+        <li><a href="#">Back to Top</a></li>
+      </ul>
+    </footer>   <!-- FOOTER END -->
+  </body>
+</html>
