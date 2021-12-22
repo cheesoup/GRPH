@@ -75,7 +75,7 @@
       
       Length:
       
-        15 mins
+        16 mins
       
     </small>
   </div>
@@ -209,9 +209,7 @@
 
 <p>Below is how all this code is stitched together. Both the triangle and exponential waves are dependant on the pulse wave, while the pulse wave is dependant on the sawtooth wave. These dependencies require constant synthesis of the sawtooth and pulse wave. The latter two can be toggled on and off as necessary. Note that all four signal values are contained in an array of floats called <code class="language-plaintext highlighter-rouge">waves</code>. This useful for blending between them later.</p>
 
-<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="c1">// Phase distortion between arbitrary waveforms</span>
-<span class="c1">// Stolen from: https://forum.pdpatchrepo.info/topic/6759/new-anti-aliasing-and-phase-distortion-abstractions</span>
-<span class="kr">inline</span> <span class="kt">float</span> <span class="n">BasicWaves</span><span class="o">::</span><span class="n">shapePhase</span><span class="p">(</span><span class="kt">float</span><span class="o">*</span> <span class="n">p</span><span class="p">,</span> <span class="kt">float</span><span class="o">*</span> <span class="n">delta</span><span class="p">)</span> <span class="k">const</span>
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="kr">inline</span> <span class="kt">float</span> <span class="n">BasicWaves</span><span class="o">::</span><span class="n">shapePhase</span><span class="p">(</span><span class="kt">float</span><span class="o">*</span> <span class="n">p</span><span class="p">,</span> <span class="kt">float</span><span class="o">*</span> <span class="n">delta</span><span class="p">)</span> <span class="k">const</span>
 <span class="p">{</span>
 	<span class="k">static</span> <span class="kt">float</span> <span class="n">last</span><span class="p">;</span>
 	<span class="kt">float</span> <span class="n">waves</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
@@ -262,10 +260,10 @@
 
 <p>To blend between the four wave shapes, we linearly interpolate (aka crossfade) between adjacent signals within the array. To do this, we use a user controlled variable between 0 and 4 called <code class="language-plaintext highlighter-rouge">shape</code>. This variable is used to determine what shapes and how much of each  blend. The decimal value of the number is used to determine the crossfade amount, while the integer value is used to determine what two shapes are being crossfaded. For example, a value of 1.25 would be calculated as:</p>
 
-<p><code class="language-plaintext highlighter-rouge">f(1.25) = waves[floor(1.25)]*(1.25 - (1.25 &gt; 1)) + waves[floor(1.25 + 1)]*(1 - (1.25 - (1.25 &gt; 1)))</code><br />
-<code class="language-plaintext highlighter-rouge">f(1.25) = waves[1]*(1.25 - 1) + waves[2]*(1 - (1.25 - 1))</code><br />
-<code class="language-plaintext highlighter-rouge">f(1.25) = waves[1]*(0.25) + waves[2]*(1 - (0.25))</code><br />
-<code class="language-plaintext highlighter-rouge">f(1.25) = waves[PULSE]*(0.25) + waves[EXPO]*(0.75)</code></p>
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="n">f</span><span class="p">(</span><span class="mf">1.25</span><span class="p">)</span> <span class="o">=</span> <span class="n">waves</span><span class="p">[</span><span class="n">floor</span><span class="p">(</span><span class="mf">1.25</span><span class="p">)]</span><span class="o">*</span><span class="p">(</span><span class="mf">1.25</span> <span class="o">-</span> <span class="p">(</span><span class="mf">1.25</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">))</span> <span class="o">+</span> <span class="n">waves</span><span class="p">[</span><span class="n">floor</span><span class="p">(</span><span class="mf">1.25</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="mf">1.25</span> <span class="o">-</span> <span class="p">(</span><span class="mf">1.25</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)))</span>
+<span class="n">f</span><span class="p">(</span><span class="mf">1.25</span><span class="p">)</span> <span class="o">=</span> <span class="n">waves</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="mf">1.25</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">waves</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="mf">1.25</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">f</span><span class="p">(</span><span class="mf">1.25</span><span class="p">)</span> <span class="o">=</span> <span class="n">waves</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span> <span class="o">+</span> <span class="n">waves</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="mf">0.25</span><span class="p">))</span>
+<span class="n">f</span><span class="p">(</span><span class="mf">1.25</span><span class="p">)</span> <span class="o">=</span> <span class="n">waves</span><span class="p">[</span><span class="n">PULSE</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span> <span class="o">+</span> <span class="n">waves</span><span class="p">[</span><span class="n">EXPO</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="mf">0.75</span><span class="p">)</span></code></pre></figure>
 
 <p>The order of waveforms are as follows: 0 = Triangle, 1 = Pulse, 2 = Exponential, 3 = Sawtooth.</p>
 
@@ -289,7 +287,7 @@
 <span class="n">fmath</span><span class="o">::</span><span class="n">fast_asin</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
 <span class="o">*</span><span class="n">s</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.159155</span> <span class="o">*</span> <span class="o">*</span><span class="n">s</span> <span class="o">-</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span></code></pre></figure>
 
-<p>My code accomplishes this, by calculating the arcsine of the signal generated in the previously mentioned <code class="language-plaintext highlighter-rouge">shapePhase</code> function. Note that rather than calculating it using <code class="language-plaintext highlighter-rouge">Math.asin(x)</code>, I’m actually calculating an <a href="https://www.desmos.com/calculator/yoq4xjnw01">approximation</a>. This trades calculation accuracy in favor of performance. From what I can tell from my own tests however, the inaccuracies have no real affect on the sound. The signal is then normalized to 1 radian (<code class="language-plaintext highlighter-rouge">-0.159155 * *s</code>). From there we integrate the triangle phase into the arcsine signal.</p>
+<p>My code accomplishes this, by calculating the arcsine of the signal generated in the previously mentioned <code class="language-plaintext highlighter-rouge">shapePhase</code> function. Note that rather than calculating it using <code class="language-plaintext highlighter-rouge">Math.asin(x)</code>, I’m actually calculating an <a href="https://www.desmos.com/calculator/5jwmy107mu">approximation</a>. This trades calculation accuracy in favor of performance. From what I can tell from my own tests however, the inaccuracies have no real affect on the sound. The signal is then normalized to 1 radian (<code class="language-plaintext highlighter-rouge">-0.159155 * *s</code>). From there we integrate the triangle phase into the arcsine signal.</p>
 
 <h2 id="sine-wave-morphing">Sine Wave Morphing</h2>
 
@@ -311,11 +309,11 @@
 	<span class="n">fmath</span><span class="o">::</span><span class="n">fast_sin</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
 <span class="p">}</span></code></pre></figure>
 
-<p>To morph between a sine wave and another wave shape, all we need to do is add the signal produced above to the triangle phase prior to calculating sine. The variable <code class="language-plaintext highlighter-rouge">dist</code> controls how much of the signal is added to the phase. 0.25 is added once again for better phase alignment between transformations. Like the arcsine function, I’m using a <a href="https://www.desmos.com/calculator/fhqmn3abo0">approximation</a> for calculating sine. This approximation is actually much more accurate, though its valid range is limited.</p>
+<p>To morph between a sine wave and another wave shape, all we need to do is add the signal produced above to the triangle phase prior to calculating sine. The variable <code class="language-plaintext highlighter-rouge">dist</code> controls how much of the signal is added to the phase. 0.25 is added once again for better phase alignment between transformations. Like the arcsine function, I’m using an <a href="https://www.desmos.com/calculator/igudh9zet1">approximation</a> for calculating sine.</p>
 
 <h1 id="conclusion">Conclusion</h1>
 
-<p>That’s all there really is to the oscilltor so far though . The last part of chain has already been covered in my <a href="/GRPH/audio/2021/10/26/coding-on-bela.html">Coding on Bela</a> post. All that’s left is controlling of the output level which is done through the <code class="language-plaintext highlighter-rouge">lvl</code> variable. Beyond single oscillators, there are some cool things you can do when you combine two of them. In my upcoming posts, I’ll go more into some these dual-oscillator techniques I currently have programmed. The code for my oscillator can be found <a href="https://github.com/cheesoup/CheeseVA/blob/main/BasicWaves.cpp">here</a>. If you happen to have a Bela unit, the code to run a oscillator demo can found <a href="/GRPH/assets/other/demo_arcsinOsc.zip">here</a>.</p>
+<p>That’s all there really is to the oscilltor so far though. The last part of chain has already been covered in my <a href="/GRPH/audio/2021/10/26/coding-on-bela.html">Coding on Bela</a> post. All that’s left is controlling of the output level which is done through the <code class="language-plaintext highlighter-rouge">lvl</code> variable. Beyond single oscillators, there are some cool things you can do when you combine two of them. In my upcoming posts, I’ll go more into some these dual-oscillator techniques I currently have programmed. The code for my oscillator can be found <a href="https://github.com/cheesoup/CheeseVA/blob/main/BasicWaves.cpp">here</a>. If you happen to have a Bela unit, the code to run a oscillator demo can found <a href="/GRPH/assets/other/demo_arcsinOsc.zip">here</a>.</p>
 
 
 <!-- Grab previous and next post from category -->
@@ -356,8 +354,8 @@
     
     <ul>
       <li>
-        <a href="/GRPH/audio/2021/10/14/fft_grainspec.html">
-          FFT Spectral Granulator
+        <a href="/GRPH/audio/2021/12/06/antialiased-oscillators.html">
+          Anti-Aliased Oscillators
         </a>
       </li>
     </ul>
@@ -372,8 +370,8 @@
     
     <ul>
       <li>
-        <a href="/GRPH/audio/2021/10/26/coding-on-bela.html">
-          Coding on bela
+        <a href="/GRPH/audio/2021/10/14/fft_grainspec.html">
+          FFT Spectral Granulator
         </a>
       </li>
     </ul>

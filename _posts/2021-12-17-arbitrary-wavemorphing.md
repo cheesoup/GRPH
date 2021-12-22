@@ -111,8 +111,6 @@ Bandlimited triangle waves are synthesized by taking a weighted average of a squ
 Below is how all this code is stitched together. Both the triangle and exponential waves are dependant on the pulse wave, while the pulse wave is dependant on the sawtooth wave. These dependencies require constant synthesis of the sawtooth and pulse wave. The latter two can be toggled on and off as necessary. Note that all four signal values are contained in an array of floats called `waves`. This useful for blending between them later.
 
 {% highlight c++ %}
-// Phase distortion between arbitrary waveforms
-// Stolen from: https://forum.pdpatchrepo.info/topic/6759/new-anti-aliasing-and-phase-distortion-abstractions
 inline float BasicWaves::shapePhase(float* p, float* delta) const
 {
 	static float last;
@@ -165,10 +163,12 @@ inline float BasicWaves::shapePhase(float* p, float* delta) const
 
 To blend between the four wave shapes, we linearly interpolate (aka crossfade) between adjacent signals within the array. To do this, we use a user controlled variable between 0 and 4 called `shape`. This variable is used to determine what shapes and how much of each  blend. The decimal value of the number is used to determine the crossfade amount, while the integer value is used to determine what two shapes are being crossfaded. For example, a value of 1.25 would be calculated as:
 
-`f(1.25) = waves[floor(1.25)]*(1.25 - (1.25 > 1)) + waves[floor(1.25 + 1)]*(1 - (1.25 - (1.25 > 1)))`\
-`f(1.25) = waves[1]*(1.25 - 1) + waves[2]*(1 - (1.25 - 1))`\
-`f(1.25) = waves[1]*(0.25) + waves[2]*(1 - (0.25))`\
-`f(1.25) = waves[PULSE]*(0.25) + waves[EXPO]*(0.75)`
+{% highlight c++ %}
+f(1.25) = waves[floor(1.25)]*(1.25 - (1.25 > 1)) + waves[floor(1.25 + 1)]*(1 - (1.25 - (1.25 > 1)))
+f(1.25) = waves[1]*(1.25 - 1) + waves[2]*(1 - (1.25 - 1))
+f(1.25) = waves[1]*(0.25) + waves[2]*(1 - (0.25))
+f(1.25) = waves[PULSE]*(0.25) + waves[EXPO]*(0.75)
+{% endhighlight %}
 
 The order of waveforms are as follows: 0 = Triangle, 1 = Pulse, 2 = Exponential, 3 = Sawtooth.
 
@@ -196,7 +196,7 @@ fmath::fast_asin(s);
 *s = -0.159155 * *s - *p;
 {% endhighlight %}
 
-My code accomplishes this, by calculating the arcsine of the signal generated in the previously mentioned `shapePhase` function. Note that rather than calculating it using `Math.asin(x)`, I'm actually calculating an [approximation](https://www.desmos.com/calculator/yoq4xjnw01). This trades calculation accuracy in favor of performance. From what I can tell from my own tests however, the inaccuracies have no real affect on the sound. The signal is then normalized to 1 radian (`-0.159155 * *s`). From there we integrate the triangle phase into the arcsine signal.
+My code accomplishes this, by calculating the arcsine of the signal generated in the previously mentioned `shapePhase` function. Note that rather than calculating it using `Math.asin(x)`, I'm actually calculating an [approximation](https://www.desmos.com/calculator/5jwmy107mu). This trades calculation accuracy in favor of performance. From what I can tell from my own tests however, the inaccuracies have no real affect on the sound. The signal is then normalized to 1 radian (`-0.159155 * *s`). From there we integrate the triangle phase into the arcsine signal.
 
 ## Sine Wave Morphing
 
@@ -220,8 +220,8 @@ inline void BasicWaves::distortPhase(float* p, float* s) const
 }
 {% endhighlight %}
 
-To morph between a sine wave and another wave shape, all we need to do is add the signal produced above to the triangle phase prior to calculating sine. The variable `dist` controls how much of the signal is added to the phase. 0.25 is added once again for better phase alignment between transformations. Like the arcsine function, I'm using a [approximation](https://www.desmos.com/calculator/fhqmn3abo0) for calculating sine. This approximation is actually much more accurate, though its valid range is limited.
+To morph between a sine wave and another wave shape, all we need to do is add the signal produced above to the triangle phase prior to calculating sine. The variable `dist` controls how much of the signal is added to the phase. 0.25 is added once again for better phase alignment between transformations. Like the arcsine function, I'm using an [approximation](https://www.desmos.com/calculator/igudh9zet1) for calculating sine.
 
 # Conclusion
 
-That's all there really is to the oscilltor so far though . The last part of chain has already been covered in my [Coding on Bela]({{ '/audio/2021/10/26/coding-on-bela.html' | relative_url }}) post. All that's left is controlling of the output level which is done through the `lvl` variable. Beyond single oscillators, there are some cool things you can do when you combine two of them. In my upcoming posts, I'll go more into some these dual-oscillator techniques I currently have programmed. The code for my oscillator can be found [here](https://github.com/cheesoup/CheeseVA/blob/main/BasicWaves.cpp). If you happen to have a Bela unit, the code to run a oscillator demo can found [here](/GRPH/assets/other/demo_arcsinOsc.zip).
+That's all there really is to the oscilltor so far though. The last part of chain has already been covered in my [Coding on Bela]({{ '/audio/2021/10/26/coding-on-bela.html' | relative_url }}) post. All that's left is controlling of the output level which is done through the `lvl` variable. Beyond single oscillators, there are some cool things you can do when you combine two of them. In my upcoming posts, I'll go more into some these dual-oscillator techniques I currently have programmed. The code for my oscillator can be found [here](https://github.com/cheesoup/CheeseVA/blob/main/BasicWaves.cpp). If you happen to have a Bela unit, the code to run a oscillator demo can found [here](/GRPH/assets/other/demo_arcsinOsc.zip).
