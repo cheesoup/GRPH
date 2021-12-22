@@ -51,7 +51,7 @@ inline float BasicWaves::pwPhase(float p) const
 }
 {% endhighlight %}
 
-If we recall from the Coding on Bela example, phase can be thought as a periodic ramp from 0-1. Generating a sine wave is equivalent to feeding the ramp into sin(2πx). Rather than generating phase linearly however, we can modify the duty cycle by splitting the ramp in half and reading the two parts at varying but relative playback rates. The above code defines the split point using variable ``pw``. This split point refers to where during the cycle the phase is equal to 0.5. The playback rate of both parts is relative to this center point. This has the effect creating a 'knee' within the ramp as illusrated below.
+If we recall from the Coding on Bela example, phase can be thought as a periodic ramp from 0-1. Generating a sine wave is equivalent to feeding the ramp into sin(2πx). Rather than generating phase linearly however, we can modify the duty cycle by splitting the ramp in half and reading the two parts at varying but relative playback rates. The above code defines the split point using variable `pw`. This split point refers to where during the cycle the phase is equal to 0.5. The playback rate of both parts is relative to this center point. This has the effect creating a 'knee' within the ramp as illusrated below.
 
 {% include image.html url='PhaseDistortion-1-full.jpg' caption='Pulse Width Modulation via Phase Distortion' extra='Original image: https://www.perfectcircuit.com/media/wysiwyg/articles/PD_FM/PhaseDistortion-1-full.jpg' %}
 
