@@ -174,7 +174,7 @@ The order of waveforms are as follows: 0 = Triangle, 1 = Pulse, 2 = Exponential,
 
 # Arcsine Wave Shaping
 
-Phase distortion refers to the idea of tranforming the phase of a periodic wave to modify it's resulting wave shape. As the name implies, there are numerous ways to do this, all if which result in different effects. I've already mentioned one method with my implementation of pulse width control. The code below makes use of phase distortion to non-linearly interpolate between an arbitrary wave shapes and a sine wave. This particular method makes use of the trignometric identity `arcsin(sin(x)) = x`. I believe it was first introduced online by Scott 'Acriel' Nordlund in the same [forum post](https://forum.pdpatchrepo.info/topic/6759/new-anti-aliasing-and-phase-distortion-abstractions) they wrote about frequency dithering.
+Phase distortion refers to the idea of tranforming the phase of a periodic wave to modify it's resulting wave shape. As the name implies, there are numerous ways to do this, all if which result in different effects. I've already mentioned one method with my implementation of pulse width control. The code below makes use of phase distortion to non-linearly interpolate between an arbitrary wave shapes and a sine wave. This particular method makes use of the trignometric identity `arcsin(sin(x)) = x`. I believe it was first introduced online by Scott 'Acriel' Nordlund in the same [forum post](https://forum.pdpatchrepo.info/topic/6759/new-anti-aliasing-and-phase-distortion-abstractions) they wrote about frequency dithering. I put together a desmos demo of this algorithm [here](https://www.desmos.com/calculator/iitqa4xb7q).
 
 ## Triangle Phase
 

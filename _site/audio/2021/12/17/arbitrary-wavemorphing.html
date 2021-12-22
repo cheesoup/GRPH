@@ -269,7 +269,7 @@
 
 <h1 id="arcsine-wave-shaping">Arcsine Wave Shaping</h1>
 
-<p>Phase distortion refers to the idea of tranforming the phase of a periodic wave to modify it’s resulting wave shape. As the name implies, there are numerous ways to do this, all if which result in different effects. I’ve already mentioned one method with my implementation of pulse width control. The code below makes use of phase distortion to non-linearly interpolate between an arbitrary wave shapes and a sine wave. This particular method makes use of the trignometric identity <code class="language-plaintext highlighter-rouge">arcsin(sin(x)) = x</code>. I believe it was first introduced online by Scott ‘Acriel’ Nordlund in the same <a href="https://forum.pdpatchrepo.info/topic/6759/new-anti-aliasing-and-phase-distortion-abstractions">forum post</a> they wrote about frequency dithering.</p>
+<p>Phase distortion refers to the idea of tranforming the phase of a periodic wave to modify it’s resulting wave shape. As the name implies, there are numerous ways to do this, all if which result in different effects. I’ve already mentioned one method with my implementation of pulse width control. The code below makes use of phase distortion to non-linearly interpolate between an arbitrary wave shapes and a sine wave. This particular method makes use of the trignometric identity <code class="language-plaintext highlighter-rouge">arcsin(sin(x)) = x</code>. I believe it was first introduced online by Scott ‘Acriel’ Nordlund in the same <a href="https://forum.pdpatchrepo.info/topic/6759/new-anti-aliasing-and-phase-distortion-abstractions">forum post</a> they wrote about frequency dithering. I put together a desmos demo of this algorithm <a href="https://www.desmos.com/calculator/iitqa4xb7q">here</a>.</p>
 
 <h2 id="triangle-phase">Triangle Phase</h2>
 
@@ -362,16 +362,16 @@
     
     <ul>
       <li>
-        <a href="/GRPH/audio/2021/12/05/CheeseVA-Demo-Footage.html">
-          CheeseVA Demo Footage!
+        <a href="/GRPH/audio/2021/11/29/sample-rates-and-harmonics.html">
+          Sampling Rates & Harmonics
         </a>
       </li>
     </ul>
     
     <ul>
       <li>
-        <a href="/GRPH/audio/2021/10/14/fft_grainspec.html">
-          FFT Spectral Granulator
+        <a href="/GRPH/audio/2021/12/05/CheeseVA-Demo-Footage.html">
+          CheeseVA Demo Footage!
         </a>
       </li>
     </ul>
