@@ -111,3 +111,5 @@ class VariableDelay : public Delay {
 What’s interesting about variable delays is the effect modulating lengths has. Many different effects can be created by processing signals through delay lines of changing length. Things like chorus pedals are often built by modulating the length value with some slow oscillator. Reverbs are often built through a complex network of these delays. Even compressors make use of a buffer to calculate the RMS level of a signal. Though I’m not planning on implementing too many delay based effects in this project, I think it’s worth mentioning the above to highlight how universal delay lines are.
 
 Below is a video of a reverb I’ve programmed in the past. I was attempting to implement this module as an object in my project but unfortunately the Bela lacks the memory to handle it while simultaneously running my current project. Maybe I should’ve just focused on making a fancy reverb pedal this semester…
+
+{% include vimeo.html id='698216624' caption='Demo of my current oscillator iteration'%}
