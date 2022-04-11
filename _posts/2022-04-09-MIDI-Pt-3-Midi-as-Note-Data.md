@@ -2,7 +2,7 @@
 title: MIDI 3 - MIDI as Note Data
 layout: post
 tag: [Bela, Audio Programming, C++, MIDI]
-date: Apr. 7th, 2022
+date: Apr. 9th, 2022
 categories: [Audio]
 ---
 

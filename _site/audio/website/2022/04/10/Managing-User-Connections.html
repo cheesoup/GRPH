@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="/GRPH/assets/css/style.css"/>
+    <link rel="alternate" type="application/atom+xml" title="thesis? idk?" href="/GRPH/feed.xml"/>
+    <link rel="shortcut icon" type="image/png" href="/GRPH/icon.ico"/>
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>OSC, WS, and NodeJS (aka how mistakes were made :C) | thesis? idk?</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="OSC, WS, and NodeJS (aka how mistakes were made :C)" />
+<meta name="author" content="Chris Carin" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="As mentioned while talking about MIDI, I’m currently using a combination of Open Sound Control and WebSockets as a means of communication between users and my project. My initial plan was to build a webpage which was capable of sending OSC messages to Bela. I soon realized however that it simply wasn’t possible to do this and thus decided to bridge Bela’s OSC capabilities with a separate application for handling WebSocket interactions. In this post I want to go over how communication between users and Bela works. Like I said in my post about program structure, I’m sure there is a much better way to do this. Bela even has its own library for handling WebSockets. Right now though, I don’t really have much time to figure something else out." />
+<meta property="og:description" content="As mentioned while talking about MIDI, I’m currently using a combination of Open Sound Control and WebSockets as a means of communication between users and my project. My initial plan was to build a webpage which was capable of sending OSC messages to Bela. I soon realized however that it simply wasn’t possible to do this and thus decided to bridge Bela’s OSC capabilities with a separate application for handling WebSocket interactions. In this post I want to go over how communication between users and Bela works. Like I said in my post about program structure, I’m sure there is a much better way to do this. Bela even has its own library for handling WebSockets. Right now though, I don’t really have much time to figure something else out." />
+<link rel="canonical" href="http://0.0.0.0:4000/GRPH/audio/website/2022/04/10/Managing-User-Connections.html" />
+<meta property="og:url" content="http://0.0.0.0:4000/GRPH/audio/website/2022/04/10/Managing-User-Connections.html" />
+<meta property="og:site_name" content="thesis? idk?" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-04-10T00:00:00-04:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="OSC, WS, and NodeJS (aka how mistakes were made :C)" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Chris Carin"},"@type":"BlogPosting","headline":"OSC, WS, and NodeJS (aka how mistakes were made :C)","dateModified":"2022-04-10T00:00:00-04:00","datePublished":"2022-04-10T00:00:00-04:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/GRPH/audio/website/2022/04/10/Managing-User-Connections.html"},"description":"As mentioned while talking about MIDI, I’m currently using a combination of Open Sound Control and WebSockets as a means of communication between users and my project. My initial plan was to build a webpage which was capable of sending OSC messages to Bela. I soon realized however that it simply wasn’t possible to do this and thus decided to bridge Bela’s OSC capabilities with a separate application for handling WebSocket interactions. In this post I want to go over how communication between users and Bela works. Like I said in my post about program structure, I’m sure there is a much better way to do this. Bela even has its own library for handling WebSockets. Right now though, I don’t really have much time to figure something else out.","url":"http://0.0.0.0:4000/GRPH/audio/website/2022/04/10/Managing-User-Connections.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+  <body>
+    <header>  <!-- HEADER START -->
+      <a href="/GRPH/"><img src="/GRPH/assets/images/jam_crow.gif" alt="jam_crow.gif" width="128" height="68"/></a>
+      <nav>   <!-- MENU START -->
+        <ul>
+          
+          <li><a href="/GRPH/about">about</a></li>
+          
+          <li><a href="/GRPH/audio">audio</a></li>
+          
+          <li><a href="/GRPH/website">web</a></li>
+          
+          <li><a href="/GRPH/misc">misc</a></li>
+          
+          <li><a href="/GRPH/tags">tags</a></li>
+          
+        </ul>
+      </nav>   <!-- MENU END -->
+    </header>  <!-- HEADER END -->
+    <main>     <!-- CONTENT START -->
+      
+
+
+<header class="heading">
+  <h1>OSC, WS, and NodeJS (aka how mistakes were made :C)</h1>
+  <div>
+    <small>
+      Category: <a href="">Audio</a>
+    </small>
+    <small>
+      Tags:
+      
+        <a href="/GRPH/tags#audio-programming">Audio Programming</a>
+      
+        <a href="/GRPH/tags#networking">Networking</a>
+      
+        <a href="/GRPH/tags#web-design">Web Design</a>
+      
+    </small>
+  </div>
+  <div>
+    <small>
+      Sun, Apr 10, 22
+    </small>
+    <small>
+      
+      Length:
+      
+        14 mins
+      
+    </small>
+  </div>
+</header>
+
+<p>As mentioned while talking about MIDI, I’m currently using a combination of Open Sound Control and WebSockets as a means of communication between users and my project. My initial plan was to build a webpage which was capable of sending OSC messages to Bela. I soon realized however that it simply wasn’t possible to do this and thus decided to bridge Bela’s OSC capabilities with a separate application for handling WebSocket interactions. In this post I want to go over how communication between users and Bela works. Like I said in my post about program structure, I’m sure there is a much better way to do this. Bela even has its own library for handling WebSockets. Right now though, I don’t really have much time to figure something else out.</p>
+
+<p>–insert typical osc message here–</p>
+
+<p>Before I continue, I should quickly go over what OSC is. Like MIDI, OSC is a communication protocol targeted towards electronic music applications and typically works over a standard IEEE 802.3 network such as a typical home wireless network. Unlike MIDI, which only supports integer values between 0-127, OSC messages are much more dynamic. Using OSC, we can not only communicate in 32-bit integers and floats, but also in blobs and strings. This makes it much easier for me to handle multiple users as I can simply pass ID hashes through OSC to identify who’s sending what.</p>
+
+<p>Bela provides a library for OSC interaction which more or less streamlines the whole process of sending and receiving OSC messages. To illustrate this, I’ve posted some example code below.</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="kt">void</span> <span class="nf">receiveOSC</span><span class="p">(</span><span class="n">oscpkt</span><span class="o">::</span><span class="n">Message</span> <span class="o">*</span><span class="n">msg</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">arg</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">oscpkt</span><span class="o">::</span><span class="n">Message</span> <span class="n">out</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">id</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">command</span><span class="p">;</span>
+  <span class="kt">float</span> <span class="n">val</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+  <span class="k">if</span><span class="p">(</span><span class="n">msg</span><span class="o">-&gt;</span><span class="n">match</span><span class="p">(</span><span class="s">"/start"</span><span class="p">))</span> <span class="p">{</span>
+    <span class="n">gPlayers</span><span class="o">-&gt;</span><span class="n">play</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">msg</span><span class="o">-&gt;</span><span class="n">match</span><span class="p">(</span><span class="s">"/register"</span><span class="p">))</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">id</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="n">connected</span><span class="p">;</span>
+
+    <span class="n">msg</span><span class="o">-&gt;</span><span class="n">match</span><span class="p">(</span><span class="s">"/register"</span><span class="p">).</span><span class="n">popStr</span><span class="p">(</span><span class="n">id</span><span class="p">).</span><span class="n">popBool</span><span class="p">(</span><span class="n">connected</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">connected</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="p">(</span><span class="n">gPlayers</span><span class="o">-&gt;</span><span class="n">isPlaying</span><span class="p">()))</span> <span class="p">{</span>
+    	<span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">playerlist</span><span class="p">;</span>
+    	<span class="n">gPlayers</span><span class="o">-&gt;</span><span class="n">create</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+    	<span class="n">out</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="s">"/confirm_player"</span><span class="p">).</span><span class="n">pushStr</span><span class="p">(</span><span class="n">id</span><span class="p">).</span><span class="n">pushBool</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+    	<span class="n">oscSender</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="n">out</span><span class="p">);</span>
+
+    	<span class="n">gPlayers</span><span class="o">-&gt;</span><span class="n">dumpPlayers</span><span class="p">(</span><span class="n">playerlist</span><span class="p">);</span>
+    	<span class="n">out</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="s">"/player_list"</span><span class="p">).</span><span class="n">pushStr</span><span class="p">(</span><span class="n">playerlist</span><span class="p">);</span>
+    	<span class="n">oscSender</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="n">out</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">connected</span><span class="p">)</span> <span class="p">{</span>
+    	<span class="n">gPlayers</span><span class="o">-&gt;</span><span class="n">destroy</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+    	<span class="n">out</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="s">"/confirm"</span><span class="p">).</span><span class="n">pushStr</span><span class="p">(</span><span class="n">id</span><span class="p">).</span><span class="n">pushBool</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+    	<span class="n">oscSender</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="n">out</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">msg</span><span class="o">-&gt;</span><span class="n">match</span><span class="p">(</span><span class="s">"/control_change"</span><span class="p">).</span><span class="n">popStr</span><span class="p">(</span><span class="n">command</span><span class="p">).</span><span class="n">popStr</span><span class="p">(</span><span class="n">id</span><span class="p">).</span><span class="n">isOkNoMoreArgs</span><span class="p">())</span> <span class="p">{</span>
+      <span class="n">gPlayers</span><span class="o">-&gt;</span><span class="n">control</span><span class="p">(</span><span class="n">command</span><span class="p">,</span> <span class="n">id</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">msg</span><span class="o">-&gt;</span><span class="n">match</span><span class="p">(</span><span class="s">"/control_change"</span><span class="p">).</span><span class="n">popStr</span><span class="p">(</span><span class="n">command</span><span class="p">).</span><span class="n">popStr</span><span class="p">(</span><span class="n">id</span><span class="p">).</span><span class="n">popFloat</span><span class="p">(</span><span class="n">val</span><span class="p">).</span><span class="n">isOkNoMoreArgs</span><span class="p">())</span> <span class="p">{</span>
+      <span class="n">gPlayers</span><span class="o">-&gt;</span><span class="n">control</span><span class="p">(</span><span class="n">command</span><span class="p">,</span> <span class="n">id</span><span class="p">,</span> <span class="n">val</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>This, however, didn’t leave me problemless as I soon realized that sending and receiving OSC messages from a browser was something that just couldn’t happen. Though I don’t really know much about it, transmitting over UDP through a web browser is a security risk, and thus not actually possible in modern browsers. OSC messages are typically sent over UDP so this was actually a huge roadblock for me.</p>
+
+<!-- Include for captioned images -->
+
+<div class="float ">
+  <figure class="embed picture" style="width: ">
+    
+    <a href="#network-diagram-png">
+      <img src="/GRPH/assets/images/content/network_diagram.png" alt="A diagram of how note sequence is structured within my program" style="width: " loading="lazy" />
+    </a>
+    
+    <figcaption>
+      A diagram of how note sequence is structured within my program
+      
+    </figcaption>
+  </figure>
+  
+  <a href="#/" class="expand" id="network-diagram-png">
+    <img src="/GRPH/assets/images/content/network_diagram.png" alt="A diagram of how note sequence is structured within my program" style="background-image: url('/GRPH/assets/images/transparent.gif')" loading="lazy" />
+  </a>
+  
+</div>
+
+<p>This is where WebSockets came in. After doing a bit of research, I found a thread where Bela guys recommended building a WebSocket to OSC bridge using NodeJS. At the time, I had no idea how to do this, but after a lot of looking around I managed to find a couple of resources explaining how to do things in using NodeJS for stupid people like me. Below I’ve included my code for a WebSocket to OSC bridge.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// Ports and Addresses</span>
+<span class="kd">var</span> <span class="nx">sendPort</span> <span class="o">=</span> <span class="mi">7562</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">receivePort</span> <span class="o">=</span> <span class="mi">7563</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">localIP</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">127.0.0.1</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">server_ready</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+
+<span class="cm">/*------*/</span>
+<span class="cm">/* HTTP */</span>
+<span class="cm">/*------*/</span>
+<span class="kd">var</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">http</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">url</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">path</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">fs</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="c1">// Launch webpage</span>
+<span class="kd">var</span> <span class="nx">server</span> <span class="o">=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="nx">handleRequest</span><span class="p">);</span>
+<span class="nx">server</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">8080</span><span class="p">);</span>
+
+<span class="kd">function</span> <span class="nx">handleRequest</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">pathname</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">pathname</span> <span class="o">==</span> <span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">)</span> <span class="nx">pathname</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">/index.html</span><span class="dl">'</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">ext</span> <span class="o">=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">extname</span><span class="p">(</span><span class="nx">pathname</span><span class="p">);</span>
+  <span class="kd">var</span> <span class="nx">typeExt</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="dl">'</span><span class="s1">.html</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">text/html</span><span class="dl">'</span><span class="p">,</span>
+    <span class="dl">'</span><span class="s1">.js</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">text/javascript</span><span class="dl">'</span><span class="p">,</span>
+    <span class="dl">'</span><span class="s1">.css</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">text/css</span><span class="dl">'</span>
+  <span class="p">};</span>
+  <span class="kd">var</span> <span class="nx">contentType</span> <span class="o">=</span> <span class="nx">typeExt</span><span class="p">[</span><span class="nx">ext</span><span class="p">]</span> <span class="o">||</span> <span class="dl">'</span><span class="s1">text/plain</span><span class="dl">'</span><span class="p">;</span>
+
+  <span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="nx">__dirname</span> <span class="o">+</span> <span class="nx">pathname</span><span class="p">,</span>
+    <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="dl">'</span><span class="s1">Error loading </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">pathname</span><span class="p">);</span>
+      <span class="p">}</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="p">{</span> <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="nx">contentType</span> <span class="p">});</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Server started on port 8080</span><span class="dl">'</span><span class="p">);</span></code></pre></figure>
+
+<p>This chunk of code pertains to hosting the webserver. It’s pretty much a completely copied from <a href="https://github.com/processing/p5.js/wiki/p5.js,-node.js,-socket.io">tutorial</a> found on Github. The first portion of the code regarding the <code class="language-plaintext highlighter-rouge">var server</code> tells Node to start an http server and have it listen in on port 8080. Typically, the proper port to use for an HTTP server would be 80, but the Bela Web IDE is already hosted on it. Changing the port of the IDE causes more trouble than it’s worth unfortunately.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="cm">/*-----------*/</span>
+<span class="cm">/* Websocket */</span>
+<span class="cm">/*-----------*/</span>
+
+<span class="kd">var</span> <span class="nx">websocket</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">socket.io</span><span class="dl">'</span><span class="p">)(</span><span class="nx">server</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">cors</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">origin</span><span class="p">:</span> <span class="dl">"</span><span class="s2">*</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">methods</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">GET</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">],</span>
+    <span class="na">allowedHeaders</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">test</span><span class="dl">"</span><span class="p">],</span>
+    <span class="na">credentials</span><span class="p">:</span> <span class="kc">true</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">websocket</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">connection</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">socket</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// On Connect</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">server_ready</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">sendOSC</span><span class="p">(</span><span class="nx">osc</span><span class="p">.</span><span class="nx">toBuffer</span><span class="p">(</span>
+      <span class="p">{</span> <span class="na">address</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">/register</span><span class="dl">'</span><span class="p">,</span> <span class="na">args</span><span class="p">:</span> <span class="p">[</span><span class="nx">socket</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="kc">true</span><span class="p">]</span> <span class="p">}</span>
+    <span class="p">));</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">websocket</span><span class="p">.</span><span class="nx">to</span><span class="p">(</span><span class="nx">socket</span><span class="p">).</span><span class="nx">emit</span><span class="p">(</span><span class="dl">"</span><span class="s2">error</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
+      <span class="na">error</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">Server isn't ready. Try refreshing in about five seconds.</span><span class="dl">"</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+  <span class="c1">// On Control Change</span>
+  <span class="nx">socket</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">control_change</span><span class="dl">'</span><span class="p">,</span>	<span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">server_ready</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">let</span> <span class="nx">cmd</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">command</span><span class="p">;</span>
+      <span class="kd">let</span> <span class="nx">val</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
+      <span class="nx">sendOSC</span><span class="p">(</span><span class="nx">osc</span><span class="p">.</span><span class="nx">toBuffer</span><span class="p">({</span> <span class="na">address</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">/control_change</span><span class="dl">'</span><span class="p">,</span> <span class="na">args</span><span class="p">:</span> <span class="p">[</span><span class="nx">socket</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="nx">cmd</span><span class="p">,</span> <span class="nx">val</span><span class="p">]</span> <span class="p">}));</span>
+      <span class="nx">websocket</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="dl">"</span><span class="s2">control_change</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span> <span class="na">id</span><span class="p">:</span> <span class="nx">socket</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="na">command</span><span class="p">:</span> <span class="nx">cmd</span><span class="p">,</span> <span class="na">value</span><span class="p">:</span> <span class="nx">val</span> <span class="p">});</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+  <span class="c1">// On Disconnect</span>
+  <span class="nx">socket</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">disconnect</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">server_ready</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">sendOSC</span><span class="p">(</span><span class="nx">osc</span><span class="p">.</span><span class="nx">toBuffer</span><span class="p">(</span>
+        <span class="p">{</span> <span class="na">address</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">/register</span><span class="dl">'</span><span class="p">,</span> <span class="na">args</span><span class="p">:</span> <span class="p">[</span><span class="nx">socket</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="kc">false</span><span class="p">]</span> <span class="p">}</span>
+      <span class="p">));</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>This chunk is for handling WebSocket connections. Like the HTTP server portion, it’s based on the same tutorial from Github, though it’s been changed to serve my own purposes. First we start off by declaring a new Socket.io module and have it listen in on the server for socket connections. From there we can define our server to client behavior using the <code class="language-plaintext highlighter-rouge">websocket.on</code> function.</p>
+
+<p>In order to keep editing this function to minimal, I’m really trying use as few emits as possible. Nothing frustrates me more than a spaghetti monster functions that continue to grow in nonsensicality as a program expands. Unfortunately, my project is full of these monsters already.</p>
+
+<p>One key thing to note is that control messages are emitted back towards all users. This saves on needless packet travel between the audio server the users and ultimately allows for more immediately available information about the voice parameters.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="cm">/*--------------*/</span>
+<span class="cm">/* OSC over UDP */</span>
+<span class="cm">/*--------------*/</span>
+
+<span class="kd">var</span> <span class="nx">osc</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">osc-min</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">dgram</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">dgram</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">udpsocket</span> <span class="o">=</span> <span class="nx">dgram</span><span class="p">.</span><span class="nx">createSocket</span><span class="p">(</span><span class="dl">'</span><span class="s1">udp4</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">buffer</span><span class="p">,</span> <span class="nx">rinfo</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">error</span><span class="p">;</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">msg</span> <span class="o">=</span> <span class="nx">osc</span><span class="p">.</span><span class="nx">fromBuffer</span><span class="p">(</span><span class="nx">buffer</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">oscType</span> <span class="o">==</span> <span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">)</span> <span class="nx">parseOSC</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">elements</span><span class="p">)</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">element</span> <span class="k">of</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">elements</span><span class="p">)</span> <span class="nx">parseOSC</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">(ERROR) OSC packet error: </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">error</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">udpsocket</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="nx">receivePort</span><span class="p">);</span>
+
+<span class="kd">function</span> <span class="nx">sendOSC</span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">udpsocket</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">msg</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">length</span><span class="p">,</span> <span class="nx">sendPort</span><span class="p">,</span> <span class="nx">localIP</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">parseOSC</span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">address</span> <span class="o">=</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">address</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">);</span>
+  <span class="kd">let</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{};</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">address</span> <span class="o">||</span> <span class="o">!</span><span class="nx">address</span><span class="p">.</span><span class="nx">length</span> <span class="o">||</span> <span class="nx">address</span><span class="p">.</span><span class="nx">length</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">(ERROR) Bad OSC address: </span><span class="dl">'</span><span class="p">,</span> <span class="nx">address</span><span class="p">);</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">switch</span><span class="p">(</span><span class="nx">address</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="dl">'</span><span class="s1">server_ready</span><span class="dl">'</span><span class="p">:</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Server is ready.</span><span class="dl">"</span><span class="p">);</span>
+      <span class="nx">server_ready</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="dl">'</span><span class="s1">confirm_player</span><span class="dl">'</span><span class="p">:</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">args</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="nx">value</span><span class="p">)</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">We have a new client: </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">args</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">value</span><span class="p">);</span>
+      <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="na">status</span><span class="p">:</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">args</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="nx">value</span>
+      <span class="p">};</span>
+      <span class="nx">websocket</span><span class="p">.</span><span class="nx">to</span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">args</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">value</span><span class="p">).</span><span class="nx">emit</span><span class="p">(</span><span class="nx">address</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nx">data</span><span class="p">);</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="dl">'</span><span class="s1">note_on</span><span class="dl">'</span><span class="p">:</span>
+      <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="na">id</span><span class="p">:</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">args</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">value</span><span class="p">,</span>
+        <span class="na">note</span><span class="p">:</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">args</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="nx">value</span><span class="p">,</span>
+        <span class="na">vel</span><span class="p">:</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">args</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="nx">value</span><span class="p">,</span>
+        <span class="na">lfo</span><span class="p">:</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">args</span><span class="p">[</span><span class="mi">3</span><span class="p">].</span><span class="nx">value</span>
+      <span class="p">};</span>
+      <span class="nx">websocket</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="nx">address</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nx">data</span><span class="p">);</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="dl">'</span><span class="s1">note_off</span><span class="dl">'</span><span class="p">:</span>
+    <span class="k">case</span> <span class="dl">'</span><span class="s1">new_sequence</span><span class="dl">'</span><span class="p">:</span>
+      <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span> <span class="na">id</span><span class="p">:</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">args</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">value</span> <span class="p">};</span>
+      <span class="nx">websocket</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="nx">address</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nx">data</span><span class="p">);</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="dl">'</span><span class="s1">player_list</span><span class="dl">'</span><span class="p">:</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">address</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+      <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span> <span class="na">players</span><span class="p">:</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">args</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">value</span> <span class="p">};</span>
+      <span class="nx">websocket</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="nx">address</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nx">data</span><span class="p">);</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="nl">default</span><span class="p">:</span>
+      <span class="kd">var</span> <span class="nx">print</span> <span class="o">=</span> <span class="dl">""</span><span class="p">;</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">args</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">print</span> <span class="o">+=</span> <span class="p">(</span><span class="dl">"</span><span class="s2">arg[</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">i</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">]: </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">args</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">value</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">. </span><span class="dl">"</span><span class="p">);</span>
+      <span class="p">}</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span>
+        <span class="dl">"</span><span class="s2">Message addressed with </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">address</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span>
+        <span class="dl">"</span><span class="s2"> received with </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">args</span><span class="p">.</span><span class="nx">length</span> <span class="o">+</span> <span class="dl">"</span><span class="s2"> arguments. </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">print</span>
+      <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Speaking of fat spaghetti monsters which continue to grow, this large piece code all pertains to handling OSC. Despite it’s much larger size, it start’s it similarly to the other code blocks by defining necessary modules. Unlike WebSockets require typically runs over a TCP connection, OSC specifically on Bela only accepts UDP connections. Thus we need start up a separate datagram socket for sending OSC messages. When a message is received over UDP, the bridge first checks if it’s a valid OSC message. If it is, it passes the message to the parseOSC function which handles the OSC command.</p>
+
+<p>Honestly I don’t have much else to say. I’m very new to all of this so I think that it’s actually a miracle that I got all this to work. As I’ve mentioned before, I’m sure there’s a better way of interfacing with WebSockets within the standard Bela environment. But for now, I’m happy enough that it works (most of the time).</p>
+
+
+<!-- Grab previous and next post from category -->
+<!-- https://talk.jekyllrb.com/t/how-to-link-to-next-and-previous-posts-for-same-blog-category/629 -->
+
+
+
+
+
+
+<footer class="pagination">
+  <nav>
+    <h3>Pagination</h3>
+    <ul>
+      <!-- Page Up -->
+      <li>
+        <a class="up" href="/GRPH/audio">
+          Back to Audio
+        </a>
+      </li>
+      <!-- Prev post -->
+      <li>
+        <a class="next" href="/GRPH/audio/2022/04/09/MIDI-Pt-3-Midi-as-Note-Data.html">
+          MIDI 3 - MIDI as Note Data
+        </a>
+      </li>
+      <!-- Next post -->
+      <li>
+        <a class="prev" href="/GRPH/audio/2022/04/11/Handling-Player-Instances.html">
+          Handling Player Instances
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <nav>
+    <h3>Related Posts</h3>
+    
+    
+    <ul>
+      <li>
+        <a href="/GRPH/audio/2022/04/04/Delays-&-Filters.html">
+          Delays & Filters
+        </a>
+      </li>
+    </ul>
+    
+    <ul>
+      <li>
+        <a href="/GRPH/audio/2021/10/14/fft_grainspec.html">
+          FFT Spectral Granulator
+        </a>
+      </li>
+    </ul>
+    
+    <ul>
+      <li>
+        <a href="/GRPH/audio/2022/04/06/Delays-&-Echoes-and-More.html">
+          Delays & Echoes and More
+        </a>
+      </li>
+    </ul>
+    
+  </nav>
+</footer>
+
+    </main>    <!-- CONTENT END -->
+    <footer>   <!-- FOOTER START -->
+      <ul>
+        <li><a href="/GRPH/feed.xml">RSS Feed</a></li>
+        <li>
+          <a href="https://www.gnu.org/licenses/copyleft.en.html">(C)</a>
+           2021-2022
+          <a href="mailto:chr.carin(a)gmail.com">Chris Carin</a>
+        </li>
+        <li><a href="https://html5.validator.nu/?doc=http://0.0.0.0:4000/GRPH/audio/website/2022/04/10/Managing-User-Connections.html">This document is valid HTML5</a></li>
+        <li><a href="#">Back to Top</a></li>
+      </ul>
+    </footer>   <!-- FOOTER END -->
+  </body>
+</html>

@@ -2,7 +2,7 @@
 title: MIDI 1 - Stuff About MIDI
 layout: post
 tag: [Audio Programming, MIDI]
-date: Apr. 7th, 2022
+date: Apr. 9th, 2022
 categories: [Audio]
 ---
 

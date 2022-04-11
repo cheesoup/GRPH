@@ -2,7 +2,7 @@
 title: Voice Management and Stealing
 layout: post
 tag: [Bela, Audio Programming, C++]
-date: Apr. 7th, 2022
+date: Apr. 8th, 2022
 categories: [Audio]
 ---
 

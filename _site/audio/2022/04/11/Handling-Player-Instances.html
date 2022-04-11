@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="/GRPH/assets/css/style.css"/>
+    <link rel="alternate" type="application/atom+xml" title="thesis? idk?" href="/GRPH/feed.xml"/>
+    <link rel="shortcut icon" type="image/png" href="/GRPH/icon.ico"/>
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Handling Player Instances | thesis? idk?</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Handling Player Instances" />
+<meta name="author" content="Chris Carin" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="In a previous post, I’ve talked about how structuring this program has by far been the most difficult part of the whole process. In this post my plan is to go over the main structure of this whole program. Even though it works, at times I feel like the whole thing is kind of spaghetti. Despite spending months working on this now, I still wouldn’t be surprised if there was a better way to accomplish all this which I simply haven’t thought about yet." />
+<meta property="og:description" content="In a previous post, I’ve talked about how structuring this program has by far been the most difficult part of the whole process. In this post my plan is to go over the main structure of this whole program. Even though it works, at times I feel like the whole thing is kind of spaghetti. Despite spending months working on this now, I still wouldn’t be surprised if there was a better way to accomplish all this which I simply haven’t thought about yet." />
+<link rel="canonical" href="http://0.0.0.0:4000/GRPH/audio/2022/04/11/Handling-Player-Instances.html" />
+<meta property="og:url" content="http://0.0.0.0:4000/GRPH/audio/2022/04/11/Handling-Player-Instances.html" />
+<meta property="og:site_name" content="thesis? idk?" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-04-11T00:00:00-04:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Handling Player Instances" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Chris Carin"},"@type":"BlogPosting","headline":"Handling Player Instances","dateModified":"2022-04-11T00:00:00-04:00","datePublished":"2022-04-11T00:00:00-04:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/GRPH/audio/2022/04/11/Handling-Player-Instances.html"},"description":"In a previous post, I’ve talked about how structuring this program has by far been the most difficult part of the whole process. In this post my plan is to go over the main structure of this whole program. Even though it works, at times I feel like the whole thing is kind of spaghetti. Despite spending months working on this now, I still wouldn’t be surprised if there was a better way to accomplish all this which I simply haven’t thought about yet.","url":"http://0.0.0.0:4000/GRPH/audio/2022/04/11/Handling-Player-Instances.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+  <body>
+    <header>  <!-- HEADER START -->
+      <a href="/GRPH/"><img src="/GRPH/assets/images/jam_crow.gif" alt="jam_crow.gif" width="128" height="68"/></a>
+      <nav>   <!-- MENU START -->
+        <ul>
+          
+          <li><a href="/GRPH/about">about</a></li>
+          
+          <li><a href="/GRPH/audio">audio</a></li>
+          
+          <li><a href="/GRPH/website">web</a></li>
+          
+          <li><a href="/GRPH/misc">misc</a></li>
+          
+          <li><a href="/GRPH/tags">tags</a></li>
+          
+        </ul>
+      </nav>   <!-- MENU END -->
+    </header>  <!-- HEADER END -->
+    <main>     <!-- CONTENT START -->
+      
+
+
+<header class="heading">
+  <h1>Handling Player Instances</h1>
+  <div>
+    <small>
+      Category: <a href="">Audio</a>
+    </small>
+    <small>
+      Tags:
+      
+        <a href="/GRPH/tags#bela">Bela</a>
+      
+        <a href="/GRPH/tags#audio-programming">Audio Programming</a>
+      
+        <a href="/GRPH/tags#c">C++</a>
+      
+    </small>
+  </div>
+  <div>
+    <small>
+      Mon, Apr 11, 22
+    </small>
+    <small>
+      
+      Length:
+      
+        5 mins
+      
+    </small>
+  </div>
+</header>
+
+<p>In a previous post, I’ve talked about how structuring this program has by far been the most difficult part of the whole process. In this post my plan is to go over the main structure of this whole program. Even though it works, at times I feel like the whole thing is kind of spaghetti. Despite spending months working on this now, I still wouldn’t be surprised if there was a better way to accomplish all this which I simply haven’t thought about yet.</p>
+
+<!-- Include for captioned images -->
+
+<div class="float ">
+  <figure class="embed picture" style="width: ">
+    
+    <a href="#playerstructure-diagram-png">
+      <img src="/GRPH/assets/images/content/playerstructure_diagram.png" alt="A diagram illustrating the data flow within the PlayerManager object" style="width: " loading="lazy" />
+    </a>
+    
+    <figcaption>
+      A diagram illustrating the data flow within the PlayerManager object
+      
+    </figcaption>
+  </figure>
+  
+  <a href="#/" class="expand" id="playerstructure-diagram-png">
+    <img src="/GRPH/assets/images/content/playerstructure_diagram.png" alt="A diagram illustrating the data flow within the PlayerManager object" style="background-image: url('/GRPH/assets/images/transparent.gif')" loading="lazy" />
+  </a>
+  
+</div>
+
+<p>The primary class of the program is attempting to process an object called PlayerManager. PlayerManager contains the instances of all active players which are all linked together in a list. As mentioned in my post about managing voices, the benefit of using a linked list over an array of objects is simplicity of adding and removing instances from the list. Because I don’t know how many players are going to be active, working with a list makes it much easier to dynamically add or remove players. To illustrate how this is done in code, I’ve posted my create and destroy user functions below.</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="n">uint</span> <span class="n">PlayerManager</span><span class="o">::</span><span class="n">create</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span> <span class="o">&amp;</span><span class="n">id</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">PlayerNode</span> <span class="o">*</span><span class="n">prev</span> <span class="o">=</span> <span class="n">_players</span><span class="p">;</span>
+  <span class="n">PlayerNode</span> <span class="o">*</span><span class="n">selected</span> <span class="o">=</span> <span class="n">_players</span><span class="o">-&gt;</span><span class="n">getNext</span><span class="p">();</span>
+  <span class="k">while</span><span class="p">(</span><span class="n">selected</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">prev</span> <span class="o">=</span> <span class="n">selected</span><span class="p">;</span>
+    <span class="n">selected</span> <span class="o">=</span> <span class="n">selected</span><span class="o">-&gt;</span><span class="n">getNext</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="n">prev</span><span class="o">-&gt;</span><span class="n">setNext</span><span class="p">(</span>
+    <span class="n">_factory</span><span class="o">-&gt;</span><span class="n">generatePlayer</span><span class="p">(</span>
+      <span class="n">id</span><span class="p">,</span>
+      <span class="o">*</span><span class="n">_seqManager</span><span class="p">,</span>
+      <span class="o">*</span><span class="n">_presets</span><span class="p">,</span>
+      <span class="o">*</span><span class="n">_clock</span><span class="p">,</span>
+      <span class="n">_oscOutput</span>
+    <span class="p">)</span>
+  <span class="p">);</span>
+  <span class="n">_total</span><span class="o">++</span><span class="p">;</span>
+
+  <span class="k">return</span> <span class="n">_total</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">uint</span> <span class="n">PlayerManager</span><span class="o">::</span><span class="n">destroy</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span> <span class="o">&amp;</span><span class="n">id</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">Player</span> <span class="o">*</span><span class="n">selected</span> <span class="o">=</span> <span class="n">_players</span><span class="o">-&gt;</span><span class="n">getNext</span><span class="p">();</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">selected</span><span class="p">)</span> <span class="k">return</span> <span class="n">_total</span><span class="p">;</span>
+
+  <span class="n">PlayerNode</span> <span class="o">*</span><span class="n">prev</span> <span class="o">=</span> <span class="n">_players</span><span class="p">;</span>
+  <span class="k">while</span><span class="p">(</span><span class="n">selected</span> <span class="o">&amp;&amp;</span> <span class="n">selected</span><span class="o">-&gt;</span><span class="n">getID</span><span class="p">()</span> <span class="o">!=</span> <span class="n">id</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">prev</span> <span class="o">=</span> <span class="n">selected</span><span class="p">;</span>
+    <span class="n">selected</span> <span class="o">=</span> <span class="n">selected</span><span class="o">-&gt;</span><span class="n">getNext</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">selected</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">prev</span><span class="o">-&gt;</span><span class="n">setNext</span><span class="p">(</span><span class="n">selected</span><span class="o">-&gt;</span><span class="n">getNext</span><span class="p">());</span>
+    <span class="k">delete</span> <span class="n">selected</span><span class="p">;</span>
+    <span class="n">_total</span><span class="o">--</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="n">_total</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Other than being in charge of… well.. managing players, the PlayerManager class is also in charge of passing control changes to correct player instances. On initialization, each Player is given an ID hash which is used to identify each object with a corresponding user. When a user sends a control change, their ID is included with their message in order to identify who is receiving the data. The code to accomplish this can be seen below:</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="kt">void</span> <span class="n">PlayerManager</span><span class="o">::</span><span class="n">control</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span> <span class="o">&amp;</span><span class="n">id</span><span class="p">,</span> <span class="k">const</span> <span class="n">string</span> <span class="o">&amp;</span><span class="n">command</span><span class="p">,</span> <span class="kt">float</span> <span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">Player</span> <span class="o">*</span><span class="n">selected</span> <span class="o">=</span> <span class="n">_players</span><span class="o">-&gt;</span><span class="n">getNext</span><span class="p">();</span>
+  <span class="k">while</span><span class="p">(</span><span class="n">selected</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">selected</span><span class="o">-&gt;</span><span class="n">getID</span><span class="p">()</span> <span class="o">==</span> <span class="n">id</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">selected</span><span class="o">-&gt;</span><span class="n">command</span><span class="p">(</span><span class="n">command</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">PRINT_ON</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">rt_printf</span><span class="p">(</span><span class="s">"Error: %s sent %s which is not a valid command.</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">id</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span> <span class="n">command</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
+      <span class="p">};</span>
+      <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="n">selected</span> <span class="o">=</span> <span class="n">selected</span><span class="o">-&gt;</span><span class="n">getNext</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">selected</span> <span class="o">&amp;&amp;</span> <span class="n">PRINT_ON</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">rt_printf</span><span class="p">(</span><span class="s">"Error: %s is not a valid ID.</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">id</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Other than managing players, the PlayerManager object is in charge of passing a few references to each Player on initialization. One reference it passes is for a callback function which is run on each new note. This callback function broadcasts an OSC message over a network for anyone connected to catch. OSC stands for Open Sound Control which is a communication protocol used by electronic instruments. It can kind of be thought of as advanced MIDI over LAN. For this project, I’m mainly using it as a way to communicate between my program and web browsers. I’ll talk about this more as I write more posts about web stuff.</p>
+
+<p>The PlayerManager is also in charge of passing references to a Clock and SequenceManager object. In my next post, I plan to go over how exactly note data is parsed into playable sequences so guess for now I’ll leave out the details for now. Essentially, these two are used to control tempo and retrieve note sequences respectively. These exist outside the individual player in order to allow access to the same set data for all players. The SequenceManager is really just a container object holding an array of data structures pertaining to the notes of each sequence. On initialization, it loads the customized MIDI file for In C and parses it into playable sequences. On the other hand, the Clock object is the source of timing for all Player objects. By ensuring all players are synced to the same timing source, we ensure each object remains on beat.</p>
+
+<p>Hopefully this was all informative. For me, even just writing this out, I can think of a few things I would’ve already change if I had the time.</p>
+
+
+<!-- Grab previous and next post from category -->
+<!-- https://talk.jekyllrb.com/t/how-to-link-to-next-and-previous-posts-for-same-blog-category/629 -->
+
+
+
+
+
+
+<footer class="pagination">
+  <nav>
+    <h3>Pagination</h3>
+    <ul>
+      <!-- Page Up -->
+      <li>
+        <a class="up" href="/GRPH/audio">
+          Back to Audio
+        </a>
+      </li>
+      <!-- Prev post -->
+      <li>
+        <a class="next" href="/GRPH/audio/website/2022/04/10/Managing-User-Connections.html">
+          OSC, WS, and NodeJS (aka how mistakes were made :C)
+        </a>
+      </li>
+      <!-- Next post -->
+      <li>
+        <a class="prev" href="/GRPH/audio/2022/04/11/Soldering-Sound-Stuff.html">
+          Soldering Sound Stuff
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <nav>
+    <h3>Related Posts</h3>
+    
+    
+    <ul>
+      <li>
+        <a href="/GRPH/audio/2022/04/09/MIDI-Pt-3-Midi-as-Note-Data.html">
+          MIDI 3 - MIDI as Note Data
+        </a>
+      </li>
+    </ul>
+    
+    <ul>
+      <li>
+        <a href="/GRPH/audio/2021/12/17/arbitrary-wavemorphing.html">
+          Stuff About Wave Shaping
+        </a>
+      </li>
+    </ul>
+    
+    <ul>
+      <li>
+        <a href="/GRPH/audio/2022/04/04/Handling-Controls-&-Parameters.html">
+          Handling Controls & Parameters
+        </a>
+      </li>
+    </ul>
+    
+  </nav>
+</footer>
+
+    </main>    <!-- CONTENT END -->
+    <footer>   <!-- FOOTER START -->
+      <ul>
+        <li><a href="/GRPH/feed.xml">RSS Feed</a></li>
+        <li>
+          <a href="https://www.gnu.org/licenses/copyleft.en.html">(C)</a>
+           2021-2022
+          <a href="mailto:chr.carin(a)gmail.com">Chris Carin</a>
+        </li>
+        <li><a href="https://html5.validator.nu/?doc=http://0.0.0.0:4000/GRPH/audio/2022/04/11/Handling-Player-Instances.html">This document is valid HTML5</a></li>
+        <li><a href="#">Back to Top</a></li>
+      </ul>
+    </footer>   <!-- FOOTER END -->
+  </body>
+</html>
