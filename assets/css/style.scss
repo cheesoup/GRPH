@@ -81,6 +81,9 @@ ul {
   & > li {
     padding-left: $qtr_margins;
   }
+  @media screen and (min-width: $break) {
+    display: hidden;
+  }
 }
 
 blockquote {
@@ -220,7 +223,7 @@ header.heading {
       content: " / ";
     }
     @media screen and (min-width: $break) {
-      padding-top: 5px;
+      padding-top: 0px;
       grid-row: 2;
       grid-column: 1;
       &:last-child {
@@ -401,8 +404,9 @@ div.float {
       max-width: 800px;
       & > span {
         display: block;
-        position:relative;
+        position: relative;
         border: 1px $color4 solid;
+        background-color: #000;
         padding-bottom: 56.25%;
         height: 0;
         margin-bottom: 8px;
