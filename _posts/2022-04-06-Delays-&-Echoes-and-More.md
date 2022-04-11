@@ -6,7 +6,7 @@ date: Apr. 6th, 2022
 categories: [Audio]
 ---
 
-{% include youtube.html id='VK2-tv4GW5E' caption="The Roland Space is a classic example of types of effects achievable with delay lines." %}
+{% include youtube.html id='VK2-tv4GW5E' caption="Playing around with the delay effects w/ the on hiatus synthesizer." %}
 
 In my previous post, I talked about how by applying a delay of a few samples we effectively create a type of interference which allows for harmonic amplification and attenuation. This, however, is not the only use for delay lines. Their most known use is for emulating echos and sound reflections which typically occurs at longer delay lengths. To create longer delays lines, larger buffers need to be implemented to hold queued samples. However, working with larger buffers can come at the cost of performance if not implemented properly. To illustrate in code, I’ve posted my implementation of a static (non-varying in length) delay line below.
 

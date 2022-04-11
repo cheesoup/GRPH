@@ -62,8 +62,6 @@ void VoiceManager::off(unsigned int* note) {
 
 This, however, was not a perfect solution. Firstly, the envelope was never built to take into account new note ons while still active. This resulted in an annoying click due to instantaneous change in level to zero that I had no idea how to deal with at the time. Eventually, I opted to simply not retrigger the envelope for stolen voice, but it did not get rid of the click. I believe the sudden change in frequency had something to do with the issue as well.
 
-**TODO:** Insert audio clips of clicking issue
-
 When I moved away from building a standalone instrument to building an “In C” cover generator, being able to play polyphonically became much less of a necessity. If we actually look through the score of “In C,” the entire song is written with monophonic instruments in mind. I believe this is to ensure it is playable on any instrument. This didn’t mean voice stealing wasn’t an issue though. The note being played still needs to be able to switch on the fly.
 
 {% include image.html url='voicestealing_diagram2.png' caption='A diagram illustrating how voice stealing worked in my original synthesizer' %}

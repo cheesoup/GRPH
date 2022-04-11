@@ -18,7 +18,7 @@ Unfortunately for me, the Bela does not have a built-in library for handling MID
 
 Before I can even load data in, I first need to have data on hand. Thankfully, as mentioned before, there are plenty of MIDI files out there on the web. It only really took a quick google search to find one of Terry Riley’s “In C.” The original MIDI file I used comes from this [webpage](https://jbum.com/topic.php?topic=music). Of course I couldn’t just use any old MIDI file. To create my MIDI file, I opened up the original in Reaper and cut out each section according to the sheet music. For this specific task I decided to place each sequence on its track. This gives us a way to separate the individual sections for when we parse it later. Below, I’ve posted a video of the individual tracks of my MIDI file. In my next post, my plan is to go over how I managed to load this data into my program and use it to create loop-able sequences.
 
-**TODO**: Insert footage of In C MIDI file.
+{% include vimeo.html id='698365216' caption="Each of the 53 parts of Terry Riley's In C." %}
 
 As a side note, Reaper is a tool I really want to start using more. I like the licensing plan they have laid out and their trial version is basically the full version but with a WinRAR style notification nagging you to pay for the software whenever you open it. Given how powerful of a DAW Reaper is, I think it’s kind of a miracle something like it exists. If only Adobe products were like that…
 

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://0.0.0.0:4000/GRPH/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://0.0.0.0:4000/GRPH/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/GRPH/" rel="alternate" type="text/html" /><updated>2022-04-11T14:01:35-04:00</updated><id>http://0.0.0.0:4000/GRPH/feed.xml</id><title type="html">thesis? idk?</title><subtitle>a blog for 4th year workshop at OCADU</subtitle><author><name>Chris Carin</name></author><entry><title type="html">Handling Player Instances</title><link href="http://0.0.0.0:4000/GRPH/audio/2022/04/11/Handling-Player-Instances.html" rel="alternate" type="text/html" title="Handling Player Instances" /><published>2022-04-11T00:00:00-04:00</published><updated>2022-04-11T00:00:00-04:00</updated><id>http://0.0.0.0:4000/GRPH/audio/2022/04/11/Handling-Player-Instances</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/audio/2022/04/11/Handling-Player-Instances.html">&lt;p&gt;In a previous post, I’ve talked about how structuring this program has by far been the most difficult part of the whole process. In this post my plan is to go over the main structure of this whole program. Even though it works, at times I feel like the whole thing is kind of spaghetti. Despite spending months working on this now, I still wouldn’t be surprised if there was a better way to accomplish all this which I simply haven’t thought about yet.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://0.0.0.0:4000/GRPH/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://0.0.0.0:4000/GRPH/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/GRPH/" rel="alternate" type="text/html" /><updated>2022-04-11T18:24:02-04:00</updated><id>http://0.0.0.0:4000/GRPH/feed.xml</id><title type="html">thesis? idk?</title><subtitle>a blog for 4th year workshop at OCADU</subtitle><author><name>Chris Carin</name></author><entry><title type="html">Handling Player Instances</title><link href="http://0.0.0.0:4000/GRPH/audio/2022/04/11/Handling-Player-Instances.html" rel="alternate" type="text/html" title="Handling Player Instances" /><published>2022-04-11T00:00:00-04:00</published><updated>2022-04-11T00:00:00-04:00</updated><id>http://0.0.0.0:4000/GRPH/audio/2022/04/11/Handling-Player-Instances</id><content type="html" xml:base="http://0.0.0.0:4000/GRPH/audio/2022/04/11/Handling-Player-Instances.html">&lt;p&gt;In a previous post, I’ve talked about how structuring this program has by far been the most difficult part of the whole process. In this post my plan is to go over the main structure of this whole program. Even though it works, at times I feel like the whole thing is kind of spaghetti. Despite spending months working on this now, I still wouldn’t be surprised if there was a better way to accomplish all this which I simply haven’t thought about yet.&lt;/p&gt;
 
 &lt;!-- Include for captioned images --&gt;
 
@@ -435,7 +435,17 @@
 
 &lt;p&gt;Before I can even load data in, I first need to have data on hand. Thankfully, as mentioned before, there are plenty of MIDI files out there on the web. It only really took a quick google search to find one of Terry Riley’s “In C.” The original MIDI file I used comes from this &lt;a href=&quot;https://jbum.com/topic.php?topic=music&quot;&gt;webpage&lt;/a&gt;. Of course I couldn’t just use any old MIDI file. To create my MIDI file, I opened up the original in Reaper and cut out each section according to the sheet music. For this specific task I decided to place each sequence on its track. This gives us a way to separate the individual sections for when we parse it later. Below, I’ve posted a video of the individual tracks of my MIDI file. In my next post, my plan is to go over how I managed to load this data into my program and use it to create loop-able sequences.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;TODO&lt;/strong&gt;: Insert footage of In C MIDI file.&lt;/p&gt;
+&lt;!-- Include for Video Embedding --&gt;
+&lt;!-- https://github.com/nathancy/jekyll-embed-video#responsive-videos --&gt;
+&lt;div class=&quot;float&quot;&gt;
+  &lt;figure class=&quot;embed video&quot;&gt;
+    &lt;span class=&quot;video&quot; style=&quot;&quot;&gt;
+      &lt;iframe style=&quot;&quot; src=&quot;https://player.vimeo.com/video/698365216?h=b0a124d5cc&amp;amp;badge=0&amp;amp;autopause=0&amp;amp;player_id=0&amp;amp;app_id=58479&quot; loading=&quot;lazy&quot; frameborder=&quot;0&quot; webkitallowfullscreen=&quot;&quot; mozallowfullscreen=&quot;&quot; allowfullscreen=&quot;&quot;&gt;
+      &lt;/iframe&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;caption&quot;&gt;Each of the 53 parts of Terry Riley&apos;s In C.&lt;/figcaption&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;
 
 &lt;p&gt;As a side note, Reaper is a tool I really want to start using more. I like the licensing plan they have laid out and their trial version is basically the full version but with a WinRAR style notification nagging you to pay for the software whenever you open it. Given how powerful of a DAW Reaper is, I think it’s kind of a miracle something like it exists. If only Adobe products were like that…&lt;/p&gt;
 
@@ -718,8 +728,6 @@
 
 &lt;p&gt;This, however, was not a perfect solution. Firstly, the envelope was never built to take into account new note ons while still active. This resulted in an annoying click due to instantaneous change in level to zero that I had no idea how to deal with at the time. Eventually, I opted to simply not retrigger the envelope for stolen voice, but it did not get rid of the click. I believe the sudden change in frequency had something to do with the issue as well.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;TODO:&lt;/strong&gt; Insert audio clips of clicking issue&lt;/p&gt;
-
 &lt;p&gt;When I moved away from building a standalone instrument to building an “In C” cover generator, being able to play polyphonically became much less of a necessity. If we actually look through the score of “In C,” the entire song is written with monophonic instruments in mind. I believe this is to ensure it is playable on any instrument. This didn’t mean voice stealing wasn’t an issue though. The note being played still needs to be able to switch on the fly.&lt;/p&gt;
 
 &lt;!-- Include for captioned images --&gt;
@@ -837,7 +845,7 @@ Hopefully you enjoyed my little writeup on building audio compressors out of cod
       &lt;iframe style=&quot;width:100%; height:100%;&quot; src=&quot;https://www.youtube.com/embed/VK2-tv4GW5E&quot; loading=&quot;lazy&quot; allowfullscreen=&quot;&quot;&gt;
       &lt;/iframe&gt;
     &lt;/span&gt;
-    &lt;figcaption class=&quot;caption&quot;&gt;The Roland Space is a classic example of types of effects achievable with delay lines.&lt;/figcaption&gt;
+    &lt;figcaption class=&quot;caption&quot;&gt;Playing around with the delay effects w/ the on hiatus synthesizer.&lt;/figcaption&gt;
   &lt;/figure&gt;
 &lt;/div&gt;
 
@@ -935,4 +943,4 @@ Hopefully you enjoyed my little writeup on building audio compressors out of cod
 	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;What’s interesting about variable delays is the effect modulating lengths has. Many different effects can be created by processing signals through delay lines of changing length. Things like chorus pedals are often built by modulating the length value with some slow oscillator. Reverbs are often built through a complex network of these delays. Even compressors make use of a buffer to calculate the RMS level of a signal. Though I’m not planning on implementing too many delay based effects in this project, I think it’s worth mentioning the above to highlight how universal delay lines are.&lt;/p&gt;</content><author><name>Chris Carin</name></author><category term="Audio" /><category term="Bela" /><category term="Audio Programming" /><category term="C++" /><summary type="html">The Roland Space is a classic example of types of effects achievable with delay lines.</summary></entry></feed>
+&lt;p&gt;What’s interesting about variable delays is the effect modulating lengths has. Many different effects can be created by processing signals through delay lines of changing length. Things like chorus pedals are often built by modulating the length value with some slow oscillator. Reverbs are often built through a complex network of these delays. Even compressors make use of a buffer to calculate the RMS level of a signal. Though I’m not planning on implementing too many delay based effects in this project, I think it’s worth mentioning the above to highlight how universal delay lines are.&lt;/p&gt;</content><author><name>Chris Carin</name></author><category term="Audio" /><category term="Bela" /><category term="Audio Programming" /><category term="C++" /><summary type="html">Playing around with the delay effects w/ the on hiatus synthesizer.</summary></entry></feed>
