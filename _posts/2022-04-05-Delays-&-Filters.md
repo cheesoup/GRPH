@@ -54,4 +54,4 @@ float KarlsenFilter::process(float in, float cut, float res)
 
 If I knew more about signal processing I would definitely have more to write here. However, I’m not very good at math and whenever I do research into this sort of thing, I’m consistently buried in it. All I wanted to get across is the universal usefulness of delay lines. In my next post, I plan to go over more well known use cases for delay lines. For those interested, I've posted of the second filter below:
 
-{% include vimeo.html id='698393376' caption="Karlsen Analog Ladder Style Filter %}
+{% include vimeo.html id='698393376' caption="Karlsen Analog Ladder Style Filter" %}

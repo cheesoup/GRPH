@@ -71,7 +71,7 @@
       
       Length:
       
-        4 mins
+        5 mins
       
     </small>
   </div>
@@ -118,7 +118,7 @@
 
 <p>I’ve attempted to demonstrate this concept with an animated GIF above. Notice how the peak amplitude of the sum of the two waves moves from -2 and 2 to 0 depending on the difference in phase. We can think of this difference in phase as the total length a signal is being delayed by.</p>
 
-<p>This concept can be extended to create more elaborate filters. When working on my instrument, I was using this algorithm to generate a resonant analog style low-pass filter. From my own research while attempting to implement the same design in PureData, someone mentioned that this sort of filter was essentially a chain of basic low pass filters (like the one of above) in a feedback loop. Though I don’t completely understand how it all works from a DSP perspective, one can clearly see the similarities between this filter and the one above in terms of structure. The code itself is based on an example provided on MusicDSP.</p>
+<p>This concept can be extended to create more elaborate filters. When working on my instrument, I was using this algorithm to generate a resonant analog style low-pass filter. From my own research while attempting to implement the same design in PureData, someone mentioned that this sort of filter was essentially a chain of basic low pass filters (like the one of above) in a feedback loop. Though I don’t completely understand how it all works from a DSP perspective, one can clearly see the similarities between this filter and the one above in terms of structure. The code itself is based on an example provided on <a href="https://www.musicdsp.org/en/latest/Filters/240-karlsen-fast-ladder.html">MusicDSP</a>.</p>
 
 <figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="kt">float</span> <span class="n">KarlsenFilter</span><span class="o">::</span><span class="n">process</span><span class="p">(</span><span class="kt">float</span> <span class="n">in</span><span class="p">,</span> <span class="kt">float</span> <span class="n">cut</span><span class="p">,</span> <span class="kt">float</span> <span class="n">res</span><span class="p">)</span>
 <span class="p">{</span>
@@ -138,7 +138,20 @@
 	<span class="k">return</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
 <span class="p">}</span></code></pre></figure>
 
-<p>If I knew more about signal processing I would definitely have more to write here. However, I’m not very good at math and whenever I do research into this sort of thing, I’m consistently buried in it. All I wanted to get across is the universal usefulness of delay lines. In my next post, I plan to go over more well known use cases for delay lines.</p>
+<p>If I knew more about signal processing I would definitely have more to write here. However, I’m not very good at math and whenever I do research into this sort of thing, I’m consistently buried in it. All I wanted to get across is the universal usefulness of delay lines. In my next post, I plan to go over more well known use cases for delay lines. For those interested, I’ve posted of the second filter below:</p>
+
+<!-- Include for Video Embedding -->
+<!-- https://github.com/nathancy/jekyll-embed-video#responsive-videos -->
+<div class="float">
+  <figure class="embed video">
+    <span class="video" style="">
+      <iframe style="" src="https://player.vimeo.com/video/698393376?h=b0a124d5cc&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" loading="lazy" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="">
+      </iframe>
+    </span>
+    <figcaption class="caption">Karlsen Analog Ladder Style Filter</figcaption>
+  </figure>
+</div>
+
 
 
 <!-- Grab previous and next post from category -->
@@ -179,24 +192,24 @@
     
     <ul>
       <li>
-        <a href="/GRPH/audio/2022/04/07/Compression!!.html">
-          Compression!!
+        <a href="/GRPH/audio/2021/12/06/antialiased-oscillators.html">
+          Anti-Aliased Oscillators
         </a>
       </li>
     </ul>
     
     <ul>
       <li>
-        <a href="/GRPH/audio/2022/04/04/old-dattorro-demo.html">
-          An Old Dattorro Reverb Demo
+        <a href="/GRPH/audio/2021/10/14/fft_grainspec.html">
+          FFT Spectral Granulator
         </a>
       </li>
     </ul>
     
     <ul>
       <li>
-        <a href="/GRPH/audio/2022/04/11/Soldering-Sound-Stuff.html">
-          Soldering Sound Stuff
+        <a href="/GRPH/audio/2022/04/08/Voice-Management-&-Stealing.html">
+          Voice Management and Stealing
         </a>
       </li>
     </ul>
