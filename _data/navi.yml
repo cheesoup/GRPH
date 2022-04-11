@@ -1,8 +1,5 @@
 pages:
 
-- title: about
-  url: /about
-
 - title: audio
   url: /audio
 

@@ -36,13 +36,15 @@ body {
 }
 
 main {
-  display: grid;
   align-items: flex-start;
-  grid-template-columns: 1fr 120px;
-  grid-gap: 20px;
   max-width: $width;
   margin: 0 auto;
   padding: $half_margins;
+  img {
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+  }
   @media (min-width: $break) {
     a {
       -webkit-transform: scaleX(-1);
@@ -54,17 +56,14 @@ main {
 h1 {
   margin: 0 5px $half_margins;
   font-family: $h1_stack;
-  font-size: 33px;
-  line-height: 40px;
-  grid-column: 1;
-  grid-row: 1;
-  grid-column-end: span 2;
+  font-size: 40px;
+  line-height: 48px;
   @media (min-width: $break) {
     grid-column: 1;
     grid-row: 1;
     grid-column-end: span 1;
   }
-  & > a {
+  & a {
     color: $color3;
     &:hover {
       color: $color1;
@@ -74,16 +73,14 @@ h1 {
 }
 
 ul {
-  grid-column: 1;
-  grid-row: 4;
-  grid-column-end: span 2;
+  position: fixed;
+  left: 50%;
+  bottom: 10px;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
   font-size: 12px;
   line-height: 18px;
-  text-align: right;
   list-style-type: none;
-  margin-top: $margins;
-  padding: 0;
-  margin: 0;
   & > li {
     display: block;
     padding: 0;

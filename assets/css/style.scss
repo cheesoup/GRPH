@@ -79,7 +79,6 @@ ul {
   list-style-type: square;
   padding-left: $half_margins;
   & > li {
-    margin-bottom: $paragraph_spacing;
     padding-left: $qtr_margins;
   }
 }
@@ -467,9 +466,9 @@ a.expand {
 /*~~~~~~~~~~~*/
 /* CODE TAGS */
 /*~~~~~~~~~~~*/
-.highlighter-route {
+code.highlighter-rouge {
   padding: 3px;
-  font-size: 13px;
+  font-size: 14px;
   font-family: "Consolas", "Lucida Console", "Monaco", "Andale Mono", "Courier New", courier, monospace;
   color: $color0;
   background-color: $color3;
