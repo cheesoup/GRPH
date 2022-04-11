@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="/GRPH/assets/css/style.css"/>
+    <link rel="alternate" type="application/atom+xml" title="thesis? idk?" href="/GRPH/feed.xml"/>
+    <link rel="shortcut icon" type="image/png" href="/GRPH/icon.ico"/>
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>MIDI 3 - MIDI as Note Data | thesis? idk?</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="MIDI 3 - MIDI as Note Data" />
+<meta name="author" content="Chris Carin" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Due to changing directions, at this point in my project MIDI is used in a completely different way. As it is, the user interface is primarily digital and based on Open Sound Control and WebSockets, two different communication protocols that I’ll go into more about later. This leaves most of my previous MIDI code pretty useless as interfacing with the user was being accomplished through other means. Despite this however, MIDI has taken a new role in my project." />
+<meta property="og:description" content="Due to changing directions, at this point in my project MIDI is used in a completely different way. As it is, the user interface is primarily digital and based on Open Sound Control and WebSockets, two different communication protocols that I’ll go into more about later. This leaves most of my previous MIDI code pretty useless as interfacing with the user was being accomplished through other means. Despite this however, MIDI has taken a new role in my project." />
+<link rel="canonical" href="http://0.0.0.0:4000/GRPH/audio/2022/04/07/MIDI-Pt-3-Midi-as-Note-Data.html" />
+<meta property="og:url" content="http://0.0.0.0:4000/GRPH/audio/2022/04/07/MIDI-Pt-3-Midi-as-Note-Data.html" />
+<meta property="og:site_name" content="thesis? idk?" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-04-07T00:00:00-04:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="MIDI 3 - MIDI as Note Data" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Chris Carin"},"@type":"BlogPosting","headline":"MIDI 3 - MIDI as Note Data","dateModified":"2022-04-07T00:00:00-04:00","datePublished":"2022-04-07T00:00:00-04:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/GRPH/audio/2022/04/07/MIDI-Pt-3-Midi-as-Note-Data.html"},"description":"Due to changing directions, at this point in my project MIDI is used in a completely different way. As it is, the user interface is primarily digital and based on Open Sound Control and WebSockets, two different communication protocols that I’ll go into more about later. This leaves most of my previous MIDI code pretty useless as interfacing with the user was being accomplished through other means. Despite this however, MIDI has taken a new role in my project.","url":"http://0.0.0.0:4000/GRPH/audio/2022/04/07/MIDI-Pt-3-Midi-as-Note-Data.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+  <body>
+    <header>  <!-- HEADER START -->
+      <a href="/GRPH/"><img src="/GRPH/assets/images/jam_crow.gif" alt="jam_crow.gif" width="128" height="68"/></a>
+      <nav>   <!-- MENU START -->
+        <ul>
+          
+          <li><a href="/GRPH/about">about</a></li>
+          
+          <li><a href="/GRPH/audio">audio</a></li>
+          
+          <li><a href="/GRPH/website">web</a></li>
+          
+          <li><a href="/GRPH/misc">misc</a></li>
+          
+          <li><a href="/GRPH/tags">tags</a></li>
+          
+        </ul>
+      </nav>   <!-- MENU END -->
+    </header>  <!-- HEADER END -->
+    <main>     <!-- CONTENT START -->
+      
+
+
+<header class="heading">
+  <h1>MIDI 3 - MIDI as Note Data</h1>
+  <div>
+    <small>
+      Category: <a href="">Audio</a>
+    </small>
+    <small>
+      Tags:
+      
+        <a href="/GRPH/tags#bela">Bela</a>
+      
+        <a href="/GRPH/tags#audio-programming">Audio Programming</a>
+      
+        <a href="/GRPH/tags#c">C++</a>
+      
+        <a href="/GRPH/tags#midi">MIDI</a>
+      
+    </small>
+  </div>
+  <div>
+    <small>
+      Thu, Apr 07, 22
+    </small>
+    <small>
+      
+      Length:
+      
+        7 mins
+      
+    </small>
+  </div>
+</header>
+
+<p>Due to changing directions, at this point in my project MIDI is used in a completely different way. As it is, the user interface is primarily digital and based on Open Sound Control and WebSockets, two different communication protocols that I’ll go into more about later. This leaves most of my previous MIDI code pretty useless as interfacing with the user was being accomplished through other means. Despite this however, MIDI has taken a new role in my project.</p>
+
+<p>Rather than using it as a means to interface with, I’m primarily using MIDI as a means of loading note data to generate sequences. In my original post about MIDI, I mentioned how there are these things called MIDI files. Normally these files contain note data, timing, and tempo data pertaining to a musical sequence. Examples of these MIDI files can be found all over the Internet. Sites like <a href="https://vgmusic.com/">VGMusic.com</a> have stockpiles of MIDIs from old video game soundtracks.</p>
+
+<p>Normally music producers use MIDI files as a means of transferring note sequence data from one digital audio workstation (DAW) to another. My use case is not much different from this. I needed a way to inject note sequence data into my program and using MIDI files seemed like the natural way to do it.</p>
+
+<p>Unfortunately for me, the Bela does not have a built-in library for handling MIDI files. This left me with two options. Either install a library or somehow figure out how to parse MIDI from raw text. Of course, I choose the former option because I don’t think I’m very smart. Ultimately, I ended up going with this library. Installing it was kind of a pain in the ass, but thankfully I managed to find some <a href="https://blog.bela.io/using-an-external-library-with-bela/">tips</a> for informing the compiler of third-party libraries.</p>
+
+<h2 id="editing-midi-data">Editing MIDI data</h2>
+
+<p>Before I can even load data in, I first need to have data on hand. Thankfully, as mentioned before, there are plenty of MIDI files out there on the web. It only really took a quick google search to find one of Terry Riley’s “In C.” The original MIDI file I used comes from this <a href="https://jbum.com/topic.php?topic=music">webpage</a>. Of course I couldn’t just use any old MIDI file. To create my MIDI file, I opened up the original in Reaper and cut out each section according to the sheet music. For this specific task I decided to place each sequence on its track. This gives us a way to separate the individual sections for when we parse it later. Below, I’ve posted a video of the individual tracks of my MIDI file. In my next post, my plan is to go over how I managed to load this data into my program and use it to create loop-able sequences.</p>
+
+<p><strong>TODO</strong>: Insert footage of In C MIDI file.</p>
+
+<p>As a side note, Reaper is a tool I really want to start using more. I like the licensing plan they have laid out and their trial version is basically the full version but with a WinRAR style notification nagging you to pay for the software whenever you open it. Given how powerful of a DAW Reaper is, I think it’s kind of a miracle something like it exists. If only Adobe products were like that…</p>
+
+<h2 id="creating-note-sequences">Creating Note Sequences</h2>
+
+<p>Once I got the library working, it took a bit of time to wrap my head around how MIDI files were structured. MIDI files are typically a collection of tracks each containing a collection of ticks representing a fraction of a beat (normally 1/28th which always seemed random to me). On each tick, note ons or note offs can occur representing when a note is played and released. Once I figured all this out, all I really needed to do was figure out a way to represent that data within the program.</p>
+
+<!-- Include for captioned images -->
+
+<div class="float ">
+  <figure class="embed picture" style="width: ">
+    
+    <a href="#sequencer-diagram-png">
+      <img src="/GRPH/assets/images/content/sequencer_diagram.png" alt="A diagram of how note sequence is structured within my program" style="width: " loading="lazy" />
+    </a>
+    
+    <figcaption>
+      A diagram of how note sequence is structured within my program
+      
+    </figcaption>
+  </figure>
+  
+  <a href="#/" class="expand" id="sequencer-diagram-png">
+    <img src="/GRPH/assets/images/content/sequencer_diagram.png" alt="A diagram of how note sequence is structured within my program" style="background-image: url('/GRPH/assets/images/transparent.gif')" loading="lazy" />
+  </a>
+  
+</div>
+
+<p>In order to playback a MIDI sequence, we need to figure out the amount of samples which need to occur between each tick. In my project, the object in charge of keeping tempo is called the Clock. How it does this is remarkably simple. The clock contains a timer variable which counts down every sample. This counter reaching zero represents when a tick is to occur.</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="k">class</span> <span class="nc">Clock</span> <span class="p">{</span>
+  <span class="k">const</span> <span class="n">SequenceManager</span> <span class="o">&amp;</span><span class="n">_seqManager</span><span class="p">;</span>
+  <span class="n">uint</span> <span class="n">_sampleCount</span><span class="p">;</span>
+  <span class="n">uint</span> <span class="n">_samplesPerTick</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="n">_play</span><span class="p">;</span>
+
+  <span class="nl">public:</span>
+  <span class="n">Clock</span><span class="p">(</span><span class="k">const</span> <span class="n">SequenceManager</span> <span class="o">&amp;</span><span class="n">seq</span><span class="p">)</span><span class="o">:</span> <span class="n">_seqManager</span><span class="p">(</span><span class="n">seq</span><span class="p">),</span> <span class="n">_play</span><span class="p">(</span><span class="nb">false</span><span class="p">)</span> <span class="p">{</span> <span class="n">setTempo</span><span class="p">(</span><span class="n">DEFAULT_BPM</span><span class="p">);</span> <span class="p">}</span>
+  <span class="kt">void</span> <span class="n">process</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">_play</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">_sampleCount</span><span class="o">++</span><span class="p">;</span>
+      <span class="n">_sampleCount</span> <span class="o">*=</span> <span class="n">_sampleCount</span> <span class="o">&lt;</span> <span class="n">_samplesPerTick</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="kt">void</span> <span class="n">setTempo</span><span class="p">(</span><span class="kt">float</span> <span class="n">bpm</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">bpm</span> <span class="o">*=</span> <span class="mf">4.0</span><span class="n">f</span><span class="p">;</span>
+    <span class="n">bpm</span> <span class="o">/=</span> <span class="mf">60.0</span><span class="n">f</span><span class="p">;</span>			<span class="c1">// convert to beats per second</span>
+    <span class="n">bpm</span> <span class="o">=</span> <span class="o">*</span><span class="n">SAMPLERATE</span> <span class="o">/</span> <span class="n">bpm</span><span class="p">;</span>	<span class="c1">// calculate samples per beat</span>
+    <span class="n">_samplesPerTick</span> <span class="o">=</span> <span class="p">(</span><span class="n">uint</span><span class="p">)(</span><span class="n">bpm</span> <span class="o">/</span> <span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="n">_seqManager</span><span class="p">.</span><span class="n">getTicksPerBeat</span><span class="p">());</span>
+  <span class="p">}</span>
+
+  <span class="kt">bool</span> <span class="n">isNewTick</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">_sampleCount</span> <span class="o">==</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
+  <span class="kt">bool</span> <span class="n">play</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">_play</span><span class="p">;</span> <span class="p">}</span>
+  <span class="kt">bool</span> <span class="n">play</span><span class="p">(</span><span class="kt">bool</span> <span class="n">status</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">_play</span> <span class="o">=</span> <span class="n">status</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">const</span> <span class="n">Audio</span> <span class="o">&amp;</span> <span class="n">Player</span><span class="o">::</span><span class="n">process</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+
+  <span class="p">...</span>
+
+  <span class="k">if</span><span class="p">(</span><span class="n">_clock</span><span class="p">.</span><span class="n">isNewTick</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">_clock</span><span class="p">.</span><span class="n">play</span><span class="p">())</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">_seqr</span><span class="o">-&gt;</span><span class="n">getIndex</span><span class="p">())</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">_currentSeq</span> <span class="o">!=</span> <span class="n">_queuedSeq</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">_octaveMin</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)(</span><span class="n">DSP</span><span class="o">::</span><span class="n">RAND</span><span class="p">()</span> <span class="o">*</span> <span class="o">-</span><span class="mf">2.0</span><span class="n">f</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="n">_octaveMax</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)(</span><span class="n">DSP</span><span class="o">::</span><span class="n">RAND</span><span class="p">()</span> <span class="o">*</span> <span class="mf">2.0</span><span class="n">f</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="n">_currentSeq</span> <span class="o">=</span> <span class="n">_queuedSeq</span><span class="p">;</span>
+        <span class="n">_seqr</span><span class="o">-&gt;</span><span class="n">setSequence</span><span class="p">(</span><span class="n">_seqManager</span><span class="p">.</span><span class="n">getSequence</span><span class="p">(</span><span class="n">_currentSeq</span><span class="p">));</span>
+      <span class="p">}</span>
+      <span class="p">(</span><span class="o">*</span><span class="n">_oscOutput</span><span class="p">)(</span><span class="s">"/new_sequence"</span><span class="p">,</span> <span class="n">_id</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+      <span class="n">_octave</span> <span class="o">=</span> <span class="n">_octave</span> <span class="o">&gt;=</span> <span class="n">_octaveMax</span> <span class="o">?</span> <span class="n">_octaveMin</span> <span class="o">:</span> <span class="n">_octave</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">Tick</span> <span class="n">event</span> <span class="o">=</span> <span class="n">_seqr</span><span class="o">-&gt;</span><span class="n">getTick</span><span class="p">();</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">event</span><span class="p">)</span> <span class="n">newNote</span><span class="p">(</span><span class="n">event</span><span class="p">);</span>
+    <span class="n">_seqr</span><span class="o">-&gt;</span><span class="n">nextTick</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="p">...</span>
+
+<span class="p">}</span></code></pre></figure>
+
+<p>A reference to this clock is then passed to each player object as they are created. Within the player object is a Sequencer subobject in charge of handling note playback. Each sample, the Sequencer checks if the Clock’s current timer is zero. If it is, it’ll check the next Tick for a potential event. If an event does exist, it calls note on or note off depending on the message type.</p>
+
+<p>And that’s all there really is to it. Though it may or may not sound simple, it took me a while to come up with this. I didn’t really have any jumping off points when trying to figure out how to playback MIDI files. I kind of just sat here grinded through it until I figured it out. It makes me curious how others have implemented MIDI playback in their programs.</p>
+
+
+<!-- Grab previous and next post from category -->
+<!-- https://talk.jekyllrb.com/t/how-to-link-to-next-and-previous-posts-for-same-blog-category/629 -->
+
+
+
+
+
+
+<footer class="pagination">
+  <nav>
+    <h3>Pagination</h3>
+    <ul>
+      <!-- Page Up -->
+      <li>
+        <a class="up" href="/GRPH/audio">
+          Back to Audio
+        </a>
+      </li>
+      <!-- Prev post -->
+      <li>
+        <a class="next" href="/GRPH/audio/2022/04/07/MIDI-Pt-2-Using-MIDI-as-an-Interface.html">
+          MIDI 2 - MIDI as an Interface
+        </a>
+      </li>
+      <!-- Next post -->
+      <li>
+        <a class="prev" href="/GRPH/audio/website/2022/04/07/Managing-User-Connections.html">
+          OSC, WS, and NodeJS (aka how mistakes were made :C)
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <nav>
+    <h3>Related Posts</h3>
+    
+    
+    <ul>
+      <li>
+        <a href="/GRPH/audio/2022/04/04/Handling-Controls-&-Parameters.html">
+          Handling Controls & Parameters
+        </a>
+      </li>
+    </ul>
+    
+    <ul>
+      <li>
+        <a href="/GRPH/audio/2022/04/07/Compression!!.html">
+          Compression!!
+        </a>
+      </li>
+    </ul>
+    
+    <ul>
+      <li>
+        <a href="/GRPH/audio/2022/04/06/Delays-&-Echoes-and-More.html">
+          Delays & Echoes and More
+        </a>
+      </li>
+    </ul>
+    
+  </nav>
+</footer>
+
+    </main>    <!-- CONTENT END -->
+    <footer>   <!-- FOOTER START -->
+      <ul>
+        <li><a href="/GRPH/feed.xml">RSS Feed</a></li>
+        <li>
+          <a href="https://www.gnu.org/licenses/copyleft.en.html">(C)</a>
+           2021-2022
+          <a href="mailto:chr.carin(a)gmail.com">Chris Carin</a>
+        </li>
+        <li><a href="https://html5.validator.nu/?doc=http://0.0.0.0:4000/GRPH/audio/2022/04/07/MIDI-Pt-3-Midi-as-Note-Data.html">This document is valid HTML5</a></li>
+        <li><a href="#">Back to Top</a></li>
+      </ul>
+    </footer>   <!-- FOOTER END -->
+  </body>
+</html>

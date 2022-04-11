@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="/GRPH/assets/css/style.css"/>
+    <link rel="alternate" type="application/atom+xml" title="thesis? idk?" href="/GRPH/feed.xml"/>
+    <link rel="shortcut icon" type="image/png" href="/GRPH/icon.ico"/>
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>MIDI 2 - MIDI as an Interface | thesis? idk?</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="MIDI 2 - MIDI as an Interface" />
+<meta name="author" content="Chris Carin" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Despite what my previous post on MIDI may have you think, working with MIDI messages on the Bela is actually fairly easy due to Bela’s included library. Almost all the necessary work is done right off the bat for you. All that’s really left is mapping values to whatever you want. Frequency can be calculated from notes using the formula frequency = pow(2, midinote / 12) * 440hz. Calculating manually can be a bit expensive, thus I usually opt to use a lookup table for MIDI to frequency conversions. Parameter values can be mapped by dividing the incoming control value by 127 and multiplying it by the parameter maximum." />
+<meta property="og:description" content="Despite what my previous post on MIDI may have you think, working with MIDI messages on the Bela is actually fairly easy due to Bela’s included library. Almost all the necessary work is done right off the bat for you. All that’s really left is mapping values to whatever you want. Frequency can be calculated from notes using the formula frequency = pow(2, midinote / 12) * 440hz. Calculating manually can be a bit expensive, thus I usually opt to use a lookup table for MIDI to frequency conversions. Parameter values can be mapped by dividing the incoming control value by 127 and multiplying it by the parameter maximum." />
+<link rel="canonical" href="http://0.0.0.0:4000/GRPH/audio/2022/04/07/MIDI-Pt-2-Using-MIDI-as-an-Interface.html" />
+<meta property="og:url" content="http://0.0.0.0:4000/GRPH/audio/2022/04/07/MIDI-Pt-2-Using-MIDI-as-an-Interface.html" />
+<meta property="og:site_name" content="thesis? idk?" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-04-07T00:00:00-04:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="MIDI 2 - MIDI as an Interface" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Chris Carin"},"@type":"BlogPosting","headline":"MIDI 2 - MIDI as an Interface","dateModified":"2022-04-07T00:00:00-04:00","datePublished":"2022-04-07T00:00:00-04:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/GRPH/audio/2022/04/07/MIDI-Pt-2-Using-MIDI-as-an-Interface.html"},"description":"Despite what my previous post on MIDI may have you think, working with MIDI messages on the Bela is actually fairly easy due to Bela’s included library. Almost all the necessary work is done right off the bat for you. All that’s really left is mapping values to whatever you want. Frequency can be calculated from notes using the formula frequency = pow(2, midinote / 12) * 440hz. Calculating manually can be a bit expensive, thus I usually opt to use a lookup table for MIDI to frequency conversions. Parameter values can be mapped by dividing the incoming control value by 127 and multiplying it by the parameter maximum.","url":"http://0.0.0.0:4000/GRPH/audio/2022/04/07/MIDI-Pt-2-Using-MIDI-as-an-Interface.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+  <body>
+    <header>  <!-- HEADER START -->
+      <a href="/GRPH/"><img src="/GRPH/assets/images/jam_crow.gif" alt="jam_crow.gif" width="128" height="68"/></a>
+      <nav>   <!-- MENU START -->
+        <ul>
+          
+          <li><a href="/GRPH/about">about</a></li>
+          
+          <li><a href="/GRPH/audio">audio</a></li>
+          
+          <li><a href="/GRPH/website">web</a></li>
+          
+          <li><a href="/GRPH/misc">misc</a></li>
+          
+          <li><a href="/GRPH/tags">tags</a></li>
+          
+        </ul>
+      </nav>   <!-- MENU END -->
+    </header>  <!-- HEADER END -->
+    <main>     <!-- CONTENT START -->
+      
+
+
+<header class="heading">
+  <h1>MIDI 2 - MIDI as an Interface</h1>
+  <div>
+    <small>
+      Category: <a href="">Audio</a>
+    </small>
+    <small>
+      Tags:
+      
+        <a href="/GRPH/tags#bela">Bela</a>
+      
+        <a href="/GRPH/tags#audio-programming">Audio Programming</a>
+      
+        <a href="/GRPH/tags#c">C++</a>
+      
+        <a href="/GRPH/tags#midi">MIDI</a>
+      
+    </small>
+  </div>
+  <div>
+    <small>
+      Thu, Apr 07, 22
+    </small>
+    <small>
+      
+      Length:
+      
+        7 mins
+      
+    </small>
+  </div>
+</header>
+
+<p>Despite what my previous post on MIDI may have you think, working with MIDI messages on the Bela is actually fairly easy due to Bela’s included library. Almost all the necessary work is done right off the bat for you. All that’s really left is mapping values to whatever you want. Frequency can be calculated from notes using the formula <code class="language-plaintext highlighter-rouge">frequency = pow(2, midinote / 12) * 440hz</code>. Calculating manually can be a bit expensive, thus I usually opt to use a lookup table for MIDI to frequency conversions. Parameter values can be mapped by dividing the incoming control value by 127 and multiplying it by the parameter maximum.</p>
+
+<p>Below is a snippet of how basic MIDI was implemented in my original project.</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="kr">inline</span> <span class="kt">void</span> <span class="nf">gMidiOn</span><span class="p">(</span><span class="n">MidiChannelMessage</span> <span class="n">message</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">note</span> <span class="o">=</span> <span class="n">message</span><span class="p">.</span><span class="n">getDataByte</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+  <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">vel</span> <span class="o">=</span> <span class="n">message</span><span class="p">.</span><span class="n">getDataByte</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+  <span class="n">voices</span><span class="p">.</span><span class="n">on</span><span class="p">(</span><span class="o">&amp;</span><span class="n">note</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">vel</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span> <span class="kt">void</span> <span class="nf">gMidiOff</span><span class="p">(</span><span class="n">MidiChannelMessage</span> <span class="n">message</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">note</span> <span class="o">=</span> <span class="n">message</span><span class="p">.</span><span class="n">getDataByte</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+  <span class="n">voices</span><span class="p">.</span><span class="n">off</span><span class="p">(</span><span class="o">&amp;</span><span class="n">note</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">midiMessageCallback</span><span class="p">(</span><span class="n">MidiChannelMessage</span> <span class="n">message</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">arg</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">controller</span> <span class="o">=</span> <span class="n">message</span><span class="p">.</span><span class="n">getDataByte</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+  <span class="kt">int</span> <span class="n">value</span> <span class="o">=</span> <span class="n">message</span><span class="p">.</span><span class="n">getDataByte</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+  <span class="k">switch</span><span class="p">(</span><span class="n">controller</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">case</span> <span class="mi">8</span><span class="p">:</span>
+    <span class="n">freq</span> <span class="o">=</span> <span class="mf">440.0</span> <span class="o">*</span> <span class="n">powf</span><span class="p">(</span><span class="mf">2.0</span><span class="p">,</span> <span class="p">((</span><span class="kt">float</span><span class="p">)</span><span class="n">value</span> <span class="o">-</span> <span class="mf">69.0</span><span class="p">)</span> <span class="o">/</span> <span class="mf">12.0</span><span class="p">);</span>
+    <span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">setTarget</span><span class="p">(</span><span class="n">freq</span><span class="p">);</span>
+    <span class="k">break</span><span class="p">;</span>
+  <span class="k">case</span> <span class="mi">9</span><span class="p">:</span>
+    <span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="n">value</span> <span class="o">/</span> <span class="mf">127.0</span><span class="p">;</span>
+    <span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">setTarget</span><span class="p">(</span><span class="n">shape</span><span class="p">);</span>
+    <span class="k">break</span><span class="p">;</span>
+  <span class="k">case</span> <span class="mi">10</span><span class="p">:</span>
+    <span class="n">pw</span> <span class="o">=</span> <span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="n">value</span> <span class="o">/</span> <span class="mf">127.0</span><span class="p">;</span>
+    <span class="n">params</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="n">setTarget</span><span class="p">(</span><span class="n">pw</span><span class="p">);</span>
+    <span class="k">break</span><span class="p">;</span>
+  <span class="k">case</span> <span class="mi">11</span><span class="p">:</span>
+    <span class="n">lvl</span> <span class="o">=</span> <span class="p">((</span><span class="kt">float</span><span class="p">)</span><span class="n">value</span> <span class="o">/</span> <span class="mf">127.0</span><span class="p">)</span><span class="o">*</span><span class="p">((</span><span class="kt">float</span><span class="p">)</span><span class="n">value</span> <span class="o">/</span> <span class="mf">127.0</span><span class="p">)</span><span class="o">*</span><span class="p">((</span><span class="kt">float</span><span class="p">)</span><span class="n">value</span> <span class="o">/</span> <span class="mf">127.0</span><span class="p">)</span><span class="o">*</span><span class="p">((</span><span class="kt">float</span><span class="p">)</span><span class="n">value</span> <span class="o">/</span> <span class="mf">127.0</span><span class="p">);</span>
+    <span class="n">params</span><span class="p">[</span><span class="mi">3</span><span class="p">].</span><span class="n">setTarget</span><span class="p">(</span><span class="n">lvl</span><span class="p">);</span>
+    <span class="k">break</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>The above code is not without limitations. Of course, any value controlling a parameter has to be interpolated to avoid artifacts from sudden discontinuities. Beyond that, only having 127 values to represent all decimals between 0 and 1 is not ideal. This isn’t a problem in regards to note messages as 127 different notes is plenty. However, when controlling a range between say 0-15000hz, it just doesn’t work.</p>
+
+<p>Thankfully, I was aware of a way to encode higher resolution values into MIDI messages. Semi-modern synths like the Alesis Micron or Korg’s Microkorg make use of a specialized set of CC messages which exists alongside the standard CC implementation. These special control messages are known as Non-Registered Parameter Number (NRPN) values. Unlike MIDI they are non-standardized are usually rather inaccessible without a little bit of programming knowledge.</p>
+
+<h2 id="non-registered-parameter-numbers">Non-Registered Parameter Numbers</h2>
+
+<p>If you recall, a single byte of a MIDI message is encoded to provide two distinct values per byte. By setting up data in such a way, we effectively half the resolution of a single byte from 256 possible values to 128. Using this same idea in reverse, we can simply send more MIDI messages to increase the available resolution. With two MIDI messages, we have a resolution of 16384 values (128 * 128).</p>
+
+<p>Typically NRPNs are set up as four separate CC messages, each targeting parameters which control a decoding function. In a lower-level sense, these four messages act similarly to the typical two bytes of a standard MIDI CC message. However, rather than a status message first, NRPN’s are typically sent in reverse order to ensure all required data is sent prior to decoding. Though technically it requires more processing and data bandwidth to do this, sending and receiving MIDI is actually a very negligible process, especially for modern CPUs (even the Bela’s).</p>
+
+<p>The first two CC messages are normally sent to control values 99 and 98. These values represent the most and least significant bytes (MSB &amp; LSB) of the incoming parameter value. When multiplied together, they produce a value between 0-16383 which can be mapped to whatever. To encode a value into a linear value into a an MSB &amp; LSB pair, we can use following formula:</p>
+
+<p><code class="language-plaintext highlighter-rouge">x = (value / maximum) * 16383</code><br />
+<code class="language-plaintext highlighter-rouge">MSB = floor(x/128)</code><br />
+<code class="language-plaintext highlighter-rouge">LSB = floor(x - MSB * 128)</code></p>
+
+<p>The fourth CC message determines what parameter is to receive the new value while the third CC message doesn’t actually have a standard function. Sometimes it’s used for fine-tuning. Other times it’s used with the fourth message to determine something about the target parameter. To somewhat illustrate how this all works, I’ve posted my now unused implementation NRPNs below. I was actually really proud when I figured this all out :U.</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="kt">void</span> <span class="nf">gMidiCC</span><span class="p">(</span><span class="n">MidiChannelMessage</span> <span class="n">message</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">static</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">nrpn</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span> <span class="p">};</span>
+  <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">controller</span> <span class="o">=</span> <span class="n">message</span><span class="p">.</span><span class="n">getDataByte</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+  <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">value</span> <span class="o">=</span> <span class="n">message</span><span class="p">.</span><span class="n">getDataByte</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+
+  <span class="k">switch</span><span class="p">(</span><span class="n">controller</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="mi">6</span><span class="p">:</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">PRINT_ON</span><span class="p">)</span> <span class="n">rt_printf</span><span class="p">(</span><span class="s">"NRPN Adjustor "</span><span class="p">);</span>
+      <span class="n">nrpn</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span><span class="p">;</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="mi">38</span><span class="p">:</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">PRINT_ON</span><span class="p">)</span> <span class="n">rt_printf</span><span class="p">(</span><span class="s">"NRPN Controller "</span><span class="p">);</span>
+      <span class="n">values</span><span class="p">.</span><span class="n">setNRPN</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">nrpn</span><span class="p">);</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="mi">98</span><span class="p">:</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">PRINT_ON</span><span class="p">)</span> <span class="n">rt_printf</span><span class="p">(</span><span class="s">"NRPN Value LSB "</span><span class="p">);</span>
+      <span class="n">nrpn</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span><span class="p">;</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="mi">99</span><span class="p">:</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">PRINT_ON</span><span class="p">)</span> <span class="n">rt_printf</span><span class="p">(</span><span class="s">"NRPN Value MSB "</span><span class="p">);</span>
+      <span class="n">nrpn</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span><span class="p">;</span>
+      <span class="k">break</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">PRINT_ON</span><span class="p">)</span> <span class="n">rt_printf</span><span class="p">(</span><span class="s">"(CC%d) VALUE %d "</span><span class="p">,</span> <span class="n">controller</span><span class="p">,</span> <span class="n">value</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">ParameterManager</span><span class="o">::</span><span class="n">setNRPN</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">p</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">v</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span> <span class="p">{</span>
+  <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">sw</span> <span class="o">=</span> <span class="n">p</span> <span class="o">/</span> <span class="n">PARAM_END</span><span class="p">;</span>
+  <span class="n">p</span> <span class="o">=</span> <span class="n">p</span> <span class="o">&gt;=</span> <span class="n">PARAM_END</span> <span class="o">?</span> <span class="n">p</span> <span class="o">%</span> <span class="n">PARAM_END</span> <span class="o">:</span> <span class="n">p</span><span class="p">;</span>
+  <span class="kt">float</span> <span class="n">out</span> <span class="o">=</span> <span class="n">convertNRPN</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
+
+  <span class="k">switch</span><span class="p">(</span><span class="n">sw</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="mi">0</span><span class="p">:</span> <span class="p">{</span>
+      <span class="n">values</span><span class="p">[</span><span class="n">p</span><span class="p">].</span><span class="n">delta</span> <span class="o">=</span> <span class="p">(</span><span class="n">out</span> <span class="o">-</span> <span class="n">PARAM_SPACE</span><span class="o">::</span><span class="n">getParameter</span><span class="p">(</span><span class="o">&amp;</span><span class="n">values</span><span class="p">[</span><span class="n">p</span><span class="p">]))</span> <span class="o">*</span> <span class="n">rsteps</span><span class="p">;</span>
+      <span class="n">values</span><span class="p">[</span><span class="n">p</span><span class="p">].</span><span class="n">user</span> <span class="o">=</span> <span class="n">out</span><span class="p">;</span>
+      <span class="n">values</span><span class="p">[</span><span class="n">p</span><span class="p">].</span><span class="n">count</span> <span class="o">=</span> <span class="n">steps</span><span class="p">;</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">case</span> <span class="mi">1</span><span class="p">:</span> <span class="p">{</span>
+      <span class="n">values</span><span class="p">[</span><span class="n">p</span><span class="p">].</span><span class="n">mod</span> <span class="o">=</span> <span class="n">out</span><span class="p">;</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">case</span> <span class="mi">2</span><span class="p">:</span> <span class="p">{</span>
+      <span class="n">values</span><span class="p">[</span><span class="n">p</span><span class="p">].</span><span class="n">mod_select</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Despite the length of this post, much of what I’m talking about right now isn’t even relevant to my current project. I figured it was worth posting about because this was the direction I was originally heading in for handling user inputs. Of course, this is not the case anymore due to my project shifting directions, but I still think it’s worth going over the research I did to figure this out.</p>
+
+
+<!-- Grab previous and next post from category -->
+<!-- https://talk.jekyllrb.com/t/how-to-link-to-next-and-previous-posts-for-same-blog-category/629 -->
+
+
+
+
+
+
+<footer class="pagination">
+  <nav>
+    <h3>Pagination</h3>
+    <ul>
+      <!-- Page Up -->
+      <li>
+        <a class="up" href="/GRPH/audio">
+          Back to Audio
+        </a>
+      </li>
+      <!-- Prev post -->
+      <li>
+        <a class="next" href="/GRPH/audio/2022/04/07/MIDI-Pt-1-Stuff-about-MIDI.html">
+          MIDI 1 - Stuff About MIDI
+        </a>
+      </li>
+      <!-- Next post -->
+      <li>
+        <a class="prev" href="/GRPH/audio/2022/04/07/MIDI-Pt-3-Midi-as-Note-Data.html">
+          MIDI 3 - MIDI as Note Data
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <nav>
+    <h3>Related Posts</h3>
+    
+    
+    <ul>
+      <li>
+        <a href="/GRPH/audio/website/2022/04/07/Managing-User-Connections.html">
+          OSC, WS, and NodeJS (aka how mistakes were made :C)
+        </a>
+      </li>
+    </ul>
+    
+    <ul>
+      <li>
+        <a href="/GRPH/audio/2021/12/03/anatomy-of-subtractive-synths.html">
+          Anatomy of Subtractive Synths
+        </a>
+      </li>
+    </ul>
+    
+    <ul>
+      <li>
+        <a href="/GRPH/audio/2022/04/07/MIDI-Pt-3-Midi-as-Note-Data.html">
+          MIDI 3 - MIDI as Note Data
+        </a>
+      </li>
+    </ul>
+    
+  </nav>
+</footer>
+
+    </main>    <!-- CONTENT END -->
+    <footer>   <!-- FOOTER START -->
+      <ul>
+        <li><a href="/GRPH/feed.xml">RSS Feed</a></li>
+        <li>
+          <a href="https://www.gnu.org/licenses/copyleft.en.html">(C)</a>
+           2021-2022
+          <a href="mailto:chr.carin(a)gmail.com">Chris Carin</a>
+        </li>
+        <li><a href="https://html5.validator.nu/?doc=http://0.0.0.0:4000/GRPH/audio/2022/04/07/MIDI-Pt-2-Using-MIDI-as-an-Interface.html">This document is valid HTML5</a></li>
+        <li><a href="#">Back to Top</a></li>
+      </ul>
+    </footer>   <!-- FOOTER END -->
+  </body>
+</html>

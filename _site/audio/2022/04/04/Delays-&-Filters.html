@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="/GRPH/assets/css/style.css"/>
+    <link rel="alternate" type="application/atom+xml" title="thesis? idk?" href="/GRPH/feed.xml"/>
+    <link rel="shortcut icon" type="image/png" href="/GRPH/icon.ico"/>
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Delays &amp; Filters | thesis? idk?</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Delays &amp; Filters" />
+<meta name="author" content="Chris Carin" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="The more I learn about sound programming, the more I realize how omnipresent the concept of delay lines are. The idea of a delay is simple; it takes a signal and outputs its value at a later time. Despite it’s simplicity, the effects of a single delay line can be rather enormous. Shorter delay times typically create interference within a signal which in turn can potential amplify or attenuate harmonics. This typical how filters work." />
+<meta property="og:description" content="The more I learn about sound programming, the more I realize how omnipresent the concept of delay lines are. The idea of a delay is simple; it takes a signal and outputs its value at a later time. Despite it’s simplicity, the effects of a single delay line can be rather enormous. Shorter delay times typically create interference within a signal which in turn can potential amplify or attenuate harmonics. This typical how filters work." />
+<link rel="canonical" href="http://0.0.0.0:4000/GRPH/audio/2022/04/04/Delays-&-Filters.html" />
+<meta property="og:url" content="http://0.0.0.0:4000/GRPH/audio/2022/04/04/Delays-&-Filters.html" />
+<meta property="og:site_name" content="thesis? idk?" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-04-04T00:00:00-04:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Delays &amp; Filters" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Chris Carin"},"@type":"BlogPosting","headline":"Delays &amp; Filters","dateModified":"2022-04-04T00:00:00-04:00","datePublished":"2022-04-04T00:00:00-04:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/GRPH/audio/2022/04/04/Delays-&-Filters.html"},"description":"The more I learn about sound programming, the more I realize how omnipresent the concept of delay lines are. The idea of a delay is simple; it takes a signal and outputs its value at a later time. Despite it’s simplicity, the effects of a single delay line can be rather enormous. Shorter delay times typically create interference within a signal which in turn can potential amplify or attenuate harmonics. This typical how filters work.","url":"http://0.0.0.0:4000/GRPH/audio/2022/04/04/Delays-&-Filters.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+  <body>
+    <header>  <!-- HEADER START -->
+      <a href="/GRPH/"><img src="/GRPH/assets/images/jam_crow.gif" alt="jam_crow.gif" width="128" height="68"/></a>
+      <nav>   <!-- MENU START -->
+        <ul>
+          
+          <li><a href="/GRPH/about">about</a></li>
+          
+          <li><a href="/GRPH/audio">audio</a></li>
+          
+          <li><a href="/GRPH/website">web</a></li>
+          
+          <li><a href="/GRPH/misc">misc</a></li>
+          
+          <li><a href="/GRPH/tags">tags</a></li>
+          
+        </ul>
+      </nav>   <!-- MENU END -->
+    </header>  <!-- HEADER END -->
+    <main>     <!-- CONTENT START -->
+      
+
+
+<header class="heading">
+  <h1>Delays & Filters</h1>
+  <div>
+    <small>
+      Category: <a href="">Audio</a>
+    </small>
+    <small>
+      Tags:
+      
+        <a href="/GRPH/tags#bela">Bela</a>
+      
+        <a href="/GRPH/tags#audio-programming">Audio Programming</a>
+      
+        <a href="/GRPH/tags#c">C++</a>
+      
+    </small>
+  </div>
+  <div>
+    <small>
+      Mon, Apr 04, 22
+    </small>
+    <small>
+      
+      Length:
+      
+        4 mins
+      
+    </small>
+  </div>
+</header>
+
+<p>The more I learn about sound programming, the more I realize how omnipresent the concept of delay lines are. The idea of a delay is simple; it takes a signal and outputs its value at a later time. Despite it’s simplicity, the effects of a single delay line can be rather enormous. Shorter delay times typically create interference within a signal which in turn can potential amplify or attenuate harmonics. This typical how filters work.</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="k">class</span> <span class="nc">OnePole</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Filter</span> <span class="p">{</span>
+	<span class="nl">public:</span>
+	<span class="n">OnePole</span><span class="p">()</span> <span class="p">{</span>
+		<span class="n">_buffer</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">float</span><span class="p">{};</span>
+		<span class="c1">// _coef = expf_neon(-2.0 * M_PI * cutoff * *ONE_OVER_SAMPLERATE);</span>
+	<span class="p">}</span>
+
+	<span class="kt">float</span> <span class="n">process</span><span class="p">(</span><span class="kt">float</span> <span class="n">x</span><span class="p">,</span> <span class="kt">float</span> <span class="n">coef</span><span class="p">)</span> <span class="p">{</span>
+		<span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span><span class="n">f</span> <span class="o">-</span> <span class="n">coef</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">coef</span> <span class="o">*</span> <span class="o">*</span><span class="n">_buffer</span><span class="p">;</span>
+		<span class="o">*</span><span class="n">_buffer</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+		<span class="k">return</span> <span class="n">x</span><span class="p">;</span>
+	<span class="p">}</span>
+<span class="p">};</span></code></pre></figure>
+
+<p>The code above is an example of an example of a basic single pole low pass filter. If we recall my post about filters, a low-pass filter can be used to attenuate higher end frequencies. When we look at the code to accomplish this, it’s remarkably simple. If we once again recall the linear interpolation formula (i.e. <code class="language-plaintext highlighter-rouge">y = a * (1 - x) +b * x)</code>, we can see that all it’s really doing is interpolating between the current input sample and the last output sample. In essence, it’s writing a delayed version of a signal to a buffer which it uses to generate its next output.</p>
+
+<!-- Include for captioned images -->
+
+<div class="float ">
+  <figure class="embed picture" style="width: ">
+    
+    <a href="#sin-interference-gif">
+      <img src="/GRPH/assets/images/content/sin_interference.gif" alt="Interference between sine waves of equal frequency but different phases" style="width: " loading="lazy" />
+    </a>
+    
+    <figcaption>
+      Interference between sine waves of equal frequency but different phases
+      
+    </figcaption>
+  </figure>
+  
+  <a href="#/" class="expand" id="sin-interference-gif">
+    <img src="/GRPH/assets/images/content/sin_interference.gif" alt="Interference between sine waves of equal frequency but different phases" style="background-image: url('/GRPH/assets/images/transparent.gif')" loading="lazy" />
+  </a>
+  
+</div>
+
+<p>I’ve attempted to demonstrate this concept with an animated GIF above. Notice how the peak amplitude of the sum of the two waves moves from -2 and 2 to 0 depending on the difference in phase. We can think of this difference in phase as the total length a signal is being delayed by.</p>
+
+<p>This concept can be extended to create more elaborate filters. When working on my instrument, I was using this algorithm to generate a resonant analog style low-pass filter. From my own research while attempting to implement the same design in PureData, someone mentioned that this sort of filter was essentially a chain of basic low pass filters (like the one of above) in a feedback loop. Though I don’t completely understand how it all works from a DSP perspective, one can clearly see the similarities between this filter and the one above in terms of structure. The code itself is based on an example provided on MusicDSP.</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="kt">float</span> <span class="n">KarlsenFilter</span><span class="o">::</span><span class="n">process</span><span class="p">(</span><span class="kt">float</span> <span class="n">in</span><span class="p">,</span> <span class="kt">float</span> <span class="n">cut</span><span class="p">,</span> <span class="kt">float</span> <span class="n">res</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="n">cut</span> <span class="o">=</span> <span class="n">MTOF</span><span class="p">(</span><span class="n">cut</span> <span class="o">*</span> <span class="mf">127.0</span><span class="n">f</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="n">M_PI</span> <span class="o">*</span> <span class="o">*</span><span class="n">ONE_OVER_SAMPLERATE</span><span class="p">;</span>
+	<span class="n">res</span> <span class="o">=</span> <span class="n">res</span> <span class="o">*</span> <span class="n">res</span> <span class="o">*</span> <span class="n">M_E</span> <span class="o">*</span> <span class="mf">2.0</span><span class="n">f</span><span class="p">;</span>
+
+	<span class="n">buffer</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="n">buffer</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span> <span class="o">*</span> <span class="n">cut</span><span class="p">)</span> <span class="o">+</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+	<span class="kt">float</span> <span class="n">fb</span> <span class="o">=</span> <span class="p">(</span><span class="n">buffer</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">-</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span> <span class="o">*</span> <span class="n">res</span><span class="p">;</span>
+	<span class="n">SIGMOID</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fb</span><span class="p">);</span>
+
+	<span class="n">in</span> <span class="o">-=</span> <span class="n">fb</span><span class="p">;</span>
+	<span class="n">buffer</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="n">in</span> <span class="o">-</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="n">cut</span><span class="p">)</span> <span class="o">+</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+	<span class="n">buffer</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="n">buffer</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">*</span> <span class="n">cut</span><span class="p">)</span> <span class="o">+</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+	<span class="n">buffer</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="n">buffer</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">*</span> <span class="n">cut</span><span class="p">)</span> <span class="o">+</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+	<span class="n">buffer</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="n">buffer</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span> <span class="o">*</span> <span class="n">cut</span><span class="p">)</span> <span class="o">+</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+
+	<span class="k">return</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>If I knew more about signal processing I would definitely have more to write here. However, I’m not very good at math and whenever I do research into this sort of thing, I’m consistently buried in it. All I wanted to get across is the universal usefulness of delay lines. In my next post, I plan to go over more well known use cases for delay lines.</p>
+
+
+<!-- Grab previous and next post from category -->
+<!-- https://talk.jekyllrb.com/t/how-to-link-to-next-and-previous-posts-for-same-blog-category/629 -->
+
+
+
+
+
+
+<footer class="pagination">
+  <nav>
+    <h3>Pagination</h3>
+    <ul>
+      <!-- Page Up -->
+      <li>
+        <a class="up" href="/GRPH/audio">
+          Back to Audio
+        </a>
+      </li>
+      <!-- Prev post -->
+      <li>
+        <a class="next" href="/GRPH/audio/2022/04/04/Handling-Controls-&-Parameters.html">
+          Handling Controls & Parameters
+        </a>
+      </li>
+      <!-- Next post -->
+      <li>
+        <a class="prev" href="/GRPH/audio/2022/04/06/Delays-&-Echoes-and-More.html">
+          Delays & Echoes and More
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <nav>
+    <h3>Related Posts</h3>
+    
+    
+    <ul>
+      <li>
+        <a href="/GRPH/audio/2022/03/27/Programming-Control-Signals.html">
+          Programming Modulators
+        </a>
+      </li>
+    </ul>
+    
+    <ul>
+      <li>
+        <a href="/GRPH/audio/2021/12/05/CheeseVA-Demo-Footage.html">
+          CheeseVA Demo Footage!
+        </a>
+      </li>
+    </ul>
+    
+    <ul>
+      <li>
+        <a href="/GRPH/audio/2022/04/06/Delays-&-Echoes-and-More.html">
+          Delays & Echoes and More
+        </a>
+      </li>
+    </ul>
+    
+  </nav>
+</footer>
+
+    </main>    <!-- CONTENT END -->
+    <footer>   <!-- FOOTER START -->
+      <ul>
+        <li><a href="/GRPH/feed.xml">RSS Feed</a></li>
+        <li>
+          <a href="https://www.gnu.org/licenses/copyleft.en.html">(C)</a>
+           2021-2022
+          <a href="mailto:chr.carin(a)gmail.com">Chris Carin</a>
+        </li>
+        <li><a href="https://html5.validator.nu/?doc=http://0.0.0.0:4000/GRPH/audio/2022/04/04/Delays-&-Filters.html">This document is valid HTML5</a></li>
+        <li><a href="#">Back to Top</a></li>
+      </ul>
+    </footer>   <!-- FOOTER END -->
+  </body>
+</html>

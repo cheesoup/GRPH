@@ -1,0 +1,16 @@
+---
+title: On Due Dates and Shifting Gears
+layout: post
+tag: [Updates]
+date: Mar. 25th, 2022
+categories: [Misc]
+---
+
+I realize I haven’t posted in a long time. Part of the reason was that I was having a hard time just getting back on the wagon after a horrible Christmas, but that was months ago and it’s not really an excuse anymore. I literally have less than three weeks to post everything about my project. I’ll be honest, I really don’t think I’m going to be able to finish as much as I wanted to finish before the due date. So, at this point I’m really trying to just buckle down and get the most done that I can. I’ve already been losing sleep over the last 2-3 weeks stressing so much over not getting enough done but I think I should just accept it and realize that my ideal result may have been a bit too ambitious.
+
+I mentioned to Lewis a couple weeks ago that I wanted to change directions with this project. My reasoning for this was because the more I programmed, the more I realized the resources it would cost to bring what I wanted to make into fruition. The Bela alone was $300. On top of that, just in components, I’ve spent well over another $250. At some point, I realized I just couldn’t keep doing this. I was spending too much money for something I didn’t have enough time to figure out completely. I think I came across that realization a bit too late. Either that, or my back up plan was still way too ambitious. I think at this point, I really need to just accept what I have and just fine-tune it until I run out of time. Hopefully, between finally writing again and this project, I’ll have enough time to create something that at least looks polished.
+
+I’m currently attempting to create a program on my tiny computer that allows n-amount of people to play a cover of Terry Riley’s ‘In C’ over a web interface. As of right now, I have most of the framework done. Most of what’s left is sound/visual design and interface stuff. Despite this, I’m still running into plenty of problems. For example, one issue that took forever to figure out was how to even get a web browser to communicate with the Bela hardware. Turns out I’d have to run an intermediary environment to bridge the two. Another favorite reoccurring issue of mine is handling basic parameter values like tone controls and stuff. Creating a scalable way for a user to interface signals that can intertwine any which way is a nightmare.
+
+Despite my frustrations, I don’t regret working on this project at all. Don’t get me wrong, if I could do this all again knowing everything I know now, I would change course in a heartbeat. However, I still feel like I learned a lot about… well… stuff. Prior to this project, I’ve never actually worked with C++ and my only experience with NodeJS was using it to run in-browser JavaScript locally. While both continue to frustrate me to no end, I think knowing more about these tools can only benefit more in the future. Even from the audio side of things, I feel like I have a much more clear understanding of how things like compressors and delays work on a sample-by-sample basis. I’m still obviously not an expert though.
+Anyways, here’s to hoping I get enough work done.

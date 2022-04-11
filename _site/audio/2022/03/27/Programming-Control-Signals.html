@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="/GRPH/assets/css/style.css"/>
+    <link rel="alternate" type="application/atom+xml" title="thesis? idk?" href="/GRPH/feed.xml"/>
+    <link rel="shortcut icon" type="image/png" href="/GRPH/icon.ico"/>
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Programming Modulators | thesis? idk?</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Programming Modulators" />
+<meta name="author" content="Chris Carin" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="In a post I made a while back on the anatomy of the synthesizers, I mentioned one of the key components to audio synthesis is the modulation of various controls and parameters through use of something I call a control signal. I gave two examples of the typical control signals found in a synthesizer: LFOs and envelopes. In this post, my plan is to briefly go over how these typical control signals are implemented within my project. LFOs are rather easy to explain as they are simply slow oscillators. Envelopes, on the other hand, can be a bit tricky to understand. Even I, who is writing this post, haven’t even fully grasped the complexity of creating an ideal ADSR envelope." />
+<meta property="og:description" content="In a post I made a while back on the anatomy of the synthesizers, I mentioned one of the key components to audio synthesis is the modulation of various controls and parameters through use of something I call a control signal. I gave two examples of the typical control signals found in a synthesizer: LFOs and envelopes. In this post, my plan is to briefly go over how these typical control signals are implemented within my project. LFOs are rather easy to explain as they are simply slow oscillators. Envelopes, on the other hand, can be a bit tricky to understand. Even I, who is writing this post, haven’t even fully grasped the complexity of creating an ideal ADSR envelope." />
+<link rel="canonical" href="http://0.0.0.0:4000/GRPH/audio/2022/03/27/Programming-Control-Signals.html" />
+<meta property="og:url" content="http://0.0.0.0:4000/GRPH/audio/2022/03/27/Programming-Control-Signals.html" />
+<meta property="og:site_name" content="thesis? idk?" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-03-27T00:00:00-04:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Programming Modulators" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Chris Carin"},"@type":"BlogPosting","headline":"Programming Modulators","dateModified":"2022-03-27T00:00:00-04:00","datePublished":"2022-03-27T00:00:00-04:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/GRPH/audio/2022/03/27/Programming-Control-Signals.html"},"description":"In a post I made a while back on the anatomy of the synthesizers, I mentioned one of the key components to audio synthesis is the modulation of various controls and parameters through use of something I call a control signal. I gave two examples of the typical control signals found in a synthesizer: LFOs and envelopes. In this post, my plan is to briefly go over how these typical control signals are implemented within my project. LFOs are rather easy to explain as they are simply slow oscillators. Envelopes, on the other hand, can be a bit tricky to understand. Even I, who is writing this post, haven’t even fully grasped the complexity of creating an ideal ADSR envelope.","url":"http://0.0.0.0:4000/GRPH/audio/2022/03/27/Programming-Control-Signals.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+  <body>
+    <header>  <!-- HEADER START -->
+      <a href="/GRPH/"><img src="/GRPH/assets/images/jam_crow.gif" alt="jam_crow.gif" width="128" height="68"/></a>
+      <nav>   <!-- MENU START -->
+        <ul>
+          
+          <li><a href="/GRPH/about">about</a></li>
+          
+          <li><a href="/GRPH/audio">audio</a></li>
+          
+          <li><a href="/GRPH/website">web</a></li>
+          
+          <li><a href="/GRPH/misc">misc</a></li>
+          
+          <li><a href="/GRPH/tags">tags</a></li>
+          
+        </ul>
+      </nav>   <!-- MENU END -->
+    </header>  <!-- HEADER END -->
+    <main>     <!-- CONTENT START -->
+      
+
+
+<header class="heading">
+  <h1>Programming Modulators</h1>
+  <div>
+    <small>
+      Category: <a href="">Audio</a>
+    </small>
+    <small>
+      Tags:
+      
+        <a href="/GRPH/tags#bela">Bela</a>
+      
+        <a href="/GRPH/tags#audio-programming">Audio Programming</a>
+      
+        <a href="/GRPH/tags#c">C++</a>
+      
+    </small>
+  </div>
+  <div>
+    <small>
+      Sun, Mar 27, 22
+    </small>
+    <small>
+      
+      Length:
+      
+        7 mins
+      
+    </small>
+  </div>
+</header>
+
+<p>In a post I made a while back on the anatomy of the synthesizers, I mentioned one of the key components to audio synthesis is the modulation of various controls and parameters through use of something I call a control signal. I gave two examples of the typical control signals found in a synthesizer: LFOs and envelopes. In this post, my plan is to briefly go over how these typical control signals are implemented within my project. LFOs are rather easy to explain as they are simply slow oscillators. Envelopes, on the other hand, can be a bit tricky to understand. Even I, who is writing this post, haven’t even fully grasped the complexity of creating an ideal ADSR envelope.</p>
+
+<h2 id="modulator-interface-class">Modulator Interface Class</h2>
+
+<p>Normally, I’d like to avoid talking about C++ syntax and technicalities, but I believe it’s worth knowing a little about programming hierarchy and inheritance to kind of get an understanding of how these classes interface with other classes within the software. All classes which generate control signals are prototyped using the parent class Modulator. This class is a barebones class which provides a bit of a base common functionality between all subclasses prototyped from it. Essentially, LFOs and Envelopes can be thought of as an extension of this base. Common functions between all modulator types include a return of its current value, a return of the address of its current value, and a process function.</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="k">class</span> <span class="nc">Modulator</span> <span class="p">{</span>
+	<span class="nl">protected:</span>
+	<span class="kt">float</span> <span class="n">_current</span><span class="p">;</span>
+	<span class="nl">public:</span>
+	<span class="n">Modulator</span><span class="p">()</span> <span class="p">{}</span>
+	<span class="k">virtual</span> <span class="k">const</span> <span class="kt">float</span> <span class="o">*</span> <span class="n">getPointer</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="o">&amp;</span><span class="n">_current</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">};</span></code></pre></figure>
+
+<p>References to the current value are passed to a Parameter class which manages the calculations for a given parameter value. The Parameter class is something of a nightmare that is thankfully out of the scope of the blog post.</p>
+
+<h2 id="programming-lfos">Programming LFOs</h2>
+
+<p>As mentioned in the introduction, programming LFOs is far from difficult. However, issues arise when one is using a low power machine such as Bela (especially when you’re not familiar with assembly language). Thankfully, over the last couple months, I’ve run into a few alternatives for calculating things like sin(x) which can normally be expensive.</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="k">class</span> <span class="nc">LFO</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Modulator</span> <span class="p">{</span>
+	<span class="n">Parameter</span> <span class="o">*</span><span class="n">_freq</span><span class="p">;</span>
+	<span class="kt">float</span> <span class="n">_phase</span> <span class="o">=</span> <span class="mf">0.0</span><span class="n">f</span><span class="p">;</span>
+
+	<span class="nl">public:</span>
+	<span class="n">LFO</span><span class="p">(</span><span class="n">Parameter</span> <span class="o">*</span><span class="n">freq</span><span class="p">)</span><span class="o">:</span> <span class="n">_freq</span><span class="p">(</span><span class="n">freq</span><span class="p">)</span> <span class="p">{}</span>
+
+	<span class="kt">float</span> <span class="n">process</span><span class="p">()</span> <span class="p">{</span>
+		<span class="n">_current</span> <span class="o">=</span> <span class="n">DSP</span><span class="o">::</span><span class="n">SIN2</span><span class="p">(</span><span class="n">_phase</span><span class="p">);</span>
+
+		<span class="kt">float</span> <span class="n">delta</span> <span class="o">=</span> <span class="n">_freq</span><span class="o">-&gt;</span><span class="n">getCurrent</span><span class="p">()</span> <span class="o">*</span> <span class="mf">15.0</span><span class="n">f</span> <span class="o">*</span> <span class="o">*</span><span class="n">ONE_OVER_SAMPLERATE</span><span class="p">;</span>
+		<span class="n">_phase</span> <span class="o">+=</span> <span class="n">delta</span><span class="p">;</span>
+		<span class="n">_phase</span> <span class="o">-=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">_phase</span><span class="p">;</span>
+
+		<span class="k">return</span> <span class="n">_current</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="kt">float</span> <span class="n">getCurrent</span><span class="p">()</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="n">_current</span><span class="p">;</span>
+	<span class="p">}</span>
+<span class="p">};</span></code></pre></figure>
+
+<p>As you can see, the only thing this class is really doing is incrementing a phase counter and outputting sin(phase). Rather than using std::sin however, I’ve opted to use a sin approximation much like the oscillator’s mentioned previously. Though I haven’t tested it thoroughly, it’s actually a faster (though less accurate) alternative to my original sine approximation.</p>
+
+<!-- Include for captioned images -->
+
+<div class="float ">
+  <figure class="embed picture" style="width: ">
+    
+    <a href="#sin-approximations-png">
+      <img src="/GRPH/assets/images/content/sin_approximations.png" alt="sin(x) vs x * (1 - abs(x)) * 4" style="width: " loading="lazy" />
+    </a>
+    
+    <figcaption>
+      sin(x) vs x * (1 - abs(x)) * 4
+      
+    </figcaption>
+  </figure>
+  
+  <a href="#/" class="expand" id="sin-approximations-png">
+    <img src="/GRPH/assets/images/content/sin_approximations.png" alt="sin(x) vs x * (1 - abs(x)) * 4" style="background-image: url('/GRPH/assets/images/transparent.gif')" loading="lazy" />
+  </a>
+  
+</div>
+
+<h2 id="programming-envelopes">Programming Envelopes</h2>
+
+<p>Unlike LFOs, envelopes are non-periodic signals. They don’t repeat at a regular interval which can make them a bit tricky to program. Essentially an envelope is a timed signal which gradually changes value over specific time intervals. Every time an envelope is triggered (typically when a note on command is issued), the signal value rises to a maximum level over a user set period of time before falling towards a sustain value. When a note off is received, the envelope falls to zero from its current value and remains there until the next note on. Below is my header file for the implementation. It’s heavily based on an example provided by <a href="http://www.martin-finke.de/blog/articles/audio-plugins-011-envelopes/">Martin Finke</a>.</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="k">typedef</span> <span class="k">enum</span> <span class="n">ADSR</span> <span class="p">{</span>
+	<span class="n">ENV_ATTACK</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+	<span class="n">ENV_DECAY</span><span class="p">,</span>
+	<span class="n">ENV_SUSTAIN</span><span class="p">,</span>
+	<span class="n">ENV_RELEASE</span><span class="p">,</span>
+	<span class="n">ENV_OFF</span><span class="p">,</span>
+	<span class="n">ENV_KILL</span>
+<span class="p">}</span> <span class="n">ADSR</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Envelope</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Modulator</span> <span class="p">{</span>
+	<span class="k">const</span> <span class="kt">float</span> <span class="n">MINLVL</span> <span class="o">=</span> <span class="mf">0.0001</span><span class="n">f</span><span class="p">;</span>
+	<span class="k">const</span> <span class="kt">float</span> <span class="n">MINTIME</span> <span class="o">=</span> <span class="mf">0.001</span><span class="n">f</span><span class="p">;</span>
+
+	<span class="n">ADSR</span> <span class="n">_stage</span><span class="p">;</span>
+	<span class="n">uint</span> <span class="n">_timer</span><span class="p">;</span>
+	<span class="n">Parameter</span> <span class="o">*</span><span class="n">_adsr</span><span class="p">[</span><span class="n">ENV_OFF</span><span class="p">];</span>
+	<span class="kt">float</span> <span class="n">_mult</span><span class="p">,</span> <span class="n">_vel</span><span class="p">;</span>
+
+	<span class="c1">// Calculate co-efficient of exponential rate of change.</span>
+	<span class="kr">inline</span> <span class="kt">float</span> <span class="n">calcCoefficient</span><span class="p">(</span><span class="kt">float</span> <span class="n">start</span><span class="p">,</span> <span class="kt">float</span> <span class="n">end</span><span class="p">,</span> <span class="n">uint</span> <span class="n">length</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="mf">1.0</span><span class="n">f</span> <span class="o">+</span> <span class="p">(</span><span class="n">logf_neon</span><span class="p">(</span><span class="n">end</span><span class="p">)</span> <span class="o">-</span> <span class="n">logf_neon</span><span class="p">(</span><span class="n">start</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="n">length</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="c1">// Actual sustain = sustain^2</span>
+	<span class="kr">inline</span> <span class="kt">float</span> <span class="n">calcSustain</span><span class="p">()</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="n">fmaxf</span><span class="p">(</span><span class="n">MINLVL</span><span class="p">,</span> <span class="n">_adsr</span><span class="p">[</span><span class="n">ENV_SUSTAIN</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">getCurrent</span><span class="p">()</span> <span class="o">*</span> <span class="n">_vel</span><span class="p">);</span>
+	<span class="p">}</span>
+
+	<span class="c1">// Calculate sample length of an envelope stage</span>
+	<span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">calcTimer</span><span class="p">(</span><span class="n">ADSR</span> <span class="n">s</span><span class="p">,</span> <span class="kt">float</span> <span class="n">max</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
+		<span class="kt">float</span> <span class="n">v</span> <span class="o">=</span> <span class="n">_adsr</span><span class="p">[</span><span class="n">s</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">getCurrent</span><span class="p">();</span>
+		<span class="k">return</span> <span class="p">(</span><span class="n">uint</span><span class="p">)(</span><span class="n">fmaxf</span><span class="p">(</span><span class="n">MINTIME</span><span class="p">,</span> <span class="n">v</span> <span class="o">*</span> <span class="n">v</span> <span class="o">*</span> <span class="n">max</span><span class="p">)</span> <span class="o">*</span> <span class="o">*</span><span class="n">SAMPLERATE</span><span class="p">);</span>
+	<span class="p">}</span>
+
+	<span class="nl">public:</span>
+	<span class="n">Envelope</span><span class="p">(</span><span class="n">Parameter</span> <span class="o">*</span><span class="n">attack</span><span class="p">,</span> <span class="n">Parameter</span> <span class="o">*</span><span class="n">decay</span><span class="p">,</span> <span class="n">Parameter</span> <span class="o">*</span><span class="n">sustain</span><span class="p">,</span> <span class="n">Parameter</span> <span class="o">*</span><span class="n">release</span><span class="p">)</span><span class="o">:</span> 	
+		<span class="n">Modulator</span><span class="p">(),</span> <span class="n">_stage</span><span class="p">(</span><span class="n">ENV_OFF</span><span class="p">),</span> <span class="n">_timer</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">_mult</span><span class="p">(</span><span class="mf">1.0</span><span class="n">f</span><span class="p">),</span> <span class="n">_vel</span><span class="p">(</span><span class="mf">0.0</span><span class="n">f</span><span class="p">)</span> <span class="p">{</span>
+		<span class="n">_current</span> <span class="o">=</span> <span class="n">MINLVL</span><span class="p">;</span>
+		<span class="n">_adsr</span><span class="p">[</span><span class="n">ENV_ATTACK</span><span class="p">]</span> <span class="o">=</span> <span class="n">attack</span><span class="p">;</span>
+		<span class="n">_adsr</span><span class="p">[</span><span class="n">ENV_DECAY</span><span class="p">]</span> <span class="o">=</span> <span class="n">decay</span><span class="p">;</span>
+		<span class="n">_adsr</span><span class="p">[</span><span class="n">ENV_SUSTAIN</span><span class="p">]</span> <span class="o">=</span> <span class="n">sustain</span><span class="p">;</span>
+		<span class="n">_adsr</span><span class="p">[</span><span class="n">ENV_RELEASE</span><span class="p">]</span> <span class="o">=</span> <span class="n">release</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="kt">void</span> <span class="n">goStage</span><span class="p">(</span><span class="n">ADSR</span> <span class="n">next</span><span class="p">);</span>
+
+	<span class="kt">float</span> <span class="n">process</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+	<span class="kt">void</span> <span class="n">setVelocity</span><span class="p">(</span><span class="kt">float</span> <span class="n">velocity</span><span class="p">)</span> <span class="p">{</span> <span class="n">_vel</span> <span class="o">=</span> <span class="n">velocity</span><span class="p">;</span> <span class="p">}</span>
+	<span class="n">ADSR</span> <span class="n">getStage</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">_stage</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">};</span></code></pre></figure>
+
+<p>That’s all I really have to say about how modulators are implemented within my project. Despite working on it for the longest time, there are still issues with the envelope I have yet to resolve. One major issue I found was inconsistency with note handling. Oftentimes, the envelope would completely break should it receive a note on or off message at times it didn’t want it. Furthermore, it would create an annoying click whenever it was reset while active. I did manage to come up with a work around, though it’s not ideal. I’ll talk about whenever I decide to write about voice stealing.</p>
+
+
+<!-- Grab previous and next post from category -->
+<!-- https://talk.jekyllrb.com/t/how-to-link-to-next-and-previous-posts-for-same-blog-category/629 -->
+
+
+
+
+
+
+<footer class="pagination">
+  <nav>
+    <h3>Pagination</h3>
+    <ul>
+      <!-- Page Up -->
+      <li>
+        <a class="up" href="/GRPH/audio">
+          Back to Audio
+        </a>
+      </li>
+      <!-- Prev post -->
+      <li>
+        <a class="next" href="/GRPH/audio/2021/12/17/arbitrary-wavemorphing.html">
+          Stuff About Wave Shaping
+        </a>
+      </li>
+      <!-- Next post -->
+      <li>
+        <a class="prev" href="/GRPH/audio/2022/04/04/Handling-Controls-&-Parameters.html">
+          Handling Controls & Parameters
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <nav>
+    <h3>Related Posts</h3>
+    
+    
+    <ul>
+      <li>
+        <a href="/GRPH/audio/2022/04/06/Delays-&-Echoes-and-More.html">
+          Delays & Echoes and More
+        </a>
+      </li>
+    </ul>
+    
+    <ul>
+      <li>
+        <a href="/GRPH/audio/2022/04/04/Handling-Controls-&-Parameters.html">
+          Handling Controls & Parameters
+        </a>
+      </li>
+    </ul>
+    
+    <ul>
+      <li>
+        <a href="/GRPH/audio/2021/12/17/arbitrary-wavemorphing.html">
+          Stuff About Wave Shaping
+        </a>
+      </li>
+    </ul>
+    
+  </nav>
+</footer>
+
+    </main>    <!-- CONTENT END -->
+    <footer>   <!-- FOOTER START -->
+      <ul>
+        <li><a href="/GRPH/feed.xml">RSS Feed</a></li>
+        <li>
+          <a href="https://www.gnu.org/licenses/copyleft.en.html">(C)</a>
+           2021-2022
+          <a href="mailto:chr.carin(a)gmail.com">Chris Carin</a>
+        </li>
+        <li><a href="https://html5.validator.nu/?doc=http://0.0.0.0:4000/GRPH/audio/2022/03/27/Programming-Control-Signals.html">This document is valid HTML5</a></li>
+        <li><a href="#">Back to Top</a></li>
+      </ul>
+    </footer>   <!-- FOOTER END -->
+  </body>
+</html>

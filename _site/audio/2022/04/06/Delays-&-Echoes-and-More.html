@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="/GRPH/assets/css/style.css"/>
+    <link rel="alternate" type="application/atom+xml" title="thesis? idk?" href="/GRPH/feed.xml"/>
+    <link rel="shortcut icon" type="image/png" href="/GRPH/icon.ico"/>
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Delays &amp; Echoes and More | thesis? idk?</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Delays &amp; Echoes and More" />
+<meta name="author" content="Chris Carin" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="The Roland Space is a classic example of types of effects achievable with delay lines." />
+<meta property="og:description" content="The Roland Space is a classic example of types of effects achievable with delay lines." />
+<link rel="canonical" href="http://0.0.0.0:4000/GRPH/audio/2022/04/06/Delays-&-Echoes-and-More.html" />
+<meta property="og:url" content="http://0.0.0.0:4000/GRPH/audio/2022/04/06/Delays-&-Echoes-and-More.html" />
+<meta property="og:site_name" content="thesis? idk?" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-04-06T00:00:00-04:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Delays &amp; Echoes and More" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Chris Carin"},"@type":"BlogPosting","headline":"Delays &amp; Echoes and More","dateModified":"2022-04-06T00:00:00-04:00","datePublished":"2022-04-06T00:00:00-04:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/GRPH/audio/2022/04/06/Delays-&-Echoes-and-More.html"},"description":"The Roland Space is a classic example of types of effects achievable with delay lines.","url":"http://0.0.0.0:4000/GRPH/audio/2022/04/06/Delays-&-Echoes-and-More.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+  <body>
+    <header>  <!-- HEADER START -->
+      <a href="/GRPH/"><img src="/GRPH/assets/images/jam_crow.gif" alt="jam_crow.gif" width="128" height="68"/></a>
+      <nav>   <!-- MENU START -->
+        <ul>
+          
+          <li><a href="/GRPH/about">about</a></li>
+          
+          <li><a href="/GRPH/audio">audio</a></li>
+          
+          <li><a href="/GRPH/website">web</a></li>
+          
+          <li><a href="/GRPH/misc">misc</a></li>
+          
+          <li><a href="/GRPH/tags">tags</a></li>
+          
+        </ul>
+      </nav>   <!-- MENU END -->
+    </header>  <!-- HEADER END -->
+    <main>     <!-- CONTENT START -->
+      
+
+
+<header class="heading">
+  <h1>Delays & Echoes and More</h1>
+  <div>
+    <small>
+      Category: <a href="">Audio</a>
+    </small>
+    <small>
+      Tags:
+      
+        <a href="/GRPH/tags#bela">Bela</a>
+      
+        <a href="/GRPH/tags#audio-programming">Audio Programming</a>
+      
+        <a href="/GRPH/tags#c">C++</a>
+      
+    </small>
+  </div>
+  <div>
+    <small>
+      Wed, Apr 06, 22
+    </small>
+    <small>
+      
+      Length:
+      
+        8 mins
+      
+    </small>
+  </div>
+</header>
+
+<!-- Include Video Embedding -->
+<!-- https://github.com/nathancy/jekyll-embed-video#responsive-videos -->
+<div class="float">
+  <figure class="embed video">
+    <span class="video">
+      <iframe style="width:100%; height:100%;" src="https://www.youtube.com/embed/VK2-tv4GW5E" loading="lazy" allowfullscreen="">
+      </iframe>
+    </span>
+    <figcaption class="caption">The Roland Space is a classic example of types of effects achievable with delay lines.</figcaption>
+  </figure>
+</div>
+
+<p>In my previous post, I talked about how by applying a delay of a few samples we effectively create a type of interference which allows for harmonic amplification and attenuation. This, however, is not the only use for delay lines. Their most known use is for emulating echos and sound reflections which typically occurs at longer delay lengths. To create longer delays lines, larger buffers need to be implemented to hold queued samples. However, working with larger buffers can come at the cost of performance if not implemented properly. To illustrate in code, I’ve posted my implementation of a static (non-varying in length) delay line below.</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="k">class</span> <span class="nc">Delay</span> <span class="p">{</span>
+	<span class="nl">protected:</span>
+	<span class="k">const</span> <span class="n">uint</span> <span class="n">_size</span><span class="p">;</span>
+	<span class="n">uint</span> <span class="n">_writeptr</span><span class="p">;</span>
+	<span class="kt">float</span> <span class="o">*</span> <span class="n">_buffer</span><span class="p">;</span>
+
+	<span class="nl">public:</span>
+	<span class="n">Delay</span><span class="p">(</span><span class="kt">float</span> <span class="n">size</span><span class="p">)</span><span class="o">:</span> <span class="n">_size</span><span class="p">((</span><span class="kt">int</span><span class="p">)(</span><span class="n">size</span> <span class="o">*</span> <span class="o">*</span><span class="n">SAMPLERATE</span><span class="p">)),</span> <span class="n">_writeptr</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+		<span class="n">_buffer</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">float</span><span class="p">[</span><span class="n">_size</span><span class="p">];</span>
+		<span class="o">*</span><span class="n">_buffer</span> <span class="o">=</span> <span class="p">{</span> <span class="mf">0.0</span><span class="n">f</span> <span class="p">};</span>
+	<span class="p">}</span>
+
+	<span class="k">virtual</span> <span class="o">~</span><span class="n">Delay</span><span class="p">()</span> <span class="p">{</span>
+		<span class="k">delete</span><span class="p">[]</span> <span class="n">_buffer</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="k">virtual</span> <span class="kt">float</span> <span class="n">process</span><span class="p">(</span><span class="kt">float</span> <span class="n">input</span><span class="p">,</span> <span class="kt">float</span> <span class="n">length</span> <span class="o">=</span> <span class="mf">0.0</span><span class="n">f</span><span class="p">)</span> <span class="p">{</span>
+		<span class="kt">float</span> <span class="n">out</span> <span class="o">=</span> <span class="n">tap</span><span class="p">(</span><span class="n">length</span><span class="p">);</span>
+		<span class="n">feed</span><span class="p">(</span><span class="n">input</span><span class="p">);</span>
+		<span class="n">advance</span><span class="p">();</span>
+		<span class="k">return</span> <span class="n">out</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="n">feed</span><span class="p">(</span><span class="kt">float</span> <span class="n">input</span><span class="p">)</span> <span class="p">{</span>
+		<span class="n">_buffer</span><span class="p">[</span><span class="n">_writeptr</span><span class="p">]</span> <span class="o">=</span> <span class="n">input</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="n">advance</span><span class="p">()</span> <span class="p">{</span>
+		<span class="n">_writeptr</span><span class="o">++</span><span class="p">;</span>
+		<span class="n">_writeptr</span> <span class="o">*=</span> <span class="n">_writeptr</span> <span class="o">&lt;</span> <span class="n">_size</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="k">virtual</span> <span class="kt">float</span> <span class="n">tap</span><span class="p">(</span><span class="kt">float</span> <span class="n">length</span> <span class="o">=</span> <span class="mf">0.0</span><span class="n">f</span><span class="p">)</span> <span class="p">{</span>
+		<span class="kt">int</span> <span class="n">readptr</span> <span class="o">=</span> <span class="n">_writeptr</span> <span class="o">-</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">DSP</span><span class="o">::</span><span class="n">CLIP</span><span class="p">(</span><span class="n">length</span> <span class="o">*</span> <span class="o">*</span><span class="n">SAMPLERATE</span><span class="p">,</span> <span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="n">_size</span> <span class="o">-</span> <span class="mf">1.0</span><span class="n">f</span><span class="p">,</span> <span class="mf">1.0</span><span class="n">f</span><span class="p">);</span>
+		<span class="n">readptr</span> <span class="o">+=</span> <span class="n">_size</span> <span class="o">*</span> <span class="p">(</span><span class="n">readptr</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">);</span>
+		<span class="k">return</span> <span class="n">_buffer</span><span class="p">[</span><span class="n">readptr</span><span class="p">];</span>
+	<span class="p">}</span>
+
+	<span class="k">virtual</span> <span class="kt">float</span> <span class="n">getCurrent</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">_buffer</span><span class="p">[</span><span class="n">_writeptr</span><span class="p">];</span> <span class="p">}</span>
+	<span class="n">uint</span> <span class="n">getSize</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">_size</span><span class="p">;</span> <span class="p">}</span>
+	<span class="n">uint</span> <span class="n">getPosition</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">_writeptr</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">};</span></code></pre></figure>
+
+<p>A basic delay line is made of two components: the buffer and a write pointer. The purpose of the write pointer is to keep track of which spot within the buffer we are operating from. Every sample, we copy the current value at the index indicated by the write pointer. From there we write the incoming signal to that index and return the old value. Though the above code example is specifically for a static delay, it is possible to create a delay effect with a user controllable length. Typically, this is done by reading an index at the write pointer minus a length value.</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="kt">int</span> <span class="n">readptr</span> <span class="o">=</span> <span class="n">_writeptr</span> <span class="o">-</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">DSP</span><span class="o">::</span><span class="n">CLIP</span><span class="p">(</span><span class="n">length</span> <span class="o">*</span> <span class="o">*</span><span class="n">SAMPLERATE</span><span class="p">,</span> <span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="n">_size</span> <span class="o">-</span> <span class="mf">1.0</span><span class="n">f</span><span class="p">,</span> <span class="mf">1.0</span><span class="n">f</span><span class="p">);</span></code></pre></figure>
+
+<p>This however does not take into account the delays of non-integer length. In order to do a delay of say 4.5 samples, we need to somehow interpolate between the two. Thankfully, MusicDSP provides an extremely useful algorithm for this. From what I understand, we are essentially forming a polynomial which is guaranteed to output four numbers we feed into it at x=0, x=1, x=2 and x=3. By feeding four samples around the point in the buffer we want to read, we can calculate an interpolated value with this polynomial when given a non-integer delay length. Below, I’ve posted my own code for implementing variable delay lengths. Just like my envelope, it’s heavily influenced by the original source.</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="k">class</span> <span class="nc">VariableDelay</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Delay</span> <span class="p">{</span>
+	<span class="nl">public:</span>
+	<span class="n">VariableDelay</span><span class="p">(</span><span class="kt">float</span> <span class="n">size</span><span class="p">)</span><span class="o">:</span> <span class="n">Delay</span><span class="p">(</span><span class="n">size</span><span class="p">)</span> <span class="p">{}</span>
+
+	<span class="kt">float</span> <span class="n">process</span><span class="p">(</span><span class="kt">float</span> <span class="n">input</span><span class="p">,</span> <span class="kt">float</span> <span class="n">length</span> <span class="o">=</span> <span class="mf">0.0</span><span class="n">f</span><span class="p">)</span> <span class="p">{</span>
+		<span class="kt">float</span> <span class="n">out</span> <span class="o">=</span> <span class="n">vtap</span><span class="p">(</span><span class="n">length</span><span class="p">);</span>
+		<span class="n">feed</span><span class="p">(</span><span class="n">input</span><span class="p">);</span>
+		<span class="n">advance</span><span class="p">();</span>
+		<span class="k">return</span> <span class="n">out</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="kt">float</span> <span class="n">vtap</span><span class="p">(</span><span class="kt">float</span> <span class="n">length</span> <span class="o">=</span> <span class="mf">0.0</span><span class="n">f</span><span class="p">)</span> <span class="p">{</span>
+		<span class="kt">float</span> <span class="n">fltback</span> <span class="o">=</span> <span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="n">_writeptr</span> <span class="o">-</span> <span class="n">DSP</span><span class="o">::</span><span class="n">CLIP</span><span class="p">(</span><span class="n">length</span> <span class="o">*</span> <span class="o">*</span><span class="n">SAMPLERATE</span><span class="p">,</span> <span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="n">_size</span> <span class="o">-</span> <span class="mf">1.0</span><span class="n">f</span><span class="p">,</span> <span class="mf">1.0</span><span class="n">f</span><span class="p">);</span>
+		<span class="n">fltback</span> <span class="o">+=</span> <span class="n">_size</span> <span class="o">*</span> <span class="p">(</span><span class="n">fltback</span> <span class="o">&lt;</span> <span class="mf">0.0</span><span class="n">f</span><span class="p">);</span>
+		<span class="k">const</span> <span class="kt">int</span> <span class="n">intback</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">fltback</span><span class="p">;</span>
+
+		<span class="k">union</span> <span class="n">ptr</span> <span class="p">{</span>	<span class="kt">int</span> <span class="n">i</span><span class="p">;</span>	<span class="kt">float</span> <span class="n">f</span><span class="p">;</span> <span class="p">};</span>
+		<span class="n">ptr</span> <span class="n">readPtr</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+		<span class="n">readPtr</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">i</span> <span class="o">=</span> <span class="n">intback</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+		<span class="n">readPtr</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">i</span> <span class="o">=</span> <span class="n">intback</span><span class="p">;</span>
+		<span class="n">readPtr</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="n">i</span> <span class="o">=</span> <span class="n">intback</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+		<span class="n">readPtr</span><span class="p">[</span><span class="mi">3</span><span class="p">].</span><span class="n">i</span> <span class="o">=</span> <span class="n">intback</span> <span class="o">+</span> <span class="mi">2</span><span class="p">;</span>
+
+		<span class="n">readPtr</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">i</span> <span class="o">+=</span> <span class="n">_size</span> <span class="o">*</span> <span class="p">(</span><span class="n">readPtr</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">i</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">);</span>
+		<span class="n">readPtr</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="n">i</span> <span class="o">*=</span> <span class="n">readPtr</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">_size</span><span class="p">;</span>
+		<span class="n">readPtr</span><span class="p">[</span><span class="mi">3</span><span class="p">].</span><span class="n">i</span> <span class="o">*=</span> <span class="n">readPtr</span><span class="p">[</span><span class="mi">3</span><span class="p">].</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">_size</span><span class="p">;</span>
+
+		<span class="n">readPtr</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">f</span> <span class="o">=</span> <span class="n">_buffer</span><span class="p">[</span><span class="n">readPtr</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">i</span><span class="p">];</span>
+		<span class="n">readPtr</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">f</span> <span class="o">=</span> <span class="n">_buffer</span><span class="p">[</span><span class="n">readPtr</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">i</span><span class="p">];</span>
+		<span class="n">readPtr</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="n">f</span> <span class="o">=</span> <span class="n">_buffer</span><span class="p">[</span><span class="n">readPtr</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="n">i</span><span class="p">];</span>
+		<span class="n">readPtr</span><span class="p">[</span><span class="mi">3</span><span class="p">].</span><span class="n">f</span> <span class="o">=</span> <span class="n">_buffer</span><span class="p">[</span><span class="n">readPtr</span><span class="p">[</span><span class="mi">3</span><span class="p">].</span><span class="n">i</span><span class="p">];</span>
+
+		<span class="k">const</span> <span class="kt">float</span> <span class="n">x</span> <span class="o">=</span> <span class="n">fltback</span> <span class="o">-</span> <span class="n">intback</span><span class="p">;</span>
+		<span class="k">const</span> <span class="kt">float</span> <span class="n">coef</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="p">{</span>
+			<span class="n">readPtr</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">f</span><span class="p">,</span>
+			<span class="mf">0.5</span><span class="n">f</span> <span class="o">*</span> <span class="p">(</span><span class="n">readPtr</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="n">f</span> <span class="o">-</span> <span class="n">readPtr</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">f</span><span class="p">),</span>
+			<span class="n">readPtr</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">f</span> <span class="o">-</span> <span class="mf">2.5</span><span class="n">f</span> <span class="o">*</span> <span class="n">readPtr</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">f</span> <span class="o">+</span> <span class="mf">2.0</span><span class="n">f</span> <span class="o">*</span> <span class="n">readPtr</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="n">f</span> <span class="o">-</span> <span class="mf">0.5</span><span class="n">f</span> <span class="o">*</span> <span class="n">readPtr</span><span class="p">[</span><span class="mi">3</span><span class="p">].</span><span class="n">f</span><span class="p">,</span>
+			<span class="mf">0.5</span><span class="n">f</span> <span class="o">*</span> <span class="p">(</span><span class="n">readPtr</span><span class="p">[</span><span class="mi">3</span><span class="p">].</span><span class="n">f</span> <span class="o">-</span> <span class="n">readPtr</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">f</span><span class="p">)</span> <span class="o">+</span> <span class="mf">1.5</span><span class="n">f</span> <span class="o">*</span> <span class="p">(</span><span class="n">readPtr</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">f</span> <span class="o">-</span> <span class="n">readPtr</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="n">f</span><span class="p">)</span>
+		<span class="p">};</span>
+		<span class="k">return</span> <span class="p">((</span><span class="n">coef</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">coef</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">coef</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">coef</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+	<span class="p">}</span>
+<span class="p">};</span></code></pre></figure>
+
+<p>What’s interesting about variable delays is the effect modulating lengths has. Many different effects can be created by processing signals through delay lines of changing length. Things like chorus pedals are often built by modulating the length value with some slow oscillator. Reverbs are often built through a complex network of these delays. Even compressors make use of a buffer to calculate the RMS level of a signal. Though I’m not planning on implementing too many delay based effects in this project, I think it’s worth mentioning the above to highlight how universal delay lines are.</p>
+
+<p>Below is a video of a reverb I’ve programmed in the past. I was attempting to implement this module as an object in my project but unfortunately the Bela lacks the memory to handle it while simultaneously running my current project. Maybe I should’ve just focused on making a fancy reverb pedal this semester…</p>
+
+
+<!-- Grab previous and next post from category -->
+<!-- https://talk.jekyllrb.com/t/how-to-link-to-next-and-previous-posts-for-same-blog-category/629 -->
+
+
+
+
+
+
+<footer class="pagination">
+  <nav>
+    <h3>Pagination</h3>
+    <ul>
+      <!-- Page Up -->
+      <li>
+        <a class="up" href="/GRPH/audio">
+          Back to Audio
+        </a>
+      </li>
+      <!-- Prev post -->
+      <li>
+        <a class="next" href="/GRPH/audio/2022/04/04/Delays-&-Filters.html">
+          Delays & Filters
+        </a>
+      </li>
+      <!-- Next post -->
+      <li>
+        <a class="prev" href="/GRPH/audio/2022/04/07/Compression!!.html">
+          Compression!!
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <nav>
+    <h3>Related Posts</h3>
+    
+    
+    <ul>
+      <li>
+        <a href="/GRPH/audio/2021/10/14/fft_grainspec.html">
+          FFT Spectral Granulator
+        </a>
+      </li>
+    </ul>
+    
+    <ul>
+      <li>
+        <a href="/GRPH/audio/2021/12/17/arbitrary-wavemorphing.html">
+          Stuff About Wave Shaping
+        </a>
+      </li>
+    </ul>
+    
+    <ul>
+      <li>
+        <a href="/GRPH/audio/2022/04/07/MIDI-Pt-1-Stuff-about-MIDI.html">
+          MIDI 1 - Stuff About MIDI
+        </a>
+      </li>
+    </ul>
+    
+  </nav>
+</footer>
+
+    </main>    <!-- CONTENT END -->
+    <footer>   <!-- FOOTER START -->
+      <ul>
+        <li><a href="/GRPH/feed.xml">RSS Feed</a></li>
+        <li>
+          <a href="https://www.gnu.org/licenses/copyleft.en.html">(C)</a>
+           2021-2022
+          <a href="mailto:chr.carin(a)gmail.com">Chris Carin</a>
+        </li>
+        <li><a href="https://html5.validator.nu/?doc=http://0.0.0.0:4000/GRPH/audio/2022/04/06/Delays-&-Echoes-and-More.html">This document is valid HTML5</a></li>
+        <li><a href="#">Back to Top</a></li>
+      </ul>
+    </footer>   <!-- FOOTER END -->
+  </body>
+</html>

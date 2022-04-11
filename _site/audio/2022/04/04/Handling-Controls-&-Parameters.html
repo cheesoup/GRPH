@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="/GRPH/assets/css/style.css"/>
+    <link rel="alternate" type="application/atom+xml" title="thesis? idk?" href="/GRPH/feed.xml"/>
+    <link rel="shortcut icon" type="image/png" href="/GRPH/icon.ico"/>
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Handling Controls &amp; Parameters | thesis? idk?</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Handling Controls &amp; Parameters" />
+<meta name="author" content="Chris Carin" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="The program structure for this project is by far the most difficult part of the whole project. I think my lack of accounting for it really bit me in the ass. At this point I’ve spent nearly four months working on it and I’m still questioning the skeleton of this project. I think the first time I really realized how difficult all this was going to be was when I began working on a way to manage user parameters. I’m not sure if Lewis remembers, but I remember specifically calling it the gift that kept on giving. Thankfully at this point, I think my method for handling user parameters is actually fairly sound." />
+<meta property="og:description" content="The program structure for this project is by far the most difficult part of the whole project. I think my lack of accounting for it really bit me in the ass. At this point I’ve spent nearly four months working on it and I’m still questioning the skeleton of this project. I think the first time I really realized how difficult all this was going to be was when I began working on a way to manage user parameters. I’m not sure if Lewis remembers, but I remember specifically calling it the gift that kept on giving. Thankfully at this point, I think my method for handling user parameters is actually fairly sound." />
+<link rel="canonical" href="http://0.0.0.0:4000/GRPH/audio/2022/04/04/Handling-Controls-&-Parameters.html" />
+<meta property="og:url" content="http://0.0.0.0:4000/GRPH/audio/2022/04/04/Handling-Controls-&-Parameters.html" />
+<meta property="og:site_name" content="thesis? idk?" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-04-04T00:00:00-04:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Handling Controls &amp; Parameters" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Chris Carin"},"@type":"BlogPosting","headline":"Handling Controls &amp; Parameters","dateModified":"2022-04-04T00:00:00-04:00","datePublished":"2022-04-04T00:00:00-04:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/GRPH/audio/2022/04/04/Handling-Controls-&-Parameters.html"},"description":"The program structure for this project is by far the most difficult part of the whole project. I think my lack of accounting for it really bit me in the ass. At this point I’ve spent nearly four months working on it and I’m still questioning the skeleton of this project. I think the first time I really realized how difficult all this was going to be was when I began working on a way to manage user parameters. I’m not sure if Lewis remembers, but I remember specifically calling it the gift that kept on giving. Thankfully at this point, I think my method for handling user parameters is actually fairly sound.","url":"http://0.0.0.0:4000/GRPH/audio/2022/04/04/Handling-Controls-&-Parameters.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+  <body>
+    <header>  <!-- HEADER START -->
+      <a href="/GRPH/"><img src="/GRPH/assets/images/jam_crow.gif" alt="jam_crow.gif" width="128" height="68"/></a>
+      <nav>   <!-- MENU START -->
+        <ul>
+          
+          <li><a href="/GRPH/about">about</a></li>
+          
+          <li><a href="/GRPH/audio">audio</a></li>
+          
+          <li><a href="/GRPH/website">web</a></li>
+          
+          <li><a href="/GRPH/misc">misc</a></li>
+          
+          <li><a href="/GRPH/tags">tags</a></li>
+          
+        </ul>
+      </nav>   <!-- MENU END -->
+    </header>  <!-- HEADER END -->
+    <main>     <!-- CONTENT START -->
+      
+
+
+<header class="heading">
+  <h1>Handling Controls & Parameters</h1>
+  <div>
+    <small>
+      Category: <a href="">Audio</a>
+    </small>
+    <small>
+      Tags:
+      
+        <a href="/GRPH/tags#bela">Bela</a>
+      
+        <a href="/GRPH/tags#audio-programming">Audio Programming</a>
+      
+        <a href="/GRPH/tags#c">C++</a>
+      
+    </small>
+  </div>
+  <div>
+    <small>
+      Mon, Apr 04, 22
+    </small>
+    <small>
+      
+      Length:
+      
+        8 mins
+      
+    </small>
+  </div>
+</header>
+
+<p>The program structure for this project is by far the most difficult part of the whole project. I think my lack of accounting for it really bit me in the ass. At this point I’ve spent nearly four months working on it and I’m still questioning the skeleton of this project. I think the first time I really realized how difficult all this was going to be was when I began working on a way to manage user parameters. I’m not sure if Lewis remembers, but I remember specifically calling it the gift that kept on giving. Thankfully at this point, I think my method for handling user parameters is actually fairly sound.</p>
+
+<p>When handling user parameters, we need to ensure a continuous signal as discontinuities create artifacts in sound quality. Furthermore, each parameter can be affected in numerous ways. The user can change it manually, or can assign one of many modulators to change the value over time. Because of these consistent requirements, I figured the best way to approach handling parameters was to create a set of objects for user variable values.</p>
+
+<!-- Include for captioned images -->
+
+<div class="float ">
+  <figure class="embed picture" style="width: ">
+    
+    <a href="#userparameters-diagram-png">
+      <img src="/GRPH/assets/images/content/userparameters_diagram.png" alt="Diagram illustrating the signal flow between the ParameterManager the Parameters within a voice" style="width: " loading="lazy" />
+    </a>
+    
+    <figcaption>
+      Diagram illustrating the signal flow between the ParameterManager the Parameters within a voice
+      
+    </figcaption>
+  </figure>
+  
+  <a href="#/" class="expand" id="userparameters-diagram-png">
+    <img src="/GRPH/assets/images/content/userparameters_diagram.png" alt="Diagram illustrating the signal flow between the ParameterManager the Parameters within a voice" style="background-image: url('/GRPH/assets/images/transparent.gif')" loading="lazy" />
+  </a>
+  
+</div>
+
+<p>Above is a diagram which illustrates how user control values are handled (on a simplified scale). All user inputs are handled by an object called ParameterManager. This object contains an array of data structures holding all the current user settings (i.e. things like filter cutoff or envelope attack). In essence, it’s a bridge between user inputted data (through GPIO, OSC, MIDI, etc) and the parameter objects within the voice. It takes an instance of ParameterLoader to initialize. ParameterLoader is essentially a helper object for loading JSON files containing presets. To show how this is all structured in code, I’ve posted my header file parameter management below.</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="cp">#ifndef _PARAMETER_HEADER_DEFINITION
+#define _PARAMETER_HEADER_DEFINITION
+</span>
+<span class="cp">#include "global.h"
+#include "parse.h"
+</span>
+<span class="k">namespace</span> <span class="n">PARAMETER</span> <span class="p">{</span>
+<span class="k">using</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">;</span>
+
+<span class="k">typedef</span> <span class="k">enum</span> <span class="p">{</span>
+	<span class="n">PARAM_LEVEL</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+	<span class="n">PARAM_PAN</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+	<span class="n">PARAM_PW</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+	<span class="n">PARAM_SHAPE</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+	<span class="n">PARAM_BRIGHT</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+	<span class="n">PARAM_ATTACK</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+	<span class="n">PARAM_DECAY</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span>
+	<span class="n">PARAM_SUSTAIN</span> <span class="o">=</span> <span class="mi">7</span><span class="p">,</span>
+	<span class="n">PARAM_RELEASE</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span>
+	<span class="n">PARAM_LFO</span> <span class="o">=</span> <span class="mi">9</span><span class="p">,</span>
+	<span class="n">PARAM_ERROR</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="p">}</span> <span class="n">PARAM_ENUM</span><span class="p">;</span>
+
+<span class="k">const</span> <span class="n">ParseMap</span><span class="o">&lt;</span><span class="n">PARAM_ENUM</span><span class="o">&gt;</span> <span class="n">ParameterMap</span> <span class="o">=</span> <span class="p">{</span>
+	<span class="p">{</span><span class="s">"LEVEL"</span><span class="p">,</span> <span class="n">PARAM_LEVEL</span><span class="p">},</span>
+	<span class="p">{</span><span class="s">"PAN"</span><span class="p">,</span> <span class="n">PARAM_PAN</span><span class="p">},</span>
+	<span class="p">{</span><span class="s">"PW"</span><span class="p">,</span> <span class="n">PARAM_PW</span><span class="p">},</span>
+	<span class="p">{</span><span class="s">"SHAPE"</span><span class="p">,</span> <span class="n">PARAM_SHAPE</span><span class="p">},</span>
+	<span class="p">{</span><span class="s">"BRIGHT"</span><span class="p">,</span> <span class="n">PARAM_BRIGHT</span><span class="p">},</span>
+	<span class="p">{</span><span class="s">"ATTACK"</span><span class="p">,</span> <span class="n">PARAM_ATTACK</span><span class="p">},</span>
+	<span class="p">{</span><span class="s">"DECAY"</span><span class="p">,</span> <span class="n">PARAM_DECAY</span><span class="p">},</span>
+	<span class="p">{</span><span class="s">"SUSTAIN"</span><span class="p">,</span> <span class="n">PARAM_SUSTAIN</span><span class="p">},</span>
+	<span class="p">{</span><span class="s">"RELEASE"</span><span class="p">,</span> <span class="n">PARAM_RELEASE</span><span class="p">},</span>
+	<span class="p">{</span><span class="s">"LFO"</span><span class="p">,</span> <span class="n">PARAM_LFO</span><span class="p">}</span>
+<span class="p">};</span>
+
+<span class="c1">// Data structure of a parameter's value</span>
+<span class="c1">// x[0] = User amt ; x[1] = LFO amt ; x[2] = ENV amt</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">Value</span> <span class="p">{</span>
+	<span class="kt">float</span> <span class="n">current</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">mod</span><span class="p">,</span> <span class="n">delta</span><span class="p">;</span>
+	<span class="n">uint</span> <span class="n">count</span><span class="p">;</span>
+	<span class="n">uchar</span> <span class="n">mod_select</span><span class="p">,</span> <span class="n">mod_total</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">Value</span><span class="p">;</span>
+
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">ParameterLoader</span> <span class="p">{</span>
+	<span class="n">Value</span> <span class="n">_values</span><span class="p">[</span><span class="n">PARAM_ERROR</span><span class="p">];</span>
+	<span class="n">uint</span> <span class="n">_steps</span><span class="p">;</span>
+	<span class="kt">float</span> <span class="n">_rsteps</span><span class="p">;</span>
+
+	<span class="n">ParameterLoader</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span> <span class="o">&amp;</span> <span class="n">filename</span><span class="p">);</span>
+<span class="p">}</span> <span class="n">ParameterLoader</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">ParameterManager</span> <span class="p">{</span>
+	<span class="n">Value</span> <span class="n">_values</span><span class="p">[</span><span class="n">PARAM_ERROR</span><span class="p">];</span>
+	<span class="n">uint</span> <span class="n">_steps</span><span class="p">;</span>
+	<span class="kt">float</span> <span class="n">_rsteps</span><span class="p">;</span>
+
+	<span class="nl">public:</span>
+	<span class="n">ParameterManager</span><span class="p">(</span><span class="k">const</span> <span class="n">ParameterLoader</span> <span class="o">&amp;</span> <span class="n">presets</span><span class="p">);</span>
+
+	<span class="kt">void</span> <span class="n">process</span><span class="p">();</span>
+	<span class="kt">bool</span> <span class="n">setParameter</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span> <span class="o">&amp;</span><span class="n">command</span><span class="p">,</span> <span class="kt">float</span> <span class="n">value</span><span class="p">);</span>
+	<span class="n">Value</span> <span class="o">&amp;</span> <span class="n">getParameter</span><span class="p">(</span><span class="n">PARAM_ENUM</span> <span class="n">param</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">_values</span><span class="p">[</span><span class="n">param</span><span class="p">];</span> <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">Parameter</span> <span class="p">{</span>
+	<span class="n">Value</span> <span class="o">&amp;</span><span class="n">_value</span><span class="p">;</span>
+	<span class="kt">float</span> <span class="o">**</span><span class="n">_modulator</span><span class="p">;</span>
+
+	<span class="nl">public:</span>
+	<span class="n">Parameter</span><span class="p">(</span><span class="n">ParameterManager</span> <span class="o">&amp;</span> <span class="n">paramManager</span><span class="p">,</span> <span class="n">PARAM_ENUM</span> <span class="n">param</span><span class="p">)</span><span class="o">:</span>
+        <span class="n">_value</span><span class="p">(</span><span class="n">paramManager</span><span class="p">.</span><span class="n">getParameter</span><span class="p">(</span><span class="n">param</span><span class="p">)),</span>
+        <span class="n">_modulator</span><span class="p">(</span><span class="nb">NULL</span><span class="p">)</span> <span class="p">{}</span>
+	<span class="n">Parameter</span><span class="p">(</span><span class="n">ParameterManager</span> <span class="o">&amp;</span> <span class="n">paramManager</span><span class="p">,</span> <span class="n">PARAM_ENUM</span> <span class="n">param</span><span class="p">,</span> <span class="n">uint</span> <span class="n">total</span><span class="p">,</span> <span class="p">...);</span>
+
+	<span class="kt">float</span> <span class="n">getCurrent</span><span class="p">();</span>
+<span class="p">};</span>
+<span class="p">}</span>
+<span class="cp">#endif</span></code></pre></figure>
+
+<p>The parameter object produces a signal value based on the user inputted data. On initialization, it takes the index of a parameter as well as an address to an instance of a ParameterManager which it uses to retrieve the values tied to it. Parameter objects can also be initialized with addresses to modulator values to handle modulation. Interpolation is handled by a global inertia constant. To smooth out the “dirty” user values, I use a technique known as linear interpolation to transition between values. Linear interpolation can be defined with the formula: <code class="language-plaintext highlighter-rouge">y = a * (1 - x) + b * x</code>. Basically, if <code class="language-plaintext highlighter-rouge">x = 0</code>, than <code class="language-plaintext highlighter-rouge">y = a</code>. Likewise, if <code class="language-plaintext highlighter-rouge">x = 1</code>, <code class="language-plaintext highlighter-rouge">y = b</code>. Any value of x between 0 and 1 makes y a weighted average of a and b. A re-arranged version of this formula can be observed in the code below.</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="n">ParameterManager</span><span class="o">::</span><span class="n">ParameterManager</span><span class="p">(</span><span class="k">const</span> <span class="n">ParameterLoader</span> <span class="o">&amp;</span><span class="n">presets</span><span class="p">)</span> <span class="p">{</span>
+	<span class="n">memcpy</span><span class="p">(</span><span class="o">&amp;</span><span class="n">_values</span><span class="p">,</span> <span class="o">&amp;</span><span class="p">(</span><span class="n">presets</span><span class="p">.</span><span class="n">_values</span><span class="p">),</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">presets</span><span class="p">.</span><span class="n">_values</span><span class="p">));</span>
+	<span class="n">_steps</span> <span class="o">=</span> <span class="n">presets</span><span class="p">.</span><span class="n">_steps</span><span class="p">;</span>
+	<span class="n">_rsteps</span> <span class="o">=</span> <span class="n">presets</span><span class="p">.</span><span class="n">_rsteps</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">ParameterManager</span><span class="o">::</span><span class="n">process</span><span class="p">()</span> <span class="p">{</span>
+	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">PARAM_ERROR</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">_values</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">count</span><span class="p">)</span> <span class="p">{</span>
+			<span class="n">_values</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">current</span> <span class="o">=</span> <span class="n">_values</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">user</span> <span class="o">-</span> <span class="n">_values</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">delta</span> <span class="o">*</span> <span class="n">_values</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">count</span><span class="p">;</span>
+			<span class="n">_values</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">count</span><span class="o">--</span><span class="p">;</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">bool</span> <span class="n">ParameterManager</span><span class="o">::</span><span class="n">setParameter</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">command</span><span class="p">,</span> <span class="kt">float</span> <span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+	<span class="n">PARAM_ENUM</span> <span class="n">param</span> <span class="o">=</span> <span class="n">ParseString</span><span class="o">&lt;</span><span class="n">PARAM_ENUM</span><span class="o">&gt;</span><span class="p">(</span><span class="n">command</span><span class="p">,</span> <span class="n">ParameterMap</span><span class="p">,</span> <span class="n">PARAM_ERROR</span><span class="p">);</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">param</span> <span class="o">==</span> <span class="n">PARAM_ERROR</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+	<span class="n">_values</span><span class="p">[</span><span class="n">param</span><span class="p">].</span><span class="n">delta</span> <span class="o">=</span> <span class="p">(</span><span class="n">value</span> <span class="o">-</span> <span class="n">_values</span><span class="p">[</span><span class="n">param</span><span class="p">].</span><span class="n">current</span><span class="p">)</span> <span class="o">*</span> <span class="n">_rsteps</span><span class="p">;</span>
+	<span class="n">_values</span><span class="p">[</span><span class="n">param</span><span class="p">].</span><span class="n">user</span> <span class="o">=</span> <span class="n">value</span><span class="p">;</span>
+	<span class="n">_values</span><span class="p">[</span><span class="n">param</span><span class="p">].</span><span class="n">count</span> <span class="o">=</span> <span class="n">_steps</span><span class="p">;</span>
+	<span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">DSP</span><span class="p">;</span>
+<span class="n">Parameter</span><span class="o">::</span><span class="n">Parameter</span><span class="p">(</span><span class="n">ParameterManager</span> <span class="o">&amp;</span> <span class="n">paramManager</span><span class="p">,</span> <span class="n">PARAM_ENUM</span> <span class="n">param</span><span class="p">,</span> <span class="n">uint</span> <span class="n">total</span><span class="p">,</span> <span class="p">...)</span><span class="o">:</span>
+<span class="n">_value</span><span class="p">(</span><span class="n">paramManager</span><span class="p">.</span><span class="n">getParameter</span><span class="p">(</span><span class="n">param</span><span class="p">))</span> <span class="p">{</span>
+	<span class="n">_value</span><span class="p">.</span><span class="n">mod_total</span> <span class="o">=</span> <span class="n">total</span><span class="p">;</span>
+
+    <span class="n">_modulator</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">float</span><span class="o">*</span><span class="p">[</span><span class="n">total</span> <span class="o">+</span> <span class="mi">1</span><span class="p">];</span>
+    <span class="n">_modulator</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">float</span><span class="p">{};</span>
+
+    <span class="kt">va_list</span> <span class="n">args</span><span class="p">;</span>
+    <span class="n">va_start</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">total</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">total</span><span class="p">)</span> <span class="p">{</span>
+	    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">total</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+	    	<span class="n">_modulator</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">va_arg</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="kt">float</span><span class="o">*</span><span class="p">);</span>
+	    <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">va_end</span><span class="p">(</span><span class="n">args</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">float</span> <span class="n">Parameter</span><span class="o">::</span><span class="n">getCurrent</span><span class="p">()</span> <span class="p">{</span>
+	<span class="kt">float</span> <span class="n">out</span> <span class="o">=</span> <span class="n">_value</span><span class="p">.</span><span class="n">current</span><span class="p">;</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">_value</span><span class="p">.</span><span class="n">mod_select</span> <span class="o">&amp;&amp;</span> <span class="n">_modulator</span><span class="p">)</span> <span class="n">out</span> <span class="o">+=</span> <span class="p">(</span><span class="mf">2.0</span><span class="n">f</span> <span class="o">*</span> <span class="n">_value</span><span class="p">.</span><span class="n">mod</span> <span class="o">-</span> <span class="mf">1.0</span><span class="n">f</span><span class="p">)</span> <span class="o">*</span> <span class="o">*</span><span class="p">(</span><span class="n">_modulator</span><span class="p">[</span><span class="n">_value</span><span class="p">.</span><span class="n">mod_select</span><span class="p">]);</span>
+	<span class="k">return</span> <span class="n">out</span> <span class="o">=</span> <span class="n">CLIP</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="mf">1.0</span><span class="n">f</span><span class="p">,</span> <span class="mf">0.0</span><span class="n">f</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Though getting here was a pain in the ass, I’m glad to have kind of figured this out. When I work with Max and PureData, I often find myself having a hard time trying to come up with ways to manage parameters. I think when I finally get around to working in PD, one of the first things I’m going to want to implement is something like this.</p>
+
+
+<!-- Grab previous and next post from category -->
+<!-- https://talk.jekyllrb.com/t/how-to-link-to-next-and-previous-posts-for-same-blog-category/629 -->
+
+
+
+
+
+
+<footer class="pagination">
+  <nav>
+    <h3>Pagination</h3>
+    <ul>
+      <!-- Page Up -->
+      <li>
+        <a class="up" href="/GRPH/audio">
+          Back to Audio
+        </a>
+      </li>
+      <!-- Prev post -->
+      <li>
+        <a class="next" href="/GRPH/audio/2022/03/27/Programming-Control-Signals.html">
+          Programming Modulators
+        </a>
+      </li>
+      <!-- Next post -->
+      <li>
+        <a class="prev" href="/GRPH/audio/2022/04/04/Delays-&-Filters.html">
+          Delays & Filters
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <nav>
+    <h3>Related Posts</h3>
+    
+    
+    <ul>
+      <li>
+        <a href="/GRPH/audio/2022/04/07/MIDI-Pt-3-Midi-as-Note-Data.html">
+          MIDI 3 - MIDI as Note Data
+        </a>
+      </li>
+    </ul>
+    
+    <ul>
+      <li>
+        <a href="/GRPH/audio/2021/12/03/anatomy-of-subtractive-synths.html">
+          Anatomy of Subtractive Synths
+        </a>
+      </li>
+    </ul>
+    
+    <ul>
+      <li>
+        <a href="/GRPH/audio/website/2022/04/07/Managing-User-Connections.html">
+          OSC, WS, and NodeJS (aka how mistakes were made :C)
+        </a>
+      </li>
+    </ul>
+    
+  </nav>
+</footer>
+
+    </main>    <!-- CONTENT END -->
+    <footer>   <!-- FOOTER START -->
+      <ul>
+        <li><a href="/GRPH/feed.xml">RSS Feed</a></li>
+        <li>
+          <a href="https://www.gnu.org/licenses/copyleft.en.html">(C)</a>
+           2021-2022
+          <a href="mailto:chr.carin(a)gmail.com">Chris Carin</a>
+        </li>
+        <li><a href="https://html5.validator.nu/?doc=http://0.0.0.0:4000/GRPH/audio/2022/04/04/Handling-Controls-&-Parameters.html">This document is valid HTML5</a></li>
+        <li><a href="#">Back to Top</a></li>
+      </ul>
+    </footer>   <!-- FOOTER END -->
+  </body>
+</html>

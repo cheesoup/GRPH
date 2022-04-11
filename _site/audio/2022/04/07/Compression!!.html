@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="/GRPH/assets/css/style.css"/>
+    <link rel="alternate" type="application/atom+xml" title="thesis? idk?" href="/GRPH/feed.xml"/>
+    <link rel="shortcut icon" type="image/png" href="/GRPH/icon.ico"/>
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Compression!! | thesis? idk?</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Compression!!" />
+<meta name="author" content="Chris Carin" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Ever since the 1990s-2000s, producers have been using dynamic range compression to maximize the loudness of their music. I often hear Lewis complain about it, and honestly he is right to be annoyed by it to a degree. However, I don’t think compression in itself is something completely evil. It’s simply a process for normalizing volume levels. When someone is mixing together dozens of stereo signals, it helps to have a way to keep these signals within a volume threshold. In many situations, compression is necessary to avoid consistent clipping or to make small sounds noticeable in an already full audio spectrum." />
+<meta property="og:description" content="Ever since the 1990s-2000s, producers have been using dynamic range compression to maximize the loudness of their music. I often hear Lewis complain about it, and honestly he is right to be annoyed by it to a degree. However, I don’t think compression in itself is something completely evil. It’s simply a process for normalizing volume levels. When someone is mixing together dozens of stereo signals, it helps to have a way to keep these signals within a volume threshold. In many situations, compression is necessary to avoid consistent clipping or to make small sounds noticeable in an already full audio spectrum." />
+<link rel="canonical" href="http://0.0.0.0:4000/GRPH/audio/2022/04/07/Compression!!.html" />
+<meta property="og:url" content="http://0.0.0.0:4000/GRPH/audio/2022/04/07/Compression!!.html" />
+<meta property="og:site_name" content="thesis? idk?" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-04-07T00:00:00-04:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Compression!!" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Chris Carin"},"@type":"BlogPosting","headline":"Compression!!","dateModified":"2022-04-07T00:00:00-04:00","datePublished":"2022-04-07T00:00:00-04:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/GRPH/audio/2022/04/07/Compression!!.html"},"description":"Ever since the 1990s-2000s, producers have been using dynamic range compression to maximize the loudness of their music. I often hear Lewis complain about it, and honestly he is right to be annoyed by it to a degree. However, I don’t think compression in itself is something completely evil. It’s simply a process for normalizing volume levels. When someone is mixing together dozens of stereo signals, it helps to have a way to keep these signals within a volume threshold. In many situations, compression is necessary to avoid consistent clipping or to make small sounds noticeable in an already full audio spectrum.","url":"http://0.0.0.0:4000/GRPH/audio/2022/04/07/Compression!!.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+  <body>
+    <header>  <!-- HEADER START -->
+      <a href="/GRPH/"><img src="/GRPH/assets/images/jam_crow.gif" alt="jam_crow.gif" width="128" height="68"/></a>
+      <nav>   <!-- MENU START -->
+        <ul>
+          
+          <li><a href="/GRPH/about">about</a></li>
+          
+          <li><a href="/GRPH/audio">audio</a></li>
+          
+          <li><a href="/GRPH/website">web</a></li>
+          
+          <li><a href="/GRPH/misc">misc</a></li>
+          
+          <li><a href="/GRPH/tags">tags</a></li>
+          
+        </ul>
+      </nav>   <!-- MENU END -->
+    </header>  <!-- HEADER END -->
+    <main>     <!-- CONTENT START -->
+      
+
+
+<header class="heading">
+  <h1>Compression!!</h1>
+  <div>
+    <small>
+      Category: <a href="">Audio</a>
+    </small>
+    <small>
+      Tags:
+      
+        <a href="/GRPH/tags#bela">Bela</a>
+      
+        <a href="/GRPH/tags#audio-programming">Audio Programming</a>
+      
+        <a href="/GRPH/tags#c">C++</a>
+      
+    </small>
+  </div>
+  <div>
+    <small>
+      Thu, Apr 07, 22
+    </small>
+    <small>
+      
+      Length:
+      
+        7 mins
+      
+    </small>
+  </div>
+</header>
+
+<p>Ever since the 1990s-2000s, producers have been using dynamic range compression to maximize the loudness of their music. I often hear Lewis complain about it, and honestly he is right to be annoyed by it to a degree. However, I don’t think compression in itself is something completely evil. It’s simply a process for normalizing volume levels. When someone is mixing together dozens of stereo signals, it helps to have a way to keep these signals within a volume threshold. In many situations, compression is necessary to avoid consistent clipping or to make small sounds noticeable in an already full audio spectrum.</p>
+
+<p>For my current project, I needed a way to keep volume levels relatively consistent for a variable amount of players. For this reason I decided to implement a simple compression algorithm prior to the master output.</p>
+
+<p><strong>TODO</strong>: Insert clips of project with &amp; without compression.</p>
+
+<p>A compressor works by applying a gain correction depending on the volume level of the incoming signal. This occurs when the signal exceeds a user defined threshold. Common compressor parameters include:</p>
+<ul>
+  <li><strong>Pre-Gain</strong> and <strong>Post-Gain</strong> (Controls amplitude of the incoming and outgoing signal)</li>
+  <li><strong>Threshold</strong> (The minimum volume level required for the compressor to take effect)</li>
+  <li><strong>Slope</strong> (The level of compression applied when the signal is above threshold)</li>
+  <li><strong>Attack</strong> (How quickly the compressor reacts to increases in level)</li>
+  <li><strong>Release</strong> (How quickly the compressor reacts to decreases in level)</li>
+</ul>
+
+<p>Under the hood, there are three key steps that seem to be common in most designs. Though the order of operation may vary, these steps are: level detection, peak smoothing, and gain computation. Below I plan to go over how each of these steps are implemented in my own compressor design. As per usual, my code is based on examples provided online. This <a href="https://www.eecs.qmul.ac.uk/~josh/documents/2012/GiannoulisMassbergReiss-dynamicrangecompression-JAES2012.pdf">paper</a> in particular helped recognize patterns in compressor designs to look out for (though most of the content simply went over my head). This <a href="https://www.musicdsp.org/en/latest/Effects/169-compressor.html">example</a> in particular, while not the most efficient, provided a fairly digestible jumping off point for me. And this <a href="https://christianfloisand.wordpress.com/2014/06/09/dynamics-processing-compressorlimiter-part-1/">series</a> of <a href="https://christianfloisand.wordpress.com/2014/06/16/dynamics-processing-compressorlimiter-part-2/">blog</a> <a href="https://christianfloisand.wordpress.com/2014/07/16/dynamics-processing-compressorlimiter-part-3/">posts</a> sort of helped to glue all the concepts together.</p>
+
+<h2 id="level-detection">Level Detection</h2>
+
+<p>A typical compressor either calculates an absolute value or an RMS value for a given sample in order to give an accurate numerical representation pertaining to a signal’s loudness. These values can essentially be seen as the volume of a signal, though RMS is more accurate. For my implementation, I actually decided to stick to RMS only. RMS can calculated with following formula: <code class="language-plaintext highlighter-rouge">sqrt((x[0] * x[0] + x[1] * x[1] + … x[n] * x[n]) / n)</code>.</p>
+
+<p>To calculate RMS, we need to keep track of the square values of samples within a buffer. These squared values then need to be summed up and divided by the buffer size. The end result is the RMS to be used for calculating current loudness of a signal. The code below is how my program does this:</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="kr">inline</span> <span class="kt">float</span> <span class="n">Compressor</span><span class="o">::</span><span class="n">calculateRMS</span><span class="p">(</span><span class="kt">float</span> <span class="n">left</span><span class="p">,</span> <span class="kt">float</span> <span class="n">right</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">static</span> <span class="kt">float</span> <span class="n">squaredsum</span> <span class="o">=</span> <span class="mf">0.0</span><span class="n">f</span><span class="p">;</span> <span class="c1">// Running sum for calculating RMS</span>
+	<span class="n">left</span> <span class="o">*=</span> <span class="n">_parameters</span><span class="p">[</span><span class="n">COMP_PREGAIN</span><span class="p">];</span>
+	<span class="n">right</span> <span class="o">*=</span> <span class="n">_parameters</span><span class="p">[</span><span class="n">COMP_PREGAIN</span><span class="p">];</span>
+
+	<span class="c1">// Calculate the index of the oldest sample within the RMS window</span>
+	<span class="kt">int</span> <span class="n">rmsLastSampleIdx</span> <span class="o">=</span> <span class="n">_writeptr</span> <span class="o">-</span> <span class="n">_rmsSize</span><span class="p">;</span>
+	<span class="n">rmsLastSampleIdx</span> <span class="o">+=</span> <span class="p">(</span><span class="n">rmsLastSampleIdx</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="n">_bufferSize</span><span class="p">;</span>
+
+	<span class="c1">// Add new value and remove old value from running total.</span>
+	<span class="k">const</span> <span class="kt">float</span> <span class="n">newSample</span> <span class="o">=</span> <span class="n">sqravg</span><span class="p">(</span><span class="n">left</span> <span class="o">*</span> <span class="n">_parameters</span><span class="p">[</span><span class="n">COMP_PREGAIN</span><span class="p">],</span> <span class="n">right</span> <span class="o">*</span> <span class="n">_parameters</span><span class="p">[</span><span class="n">COMP_PREGAIN</span><span class="p">]);</span>
+	<span class="k">const</span> <span class="kt">float</span> <span class="n">oldSample</span> <span class="o">=</span> <span class="n">sqravg</span><span class="p">(</span><span class="n">_buffer</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">rmsLastSampleIdx</span><span class="p">],</span> <span class="n">_buffer</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">rmsLastSampleIdx</span><span class="p">]);</span>
+	<span class="n">squaredsum</span> <span class="o">+=</span> <span class="n">newSample</span><span class="p">;</span>
+	<span class="n">squaredsum</span> <span class="o">-=</span> <span class="n">oldSample</span><span class="p">;</span>
+
+	<span class="k">return</span> <span class="n">sqrtf_neon</span><span class="p">(</span><span class="n">squaredsum</span> <span class="o">*</span> <span class="n">_oneoverSize</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Rather than iterating through a buffer, we instead implement a delay line to keep track of past samples. We then keep track of the running total by squaring and summing incoming samples and squaring and subtracting samples exiting the calculation window. The RMS value is then calculated using sqrt(sum * oneoverwindowsize). Note that one over x * (1 / n) is equivalent to x / n. Generally, it’s more efficient to pre-calculate the reciprocal of something rather than constantly divide by it.</p>
+
+<h2 id="peak-smoothing">Peak Smoothing</h2>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="kr">inline</span> <span class="kt">float</span> <span class="n">Compressor</span><span class="o">::</span><span class="n">applyEnvelope</span><span class="p">(</span><span class="kt">float</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">static</span> <span class="kt">float</span> <span class="n">env</span> <span class="o">=</span> <span class="mf">0.0</span><span class="n">f</span><span class="p">;</span>
+	<span class="k">const</span> <span class="kt">float</span> <span class="o">*</span><span class="n">theta</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">_parameters</span><span class="p">[</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">env</span><span class="p">];</span>
+	<span class="k">return</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="o">*</span><span class="n">theta</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="o">*</span><span class="n">theta</span> <span class="o">*</span> <span class="n">env</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>If you read my older posts, this function should look familiar. Once again, we’re using the linear interpolation formula to create a low pass filter with two coefficients.  In this context, we’re using the filter as a way to smooth the incoming RMS signal. The two coefficients control how quickly a compressor will respond to changes in level. They are typically controlled by a compressor’s attack and release parameter. Which between the two coefficients to be used is determined by whether the incoming signal is rising or falling.</p>
+
+<h2 id="gain-computation">Gain Computation</h2>
+<p>Once we determine the current loudness value post envelope, we can finally start performing gain correcting. In order to ensure a linear slope in the decibel domain, gain computations are done in decibels. We can use the following formulas to convert linear values to a decibel scale:</p>
+
+<p><strong>Linear to DB:</strong> <code class="language-plaintext highlighter-rouge">20 * log10(amplitude)</code> <br />
+<strong>DB to Linear:</strong> <code class="language-plaintext highlighter-rouge">pow(10, db/20)</code></p>
+
+<p>From here we can calculate the gain value of the outgoing signal by using the formula:
+<code class="language-plaintext highlighter-rouge">gain = slope * (threshold – RMS) if RMS &gt;= threshold, else 0</code>. To apply the correction, all we need to do is multiply the outgoing sample by the gain, and tada we have a compressed signal! To illustrate how this is done within my project I’ve posted the my compressor’s process function below:</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="k">const</span> <span class="n">Audio</span> <span class="o">&amp;</span> <span class="n">Compressor</span><span class="o">::</span><span class="n">process</span><span class="p">(</span><span class="k">const</span> <span class="n">Audio</span> <span class="o">&amp;</span><span class="n">input</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">const</span> <span class="kt">float</span> <span class="n">rms</span> <span class="o">=</span> <span class="n">calculateRMS</span><span class="p">(</span><span class="n">input</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">CHANNEL_LEFT</span><span class="p">),</span> <span class="n">input</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">CHANNEL_RIGHT</span><span class="p">));</span> <span class="c1">// calculate RMS from total</span>
+	<span class="k">const</span> <span class="kt">float</span> <span class="n">env</span> <span class="o">=</span> <span class="n">applyEnvelope</span><span class="p">(</span><span class="n">rms</span><span class="p">);</span> <span class="c1">// Apply attack/release envelope</span>
+
+	<span class="c1">// Compute gain correction and apply</span>
+	<span class="kt">float</span> <span class="n">gain</span> <span class="o">=</span> <span class="n">_parameters</span><span class="p">[</span><span class="n">COMP_SLOPE</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">_parameters</span><span class="p">[</span><span class="n">COMP_THRESH</span><span class="p">]</span> <span class="o">-</span> <span class="n">DSP</span><span class="o">::</span><span class="n">LINTODB</span><span class="p">(</span><span class="n">env</span><span class="p">));</span>
+	<span class="n">gain</span> <span class="o">=</span> <span class="n">DSP</span><span class="o">::</span><span class="n">DBTOLIN</span><span class="p">(</span><span class="n">gain</span><span class="p">)</span> <span class="o">*</span> <span class="n">DSP</span><span class="o">::</span><span class="n">DBTOLIN</span><span class="p">(</span><span class="n">_parameters</span><span class="p">[</span><span class="n">COMP_POSTGAIN</span><span class="p">]);</span>
+
+	<span class="c1">// Apply gain correction + sigmoid</span>
+	<span class="n">_current</span><span class="p">[</span><span class="n">CHANNEL_LEFT</span><span class="p">]</span> <span class="o">=</span> <span class="n">_buffer</span><span class="p">[</span><span class="n">CHANNEL_LEFT</span><span class="p">][</span><span class="n">_writeptr</span><span class="p">]</span> <span class="o">*</span> <span class="n">gain</span> <span class="o">*</span> <span class="n">_parameters</span><span class="p">[</span><span class="n">COMP_POSTGAIN</span><span class="p">];</span>
+	<span class="n">_current</span><span class="p">[</span><span class="n">CHANNEL_RIGHT</span><span class="p">]</span> <span class="o">=</span> <span class="n">_buffer</span><span class="p">[</span><span class="n">CHANNEL_RIGHT</span><span class="p">][</span><span class="n">_writeptr</span><span class="p">]</span> <span class="o">*</span> <span class="n">gain</span> <span class="o">*</span> <span class="n">_parameters</span><span class="p">[</span><span class="n">COMP_POSTGAIN</span><span class="p">];</span>
+
+	<span class="c1">// Write input to buffer and increment write pointer</span>
+	<span class="n">_buffer</span><span class="p">[</span><span class="n">CHANNEL_LEFT</span><span class="p">][</span><span class="n">_writeptr</span><span class="p">]</span> <span class="o">=</span> <span class="n">input</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">CHANNEL_LEFT</span><span class="p">);</span>
+	<span class="n">_buffer</span><span class="p">[</span><span class="n">CHANNEL_RIGHT</span><span class="p">][</span><span class="n">_writeptr</span><span class="p">]</span> <span class="o">=</span> <span class="n">input</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">CHANNEL_RIGHT</span><span class="p">);</span>
+	<span class="n">_writeptr</span><span class="o">++</span><span class="p">;</span>
+	<span class="n">_writeptr</span> <span class="o">*=</span> <span class="n">_writeptr</span> <span class="o">&lt;</span> <span class="n">_bufferSize</span><span class="p">;</span>
+
+	<span class="k">return</span> <span class="n">_current</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Conclusion:
+Hopefully you enjoyed my little writeup on building audio compressors out of code. Prior to this, I’ve always had a hard time putting one together. Prior attempts in PureData always ended with something less than satisfactory. I think building this compressor in C++ really helped me to grasp the process a lot better.</p>
+
+
+<!-- Grab previous and next post from category -->
+<!-- https://talk.jekyllrb.com/t/how-to-link-to-next-and-previous-posts-for-same-blog-category/629 -->
+
+
+
+
+
+
+<footer class="pagination">
+  <nav>
+    <h3>Pagination</h3>
+    <ul>
+      <!-- Page Up -->
+      <li>
+        <a class="up" href="/GRPH/audio">
+          Back to Audio
+        </a>
+      </li>
+      <!-- Prev post -->
+      <li>
+        <a class="next" href="/GRPH/audio/2022/04/06/Delays-&-Echoes-and-More.html">
+          Delays & Echoes and More
+        </a>
+      </li>
+      <!-- Next post -->
+      <li>
+        <a class="prev" href="/GRPH/audio/2022/04/07/Voice-Management-&-Stealing.html">
+          Voice Management and Stealing
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <nav>
+    <h3>Related Posts</h3>
+    
+    
+    <ul>
+      <li>
+        <a href="/GRPH/audio/2022/04/07/MIDI-Pt-2-Using-MIDI-as-an-Interface.html">
+          MIDI 2 - MIDI as an Interface
+        </a>
+      </li>
+    </ul>
+    
+    <ul>
+      <li>
+        <a href="/GRPH/audio/2021/10/14/fft_grainspec.html">
+          FFT Spectral Granulator
+        </a>
+      </li>
+    </ul>
+    
+    <ul>
+      <li>
+        <a href="/GRPH/audio/2022/04/07/MIDI-Pt-3-Midi-as-Note-Data.html">
+          MIDI 3 - MIDI as Note Data
+        </a>
+      </li>
+    </ul>
+    
+  </nav>
+</footer>
+
+    </main>    <!-- CONTENT END -->
+    <footer>   <!-- FOOTER START -->
+      <ul>
+        <li><a href="/GRPH/feed.xml">RSS Feed</a></li>
+        <li>
+          <a href="https://www.gnu.org/licenses/copyleft.en.html">(C)</a>
+           2021-2022
+          <a href="mailto:chr.carin(a)gmail.com">Chris Carin</a>
+        </li>
+        <li><a href="https://html5.validator.nu/?doc=http://0.0.0.0:4000/GRPH/audio/2022/04/07/Compression!!.html">This document is valid HTML5</a></li>
+        <li><a href="#">Back to Top</a></li>
+      </ul>
+    </footer>   <!-- FOOTER END -->
+  </body>
+</html>

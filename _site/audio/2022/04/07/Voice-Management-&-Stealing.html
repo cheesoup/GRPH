@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="/GRPH/assets/css/style.css"/>
+    <link rel="alternate" type="application/atom+xml" title="thesis? idk?" href="/GRPH/feed.xml"/>
+    <link rel="shortcut icon" type="image/png" href="/GRPH/icon.ico"/>
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Voice Management and Stealing | thesis? idk?</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Voice Management and Stealing" />
+<meta name="author" content="Chris Carin" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Voice management has been something of a recurring pain over the course of this project. Prior to taking a different direction with my project, voice stealing was implemented to handle polyphonic key-based playing. Before coding it up, there was nothing more annoying when testing my instrument than running out of notes when holding too many keys down." />
+<meta property="og:description" content="Voice management has been something of a recurring pain over the course of this project. Prior to taking a different direction with my project, voice stealing was implemented to handle polyphonic key-based playing. Before coding it up, there was nothing more annoying when testing my instrument than running out of notes when holding too many keys down." />
+<link rel="canonical" href="http://0.0.0.0:4000/GRPH/audio/2022/04/07/Voice-Management-&-Stealing.html" />
+<meta property="og:url" content="http://0.0.0.0:4000/GRPH/audio/2022/04/07/Voice-Management-&-Stealing.html" />
+<meta property="og:site_name" content="thesis? idk?" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-04-07T00:00:00-04:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Voice Management and Stealing" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Chris Carin"},"@type":"BlogPosting","headline":"Voice Management and Stealing","dateModified":"2022-04-07T00:00:00-04:00","datePublished":"2022-04-07T00:00:00-04:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/GRPH/audio/2022/04/07/Voice-Management-&-Stealing.html"},"description":"Voice management has been something of a recurring pain over the course of this project. Prior to taking a different direction with my project, voice stealing was implemented to handle polyphonic key-based playing. Before coding it up, there was nothing more annoying when testing my instrument than running out of notes when holding too many keys down.","url":"http://0.0.0.0:4000/GRPH/audio/2022/04/07/Voice-Management-&-Stealing.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+  <body>
+    <header>  <!-- HEADER START -->
+      <a href="/GRPH/"><img src="/GRPH/assets/images/jam_crow.gif" alt="jam_crow.gif" width="128" height="68"/></a>
+      <nav>   <!-- MENU START -->
+        <ul>
+          
+          <li><a href="/GRPH/about">about</a></li>
+          
+          <li><a href="/GRPH/audio">audio</a></li>
+          
+          <li><a href="/GRPH/website">web</a></li>
+          
+          <li><a href="/GRPH/misc">misc</a></li>
+          
+          <li><a href="/GRPH/tags">tags</a></li>
+          
+        </ul>
+      </nav>   <!-- MENU END -->
+    </header>  <!-- HEADER END -->
+    <main>     <!-- CONTENT START -->
+      
+
+
+<header class="heading">
+  <h1>Voice Management and Stealing</h1>
+  <div>
+    <small>
+      Category: <a href="">Audio</a>
+    </small>
+    <small>
+      Tags:
+      
+        <a href="/GRPH/tags#bela">Bela</a>
+      
+        <a href="/GRPH/tags#audio-programming">Audio Programming</a>
+      
+        <a href="/GRPH/tags#c">C++</a>
+      
+    </small>
+  </div>
+  <div>
+    <small>
+      Thu, Apr 07, 22
+    </small>
+    <small>
+      
+      Length:
+      
+        5 mins
+      
+    </small>
+  </div>
+</header>
+
+<p>Voice management has been something of a recurring pain over the course of this project. Prior to taking a different direction with my project, voice stealing was implemented to handle polyphonic key-based playing. Before coding it up, there was nothing more annoying when testing my instrument than running out of notes when holding too many keys down.</p>
+
+<!-- Include for captioned images -->
+
+<div class="float ">
+  <figure class="embed picture" style="width: ">
+    
+    <a href="#voicestealing-diagram-png">
+      <img src="/GRPH/assets/images/content/voicestealing_diagram.png" alt="A diagram illustrating how voice stealing worked in my original synthesizer" style="width: " loading="lazy" />
+    </a>
+    
+    <figcaption>
+      A diagram illustrating how voice stealing worked in my original synthesizer
+      
+    </figcaption>
+  </figure>
+  
+  <a href="#/" class="expand" id="voicestealing-diagram-png">
+    <img src="/GRPH/assets/images/content/voicestealing_diagram.png" alt="A diagram illustrating how voice stealing worked in my original synthesizer" style="background-image: url('/GRPH/assets/images/transparent.gif')" loading="lazy" />
+  </a>
+  
+</div>
+
+<p>I needed a way to keep track of the order of notes played in case one voice needed to change to a new note. The solution that came up involved creating a data structure known as a linked list. Normally when programming, to create a collection of elements we usually implement something called an array. If you recall my example on delay lines, often the buffer is defined as an array of floating point numbers. Normally, this is the ideal way to manage large groups, but it can be limiting at times. Due to their strict structure, it’s normally difficult to resize an array in real-time. On the other hand, linked lists differ from the arrays because rather than being a bunch of elements lined up side by side in memory, they’re objects containing a pointer to the memory address of the next instance of the object. This makes them ideal for structures which need to be dynamically resized such a growing and shrinking list of elements.</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="n">Voice</span> <span class="n">voice</span><span class="p">[</span><span class="n">VOICE_TOTAL</span><span class="p">];</span>
+<span class="n">DLList</span><span class="o">&lt;</span><span class="n">Voice</span><span class="o">&gt;</span> <span class="n">active</span><span class="p">,</span> <span class="n">inactive</span><span class="p">,</span> <span class="n">stolen</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="n">VoiceManager</span><span class="o">::</span><span class="n">setup</span><span class="p">(</span><span class="n">ParameterManager</span><span class="o">*</span> <span class="n">values</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">VOICE_TOTAL</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">voice</span><span class="p">[</span><span class="n">j</span><span class="p">].</span><span class="n">setup</span><span class="p">(</span><span class="n">values</span><span class="p">);</span>
+    <span class="n">voice</span><span class="p">[</span><span class="n">j</span><span class="p">].</span><span class="n">linkBefore</span><span class="p">(</span><span class="n">inactive</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">VoiceManager</span><span class="o">::</span><span class="n">on</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">*</span> <span class="n">note</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span><span class="o">*</span> <span class="n">vel</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">Voice</span><span class="o">*</span> <span class="n">selected</span><span class="p">;</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">inactive</span><span class="p">.</span><span class="n">isLinked</span><span class="p">())</span> <span class="n">selected</span> <span class="o">=</span> <span class="n">inactive</span><span class="p">.</span><span class="n">getFirst</span><span class="p">();</span>
+  <span class="k">else</span> <span class="p">{</span>
+    <span class="n">assert</span><span class="p">(</span><span class="n">active</span><span class="p">.</span><span class="n">islinked</span><span class="p">());</span>
+    <span class="n">selected</span> <span class="o">=</span> <span class="n">active</span><span class="p">.</span><span class="n">getLast</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="n">selected</span><span class="o">-&gt;</span><span class="n">unlink</span><span class="p">();</span>
+  <span class="n">selected</span><span class="o">-&gt;</span><span class="n">linkAfter</span><span class="p">(</span><span class="n">active</span><span class="p">);</span>
+  <span class="n">selected</span><span class="o">-&gt;</span><span class="n">setNote</span><span class="p">(</span><span class="o">*</span><span class="n">note</span><span class="p">);</span>
+  <span class="n">selected</span><span class="o">-&gt;</span><span class="n">trigger</span><span class="p">(</span><span class="o">*</span><span class="n">vel</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">VoiceManager</span><span class="o">::</span><span class="n">off</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">*</span> <span class="n">note</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Find the voice(s) with the given noteNumber:</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">active</span><span class="p">.</span><span class="n">isLinked</span><span class="p">())</span> <span class="p">{</span>
+    <span class="c1">// Voice* selected;</span>
+    <span class="n">DLNode</span><span class="o">*</span> <span class="n">it</span> <span class="o">=</span> <span class="n">active</span><span class="p">.</span><span class="n">getFirst</span><span class="p">();</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">it</span> <span class="o">!=</span> <span class="p">(</span><span class="n">DLNode</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">active</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">DLNode</span><span class="o">*</span> <span class="n">next</span> <span class="o">=</span> <span class="n">it</span><span class="o">-&gt;</span><span class="n">getNext</span><span class="p">();</span>
+      <span class="n">Voice</span><span class="o">*</span> <span class="n">selected</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">Voice</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">it</span><span class="p">);</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">selected</span><span class="o">-&gt;</span><span class="n">note</span> <span class="o">==</span> <span class="o">*</span><span class="n">note</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">selected</span><span class="o">-&gt;</span><span class="n">trigger</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+        <span class="n">selected</span><span class="o">-&gt;</span><span class="n">unlink</span><span class="p">();</span>
+        <span class="n">selected</span><span class="o">-&gt;</span><span class="n">linkAfter</span><span class="p">(</span><span class="n">inactive</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="n">it</span> <span class="o">=</span> <span class="n">next</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>This, however, was not a perfect solution. Firstly, the envelope was never built to take into account new note ons while still active. This resulted in an annoying click due to instantaneous change in level to zero that I had no idea how to deal with at the time. Eventually, I opted to simply not retrigger the envelope for stolen voice, but it did not get rid of the click. I believe the sudden change in frequency had something to do with the issue as well.</p>
+
+<p><strong>TODO:</strong> Insert audio clips of clicking issue</p>
+
+<p>When I moved away from building a standalone instrument to building an “In C” cover generator, being able to play polyphonically became much less of a necessity. If we actually look through the score of “In C,” the entire song is written with monophonic instruments in mind. I believe this is to ensure it is playable on any instrument. This didn’t mean voice stealing wasn’t an issue though. The note being played still needs to be able to switch on the fly.</p>
+
+<!-- Include for captioned images -->
+
+<div class="float ">
+  <figure class="embed picture" style="width: ">
+    
+    <a href="#voicestealing-diagram2-png">
+      <img src="/GRPH/assets/images/content/voicestealing_diagram2.png" alt="A diagram illustrating how voice stealing worked in my original synthesizer" style="width: " loading="lazy" />
+    </a>
+    
+    <figcaption>
+      A diagram illustrating how voice stealing worked in my original synthesizer
+      
+    </figcaption>
+  </figure>
+  
+  <a href="#/" class="expand" id="voicestealing-diagram2-png">
+    <img src="/GRPH/assets/images/content/voicestealing_diagram2.png" alt="A diagram illustrating how voice stealing worked in my original synthesizer" style="background-image: url('/GRPH/assets/images/transparent.gif')" loading="lazy" />
+  </a>
+  
+</div>
+
+<p>In my current project, voice stealing is implemented through the use of benchwarmer voices. Rather than having a single voice per player, each player actually has two. However, only one voice can be played at a time. When a note is played, a reference to its memory address is given to a pointer labeling the voice as active. If a new note is played and while a voice is active, the active voice ‘killed’ and overtaken by the inactive one. This method of voice stealing avoids the clicking issue, though at the cost of performance. Because all players are monophonic, I thought it would be a fair trade-off to implement voice stealing in such a way.</p>
+
+<p>After writing this all out, I now realize that you can think of these two methods as similar. In both cases we’re using pointers to keep track of voice activity. While I’ve yet to find an ideal solution to voice stealing, I think what I have right now is enough to work.</p>
+
+
+<!-- Grab previous and next post from category -->
+<!-- https://talk.jekyllrb.com/t/how-to-link-to-next-and-previous-posts-for-same-blog-category/629 -->
+
+
+
+
+
+
+<footer class="pagination">
+  <nav>
+    <h3>Pagination</h3>
+    <ul>
+      <!-- Page Up -->
+      <li>
+        <a class="up" href="/GRPH/audio">
+          Back to Audio
+        </a>
+      </li>
+      <!-- Prev post -->
+      <li>
+        <a class="next" href="/GRPH/audio/2022/04/07/Compression!!.html">
+          Compression!!
+        </a>
+      </li>
+      <!-- Next post -->
+      <li>
+        <a class="prev" href="/GRPH/audio/2022/04/07/MIDI-Pt-1-Stuff-about-MIDI.html">
+          MIDI 1 - Stuff About MIDI
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <nav>
+    <h3>Related Posts</h3>
+    
+    
+    <ul>
+      <li>
+        <a href="/GRPH/audio/2022/04/06/Delays-&-Echoes-and-More.html">
+          Delays & Echoes and More
+        </a>
+      </li>
+    </ul>
+    
+    <ul>
+      <li>
+        <a href="/GRPH/audio/2021/11/29/sample-rates-and-harmonics.html">
+          Sampling Rates & Harmonics
+        </a>
+      </li>
+    </ul>
+    
+    <ul>
+      <li>
+        <a href="/GRPH/audio/2022/04/04/Handling-Controls-&-Parameters.html">
+          Handling Controls & Parameters
+        </a>
+      </li>
+    </ul>
+    
+  </nav>
+</footer>
+
+    </main>    <!-- CONTENT END -->
+    <footer>   <!-- FOOTER START -->
+      <ul>
+        <li><a href="/GRPH/feed.xml">RSS Feed</a></li>
+        <li>
+          <a href="https://www.gnu.org/licenses/copyleft.en.html">(C)</a>
+           2021-2022
+          <a href="mailto:chr.carin(a)gmail.com">Chris Carin</a>
+        </li>
+        <li><a href="https://html5.validator.nu/?doc=http://0.0.0.0:4000/GRPH/audio/2022/04/07/Voice-Management-&-Stealing.html">This document is valid HTML5</a></li>
+        <li><a href="#">Back to Top</a></li>
+      </ul>
+    </footer>   <!-- FOOTER END -->
+  </body>
+</html>
