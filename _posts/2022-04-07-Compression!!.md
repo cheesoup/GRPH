@@ -10,7 +10,8 @@ Ever since the 1990s-2000s, producers have been using dynamic range compression 
 
 For my current project, I needed a way to keep volume levels relatively consistent for a variable amount of players. For this reason I decided to implement a simple compression algorithm prior to the master output.
 
-**TODO**: Insert clips of project with & without compression.
+**TODO**: Insert clips of project with & without compression.  
+(I accidently broke my program and don't have time fix it right now so I'll post these clips once it's running again)
 
 A compressor works by applying a gain correction depending on the volume level of the incoming signal. This occurs when the signal exceeds a user defined threshold. Common compressor parameters include:
 * **Pre-Gain** and **Post-Gain** (Controls amplitude of the incoming and outgoing signal)

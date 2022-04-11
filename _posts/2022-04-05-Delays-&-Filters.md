@@ -30,7 +30,7 @@ The code above is an example of an example of a basic single pole low pass filte
 
 I’ve attempted to demonstrate this concept with an animated GIF above. Notice how the peak amplitude of the sum of the two waves moves from -2 and 2 to 0 depending on the difference in phase. We can think of this difference in phase as the total length a signal is being delayed by.
 
-This concept can be extended to create more elaborate filters. When working on my instrument, I was using this algorithm to generate a resonant analog style low-pass filter. From my own research while attempting to implement the same design in PureData, someone mentioned that this sort of filter was essentially a chain of basic low pass filters (like the one of above) in a feedback loop. Though I don’t completely understand how it all works from a DSP perspective, one can clearly see the similarities between this filter and the one above in terms of structure. The code itself is based on an example provided on MusicDSP.
+This concept can be extended to create more elaborate filters. When working on my instrument, I was using this algorithm to generate a resonant analog style low-pass filter. From my own research while attempting to implement the same design in PureData, someone mentioned that this sort of filter was essentially a chain of basic low pass filters (like the one of above) in a feedback loop. Though I don’t completely understand how it all works from a DSP perspective, one can clearly see the similarities between this filter and the one above in terms of structure. The code itself is based on an example provided on [MusicDSP](https://www.musicdsp.org/en/latest/Filters/240-karlsen-fast-ladder.html).
 
 {% highlight c++ %}
 float KarlsenFilter::process(float in, float cut, float res)
@@ -52,4 +52,6 @@ float KarlsenFilter::process(float in, float cut, float res)
 }
 {% endhighlight %}
 
-If I knew more about signal processing I would definitely have more to write here. However, I’m not very good at math and whenever I do research into this sort of thing, I’m consistently buried in it. All I wanted to get across is the universal usefulness of delay lines. In my next post, I plan to go over more well known use cases for delay lines.
+If I knew more about signal processing I would definitely have more to write here. However, I’m not very good at math and whenever I do research into this sort of thing, I’m consistently buried in it. All I wanted to get across is the universal usefulness of delay lines. In my next post, I plan to go over more well known use cases for delay lines. For those interested, I've posted of the second filter below:
+
+{% include vimeo.html id='698393376' caption="Karlsen Analog Ladder Style Filter %}
