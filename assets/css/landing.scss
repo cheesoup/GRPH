@@ -2,7 +2,7 @@
 # Landing Page CSS
 ---
 
-$break: 800px;
+$break: 860px;
 $width: 720px;
 
 $body_stack: "Trebuchet MS", Verdana, Arial, sans-serif;
@@ -36,38 +36,38 @@ body {
 }
 
 main {
-  align-items: flex-start;
   max-width: $width;
   margin: 0 auto;
   padding: $half_margins;
   img {
-    text-align: center;
-    margin: 0 auto;
-    display: block;
+    margin: 0 20px;
+  }
+  h1 {
+    margin: 0 5px $half_margins;
+    font-family: $h1_stack;
+    font-size: 40px;
+    line-height: 48px;
+    & a {
+      color: $color3;
+      &:hover {
+        color: $color1;
+        background-color: $color3;
+      }
+    }
   }
   @media (min-width: $break) {
     a {
       -webkit-transform: scaleX(-1);
       transform: scaleX(-1);
     }
-  }
-}
-
-h1 {
-  margin: 0 5px $half_margins;
-  font-family: $h1_stack;
-  font-size: 40px;
-  line-height: 48px;
-  @media (min-width: $break) {
-    grid-column: 1;
-    grid-row: 1;
-    grid-column-end: span 1;
-  }
-  & a {
-    color: $color3;
-    &:hover {
-      color: $color1;
-      background-color: $color3;
+    h1 {
+      grid-column: 1;
+      grid-row: 1;
+      grid-column-end: span 1;
+    }
+    img {
+      -webkit-transform: scaleX(1);
+      transform: scaleX(1);
     }
   }
 }
@@ -82,7 +82,7 @@ ul {
   line-height: 18px;
   list-style-type: none;
   & > li {
-    display: block;
+    display: none;
     padding: 0;
     margin: 0;
     @media (min-width: $break) {
