@@ -4,7 +4,6 @@ author: Chris Carin
 description: a blog for 4th year workshop at OCADU
 url: https://cheesoup.github.io
 baseurl: /GRPH
-paginate: 5
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
