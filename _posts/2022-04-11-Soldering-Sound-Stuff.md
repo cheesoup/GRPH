@@ -12,7 +12,7 @@ Hello! This is a guest post by Giuli, Chris’ girlfriend. In addition to editin
 
 ## Ground loop isolator
 
-{% include image.html width='300' float='right' url='TRS-pinout.png' caption='Anatomy of a TRS jack' %}
+{% include image.html width='300' float='right' url='TRS-Pinout.png' caption='Anatomy of a TRS jack' %}
 
 Ground loop isolators are used to reduce noise in a signal. Pictured below is one of the ones we soldered. There are four components on the PCB: 2 jacks and 2 transformers. Neither of us know exactly how it works, but from what I’ve read, it separates the audio signal ground and the power ground using the transformers.
 
