@@ -3,7 +3,7 @@ title: Soldering Sound Stuff
 layout: post
 tag: [Bela, Enclosure]
 date: Apr. 11th, 2022
-categories: [Audio]
+categories: [Misc]
 ---
 
 {% include image.html url='cable_ground_loop_isolator.png' caption='Molex to TRS + Group Loop Isolator' %}
